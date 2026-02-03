@@ -23,10 +23,10 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
 ### Lien Kanban (Trello):
 https://trello.com/b/cWlLh8KN/projet-l2-fnaf
 
-### Lien Gannt prévisionnel(Google Sheet):
-link
+### Lien Gantt prévisionnel(Google Sheet):
+https://docs.google.com/spreadsheets/d/1w73hapR2lhxCy8AzMjgbPgdwBCyztmc5l0ZQPHnSg2o/edit?usp=sharing
 
-### Lien Gannt temps réel(Google Sheet):
+### Lien Gantt temps réel(Google Sheet):
 link
 
 ### Documentation doxygene:
