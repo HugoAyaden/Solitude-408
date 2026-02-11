@@ -49,4 +49,4 @@ void main(){
     printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
     free(carte);
 }
-    */
+*/
