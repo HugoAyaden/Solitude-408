@@ -29,9 +29,6 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
  - Gimp (images)
  - Audacity (sons)
 
-### Lien Kanban (Trello):
-https://trello.com/b/cWlLh8KN/projet-l2-fnaf (a enlever)
-
 ### Lien Gantt prévisionnel(Google Sheet):
 https://docs.google.com/spreadsheets/d/1w73hapR2lhxCy8AzMjgbPgdwBCyztmc5l0ZQPHnSg2o/edit?usp=sharing
 
