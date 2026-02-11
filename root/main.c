@@ -5,15 +5,28 @@ int main(int argc, char* argv[]) {
     TTF_Init(); IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
-    SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_FULLSCREEN_DESKTOP);
+    // 1. Load saved settings FIRST to get indices
+    load_settings(); 
+
+    // 2. Determine initial width and height from resIndex
+    int w = 1920, h = 1080; // Default fallback
+    if (resIndex == 0) { w = 3840; h = 2160; }
+    else if (resIndex == 1) { w = 2560; h = 1440; }
+    else if (resIndex == 2) { w = 1920; h = 1080; }
+    else if (resIndex == 3) { w = 1440; h = 900; }
+
+    // 3. Determine window flags from screenModeIndex
+    Uint32 flags = SDL_WINDOW_SHOWN;
+    if (screenModeIndex == 1) flags |= SDL_WINDOW_FULLSCREEN;
+    else if (screenModeIndex == 2) flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+
+    // 4. Create window with loaded values
+    SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
     TTF_Font *vSmall = TTF_OpenFont("Settings/VCR.ttf", 30), *vLarge = TTF_OpenFont("Settings/VCR.ttf", 90);
     Mix_Chunk* sSound = Mix_LoadWAV("Transition/static.wav");
     SDL_Texture* sTex = CreateStaticTexture(ren);
-
-    // Load saved settings (Volume, Brightness, etc.)
-    load_settings(); 
 
     init_menu(ren, vSmall, vLarge);
     GameState state = STATE_MENU, next = STATE_MENU;
@@ -42,14 +55,9 @@ int main(int argc, char* argv[]) {
         }
 
         SDL_RenderClear(ren);
-        
-        // Render current state
         (state == STATE_MENU) ? render_menu(ren) : render_settings(ren, vSmall);
-        
-        // Render transition
         if (trans) run_transition(ren, sTex, progress);
 
-        // Render Global Brightness Overlay
         int sw, sh;
         SDL_GetRendererOutputSize(ren, &sw, &sh);
         draw_brightness_overlay(ren, sw, sh);
