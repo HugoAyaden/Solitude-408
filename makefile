@@ -1,43 +1,71 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -g
+###############################################################################
+# Generic Makefile
+# - builds all C sources found in src/, fichiers/, test/, test/Menu/
+# - object files are placed in obj/
+# - final executable is placed in bin/projet (change TARGET if you like)
+###############################################################################
 
-# SDL2 configuration
-SDL_DIR=${HOME}/SDL2
-SDLLIB_DIR=${SDL_DIR}/lib
-SDLINC_DIR=${SDL_DIR}/include
+CC ?= gcc
+CFLAGS ?= -Wall
 
-# Include paths
-INCLUDES=-I${SDLINC_DIR} -I./lib
+# Add debug flags by setting DEBUG=1 when calling make (e.g. make DEBUG=1)
+ifneq ($(DEBUG),)
+CFLAGS += -g
+else
+CFLAGS += -O2
+endif
 
-# Libraries
-LIBS=-L${SDLLIB_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image
+# Optional SDL configuration (set SDL_DIR in environment or on make command line)
+SDL_DIR ?= $(HOME)/SDL2
+SDLLIB_DIR ?= $(SDL_DIR)/lib
+SDLINC_DIR ?= $(SDL_DIR)/include
+INCLUDES ?= -I./lib -I$(SDLINC_DIR)
+LIBS ?= -L$(SDLLIB_DIR) -lSDL2 -lSDL2_ttf -lSDL2_image
 
-# Output
-PROG=fich1
-SRCDIR=.
-OBJDIR=obj
-BINDIR=bin
 
-# Source files
-SOURCES=$(SRCDIR)/fich1.c
-OBJECTS=$(OBJDIR)/fich1.o
+SRCDIRS := src fichiers test
+SRCS := $(foreach d,$(SRCDIRS),$(wildcard $(d)/*.c))
 
-# Targets
-.PHONY: all clean
+OBJDIR := obj
+BINDIR := bin
+TARGET := $(BINDIR)/projet
 
-all: $(BINDIR)/$(PROG)
+OBJS := $(patsubst %,$(OBJDIR)/%.o,$(basename $(notdir $(SRCS))))
 
-$(BINDIR)/$(PROG): $(OBJECTS)
-	mkdir -p $(BINDIR)
-	$(CC) -o $@ $^ $(LIBS)
+.PHONY: all clean dirs run
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+all: dirs $(TARGET)
+
+dirs:
+	mkdir -p $(OBJDIR) $(BINDIR)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+
+# Create per-source object rules so each object depends on the exact source file.
+# This lets make detect changes and rebuild the corresponding object.
+define make_obj_rule
+$(OBJDIR)/$(notdir $(1:.c=.o)): $(1)
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(1) -o $$@
+endef
+
+$(foreach src,$(SRCS),$(eval $(call make_obj_rule,$(src))))
 
 clean:
-	rm -rf $(OBJDIR)
-	rm -f $(BINDIR)/$(PROG)
+	rm -rf $(OBJDIR) $(BINDIR)/projet
 
-run: $(BINDIR)/$(PROG)
-	./$(BINDIR)/$(PROG)
+run: $(TARGET)
+	./$(TARGET)
+
+print-info:
+	@echo "Sources: $(SRCS)"
+	@echo "Objects: $(OBJS)"
+
+###############################################################################
+# Notes:
+# - To build with debug symbols: make DEBUG=1
+# - To enable SDL linking, adjust SDL_DIR or override INCLUDES/LIBS on the make
+#   command line, e.g.:
+#     make INCLUDES='-I/home/user/SDL2/include' LIBS='-L/home/user/SDL2/lib -lSDL2'
+###############################################################################
