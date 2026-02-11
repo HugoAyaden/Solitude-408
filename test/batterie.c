@@ -46,7 +46,20 @@ int main()
         Uint32 currentTime = SDL_GetTicks();
         float elapsedSeconds = (currentTime - startTime) / 1000.0f;
 
+        static Uint32 lastTime = 0;
+        float deltaTime = (currentTime - lastTime) / 1000.0f;
+        lastTime = currentTime;
+
+        const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+
+        float drainRate = 100.0f / BATTERY_DURATION; // % par seconde
+
+        if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_G]){
+            drainRate *= 2.0f; // consomme 2x plus vite
+        }
+
         float battery = 100.0f - (elapsedSeconds / BATTERY_DURATION) * 100.0f;
+        battery -= drainRate * deltaTime;
         if (battery < 0)
             battery = 0;
 
