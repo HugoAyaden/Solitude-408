@@ -56,10 +56,6 @@ void init_carte(carte_t *carte_init){
 
     for (x = 0; x < X; ++x) {
         for (y = 0; y < Y; ++y) {
-            carte_init->cases[x][y].voisin_haut = NULL;
-            carte_init->cases[x][y].voisin_bas = NULL;
-            carte_init->cases[x][y].voisin_droit = NULL;
-            carte_init->cases[x][y].voisin_gauche = NULL;
 
 
             /* initialise la case (y,x) */
@@ -67,7 +63,26 @@ void init_carte(carte_t *carte_init){
             carte_init->cases[x][y].num_camera = num++;
             carte_init->cases[x][y].utilise = FAUX;
 
-            /* voisin haut */
+            carte_init->cases[x][y].voisin_haut = NULL;
+            carte_init->cases[x][y].voisin_droit = NULL;
+            carte_init->cases[x][y].voisin_bas = NULL;
+            carte_init->cases[x][y].voisin_gauche = NULL;
+
+            /* accès interdit pour la case du joueur (y,x) */
+            if (y == Y_JOUEUR && x == X_JOUEUR)
+                carte_init->cases[x][y].acess = FAUX;
+            else
+                carte_init->cases[x][y].acess = VRAI;
+        }
+    }
+}
+
+
+void affectation_voisins(carte_t * carte_init){
+int y = 0, x = 0; 
+for (x = 0; x < X; ++x) { 
+    for (y = 0; y < Y; ++y) {
+    /* voisin haut */
             if(accessible(y, x-1)){
                 /* Si le pointeur pointe sur la case  alors qu'elle est coté mur alors la case n'affecte pas le pointeur */
                 if (x == MUR_M_X && y == MUR_M_Y){
@@ -92,7 +107,51 @@ void init_carte(carte_t *carte_init){
                     carte_init->cases[x-1][y].voisin_bas = &carte_init->cases[x][y];
                 }
             }
+                /* voisin bas */
+            if(accessible(y, x+1)){
+                /* Si le pointeur pointe sur la case  alors qu'elle est coté mur alors la case n'affecte pas le pointeur */
+                if (x == MUR_M_X && y == MUR_M_Y){
+                    carte_init->cases[x][y].voisin_bas = NULL;
+                /* Et de même en retour */
+                    carte_init->cases[x+1][y].voisin_haut = NULL;
+                }
+                else if (x == MUR_7_X && y == MUR_7_Y){
+                    carte_init->cases[x][y].voisin_bas = NULL;
+                    carte_init->cases[x+1][y].voisin_haut = NULL;
+                }
+                else if (x == MUR_11_X && y == MUR_11_Y){
+                    carte_init->cases[x][y].voisin_bas = NULL;
+                    carte_init->cases[x+1][y].voisin_haut = NULL;
+                }
+                else if (x == MUR_13_X && y == MUR_13_Y){
+                    carte_init->cases[x][y].voisin_bas = NULL;
+                    carte_init->cases[x+1][y].voisin_haut = NULL;
+                }
+                else{
+                    carte_init->cases[x][y].voisin_bas = &carte_init->cases[x+1][y];
+                    carte_init->cases[x+1][y].voisin_haut = &carte_init->cases[x][y];
+                }
+            }
 
+            /* voisin gauche */
+            if (accessible(y-1, x)){
+                if(y == MUR_8_Y && x == MUR_8_X){
+                    carte_init->cases[x][y].voisin_gauche = NULL;
+                    carte_init->cases[x][y-1].voisin_droit = NULL;
+            }
+            else if (y == MUR_M_Y && x == MUR_M_X){
+                    carte_init->cases[x][y].voisin_gauche = NULL;
+                    carte_init->cases[x][y-1].voisin_droit = NULL;
+            }
+            else if (y == MUR_9_Y && x == MUR_9_X){
+                    carte_init->cases[x][y].voisin_gauche = NULL;
+                    carte_init->cases[x][y-1].voisin_droit = NULL;
+            }
+            else{
+                carte_init->cases[x][y].voisin_gauche = &carte_init->cases[x][y-1];
+                carte_init->cases[x][y-1].voisin_droit = &carte_init->cases[x][y];
+            }
+        }
 
             /* voisin droit */
             if (accessible(y+1, x)){
@@ -113,16 +172,9 @@ void init_carte(carte_t *carte_init){
                 carte_init->cases[x][y+1].voisin_gauche = &carte_init->cases[x][y];
             }
         }
-
-            /* accès interdit pour la case du joueur (y,x) */
-            if (y == Y_JOUEUR && x == X_JOUEUR)
-                carte_init->cases[x][y].acess = FAUX;
-            else
-                carte_init->cases[x][y].acess = VRAI;
-        }
-    }
 }
-
+}
+}
 
 booleen_t accessible(int y, int x){
     if (y < 0 || y >= Y || x < 0 || x >= X )
@@ -131,9 +183,21 @@ booleen_t accessible(int y, int x){
     return VRAI;
 }
 
+void destruction_carte(carte_t *carte){    
+    for(int x = 0; x < X; ++x) { 
+        for (int y = 0; y < Y; ++y) { 
+            free(carte->cases[x][y].voisin_haut); free(carte->cases[x][y].voisin_droit); free(carte->cases[x][y].voisin_bas); free(carte->cases[x][y].voisin_gauche);
+            carte->cases[x][y].voisin_haut = NULL; 
+            carte->cases[x][y].voisin_droit = NULL; 
+            carte->cases[x][y].voisin_bas = NULL; 
+            carte->cases[x][y].voisin_gauche = NULL; 
+        } 
+    }
+
+    free(carte); }
 
 
-/* TEST DE LA CARTE 
+/* TEST DE LA CARTE */
 int main(){
     carte_t *carte = malloc(sizeof(carte_t));
     if (!carte) return 1;
@@ -146,7 +210,7 @@ int main(){
                 printf("M ");
             if (y == Y_JOUEUR && x == X_JOUEUR)
                     printf("J ");
-            if (carte->cases[x][y].voisin_haut == NULL)
+            if (carte->cases[x][y].voisin_gauche == NULL)
                 printf("|%d ", carte->cases[x][y].num_camera);
             else 
                 printf("%d ", carte->cases[x][y].num_camera); 
@@ -154,8 +218,7 @@ int main(){
         printf("\n\n");
     }
 
-    free(carte);
+    destruction_carte(carte);
     return 0;
     
 }
-*/
