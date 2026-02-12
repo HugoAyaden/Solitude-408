@@ -12,7 +12,7 @@ CFLAGS  = -Wall -Wextra -std=c11 $(SDL_CFLAGS)
 LDFLAGS = $(SDL_LIBS)
 
 # Dossiers
-SRC_DIR = test
+SRC_DIR = src
 
 # Fichiers sources
 SRC = $(wildcard $(SRC_DIR)/*.c)
