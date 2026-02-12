@@ -1,4 +1,4 @@
-#include "../game.h"
+#include <game.h>
 
 SDL_Texture* CreateStaticTexture(SDL_Renderer* renderer) {
     SDL_Texture* staticTex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, 200, 200);

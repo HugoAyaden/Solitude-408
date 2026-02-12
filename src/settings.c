@@ -1,12 +1,13 @@
-#include "../game.h"
+#include <game.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // Global Settings Variables
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
-int screenModeIndex = 1; // Default to FULLSCREEN
-int resIndex = 2; // Default to 1920x1080
+int screenModeIndex = 1; 
+int resIndex = 2; 
 
-//Background Textures
+// Background Textures
 static SDL_Texture* settingsStaticTex = NULL;
 static SDL_Texture* settingsBG = NULL; 
 static Uint32 saveNotificationTimer = 0; 
@@ -18,7 +19,7 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 // --- Save/Load Logic ---
 
 void save_settings() {
-    FILE* f = fopen("save.cfg", "w");
+    FILE* f = fopen("assets/save.cfg", "w");
     if (f) {
         fprintf(f, "%d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
         fclose(f);
@@ -27,7 +28,7 @@ void save_settings() {
 }
 
 void load_settings() {
-    FILE* f = fopen("save.cfg", "r");
+    FILE* f = fopen("assets/save.cfg", "r");
     if (f) {
         if (fscanf(f, "%d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
             Mix_Volume(-1, (masterVol * MIX_MAX_VOLUME) / 100);
@@ -53,9 +54,9 @@ void draw_vhs_save_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int
     if (!font) return;
     SDL_Color vhsGreen = {50, 255, 50, 255}; 
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, vhsGreen);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     
-    // Positioned just above the SAVE/BACK buttons, clearing the corners
     SDL_Rect dst = { (sw / 6), sh - 185, surf->w, surf->h };
     
     SDL_RenderCopy(ren, tex, NULL, &dst);
@@ -68,6 +69,7 @@ void draw_centered_text(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL
     if (!font) return;
     SDL_Color purple = {191, 0, 255, 255}; 
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, purple);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     SDL_Rect textRect = { btnRect.x + (btnRect.w - surf->w) / 2, btnRect.y + (btnRect.h - surf->h) / 2, surf->w, surf->h };
     SDL_RenderCopy(ren, tex, NULL, &textRect);
@@ -78,6 +80,7 @@ void draw_settings_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int
     if (!font) return;
     SDL_Color purple = {191, 0, 255, 255}; 
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, purple);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     SDL_Rect dst = { x, y, surf->w, surf->h };
     SDL_RenderCopy(ren, tex, NULL, &dst);
@@ -88,6 +91,7 @@ void draw_white_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x,
     if (!font) return;
     SDL_Color white = {255, 255, 255, 255}; 
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, white);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     SDL_Rect dst = { x, y, surf->w, surf->h };
     SDL_RenderCopy(ren, tex, NULL, &dst);
@@ -98,6 +102,7 @@ void draw_red_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, i
     if (!font) return;
     SDL_Color red = {255, 0, 0, 255}; 
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, red);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     SDL_Rect dst = { x, y, surf->w, surf->h };
     SDL_RenderCopy(ren, tex, NULL, &dst);
@@ -107,6 +112,7 @@ void draw_red_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, i
 void draw_small_hud_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, int y, SDL_Color col) {
     if (!font) return;
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, col);
+    if (!surf) return;
     SDL_Texture* tex = SDL_CreateTextureFromSurface(ren, surf);
     SDL_Rect dst = { x, y, (int)(surf->w * 0.7), (int)(surf->h * 0.7) }; 
     SDL_RenderCopy(ren, tex, NULL, &dst);
@@ -115,6 +121,7 @@ void draw_small_hud_text(SDL_Renderer* ren, TTF_Font* font, const char* text, in
 
 void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, int jY, bool visible, int targetY, bool glitchActive) {
     if (!visible || !font) return;
+    (void)sh; // Silence unused parameter warning
     int hMargin = 85 + jX, topY = targetY + jY; 
     int bW = 40, bH = 20, bX = sw - hMargin - bW; 
     const char* batP = glitchActive ? "1%" : "100%";
@@ -158,19 +165,22 @@ void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, bool vi
 // --- Main Render Function ---
 
 int render_settings(SDL_Renderer* ren, TTF_Font* font) {
+    if (!font) return 0;
     int sw, sh; SDL_GetRendererOutputSize(ren, &sw, &sh);
     Uint32 now = SDL_GetTicks();
     
     // --- 1. Static & Background Setup ---
-    if (!settingsBG) settingsBG = IMG_LoadTexture(ren, "Menu/background.png");
+    if (!settingsBG) settingsBG = IMG_LoadTexture(ren, "assets/background.png");
     if (!settingsStaticTex) {
         settingsStaticTex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, 400, 225);
-        SDL_SetTextureBlendMode(settingsStaticTex, SDL_BLENDMODE_BLEND);
+        if(settingsStaticTex) SDL_SetTextureBlendMode(settingsStaticTex, SDL_BLENDMODE_BLEND);
     }
     
-    Uint32* px; int p; SDL_LockTexture(settingsStaticTex, NULL, (void**)&px, &p);
-    for (int i = 0; i < 400 * 225; i++) { Uint8 g = rand() % 65; px[i] = (g << 24) | (g << 16) | (g << 8) | 255; }
-    SDL_UnlockTexture(settingsStaticTex);
+    if (settingsStaticTex) {
+        Uint32* px; int p; SDL_LockTexture(settingsStaticTex, NULL, (void**)&px, &p);
+        for (int i = 0; i < 400 * 225; i++) { Uint8 g = rand() % 65; px[i] = (g << 24) | (g << 16) | (g << 8) | 255; }
+        SDL_UnlockTexture(settingsStaticTex);
+    }
 
     // --- 2. Advanced VHS Glitch Logic ---
     static int lastCycle = -1; static bool glitchCycle = false;
@@ -190,8 +200,10 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         SDL_SetTextureColorMod(settingsBG, 100, 80, 110);
         SDL_RenderCopy(ren, settingsBG, NULL, NULL);
     }
-    SDL_SetTextureAlphaMod(settingsStaticTex, 140);
-    SDL_RenderCopy(ren, settingsStaticTex, NULL, NULL);
+    if (settingsStaticTex) {
+        SDL_SetTextureAlphaMod(settingsStaticTex, 140);
+        SDL_RenderCopy(ren, settingsStaticTex, NULL, NULL);
+    }
 
     // --- 4. Animated Scanlines ---
     static float scanlinePos = 0;
@@ -219,7 +231,6 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     SDL_Rect screenBox = { lM + 250, startY, 220, 35 };
     SDL_Rect resBox    = { lM + 250, startY + spacing, 220, 35 };
 
-    // Symmetrical Alignment: Center labels vertically with boxes
     draw_settings_text(ren, font, "SCREEN MODE", lM, screenBox.y + 5);
     draw_settings_text(ren, font, "RESOLUTION",  lM, resBox.y + 5);
 
@@ -234,10 +245,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
             screenModeIndex = (screenModeIndex + 1) % 3;
             if (screenModeIndex == 0) {
                 SDL_SetWindowFullscreen(win, 0);
-                // THE FIX: Toggle visibility to force OS to redraw desktop
-                SDL_HideWindow(win);
-                SDL_ShowWindow(win);
-                SDL_RaiseWindow(win);
+                SDL_HideWindow(win); SDL_ShowWindow(win); SDL_RaiseWindow(win);
             }
             else if (screenModeIndex == 1) SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN);
             else SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN_DESKTOP);
@@ -250,7 +258,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         }
     }
 
-    // --- 8. Sliders (Volume & Sens) ---
+    // --- 8. Sliders ---
     int sliderStartY = startY + (spacing * 2);
     int* vals[] = {&masterVol, &musicVol, &brightness, &mouseSens};
     const char* labels[] = {"MASTER VOLUME", "MUSIC VOLUME", "BRIGHTNESS", "MOUSE SENSITIVITY"};
@@ -258,7 +266,9 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     for (int i = 0; i < 4; i++) {
         SDL_Rect s = { lM, sliderStartY + (i * spacing) + 20, 420, 30 };
         if (isLeftDown && SDL_PointInRect(&(SDL_Point){mx, my}, &s)) {
-            *vals[i] = (mx - s.x) * 100 / s.w;
+            *vals[i] = (mx - s.x) * 101 / s.w;
+            if (*vals[i] < 0) { *vals[i] = 0; } 
+            if (*vals[i] > 100) { *vals[i] = 100;}
             if (i == 0) Mix_Volume(-1, (*vals[0] * 128) / 100);
             if (i == 1) Mix_VolumeMusic((*vals[1] * 128) / 100);
         }
@@ -271,16 +281,13 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         SDL_SetRenderDrawColor(ren, 150, 0, 200, 255); SDL_RenderFillRect(ren, &fill);
     }
 
-    // --- 9. VHS Recording HUD & Save Prompt ---
+    // --- 9. VHS HUD ---
     if (showHUD) {
-        // Realigned REC with top-right icons (Y=110 to match your draw_hud_icons call)
         int hudTopY = 110; 
         int rX = 85 + jX, rY = hudTopY + jY - 15; 
-        
         if ((now / 500) % 2 == 0) { 
             SDL_SetRenderDrawColor(ren, 220, 0, 0, 255);
             int rad = 6;
-            // Circular Dot Implementation
             for (int w = 0; w < rad * 2; w++) {
                 for (int h = 0; h < rad * 2; h++) {
                     int dx = rad - w, dy = rad - h;
@@ -293,20 +300,21 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         draw_hud_icons(ren, font, sw, sh, jX, jY, true, hudTopY, isGlitchingNow);
     }
 
-    // Notification appears above SAVE/BACK buttons
-    if (now < saveNotificationTimer) draw_vhs_save_text(ren, font, ">> TAPE SAVED", sw, sh);
+    if (now < saveNotificationTimer) draw_vhs_save_text(ren, font, ">>TAPE SAVED", sw, sh);
 
-    // --- 10. Buttons (Save/Back) ---
-    // Moved up slightly to clear the HUD corners
+    // --- 10. Buttons ---
     SDL_Rect sBtn = {lM, sh - 125, 180, 45}, bBtn = {lM + 210, sh - 125, 180, 45};
     
     bool overSave = SDL_PointInRect(&(SDL_Point){mx, my}, &sBtn);
-    if (overSave && isLeftDown) { SDL_SetRenderDrawColor(ren, 100, 100, 110, 255); if(justClicked) save_settings(); }
+    if (overSave && isLeftDown) { 
+        SDL_SetRenderDrawColor(ren, 100, 100, 110, 255); 
+        if(justClicked) save_settings(); 
+    }
     else SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &sBtn); draw_centered_text(ren, font, "SAVE", sBtn);
 
     bool overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
-    if (overBack && isLeftDown) { return 1; } 
+    if (overBack && justClicked) { mPressed = isLeftDown; return 1; } 
     SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &bBtn); draw_centered_text(ren, font, "BACK", bBtn);
 
@@ -318,6 +326,5 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
 void cleanup_settings() { 
     if (settingsStaticTex) SDL_DestroyTexture(settingsStaticTex); 
     if (settingsBG) SDL_DestroyTexture(settingsBG); 
-    settingsStaticTex = NULL; 
-    settingsBG = NULL; 
+    settingsStaticTex = NULL; settingsBG = NULL; 
 }

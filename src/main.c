@@ -1,34 +1,44 @@
-#include "game.h"
+#include <game.h>
+#include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-    TTF_Init(); IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+    (void)argc; (void)argv; // Silence unused parameter warnings
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) return 1;
+    if (TTF_Init() == -1) return 1;
+    IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
-    // 1. Load saved settings FIRST to get indices
     load_settings(); 
 
-    // 2. Determine initial width and height from resIndex
-    int w = 1920, h = 1080; // Default fallback
+    int w = 1920, h = 1080;
     if (resIndex == 0) { w = 3840; h = 2160; }
     else if (resIndex == 1) { w = 2560; h = 1440; }
-    else if (resIndex == 2) { w = 1920; h = 1080; }
     else if (resIndex == 3) { w = 1440; h = 900; }
 
-    // 3. Determine window flags from screenModeIndex
     Uint32 flags = SDL_WINDOW_SHOWN;
     if (screenModeIndex == 1) flags |= SDL_WINDOW_FULLSCREEN;
     else if (screenModeIndex == 2) flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 
-    // 4. Create window with loaded values
     SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
-    TTF_Font *vSmall = TTF_OpenFont("Settings/VCR.ttf", 30), *vLarge = TTF_OpenFont("Settings/VCR.ttf", 90);
-    Mix_Chunk* sSound = Mix_LoadWAV("Transition/static.wav");
-    SDL_Texture* sTex = CreateStaticTexture(ren);
+    // CRITICAL: Check if assets load. Path is relative to project root.
+    TTF_Font *vSmall = TTF_OpenFont("assets/VCR.ttf", 30);
+    TTF_Font *vLarge = TTF_OpenFont("assets/VCR.ttf", 90);
+    if (!vSmall || !vLarge) {
+        printf("Failed to load font: %s\n", TTF_GetError());
+        return 1;
+    }
 
+    Mix_Chunk* sSound = Mix_LoadWAV("assets/static.wav");
+    if (!sSound) {
+        printf("Failed to load sound: %s\n", Mix_GetError());
+    }
+
+    SDL_Texture* sTex = CreateStaticTexture(ren);
     init_menu(ren, vSmall, vLarge);
+    
     GameState state = STATE_MENU, next = STATE_MENU;
     bool run = true, trans = false;
     float progress = 0.0f;
@@ -39,13 +49,13 @@ int main(int argc, char* argv[]) {
             if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)) run = false;
             if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
-                if (c == 2) { trans = true; progress = 0.0f; next = STATE_SETTINGS; Mix_PlayChannel(-1, sSound, 0); }
+                if (c == 2) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
                 if (c == 3) run = false;
             }
         }
 
         if (state == STATE_SETTINGS && !trans && render_settings(ren, vSmall) == 1) {
-            trans = true; progress = 0.0f; next = STATE_MENU; Mix_PlayChannel(-1, sSound, 0);
+            trans = true; progress = 0.0f; next = STATE_MENU; if(sSound) Mix_PlayChannel(-1, sSound, 0);
         }
 
         if (trans) {
@@ -66,7 +76,8 @@ int main(int argc, char* argv[]) {
     }
 
     cleanup_menu(); cleanup_settings();
-    Mix_FreeChunk(sSound); SDL_DestroyTexture(sTex);
+    if(sSound) Mix_FreeChunk(sSound); 
+    if(sTex) SDL_DestroyTexture(sTex);
     TTF_CloseFont(vSmall); TTF_CloseFont(vLarge);
     SDL_DestroyRenderer(ren); SDL_DestroyWindow(win);
     Mix_CloseAudio(); TTF_Quit(); IMG_Quit(); SDL_Quit();

@@ -1,4 +1,4 @@
-#include "../game.h"
+#include <game.h>
 
 // Static variables keep assets in memory for this module only
 static SDL_Texture* bgTexture = NULL;
@@ -11,8 +11,7 @@ void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) 
     if (assetsLoaded) return;
 
     // Load Background 
-    bgTexture = IMG_LoadTexture(renderer, "Menu/background.png");
-    
+    bgTexture = IMG_LoadTexture(renderer, "assets/background.png");    
     SDL_Color white  = {255, 255, 255, 255};
     SDL_Color purple = {147, 112, 219, 255};
 
