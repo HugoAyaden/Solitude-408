@@ -4,7 +4,7 @@
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
-#define BATTERY_DURATION 10.0f // 360.0 pour 6 minutes en secondes
+#define BATTERY_DURATION 420.0f
 
 int main()
 {
@@ -28,8 +28,6 @@ int main()
     int running = 1;
     SDL_Event event;
 
-    Uint32 startTime = SDL_GetTicks();
-
     const int batteryWidth = 150; // largeur barre
     const int batteryHeight = 40; // hauteur barre
     const int capWidth = 10;      // largeur “cap” de batterie
@@ -43,22 +41,27 @@ int main()
                 running = 0;
         }
 
-        Uint32 currentTime = SDL_GetTicks();
-        float elapsedSeconds = (currentTime - startTime) / 1000.0f;
-
+        static float battery = 100.0f;
+        
+        Uint32 currentTime = SDL_GetTicks();    
         static Uint32 lastTime = 0;
+        const Uint8 *keystate = SDL_GetKeyboardState(NULL);
         float deltaTime = (currentTime - lastTime) / 1000.0f;
+        float drainRate = 100.0f / BATTERY_DURATION; 
+
         lastTime = currentTime;
 
-        const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 
-        float drainRate = 100.0f / BATTERY_DURATION; // % par seconde
 
-        if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_G]){
-            drainRate *= 2.0f; // consomme 2x plus vite
+        if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_G]) {
+            drainRate *= 2.0f;
         }
-
-        float battery = 100.0f - (elapsedSeconds / BATTERY_DURATION) * 100.0f;
+        if (keystate[SDL_SCANCODE_D] && keystate[SDL_SCANCODE_G]) {
+            drainRate *= 4.0f;
+        }
+        if(keystate[SDL_SCANCODE_L]){
+            drainRate *= 2.0f;
+        }
         battery -= drainRate * deltaTime;
         if (battery < 0)
             battery = 0;
