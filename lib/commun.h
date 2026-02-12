@@ -6,6 +6,9 @@
  * \date 11/02/2026
  * 
  */
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
 
  /* TAILLE DE LA CARTE */
 #define Y 5
