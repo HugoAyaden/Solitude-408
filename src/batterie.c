@@ -17,7 +17,7 @@ int main()
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    TTF_Font *font = TTF_OpenFont("./lib/VCR.ttf", 32);
+    TTF_Font *font = TTF_OpenFont("./src/font/VCR.ttf", 32);
 
     if (!font)
     {
