@@ -56,6 +56,11 @@ void init_carte(carte_t *carte_init){
 
     for (x = 0; x < X; ++x) {
         for (y = 0; y < Y; ++y) {
+            carte_init->cases[x][y].voisin_haut = NULL;
+            carte_init->cases[x][y].voisin_bas = NULL;
+            carte_init->cases[x][y].voisin_droit = NULL;
+            carte_init->cases[x][y].voisin_gauche = NULL;
+
 
             /* initialise la case (y,x) */
             carte_init->cases[x][y].habite = FAUX;
@@ -83,7 +88,7 @@ void init_carte(carte_t *carte_init){
                     carte_init->cases[x-1][y].voisin_bas = NULL;
                 }
                 else{
-                    carte_init->cases[x][y].voisin_haut = &carte_init->cases[x][y-1];
+                    carte_init->cases[x][y].voisin_haut = &carte_init->cases[x-1][y];
                     carte_init->cases[x-1][y].voisin_bas = &carte_init->cases[x][y];
                 }
             }
@@ -141,7 +146,7 @@ int main(){
                 printf("M ");
             if (y == Y_JOUEUR && x == X_JOUEUR)
                     printf("J ");
-            if (carte->cases[x][y].voisin_bas == NULL)
+            if (carte->cases[x][y].voisin_haut == NULL)
                 printf("|%d ", carte->cases[x][y].num_camera);
             else 
                 printf("%d ", carte->cases[x][y].num_camera); 
@@ -153,4 +158,4 @@ int main(){
     return 0;
     
 }
-    */
+*/
