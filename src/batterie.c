@@ -13,7 +13,7 @@ int main()
 
     SDL_Window *window = SDL_CreateWindow("FNAF Battery",
                                           SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+                                          WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -32,6 +32,7 @@ int main()
     const int batteryHeight = 40; // hauteur barre
     const int capWidth = 10;      // largeur “cap” de batterie
     const int margin = 20;        // marge par rapport aux bords
+    Uint32 lastTime = SDL_GetTicks();
 
     while (running)
     {
@@ -42,30 +43,45 @@ int main()
         }
 
         static float battery = 100.0f;
+
+        Uint32 currentTime = SDL_GetTicks();
         
-        Uint32 currentTime = SDL_GetTicks();    
-        static Uint32 lastTime = 0;
         const Uint8 *keystate = SDL_GetKeyboardState(NULL);
         float deltaTime = (currentTime - lastTime) / 1000.0f;
-        float drainRate = 100.0f / BATTERY_DURATION; 
+        float drainRate = 100.0f / BATTERY_DURATION;
 
         lastTime = currentTime;
 
+        const Uint8 porteDroite = keystate[SDL_SCANCODE_D];
+        const Uint8 porteGauche = keystate[SDL_SCANCODE_G];
+        const Uint8 lumiereActive = keystate[SDL_SCANCODE_L];
 
-
-        if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_G]) {
-            drainRate *= 2.0f;
-        }
-        if (keystate[SDL_SCANCODE_D] && keystate[SDL_SCANCODE_G]) {
+        // drainage de la batterie = x2
+        // si porte gauche ou droite
+        if (porteDroite && porteGauche)
+        {
             drainRate *= 4.0f;
         }
-        if(keystate[SDL_SCANCODE_L]){
+        // drainage de la batterie = x4
+        // si porte gauche et droite
+        else if (porteDroite || porteGauche)
+        {
             drainRate *= 2.0f;
         }
+
+        // drainage de la batterie  = x2
+        // si luminere est activée
+        if (lumiereActive)
+        {
+            drainRate *= 2.0f;
+        }
+
         battery -= drainRate * deltaTime;
+        // pour ne pas passer dans les négatifs
+
         if (battery < 0)
             battery = 0;
-
+        // arret du programme si batterie =0
         if (battery <= 0)
             running = 0;
 
@@ -75,14 +91,16 @@ int main()
 
         // Position batterie bas gauche
         int x = margin;
-        int y = WINDOW_HEIGHT - batteryHeight - margin;
+        int w, h;
+        SDL_GetWindowSize(window, &w, &h);
+        int y = h - batteryHeight - margin;
 
         // Bordure batterie (rectangle blanc)
         SDL_Rect batteryOutline = {x, y, batteryWidth, batteryHeight};
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderDrawRect(renderer, &batteryOutline);
 
-        // “Cap” de la batterie
+        // "Cap" de la batterie
         SDL_Rect batteryCap = {x + batteryWidth, y + batteryHeight / 4, capWidth, batteryHeight / 2};
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderFillRect(renderer, &batteryCap);
@@ -93,14 +111,14 @@ int main()
         SDL_Color batteryColor;
         if (battery > 50)
         {
-            // Vert plein si >30%
+            // Vert plein si >50%
             batteryColor.r = 0;
             batteryColor.g = 255;
             batteryColor.b = 0;
         }
         else
         {
-            // Dégradé rouge-vert si <=30%
+            // Dégradé rouge-vert si <=50%
             // battery = 0 → rouge pur (255,0,0)
             // battery = 50 → vert pur (0,255,0)
             float ratio = battery / 50.0f;                  // 1 à 0
