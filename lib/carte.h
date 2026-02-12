@@ -40,3 +40,4 @@
 /* note: first parameter is row (0..Y-1), second is column (0..X-1) */
 booleen_t accessible(int y, int x);
 void init_carte(carte_t *carte);
+void detruire_carte(carte_t *carte);

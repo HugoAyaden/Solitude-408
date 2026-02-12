@@ -28,19 +28,23 @@ void deplacement(carte_t * carte, case_t * monstre, int direction){
 
     switch (direction) { 
         case 0: if(monstre->voisin_haut != NULL){ 
-            *monstre = *monstre->voisin_haut; 
+            *monstre = *monstre->voisin_haut;
+            monstre->habite = VRAI;
         } 
             break; 
         case 1: if(monstre->voisin_droit != NULL){ 
             *monstre = *monstre->voisin_droit; 
+            monstre->habite = VRAI;
         } 
             break; 
         case 2: if(monstre->voisin_bas != NULL){ 
             *monstre = *monstre->voisin_bas; 
+            monstre->habite = VRAI;
         } 
             break; 
         case 3: if(monstre->voisin_gauche != NULL){ 
             *monstre = *monstre->voisin_gauche; 
+            monstre->habite = VRAI;
         } 
             break; 
         default: break; 
@@ -92,7 +96,7 @@ int movement_opportunity(carte_t *carte, case_t *monstre, int y, int x){
 
 
 
-/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT 
+/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT */
 int main(){
     carte_t *carte = malloc(sizeof(carte_t));
     if (!carte) 
@@ -106,11 +110,6 @@ int main(){
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
             sleep(1); // Attendre 5 seconde avant le prochain déplacement
         }
-        else{
-            // Si le nombre aléatoire choisi pointe vers un voisin inacessible alors
-            printf("Le monstre ne peut pas se déplacer dans cette direction, il choisit une autre direction.\n");
-        }
     }
-    free(carte);
+    detruire_carte(carte);
 }
-*/

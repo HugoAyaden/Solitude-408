@@ -20,6 +20,8 @@ void ouverture_portes(carte_t *carte, case_t *joueur){
     carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = &carte->cases[X_JOUEUR][Y_JOUEUR]; 
     printf("Porte ouverte\n"); }
 
+
+    /*
 int main(){
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER | SDL_INIT_EVENTS) != 0) {
     fprintf(stderr, "Erreur SDL: %s\n", SDL_GetError());
@@ -45,3 +47,4 @@ int main(){
     SDL_Quit(); 
     return 0;
 }
+    */
