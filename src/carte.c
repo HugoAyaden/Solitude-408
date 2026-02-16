@@ -34,6 +34,12 @@
 #define MUR_M_Y 0
 #define MUR_M_X 1
 
+#define MUR_5_Y 4
+#define MUR_5_X 0
+
+#define MUR_15_Y 4
+#define MUR_15_X 2
+
 /*
 CARTE DE JEU
                               ->mur lié au chiffre       –|_          – = mur haut/ | mur gauche ou droit / _ mur bas
@@ -48,6 +54,16 @@ CARTE DE JEU
 
 */
 
+void init_joueur(case_t *joueur, carte_t *carte){
+    joueur->habite = VRAI;
+    joueur->num_camera = carte->cases[X_JOUEUR][Y_JOUEUR].num_camera;
+    joueur->utilise = FAUX;
+    joueur->acess = VRAI;
+    joueur->voisin_haut = &carte->cases[X_JOUEUR-1][Y_JOUEUR];
+    joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
+    joueur->voisin_gauche = NULL;
+    joueur->voisin_droit = NULL;
+}
 
 
 void init_carte(carte_t *carte_init){
@@ -66,6 +82,7 @@ void init_carte(carte_t *carte_init){
             carte_init->cases[x][y].habite = FAUX;
             carte_init->cases[x][y].num_camera = num++;
             carte_init->cases[x][y].utilise = FAUX;
+            carte_init->cases[x][y].acess = VRAI;
 
             /* voisin haut */
             if(accessible(x-1, y)){
@@ -107,17 +124,20 @@ void init_carte(carte_t *carte_init){
                         carte_init->cases[x][y].voisin_gauche = NULL;
                         carte_init->cases[x][y-1].voisin_droit = NULL;
                 }
+                /* Pour le mur 5 et 15, le monstre arrive et ne peut pas repartir ( obligé d'attaquer le joueur )*/
+                else if(y == MUR_5_Y && x == MUR_5_X){
+                        carte_init->cases[x][y].voisin_gauche = NULL;
+                        carte_init->cases[x][y-1].voisin_droit = &carte_init->cases[x][y];
+                }
+                else if(y == MUR_15_Y && x == MUR_15_X){
+                        carte_init->cases[x][y].voisin_gauche = NULL;
+                        carte_init->cases[x][y-1].voisin_droit = &carte_init->cases[x][y];
+                }
                 else if(carte_init->cases[x][y].voisin_gauche == NULL){
                     carte_init->cases[x][y].voisin_gauche = &carte_init->cases[x][y-1];
                     carte_init->cases[x][y-1].voisin_droit = &carte_init->cases[x][y];
                 }
             }
-
-            /* accès interdit pour la case du joueur (y,x) */
-            if (y == Y_JOUEUR && x == X_JOUEUR)
-                carte_init->cases[x][y].acess = FAUX;
-            else
-                carte_init->cases[x][y].acess = VRAI;
         }
     }
 }
@@ -148,7 +168,7 @@ int main(){
                 printf("M ");
             if (y == Y_JOUEUR && x == X_JOUEUR)
                     printf("J ");
-            if (carte->cases[x][y].voisin_gauche == NULL)
+            if (carte->cases[x][y].voisin_droit == NULL)
                 printf("|%d ", carte->cases[x][y].num_camera);
             else 
                 printf("%d ", carte->cases[x][y].num_camera); 
@@ -159,4 +179,4 @@ int main(){
     return 0;
     
 }
-*/
+    */
