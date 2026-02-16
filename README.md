@@ -30,10 +30,13 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
  - Audacity (sons)
 
 ### Lien Gantt prévisionnel(Google Sheet):
-https://docs.google.com/spreadsheets/d/1w73hapR2lhxCy8AzMjgbPgdwBCyztmc5l0ZQPHnSg2o/edit?usp=sharing
+[Google Sheet prévisionnel](https://docs.google.com/spreadsheets/d/10BtX8lV49BRHHMKD-WF7gbojdl62evs0IOK-swW39dE/edit?usp=sharing)
 
 ### Lien Gantt temps réel(Google Sheet):
 link
+
+### Lien Livrables (Google drive):
+[Google Drive Livrables](https://drive.google.com/drive/folders/1sYh54YUGxozC2EAchAByC7XBdANsIjq6?usp=sharing)
 
 ### Documentation doxygene:
 
