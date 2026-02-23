@@ -4,7 +4,7 @@ TARGET = batterie
 # Compilateur
 CC = gcc
 
-# Flags
+# Flags SDL
 SDL_CFLAGS  = $(shell pkg-config --cflags sdl2 SDL2_ttf SDL2_image)
 SDL_LIBS    = $(shell pkg-config --libs   sdl2 SDL2_ttf SDL2_image)
 
@@ -13,24 +13,39 @@ LDFLAGS = $(SDL_LIBS)
 
 # Dossiers
 SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 
 # Fichiers sources
 SRC = $(wildcard $(SRC_DIR)/*.c)
-OBJ = $(SRC:.c=.o)
+
+# Remplace src/xxx.c → obj/xxx.o
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Exécutable final
+EXEC = $(BIN_DIR)/$(TARGET)
 
 # Règle principale
-all: $(TARGET)
+all: $(EXEC)
 
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
+# Link final
+$(EXEC): $(OBJ) | $(BIN_DIR)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
-# Compilation des .c en .o
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+# Compilation .c → obj/.o
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) -c $< -o $@ $(CFLAGS)
+
+# Création automatique des dossiers si absents
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 # Nettoyage
 clean:
-	rm -f $(SRC_DIR)/*.o $(TARGET)
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
 # Rebuild complet
 re: clean all
