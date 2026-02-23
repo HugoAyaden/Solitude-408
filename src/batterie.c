@@ -6,6 +6,39 @@
 #define WINDOW_HEIGHT 600
 #define BATTERY_DURATION 420.0f
 
+void drawButton(SDL_Renderer *renderer, TTF_Font *font,
+                SDL_Rect rect, int active, const char *label)
+{
+    // Couleur bouton
+    if (active)
+        SDL_SetRenderDrawColor(renderer, 200, 40, 40, 255); // ON
+    else
+        SDL_SetRenderDrawColor(renderer, 60, 60, 60, 255);  // OFF
+
+    SDL_RenderFillRect(renderer, &rect);
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderDrawRect(renderer, &rect);
+
+    // --- TEXTE ---
+    SDL_Color textColor = {255, 255, 255, 255};
+
+    SDL_Surface *surface = TTF_RenderText_Solid(font, label, textColor);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    // Centrage du texte dans le bouton
+    SDL_Rect textRect;
+    textRect.w = surface->w;
+    textRect.h = surface->h;
+    textRect.x = rect.x + (rect.w - textRect.w) / 2;
+    textRect.y = rect.y + (rect.h - textRect.h) / 2;
+
+    SDL_RenderCopy(renderer, texture, NULL, &textRect);
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+}
+
 int main()
 {
     SDL_Init(SDL_INIT_VIDEO);
@@ -17,9 +50,10 @@ int main()
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    TTF_Font *font = TTF_OpenFont("./src/font/VCR.ttf", 32);
+    TTF_Font *fontBattery = TTF_OpenFont("./src/font/VCR.ttf", 32);
+    TTF_Font *fontBoutons = TTF_OpenFont("./src/font/VCR.ttf", 20);
 
-    if (!font)
+    if (!(fontBattery || fontBoutons))
     {
         printf("Erreur chargement police\n");
         return 1;
@@ -33,48 +67,71 @@ int main()
     const int capWidth = 10;      // largeur “cap” de batterie
     const int margin = 20;        // marge par rapport aux bords
     Uint32 lastTime = SDL_GetTicks();
+    static int porteGaucheActive = 0;
+    static int porteDroiteActive = 0;
+    static int lumiereGaucheActive = 0;
+    static int lumiereDroiteActive = 0;
 
     while (running)
     {
+        int w, h;
+        SDL_GetWindowSize(window, &w, &h);
+        int buttonW = 60;
+        int buttonH = 60;
+        int spacing = 20;
+
+        // --- GAUCHE ---
+        SDL_Rect btnPorteGauche = {spacing, h/2 - buttonH - 10, buttonW, buttonH};
+        SDL_Rect btnLumiereGauche = {spacing, h/2 + 10, buttonW, buttonH};
+
+        // --- DROITE ---
+        SDL_Rect btnPorteDroite = {w - buttonW - spacing, h/2 - buttonH - 10, buttonW, buttonH};
+        SDL_Rect btnLumiereDroite = {w - buttonW - spacing, h/2 + 10, buttonW, buttonH};
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT)
                 running = 0;
+            if (event.type == SDL_MOUSEBUTTONDOWN)
+{
+            int mx = event.button.x;
+            int my = event.button.y;
+
+            // Toggle boutons
+            if (SDL_PointInRect(&(SDL_Point){mx,my}, &btnPorteGauche))
+                porteGaucheActive = !porteGaucheActive;
+
+            if (SDL_PointInRect(&(SDL_Point){mx,my}, &btnPorteDroite))
+                porteDroiteActive = !porteDroiteActive;
+
+            if (SDL_PointInRect(&(SDL_Point){mx,my}, &btnLumiereGauche))
+                lumiereGaucheActive = !lumiereGaucheActive;
+
+            if (SDL_PointInRect(&(SDL_Point){mx,my}, &btnLumiereDroite))
+                lumiereDroiteActive = !lumiereDroiteActive;
+        }
         }
 
         static float battery = 100.0f;
 
         Uint32 currentTime = SDL_GetTicks();
         
-        const Uint8 *keystate = SDL_GetKeyboardState(NULL);
         float deltaTime = (currentTime - lastTime) / 1000.0f;
         float drainRate = 100.0f / BATTERY_DURATION;
 
         lastTime = currentTime;
 
-        const Uint8 porteDroite = keystate[SDL_SCANCODE_D];
-        const Uint8 porteGauche = keystate[SDL_SCANCODE_G];
-        const Uint8 lumiereActive = keystate[SDL_SCANCODE_L];
+        int porteActiveCount = porteGaucheActive + porteDroiteActive;
+        int lumiereActiveCount = lumiereGaucheActive + lumiereDroiteActive;
 
-        // drainage de la batterie = x2
-        // si porte gauche ou droite
-        if (porteDroite && porteGauche)
-        {
+        // Portes
+        if (porteActiveCount == 2)
             drainRate *= 4.0f;
-        }
-        // drainage de la batterie = x4
-        // si porte gauche et droite
-        else if (porteDroite || porteGauche)
-        {
+        else if (porteActiveCount == 1)
             drainRate *= 2.0f;
-        }
 
-        // drainage de la batterie  = x2
-        // si luminere est activée
-        if (lumiereActive)
-        {
-            drainRate *= 2.0f;
-        }
+        // Lumières
+        if (lumiereActiveCount > 0)
+            drainRate *= (1.0f + lumiereActiveCount); // x2 ou x3
 
         battery -= drainRate * deltaTime;
         // pour ne pas passer dans les négatifs
@@ -91,9 +148,10 @@ int main()
 
         // Position batterie bas gauche
         int x = margin;
-        int w, h;
-        SDL_GetWindowSize(window, &w, &h);
+        
+        
         int y = h - batteryHeight - margin;
+        
 
         // Bordure batterie (rectangle blanc)
         SDL_Rect batteryOutline = {x, y, batteryWidth, batteryHeight};
@@ -135,7 +193,7 @@ int main()
         sprintf(text, "%.0f%%", battery);
 
         SDL_Color white = {255, 255, 255, 255};
-        SDL_Surface *surface = TTF_RenderText_Solid(font, text, white);
+        SDL_Surface *surface = TTF_RenderText_Solid(fontBattery, text, white);
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
         SDL_Rect textRect = {x + batteryWidth / 2 - surface->w / 2, y - surface->h - 5, surface->w, surface->h};
@@ -144,12 +202,17 @@ int main()
         SDL_FreeSurface(surface);
         SDL_DestroyTexture(texture);
 
+        // Draw boutons
+        drawButton(renderer, fontBoutons, btnPorteGauche, porteGaucheActive, "DOOR");
+        drawButton(renderer, fontBoutons, btnPorteDroite, porteDroiteActive, "DOOR");
+        drawButton(renderer, fontBoutons, btnLumiereGauche, lumiereGaucheActive, "LIGHT");
+        drawButton(renderer, fontBoutons, btnLumiereDroite, lumiereDroiteActive, "LIGHT");
         SDL_RenderPresent(renderer);
 
         SDL_Delay(16); // ~60 FPS
     }
 
-    TTF_CloseFont(font);
+    TTF_CloseFont(fontBattery);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     TTF_Quit();
