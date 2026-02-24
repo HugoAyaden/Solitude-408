@@ -1,5 +1,5 @@
 # Nom du programme
-TARGET = batterie
+TARGET = main
 
 # Compilateur
 CC = gcc
@@ -8,7 +8,7 @@ CC = gcc
 SDL_CFLAGS  = $(shell pkg-config --cflags sdl2 SDL2_ttf SDL2_image)
 SDL_LIBS    = $(shell pkg-config --libs   sdl2 SDL2_ttf SDL2_image)
 
-CFLAGS  = -Wall -Wextra -std=c11 $(SDL_CFLAGS)
+CFLAGS  = -Wall -Wextra -std=c11 -Ilib $(SDL_CFLAGS)
 LDFLAGS = $(SDL_LIBS)
 
 # Dossiers
