@@ -19,8 +19,8 @@ int main()
     SDL_Renderer *renderer =
         SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    TTF_Font *fontBattery = TTF_OpenFont("./assets/VCR.ttf", 32);
-    TTF_Font *fontButtons = TTF_OpenFont("./assets/VCR.ttf", 20);
+    TTF_Font *fontBattery = TTF_OpenFont("assets/VCR.ttf", 32);
+    TTF_Font *fontButtons = TTF_OpenFont("assets/VCR.ttf", 20);
 
     if (!fontBattery || !fontButtons)
     {
@@ -45,7 +45,7 @@ int main()
             if (event.type == SDL_QUIT)
                 running = 0;
 
-            game_handleEvent(&event, window);
+            game_handleEvent(&event, window, renderer, fontBattery, fontButtons);
         }
 
         game_update(deltaTime);
