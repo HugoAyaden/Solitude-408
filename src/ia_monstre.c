@@ -21,31 +21,6 @@ booleen_t fin(carte_t *carte, case_t *monstre){
         return VRAI;
     return FAUX;
 }
-
-
-/* Utilisé dans movement opportunity pour décider de la case choisie */
-void deplacement(carte_t * carte, case_t * monstre, int direction){
-
-    switch (direction) { 
-        case 0: if(monstre->voisin_haut != NULL){ 
-            *monstre = *monstre->voisin_haut; 
-        } 
-            break; 
-        case 1: if(monstre->voisin_droit != NULL){ 
-            *monstre = *monstre->voisin_droit; 
-        } 
-            break; 
-        case 2: if(monstre->voisin_bas != NULL){ 
-            *monstre = *monstre->voisin_bas; 
-        } 
-            break; 
-        case 3: if(monstre->voisin_gauche != NULL){ 
-            *monstre = *monstre->voisin_gauche; 
-        } 
-            break; 
-        default: break; 
-    }
-}
     
 
 /* 
@@ -61,24 +36,29 @@ int movement_opportunity(carte_t *carte, case_t *monstre, int y, int x){
     switch (direction){
         case 0: 
         if(monstre->voisin_haut != NULL){ 
-            deplacement(carte, monstre, direction); 
+            *monstre = *monstre->voisin_haut;
+            monstre->habite = VRAI;
             return VRAI; 
         } 
         break; 
         case 1: 
         if(monstre->voisin_droit != NULL){ 
-            deplacement(carte, monstre, direction); 
+            *monstre = *monstre->voisin_droit; 
+            monstre->habite = VRAI;
             return VRAI; 
         } 
         break; 
         case 2: 
         if(monstre->voisin_bas != NULL){ 
-            deplacement(carte, monstre, direction); 
+            *monstre = *monstre->voisin_bas; 
+            monstre->habite = VRAI;
             return VRAI; 
         } 
         break; 
         case 3: 
-        if(monstre->voisin_gauche != NULL){ deplacement(carte, monstre, direction); 
+        if(monstre->voisin_gauche != NULL){
+            *monstre = *monstre->voisin_gauche; 
+            monstre->habite = VRAI;
             return VRAI; 
         } 
         break; 
@@ -87,7 +67,6 @@ int movement_opportunity(carte_t *carte, case_t *monstre, int y, int x){
     } 
     return FAUX;
 }
-
 
 
 
@@ -106,11 +85,7 @@ int main(){
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
             sleep(1); // Attendre 5 seconde avant le prochain déplacement
         }
-        else{
-            // Si le nombre aléatoire choisi pointe vers un voisin inacessible alors
-            printf("Le monstre ne peut pas se déplacer dans cette direction, il choisit une autre direction.\n");
-        }
     }
-    free(carte);
+    detruire_carte(carte);
 }
 */

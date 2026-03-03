@@ -1,6 +1,6 @@
 /**
  * \file carte.h
- * \brief Header pour la structure de la carte de jeu et du type booleen_t
+ * \brief Header general
  * \author Ayaden Hugo
  * \version 1.0
  * \date 11/02/2026
