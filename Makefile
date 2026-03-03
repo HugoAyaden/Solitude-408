@@ -1,53 +1,71 @@
-# Nom du programme
-TARGET = main
+###############################################################################
+# Generic Makefile
+# - builds all C sources found in src/, fichiers/, test/, test/Menu/
+# - object files are placed in obj/
+# - final executable is placed in bin/projet (change TARGET if you like)
+###############################################################################
 
-# Compilateur
-CC = gcc
+CC ?= gcc
+CFLAGS ?= -Wall
 
-# Flags SDL
-SDL_CFLAGS  = $(shell pkg-config --cflags sdl2 SDL2_ttf SDL2_image)
-SDL_LIBS    = $(shell pkg-config --libs   sdl2 SDL2_ttf SDL2_image)
+# Add debug flags by setting DEBUG=1 when calling make (e.g. make DEBUG=1)
+ifneq ($(DEBUG),)
+CFLAGS += -g
+else
+CFLAGS += -O2
+endif
 
-CFLAGS  = -Wall -Wextra -std=c11 -Ilib $(SDL_CFLAGS)
-LDFLAGS = $(SDL_LIBS)
+# Optional SDL configuration (set SDL_DIR in environment or on make command line)
+SDL_DIR ?= $(HOME)/SDL2
+SDLLIB_DIR ?= $(SDL_DIR)/lib
+SDLINC_DIR ?= $(SDL_DIR)/include
+INCLUDES ?= -I./lib `pkg-config --cflags sdl2 SDL2_ttf SDL2_image SDL2_mixer`
+LIBS ?= `pkg-config --libs sdl2 SDL2_ttf SDL2_image SDL2_mixer`
 
-# Dossiers
-SRC_DIR = src
-OBJ_DIR = obj
-BIN_DIR = bin
 
-# Fichiers sources
-SRC = $(wildcard $(SRC_DIR)/*.c)
+SRCDIRS := src fichiers test
+SRCS := $(foreach d,$(SRCDIRS),$(wildcard $(d)/*.c))
 
-# Remplace src/xxx.c → obj/xxx.o
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJDIR := obj
+BINDIR := bin
+TARGET := $(BINDIR)/Solitude408
 
-# Exécutable final
-EXEC = $(BIN_DIR)/$(TARGET)
+OBJS := $(patsubst %,$(OBJDIR)/%.o,$(basename $(notdir $(SRCS))))
 
-# Règle principale
-all: $(EXEC)
+.PHONY: all clean dirs run
 
-# Link final
-$(EXEC): $(OBJ) | $(BIN_DIR)
-	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+all: dirs $(TARGET)
 
-# Compilation .c → obj/.o
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) -c $< -o $@ $(CFLAGS)
+dirs:
+	mkdir -p $(OBJDIR) $(BINDIR)
 
-# Création automatique des dossiers si absents
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+# Create per-source object rules so each object depends on the exact source file.
+# This lets make detect changes and rebuild the corresponding object.
+define make_obj_rule
+$(OBJDIR)/$(notdir $(1:.c=.o)): $(1)
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(1) -o $$@
+endef
 
-# Nettoyage
+$(foreach src,$(SRCS),$(eval $(call make_obj_rule,$(src))))
+
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(OBJDIR) $(BINDIR)/Solitude408
 
-# Rebuild complet
-re: clean all
+run: $(TARGET)
+	./$(TARGET)
 
-.PHONY: all clean re
+print-info:
+	@echo "Sources: $(SRCS)"
+	@echo "Objects: $(OBJS)"
+
+###############################################################################
+# Notes:
+# - To build with debug symbols: make DEBUG=1
+# - To enable SDL linking, adjust SDL_DIR or override INCLUDES/LIBS on the make
+#   command line, e.g.:
+#     make INCLUDES='-I/home/user/SDL2/include' LIBS='-L/home/user/SDL2/lib -lSDL2'
+###############################################################################
