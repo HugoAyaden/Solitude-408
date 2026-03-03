@@ -5,7 +5,7 @@
  - AMARA Louay
  - AYADEN Hugo
  - DOS SANTOS Mathis
- - TAUGOURDEAU Bastien
+ - LEFEVRE TAUGOURDEAU Bastien
 
 ## Projet de L2 informatique 2025-2026
 ### Durée de projet du 13 janvier 2026 au 17 avril 2026
