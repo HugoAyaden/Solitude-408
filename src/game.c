@@ -2,6 +2,7 @@
 #include "batterie.h"
 #include "boutons.h"
 #include "menu_pause.h"
+#include "credits.h"
 
 void game_init()
 {
@@ -24,7 +25,7 @@ void game_handleEvent(SDL_Event *event, SDL_Window *window, SDL_Renderer *render
                 // Ouvrir ton menu settings si tu l'as
                 break;
             case MENU_CREDITS:
-                // Ouvrir ton menu crédits si tu l'as
+                show_credits(renderer, fontButtons, fontButtons);
                 break;
             case MENU_EXIT:
                 SDL_Event quitEvent;
