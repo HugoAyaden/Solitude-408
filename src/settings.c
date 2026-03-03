@@ -305,7 +305,10 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
 
     // --- 10. Save Glitch ---
     if (now < saveNotificationTimer) {
-        if (!sGlitch) sGlitch = Mix_LoadWAV("assets/audio/sound/glitch.wav");
+        if (!sGlitch) {
+            sGlitch = Mix_LoadWAV("assets/audio/sound/save.wav"); 
+            Mix_VolumeChunk(sGlitch, 10); 
+        }
         draw_vhs_save_text(ren, font, ">>TAPE SAVED", sw, sh);
         if(sGlitch) Mix_PlayChannel(-1, sGlitch, 0); 
     }
