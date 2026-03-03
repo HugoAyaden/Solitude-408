@@ -5,9 +5,8 @@
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
-
-int main()
-{
+/*
+voi
     SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 
@@ -66,3 +65,4 @@ int main()
     TTF_Quit();
     SDL_Quit();
 }
+*/
