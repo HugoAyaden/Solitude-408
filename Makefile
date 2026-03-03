@@ -19,8 +19,8 @@ endif
 SDL_DIR ?= $(HOME)/SDL2
 SDLLIB_DIR ?= $(SDL_DIR)/lib
 SDLINC_DIR ?= $(SDL_DIR)/include
-INCLUDES ?= -I./lib -I$(SDLINC_DIR)
-LIBS ?= -L$(SDLLIB_DIR) -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer
+INCLUDES ?= -I./lib `pkg-config --cflags sdl2 SDL2_ttf SDL2_image SDL2_mixer`
+LIBS ?= `pkg-config --libs sdl2 SDL2_ttf SDL2_image SDL2_mixer`
 
 
 SRCDIRS := src fichiers test
