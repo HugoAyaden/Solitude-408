@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdio.h>
-#include "game.h"
+#include "afficher_batterie.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600

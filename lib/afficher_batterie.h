@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef AFFICHER_BATTERIE_H
+#define AFFICHER_BATTERIE_H
 
 
 #include <SDL2/SDL.h>
