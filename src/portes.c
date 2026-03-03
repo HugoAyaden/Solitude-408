@@ -28,7 +28,7 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-    /* */
+    /* 
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -67,4 +67,4 @@ int main(){
     free(joueur);
     joueur = NULL;
     return 0;
-}
+}*/

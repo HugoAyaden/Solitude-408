@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <ia_monstre_n1.h>
+#include <ia_monstre.h>
 
 #define START_MONSTRE_X 3
 #define DEPART 0
