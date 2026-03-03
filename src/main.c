@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    (void)argc; (void)argv; // Silence unused parameter warnings
+    (void)argc; (void)argv; 
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) return 1;
     if (TTF_Init() == -1) return 1;
@@ -22,16 +22,14 @@ int main(int argc, char* argv[]) {
 
     SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-
-    // CRITICAL: Check if assets load. Path is relative to project root.
-    TTF_Font *vSmall = TTF_OpenFont("assets/VCR.ttf", 30);
-    TTF_Font *vLarge = TTF_OpenFont("assets/VCR.ttf", 90);
+    TTF_Font *vSmall = TTF_OpenFont("assets/font/VCR.ttf", 30);
+    TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 90);
     if (!vSmall || !vLarge) {
         printf("Failed to load font: %s\n", TTF_GetError());
         return 1;
     }
 
-    Mix_Chunk* sSound = Mix_LoadWAV("assets/static.wav");
+    Mix_Chunk* sSound = Mix_LoadWAV("assets/audio/sound/static.wav");
     if (!sSound) {
         printf("Failed to load sound: %s\n", Mix_GetError());
     }

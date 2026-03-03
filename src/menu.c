@@ -11,7 +11,7 @@ void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) 
     if (assetsLoaded) return;
 
     // Load Background 
-    bgTexture = IMG_LoadTexture(renderer, "assets/background.png");    
+    bgTexture = IMG_LoadTexture(renderer, "assets/img/background/background.png");    
     SDL_Color white  = {255, 255, 255, 255};
     SDL_Color purple = {147, 112, 219, 255};
 

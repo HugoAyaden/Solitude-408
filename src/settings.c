@@ -7,6 +7,9 @@ int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 
 int resIndex = 2; 
 
+// Local Settings Variables
+static Mix_Chunk* sGlitch = NULL;
+
 // Background Textures
 static SDL_Texture* settingsStaticTex = NULL;
 static SDL_Texture* settingsBG = NULL; 
@@ -19,16 +22,16 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 // --- Save/Load Logic ---
 
 void save_settings() {
-    FILE* f = fopen("assets/save.cfg", "w");
+    FILE* f = fopen("config/save.cfg", "w");
     if (f) {
         fprintf(f, "%d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
         fclose(f);
     }
-    saveNotificationTimer = SDL_GetTicks() + 2000; 
+    saveNotificationTimer = SDL_GetTicks() + 1000; 
 }
 
 void load_settings() {
-    FILE* f = fopen("assets/save.cfg", "r");
+    FILE* f = fopen("config/save.cfg", "r");
     if (f) {
         if (fscanf(f, "%d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
             Mix_Volume(-1, (masterVol * MIX_MAX_VOLUME) / 100);
@@ -170,7 +173,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     Uint32 now = SDL_GetTicks();
     
     // --- 1. Static & Background Setup ---
-    if (!settingsBG) settingsBG = IMG_LoadTexture(ren, "assets/background.png");
+    if (!settingsBG) settingsBG = IMG_LoadTexture(ren, "assets/img/background/background.png");
     if (!settingsStaticTex) {
         settingsStaticTex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, 400, 225);
         if(settingsStaticTex) SDL_SetTextureBlendMode(settingsStaticTex, SDL_BLENDMODE_BLEND);
@@ -300,9 +303,15 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         draw_hud_icons(ren, font, sw, sh, jX, jY, true, hudTopY, isGlitchingNow);
     }
 
-    if (now < saveNotificationTimer) draw_vhs_save_text(ren, font, ">>TAPE SAVED", sw, sh);
+    // --- 10. Save Glitch ---
+    if (now < saveNotificationTimer) {
+        if (!sGlitch) sGlitch = Mix_LoadWAV("assets/audio/sound/glitch.wav");
+        draw_vhs_save_text(ren, font, ">>TAPE SAVED", sw, sh);
+        if(sGlitch) Mix_PlayChannel(-1, sGlitch, 0); 
+    }
 
-    // --- 10. Buttons ---
+
+    // --- 11. Buttons ---
     SDL_Rect sBtn = {lM, sh - 125, 180, 45}, bBtn = {lM + 210, sh - 125, 180, 45};
     
     bool overSave = SDL_PointInRect(&(SDL_Point){mx, my}, &sBtn);
