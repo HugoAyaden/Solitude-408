@@ -1,4 +1,13 @@
-#include <game.h>
+/** 
+  * \file transition.c
+  * \brief Création et initialisation de la transition menu->paramètres.
+  * \author Amara Louay
+  * \version 1.0
+  * \date 11/02/2026
+  * 
+*/
+
+#include <menu.h>
 
 SDL_Texture* CreateStaticTexture(SDL_Renderer* renderer) {
     SDL_Texture* staticTex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, 200, 200);

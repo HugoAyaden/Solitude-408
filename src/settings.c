@@ -1,6 +1,18 @@
-#include <game.h>
+/** 
+  * \file settings.c
+  * \brief Création et initialisation du menu paramètres.
+  * \author Amara Louay
+  * \version 1.0
+  * \date 11/02/2026
+  * 
+*/
+
+#include <menu.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#define true 1
+#define false 0
 
 // Global Settings Variables
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
@@ -122,7 +134,7 @@ void draw_small_hud_text(SDL_Renderer* ren, TTF_Font* font, const char* text, in
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
-void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, int jY, bool visible, int targetY, bool glitchActive) {
+void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, int jY, int visible, int targetY, int glitchActive) {
     if (!visible || !font) return;
     (void)sh; // Silence unused parameter warning
     int hMargin = 85 + jX, topY = targetY + jY; 
@@ -150,7 +162,7 @@ void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, i
     }
 }
 
-void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, bool visible) {
+void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, int visible) {
     if (!visible) return;
     SDL_SetRenderDrawColor(ren, 200, 200, 200, 150); 
     int m = 60, len = 100, th = 5;
@@ -186,12 +198,12 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     }
 
     // --- 2. Advanced VHS Glitch Logic ---
-    static int lastCycle = -1; static bool glitchCycle = false;
+    static int lastCycle = -1; static int glitchCycle = false;
     int curCycle = now / 3000;
     if (curCycle != lastCycle) { glitchCycle = (rand() % 100 < 30); lastCycle = curCycle; } 
     
-    bool isGlitchingNow = (glitchCycle && (now % 3000 < 400)) || (now < saveNotificationTimer);
-    int jX = 0, jY = 0; bool showHUD = true;
+    int isGlitchingNow = (glitchCycle && (now % 3000 < 400)) || (now < saveNotificationTimer);
+    int jX = 0, jY = 0; int showHUD = true;
     if (isGlitchingNow) {
         jX = (rand() % 60) - 30; jY = (rand() % 30) - 15;
         if (rand() % 10 < 2) showHUD = false; 
@@ -220,9 +232,9 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
 
     // --- 5. Input Handling ---
     int mx, my; Uint32 mState = SDL_GetMouseState(&mx, &my);
-    bool isLeftDown = (mState & SDL_BUTTON(SDL_BUTTON_LEFT));
-    static bool mPressed = false;
-    bool justClicked = (isLeftDown && !mPressed);
+    int isLeftDown = (mState & SDL_BUTTON(SDL_BUTTON_LEFT));
+    static int mPressed = false;
+    int justClicked = (isLeftDown && !mPressed);
 
     // --- 6. UI Symmetrical Layout Calculations ---
     int lM = sw / 6;
@@ -317,7 +329,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     // --- 11. Buttons ---
     SDL_Rect sBtn = {lM, sh - 125, 180, 45}, bBtn = {lM + 210, sh - 125, 180, 45};
     
-    bool overSave = SDL_PointInRect(&(SDL_Point){mx, my}, &sBtn);
+    int overSave = SDL_PointInRect(&(SDL_Point){mx, my}, &sBtn);
     if (overSave && isLeftDown) { 
         SDL_SetRenderDrawColor(ren, 100, 100, 110, 255); 
         if(justClicked) save_settings(); 
@@ -325,7 +337,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     else SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &sBtn); draw_centered_text(ren, font, "SAVE", sBtn);
 
-    bool overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
+    int overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
     if (overBack && justClicked) { mPressed = isLeftDown; return 1; } 
     SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &bBtn); draw_centered_text(ren, font, "BACK", bBtn);

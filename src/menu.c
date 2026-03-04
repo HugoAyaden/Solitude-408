@@ -1,11 +1,22 @@
-#include <game.h>
+/** 
+  * \file menu.c
+  * \brief Création et initialisation du menu principal.
+  * \author Amara Louay
+  * \version 1.0
+  * \date 03/02/2026
+  * 
+*/
 
-// Static variables keep assets in memory for this module only
+#include <menu.h>
+
+#define true 1
+#define false 0
+
 static SDL_Texture* bgTexture = NULL;
 static SDL_Texture* titleText = NULL;
 static SDL_Rect titleRect;
 static MenuButton buttons[4];
-static bool assetsLoaded = false;
+static int assetsLoaded = false;
 
 void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) {
     if (assetsLoaded) return;

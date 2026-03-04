@@ -1,5 +1,8 @@
-#include <game.h>
+#include <menu.h>
 #include <stdio.h>
+
+#define true 1
+#define false 0
 
 int main(int argc, char* argv[]) {
     (void)argc; (void)argv; 
@@ -38,7 +41,7 @@ int main(int argc, char* argv[]) {
     init_menu(ren, vSmall, vLarge);
     
     GameState state = STATE_MENU, next = STATE_MENU;
-    bool run = true, trans = false;
+    int run = true, trans = false;
     float progress = 0.0f;
     SDL_Event e;
 

@@ -1,13 +1,11 @@
-/**
- * \file carte.c
- * \brief Création et initialisation de la carte du jeu.
- * \author Ayaden Hugo
- * \version 1.0
- * \date 11/02/2026
- * 
- */
-
-
+/** 
+  * \file carte.c
+  * \brief Création et initialisation de la carte du jeu.
+  * \author Ayaden Hugo
+  * \version 1.0
+  * \date 11/02/2026
+  * 
+*/
 #include <stdio.h>
 #include <carte.h>
 #include <SDL2/SDL.h>

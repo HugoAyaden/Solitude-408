@@ -1,3 +1,12 @@
+/**
+ * \file menu.h
+ * \brief Header pour la structure du menu principal -> transition -> settings.
+ * \author Amara Louay
+ * \version 1.0
+ * \date 11/02/2026
+ * 
+ */
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -5,7 +14,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <stdbool.h>
 #include <stdlib.h>
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
