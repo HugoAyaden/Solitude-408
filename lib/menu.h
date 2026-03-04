@@ -1,11 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define true 1
+#define false 0
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <stdbool.h>
 #include <stdlib.h>
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;

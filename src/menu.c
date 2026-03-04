@@ -1,11 +1,11 @@
-#include <game.h>
+#include <menu.h>
 
 // Static variables keep assets in memory for this module only
 static SDL_Texture* bgTexture = NULL;
 static SDL_Texture* titleText = NULL;
 static SDL_Rect titleRect;
 static MenuButton buttons[4];
-static bool assetsLoaded = false;
+static int assetsLoaded = false;
 
 void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) {
     if (assetsLoaded) return;
