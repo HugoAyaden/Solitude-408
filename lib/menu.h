@@ -10,6 +10,9 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define true 1
+#define false 0
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>

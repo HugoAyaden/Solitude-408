@@ -11,9 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define true 1
-#define false 0
-
 // Global Settings Variables
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 

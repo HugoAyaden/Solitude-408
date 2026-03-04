@@ -9,9 +9,6 @@
 
 #include <menu.h>
 
-#define true 1
-#define false 0
-
 static SDL_Texture* bgTexture = NULL;
 static SDL_Texture* titleText = NULL;
 static SDL_Rect titleRect;
