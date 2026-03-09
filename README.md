@@ -41,3 +41,49 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
 ### Documentation doxygene:
 
 link
+
+### Installation(Windows+MSYS2):
+1. Télécharger et installer Msys2: 
+[Lien MSYS2](https://www.msys2.org/)
+
+2. Lancer MSYS2 MINGW64 (icon bleu)
+3. Dans le terminal MSYS2 MINGW64, installer les packages suivant:
+4. Make:
+```
+pacman -S make
+```
+5. SDL2:
+```
+pacman -S mingw-w64-x86_64-SDL2 \
+          mingw-w64-x86_64-SDL2_image \
+          mingw-w64-x86_64-SDL2_ttf \
+          mingw-w64-x86_64-SDL2_mixer
+```
+6. Pkgconf:
+```
+ pacman -S mingw-w64-x86_64-pkgconf
+```
+7. GCC:
+```
+pacman -S pacman -S mingw-w64-x86_64-gcc
+```
+8. Aller dans le dossier d'installation MSYS2:
+```
+msys64/home/<utilisateur>
+``` 
+9. Cloner le dépôt dedans.
+```
+git clone https://github.com/HugoAyaden/Solitude-408.git
+``` 
+10. Toujours dans le terminal MSYS2 MINGW64, aller à la racine du dépôt:
+   ```
+/Solitude-408
+```
+11. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
+```
+make all
+```
+12. Toujours dans le terminal MSYS2 MINGW64, lancer le jeu avec:
+```
+./bin/Solitude408.exe
+```
