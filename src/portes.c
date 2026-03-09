@@ -1,3 +1,12 @@
+/**
+ * \file portes.c
+ * \brief Fonctions des portes du jeu.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 11/02/2026
+ * 
+ */
+
 #include <portes.h>
 
 #define PORTE_HAUT 5
@@ -28,7 +37,7 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-    /* */
+    /*
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -48,7 +57,7 @@ int main(){
     while(!fin(carte, &monstre)){
         if(movement_opportunity(carte, &monstre, monstre.num_camera % Y, monstre.num_camera / Y)){
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
-            sleep(1); // Attendre 5 seconde avant le prochain déplacement
+            sleep(1); // Attendre 1 seconde avant le prochain déplacement
             if(monstre.num_camera == PORTE_HAUT || monstre.num_camera == PORTE_BAS){
                 if(joueur->acess == FAUX){
                     printf("Le monstre attaque le joueur à la porte mais échoue !\n");
@@ -68,3 +77,4 @@ int main(){
     joueur = NULL;
     return 0;
 }
+*/

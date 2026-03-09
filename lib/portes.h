@@ -8,7 +8,7 @@
  */
 
 #include <stdio.h>
-#include <ia_monstre_n1.h>
+#include <ia_monstre.h>
 
 void fermeture_portes(case_t *joueur);
 void ouverture_portes(carte_t *carte, case_t *joueur);
