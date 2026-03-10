@@ -1,4 +1,13 @@
-#include <menu.h>
+/** 
+  * \file menu.c
+  * \brief Création et initialisation du menu principal.
+  * \author Amara Louay
+  * \version 1.0
+  * \date 03/02/2026
+  * 
+*/
+
+#include <MainMenu.h>
 
 // Static variables keep assets in memory for this module only
 static SDL_Texture* bgTexture = NULL;

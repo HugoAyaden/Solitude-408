@@ -1,4 +1,13 @@
-#include <menu.h>
+/** 
+  * \file settings.c
+  * \brief Création et initialisation du menu paramètres.
+  * \author Amara Louay
+  * \version 1.0
+  * \date 11/02/2026
+  * 
+*/
+
+#include <MainMenu.h>
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,12 @@
+/**
+ * \file MainMenu.h
+ * \brief Header pour la structure du menu principal -> transition -> settings.
+ * \author Amara Louay
+ * \version 1.0
+ * \date 11/02/2026
+ * 
+ */
+
 #ifndef GAME_H
 #define GAME_H
 
