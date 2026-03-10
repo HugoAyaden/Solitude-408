@@ -19,8 +19,14 @@
  /* TODO: INITIALISER DES TIMESTAMPS ET LES COMPARER POUR GARDER LE MONSTRE SUR PLACE
     EX: TIMESTAMP ACTUEL 9 WHILE TIMESTAMP != 15 check timestamp;
  */
-int timer_monstre(){
-
+void timer_monstre(){
+    srand(time(NULL));
+    int current_time = time(NULL);
+    int diff_time = current_time + 1000000;
+    while(current_time < diff_time){
+        current_time++;
+        printf("%d\n", current_time);
+    }
 }
 
 void placement_monstre(carte_t *carte, case_t *monstre){

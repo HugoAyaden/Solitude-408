@@ -27,17 +27,8 @@ void ouverture_portes(carte_t *carte, case_t *joueur){
     joueur->acess = VRAI;
     printf("Porte ouverte\n"); }
 
-void attaquer_joueur(carte_t *carte, case_t *monstre, case_t *joueur){
-    printf("Le monstre attaque le joueur !\n");
-}
 
-void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
-    placement_monstre(carte, monstre);
-}
-
-
-
-    /**/
+/*
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -54,7 +45,6 @@ int main(){
     case_t mimic;
     placement_mimic(carte, &mimic);
     placement_monstre(carte, &monstre);
-    fermeture_portes(joueur);
     printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
     while(!fin(carte, &monstre) && !attaque_mimic(*carte, &mimic, joueur)){
         if(chance_deplacement() < 5 )
@@ -62,19 +52,7 @@ int main(){
         else{
             movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
-        }
-        sleep(1); // Attendre 1 seconde avant le prochain déplacement
-        if(monstre.num_camera == PORTE_HAUT || monstre.num_camera == PORTE_BAS){
-            if(joueur->acess == FAUX){
-                printf("Le monstre attaque le joueur à la porte mais échoue !\n");
-                attaquer_joueur_echec(carte, &monstre, joueur);
-            }
-            else{
-                if(joueur->acess == VRAI){
-                    attaquer_joueur(carte, &monstre, joueur);
-                    fin(carte, &monstre);
-                }
-            }
+            sleep(1); // Attendre 5 seconde avant le prochain déplacement
         }
     }
     free(carte);
@@ -82,3 +60,4 @@ int main(){
     joueur = NULL;
     return 0;
 }
+    */

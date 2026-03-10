@@ -41,3 +41,4 @@ int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur);
 void placement_mimic(carte_t *carte, case_t *mimic);
 
 int chance_deplacement();
+void timer_monstre();
