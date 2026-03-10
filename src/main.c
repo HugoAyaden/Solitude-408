@@ -1,6 +1,6 @@
 #include <menu.h>
 #include <stdio.h>
-
+/*
 int main(int argc, char* argv[]) {
     (void)argc; (void)argv; 
 
@@ -81,3 +81,4 @@ int main(int argc, char* argv[]) {
     Mix_CloseAudio(); TTF_Quit(); IMG_Quit(); SDL_Quit();
     return 0;
 }
+*/
