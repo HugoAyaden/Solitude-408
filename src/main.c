@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
     }
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     TTF_Font *vSmall = TTF_OpenFont("assets/font/VCR.ttf", 30);
-    TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 90);
+    TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 80);
     if (!vSmall || !vLarge) {
         printf("Failed to load font: %s\n", TTF_GetError());
         return 1;
@@ -54,8 +54,10 @@ int main(int argc, char* argv[]) {
             if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)) run = false;
             if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
+                //Transition to Settings
                 if (c == 2) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
-                if (c == 3) run = false;
+                //EXIT GAME
+                if (c == 4) run = false;
             }
         }
 

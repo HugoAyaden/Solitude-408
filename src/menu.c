@@ -13,7 +13,7 @@
 static SDL_Texture* bgTexture = NULL;
 static SDL_Texture* titleText = NULL;
 static SDL_Rect titleRect;
-static MenuButton buttons[4];
+static MenuButton buttons[5];
 static int assetsLoaded = false;
 
 void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) {
@@ -32,9 +32,9 @@ void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) 
     SDL_FreeSurface(titleSurf);
 
     // 2. Buttons Setup - Only size; coordinates in render_menu
-    const char* labels[] = {"NEW GAME", "LOAD GAME", "SETTINGS", "EXIT GAME"};
+    const char* labels[] = {"NEW GAME", "LOAD GAME", "SETTINGS", "CREDITS", "EXIT GAME"};
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         SDL_Surface* surf = TTF_RenderText_Blended(mainFont, labels[i], white);
         buttons[i].texture = SDL_CreateTextureFromSurface(renderer, surf);
         buttons[i].label = labels[i];
@@ -75,10 +75,10 @@ void render_menu(SDL_Renderer* renderer) {
 
     // 3. Dynamic Interactive Buttons
     int buttonColumnX = sw / 15; //// Calculate column position 
-    int startY = sh / 2 - 50;    // Centered vertically in the lower half
+    int startY = sh / 2 - 100;    // Centered vertically in the lower half
     int spacingY = sh / 14;      // Spacing scales with screen height
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         // Update button hitboxes every frame to match current resolution
         buttons[i].rect.x = buttonColumnX;
         buttons[i].rect.y = startY + (i * spacingY);
@@ -101,7 +101,7 @@ void render_menu(SDL_Renderer* renderer) {
 }
 
 int check_menu_click(SDL_Point mousePos) {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         if (SDL_PointInRect(&mousePos, &buttons[i].rect)) {
             return i;
         }
@@ -110,7 +110,7 @@ int check_menu_click(SDL_Point mousePos) {
 }
 
 void cleanup_menu() {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         if (buttons[i].texture) SDL_DestroyTexture(buttons[i].texture);
     }
     if (titleText) SDL_DestroyTexture(titleText);
