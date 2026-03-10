@@ -1,34 +1,42 @@
 ###############################################################################
-# Generic Makefile
-# - builds all C sources found in src/, fichiers/, test/, test/Menu/
-# - object files are placed in obj/
-# - final executable is placed in bin/projet (change TARGET if you like)
+# UNIVERSAL MAKEFILE (Windows/MSYS2, Linux, macOS)
 ###############################################################################
 
-CC ?= gcc
-CFLAGS ?= -Wall
-
-# Add debug flags by setting DEBUG=1 when calling make (e.g. make DEBUG=1)
-ifneq ($(DEBUG),)
-CFLAGS += -g
+CC := gcc
+CFLAGS := -Wall -fno-stack-protector -D_FORTIFY_SOURCE=0 -Wno-attributes
+# Handle Debug vs Release
+ifeq ($(DEBUG),1)
+    CFLAGS += -g
 else
-CFLAGS += -O2
+    CFLAGS += -O2
 endif
 
-# Optional SDL configuration (set SDL_DIR in environment or on make command line)
-SDL_DIR ?= $(HOME)/SDL2
-SDLLIB_DIR ?= $(SDL_DIR)/lib
-SDLINC_DIR ?= $(SDL_DIR)/include
-INCLUDES ?= -I./lib `pkg-config --cflags sdl2 SDL2_ttf SDL2_image SDL2_mixer`
-LIBS ?= `pkg-config --libs sdl2 SDL2_ttf SDL2_image SDL2_mixer`
+# --- OS DETECTION & COMMANDS ---
+ifeq ($(OS),Windows_NT)
+    # Windows/PowerShell/CMD
+    MKDIR = if not exist $(subst /,\,$(1)) mkdir $(subst /,\,$(1))
+    RM = if exist $(subst /,\,$(1)) rmdir /s /q $(subst /,\,$(1))
+    TARGET_EXT := .exe
+    EXTRA_LIBS := -lssp
+else
+    # Linux / macOS
+    MKDIR = mkdir -p $(1)
+    RM = rm -rf $(1)
+    TARGET_EXT :=
+    EXTRA_LIBS :=
+endif
 
+# --- SDL CONFIGURATION  ---
+INCLUDES := -I./lib $(shell pkg-config --cflags sdl2 SDL2_ttf SDL2_image SDL2_mixer)
+LIBS := $(shell pkg-config --libs sdl2 SDL2_ttf SDL2_image SDL2_mixer) $(EXTRA_LIBS)
 
+# --- PROJECT STRUCTURE ---
 SRCDIRS := src fichiers test
 SRCS := $(foreach d,$(SRCDIRS),$(wildcard $(d)/*.c))
 
 OBJDIR := obj
 BINDIR := bin
-TARGET := $(BINDIR)/Solitude408
+TARGET := $(BINDIR)/Solitude408$(TARGET_EXT)
 
 OBJS := $(patsubst %,$(OBJDIR)/%.o,$(basename $(notdir $(SRCS))))
 
@@ -37,35 +45,27 @@ OBJS := $(patsubst %,$(OBJDIR)/%.o,$(basename $(notdir $(SRCS))))
 all: dirs $(TARGET)
 
 dirs:
-	mkdir -p $(OBJDIR) $(BINDIR)
+	@$(call MKDIR, $(OBJDIR))
+	@$(call MKDIR, $(BINDIR))
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-# Create per-source object rules so each object depends on the exact source file.
-# This lets make detect changes and rebuild the corresponding object.
 define make_obj_rule
 $(OBJDIR)/$(notdir $(1:.c=.o)): $(1)
-	mkdir -p $(OBJDIR)
+	@$(call MKDIR, $(OBJDIR))
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(1) -o $$@
 endef
 
 $(foreach src,$(SRCS),$(eval $(call make_obj_rule,$(src))))
 
 clean:
-	rm -rf $(OBJDIR) $(BINDIR)/Solitude408
+	@$(call RM, $(OBJDIR))
+	@$(call RM, $(BINDIR))
 
 run: $(TARGET)
-	./$(TARGET)
-
-print-info:
-	@echo "Sources: $(SRCS)"
-	@echo "Objects: $(OBJS)"
-
-###############################################################################
-# Notes:
-# - To build with debug symbols: make DEBUG=1
-# - To enable SDL linking, adjust SDL_DIR or override INCLUDES/LIBS on the make
-#   command line, e.g.:
-#     make INCLUDES='-I/home/user/SDL2/include' LIBS='-L/home/user/SDL2/lib -lSDL2'
-###############################################################################
+ifeq ($(OS),Windows_NT)
+	@.\$(subst /,\,$(TARGET))
+else
+	@./$(TARGET)
+endif
