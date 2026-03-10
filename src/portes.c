@@ -41,13 +41,6 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
 }
 
 
-void attaquer_joueur(carte_t *carte, case_t *monstre, case_t *joueur){
-    printf("Le monstre attaque le joueur !\n");
-}
-
-void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
-    placement_monstre(carte, monstre);
-}
 
 
 
