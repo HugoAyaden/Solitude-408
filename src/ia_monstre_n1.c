@@ -19,9 +19,31 @@
  /* TODO: INITIALISER DES TIMESTAMPS ET LES COMPARER POUR GARDER LE MONSTRE SUR PLACE
     EX: TIMESTAMP ACTUEL 9 WHILE TIMESTAMP != 15 check timestamp;
  */
-int timer_monstre(){
 
+ 
+// Source - https://stackoverflow.com/a/24383125
+// Posted by David Guyon
+// Retrieved 2026-03-10, License - CC BY-SA 3.0
+void timer(){
+    int msec = 0, trigger = 1000; /* 10ms */
+    clock_t before = clock();
+    int iterations = 0;
+
+    do {
+    /*
+    * Do something to busy the CPU just here while you drink a coffee
+    * Be sure this code will not take more than `trigger` ms
+    */
+
+    clock_t difference = clock() - before;
+    msec = difference * 1000 / CLOCKS_PER_SEC;
+    iterations++;
+    } while ( msec < trigger );
+
+    printf("Time taken %d seconds %d milliseconds (%d iterations)\n",
+    msec/1000, msec%1000, iterations);
 }
+
 
 void placement_monstre(carte_t *carte, case_t *monstre){
     int x = rand() % START_MONSTRE_X;
@@ -32,6 +54,7 @@ void placement_monstre(carte_t *carte, case_t *monstre){
     }
     printf("monstre x = %d\n", x);
     *monstre = carte->cases[x][y];
+    monstre->moove_cooldown = 5.0f;
 }
 
 
@@ -121,7 +144,7 @@ int main(){
     placement_monstre(carte, &monstre);
     printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
     while(!fin(carte, &monstre)){
-        sleep(2);
+        timer();
         movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
         printf("Le monstre se déplace sur la caméra %d\n", monstre.num_camera);
     }

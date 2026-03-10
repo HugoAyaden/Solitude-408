@@ -15,6 +15,9 @@
 #define FIN_Y 5
 #define FIN_X 3
 
+#define PORTE_HAUT 5
+#define PORTE_BAS 15
+
 /* POSITION DU JOUEUR */
 #define Y_JOUEUR 4
 #define X_JOUEUR 1

@@ -9,8 +9,10 @@
 
 #include <bfs.h>
 
-void fermeture_portes(case_t *joueur);
-void ouverture_portes(carte_t *carte, case_t *joueur);
+void fermeture_portes_droite(case_t *joueur, carte_t *carte);
+void fermeture_portes_gauche(case_t *joueur, carte_t *carte);
+void ouverture_porte_droite(carte_t *carte, case_t *joueur);
+void ouverture_porte_gauche(carte_t *carte, case_t *joueur);
 void attaquer_joueur(carte_t *carte, case_t *monstre, case_t *joueur);
 void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur);
 

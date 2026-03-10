@@ -85,6 +85,7 @@ void init_carte(carte_t *carte_init){
             carte_init->cases[x][y].num_camera = num++;
             carte_init->cases[x][y].utilise = FAUX;
             carte_init->cases[x][y].acess = VRAI;
+            carte_init->cases[x][y].moove_cooldown = 0.0f;
 
             /* voisin haut */
             if(accessible(x-1, y)){

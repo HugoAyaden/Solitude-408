@@ -16,7 +16,8 @@
  */
 
  typedef struct case_s {
-
+    //pour le monstre, temps avant de pouvoir se déplacer à nouveau
+    float moove_cooldown;
     //Y'a t-il un monstre sur la caméra
     booleen_t habite;
 

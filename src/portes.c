@@ -9,23 +9,28 @@
 
 #include <portes.h>
 
-#define PORTE_HAUT 5
-#define PORTE_BAS 15
 
-void fermeture_portes(case_t *joueur){ 
-    joueur->voisin_haut = NULL;
-    joueur->voisin_bas = NULL;
-    joueur->acess = FAUX;
-    printf("Porte fermée\n"); 
+
+void fermeture_portes_droite(case_t *joueur, carte_t *carte){ 
+    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = NULL;
 
 }
 
-void ouverture_portes(carte_t *carte, case_t *joueur){ 
+void fermeture_portes_gauche(case_t *joueur, carte_t *carte){ 
+    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = NULL;
+
+}
+
+void ouverture_porte_droite(carte_t *carte, case_t *joueur){ 
     /* rétablir les voisins du joueur */
-    joueur->voisin_haut = &carte->cases[X_JOUEUR-1][Y_JOUEUR];
-    joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
-    joueur->acess = VRAI;
-    printf("Porte ouverte\n"); }
+    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = joueur;
+
+}
+
+void ouverture_porte_gauche(carte_t *carte, case_t *joueur){ 
+    /* rétablir les voisins du joueur */
+    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
+}
 
 void attaquer_joueur(carte_t *carte, case_t *monstre, case_t *joueur){
     printf("Le monstre attaque le joueur !\n");
@@ -37,7 +42,7 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-    /**/
+    /*
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -82,3 +87,4 @@ int main(){
     joueur = NULL;
     return 0;
 }
+    */
