@@ -21,6 +21,13 @@ int main(int argc, char* argv[]) {
     else if (screenModeIndex == 2) flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 
     SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
+    SDL_Surface* icon = IMG_Load("assets/img/icon/icon.png"); 
+    if (icon) {
+        SDL_SetWindowIcon(win, icon);        
+        SDL_FreeSurface(icon); 
+    } else {
+        printf("Taskbar icon failed to load: %s\n", SDL_GetError());
+    }
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     TTF_Font *vSmall = TTF_OpenFont("assets/font/VCR.ttf", 30);
     TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 90);
@@ -36,7 +43,7 @@ int main(int argc, char* argv[]) {
 
     SDL_Texture* sTex = CreateStaticTexture(ren);
     init_menu(ren, vSmall, vLarge);
-    
+
     GameState state = STATE_MENU, next = STATE_MENU;
     int run = true, trans = false;
     float progress = 0.0f;
