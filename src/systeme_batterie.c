@@ -1,7 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
-#include <stdio.h>
+#include <portes.h>
+
 
 /**
  * \file systeme_batterie.c
@@ -14,6 +15,8 @@
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
+
+const Uint32 monsterMoveDelay = 1000; // 10 avant chaque déplacement du monstre
 
 static int porteGaucheActive = 0;
 static int porteDroiteActive = 0;
@@ -366,6 +369,8 @@ void game_render(SDL_Renderer *renderer,
  *
  * \return Code de retour du programme.
  */
+
+ /**/
 int main()
 {
     SDL_Init(SDL_INIT_VIDEO);
@@ -380,9 +385,23 @@ int main()
     SDL_Renderer *renderer =
         SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+    SDL_Texture *BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
     SDL_Texture *DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
     SDL_Texture *DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
-    if (!DOORS_OFF_L_OFF || !DOORS_OFF_L_ON)
+    SDL_Texture *L_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_OFF_L_ON.png");
+    SDL_Texture *L_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_OFF.png");
+    SDL_Texture *L_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_ON.png");
+    SDL_Texture *R_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_OFF_L_ON.png");
+    SDL_Texture *R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
+    SDL_Texture *R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
+    SDL_Texture *MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
+    SDL_Texture *MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
+    SDL_Texture *MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
+    SDL_Texture *MONSTER_L_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O.png");
+    SDL_Texture *MONSTER_R_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_C.png");
+    SDL_Texture *MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
+    SDL_Texture *MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
+    if (!DOORS_OFF_L_OFF || !DOORS_OFF_L_ON || !L_DOOR_OFF_L_ON || !L_DOOR_ON_L_OFF || !L_DOOR_ON_L_ON || !R_DOOR_OFF_L_ON || !R_DOOR_ON_L_OFF || !R_DOOR_ON_L_ON || !MONITOR_ROOM || !MONSTER_L_DOOR_C || !MONSTER_L_DOOR_O_A || !MONSTER_L_DOOR_O || !MONSTER_R_DOOR_C || !MONSTER_R_DOOR_O_A || !MONSTER_R_DOOR_O)
     {
         printf("Erreur chargement background : %s\n", IMG_GetError());
     }
@@ -396,7 +415,23 @@ int main()
     }
 
     game_init();
+    Uint32 monsterLastMove = 0;
 
+
+    carte_t *carte = malloc(sizeof(carte_t));
+    case_t *joueur = malloc(sizeof(case_t));
+    case_t *monstre = malloc(sizeof(case_t));
+    if (!carte) 
+        return 0;
+    srand(time(NULL));
+    init_carte(carte);
+    init_joueur(joueur, carte);
+    placement_monstre(carte, monstre);
+    int actual = -1;
+    printf("Le monstre est sur la caméra %d\n", monstre->num_camera);
+
+
+    
     int running = 1;
     SDL_Event event;
     Uint32 lastTime = SDL_GetTicks();
@@ -404,9 +439,10 @@ int main()
     while (running)
     {
         Uint32 currentTime = SDL_GetTicks();
+        //Temps du monstre avant chaque déplacement
         float deltaTime = (currentTime - lastTime) / 1000.0f;
         lastTime = currentTime;
-
+        int change = 1; //autorise le changement d'etat des portes
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT)
@@ -424,11 +460,95 @@ int main()
         int lightCount = buttons_getLightCount();
 
         SDL_Texture *background;
+    
+        /*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
+        // Déplacement du monstre toutes les 5 secondes
+        if (currentTime - monsterLastMove >= monsterMoveDelay)
+        {
+            monsterLastMove = currentTime;
 
+                if(porteGaucheActive && monstre->num_camera == PORTE_BAS){
+                    placement_monstre(carte, monstre);
+                }
+                else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
+                    placement_monstre(carte, monstre);
+                }
+                else if(chance_deplacement() < 3) {
+                        move_monster(carte, monstre, joueur);
+                }
+                        else{
+                            movement_opportunity(carte, monstre,
+                                                monstre->num_camera % FIN_Y,
+                                                monstre->num_camera / FIN_Y);
+                        }
+
+            printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
+            printf("portes fermees %d\n", actual);
+        }
+        /*==============================================*/
+        if(change == 1){
+            if(actual != buttons_getDoorCount()){
+                if(porteDroiteActive)
+                    fermeture_portes_droite(joueur, carte);
+                if(!porteDroiteActive)
+                    ouverture_porte_droite(carte, joueur);
+                if(porteGaucheActive)
+                    fermeture_portes_gauche(joueur, carte);
+                if(!porteGaucheActive)
+                    ouverture_porte_gauche(carte, joueur);
+                }
+            }
+
+        if(fin(carte, monstre)){
+                background = BLACKOUT;
+                running = 0;
+            }
+        actual = buttons_getDoorCount();
         if (lightCount >= 2)
             background = DOORS_OFF_L_ON;
-        else
-            background = DOORS_OFF_L_OFF;
+
+        if(battery <= 0){
+            background = BLACKOUT;
+            change = 0;
+            porteDroiteActive = 0;
+            porteGaucheActive = 0;
+            ouverture_porte_gauche(carte, joueur);
+            ouverture_porte_droite(carte, joueur);
+        }
+        else if(lumiereDroiteActive && !porteDroiteActive){
+            if(monstre->num_camera == PORTE_HAUT-1){
+                background = MONSTER_R_DOOR_O;
+            }
+            else if(monstre->num_camera == PORTE_HAUT){
+                    background = MONSTER_R_DOOR_O_A;
+                }
+                else
+                    background = R_DOOR_OFF_L_ON;
+            }
+            else if(lumiereGaucheActive && !porteGaucheActive){
+                if(monstre->num_camera == PORTE_BAS-1){
+                    background = MONSTER_L_DOOR_O;
+                }
+                else if(monstre->num_camera == PORTE_BAS){
+                    background = MONSTER_L_DOOR_O_A;
+                }
+                else 
+                    background = L_DOOR_OFF_L_ON;
+            }
+            else if(porteGaucheActive && !lumiereGaucheActive){
+                background = L_DOOR_ON_L_OFF;
+            }
+            else if(porteDroiteActive && !lumiereDroiteActive){
+                background = R_DOOR_ON_L_OFF;
+            }
+            else if(porteGaucheActive && lumiereGaucheActive){
+                background = L_DOOR_ON_L_ON;
+            }
+            else if(porteDroiteActive && lumiereDroiteActive){
+                background = R_DOOR_ON_L_ON;
+            }
+            else
+                background = DOORS_OFF_L_OFF;
 
         SDL_RenderCopy(renderer, background, NULL, &bgRect);
 
@@ -444,6 +564,10 @@ int main()
     SDL_DestroyWindow(window);
     SDL_DestroyTexture(DOORS_OFF_L_OFF);
     SDL_DestroyTexture(DOORS_OFF_L_ON);
+    detruire_carte(carte);
+    free(joueur);
+    free(monstre);
     TTF_Quit();
     SDL_Quit();
 }
+    

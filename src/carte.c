@@ -1,12 +1,13 @@
-/** 
-  * \file carte.c
-  * \brief Création et initialisation de la carte du jeu.
-  * \author Ayaden Hugo
-  * \version 1.0
-  * \date 11/02/2026
-  * 
-*/
-#include <stdio.h>
+/**
+ * \file carte.c
+ * \brief Création et initialisation de la carte du jeu.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 11/02/2026
+ * 
+ */
+
+
 #include <carte.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -14,6 +15,7 @@
 
 
 /* MURS DANS LES CARTES */
+
 #define MUR_8_Y 2
 #define MUR_8_X 1
 
@@ -56,6 +58,7 @@ void init_joueur(case_t *joueur, carte_t *carte){
     joueur->habite = VRAI;
     joueur->num_camera = carte->cases[X_JOUEUR][Y_JOUEUR].num_camera;
     joueur->utilise = FAUX;
+    joueur->lumiere = VRAI;
     joueur->acess = VRAI;
     joueur->voisin_haut = &carte->cases[X_JOUEUR-1][Y_JOUEUR];
     joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
@@ -68,8 +71,8 @@ void init_carte(carte_t *carte_init){
     int y = 0, x = 0;
     int num = 1;
 
-    for (x = 0; x < X; ++x) {
-        for (y = 0; y < Y; ++y) {
+    for (x = 0; x < FIN_X; ++x) {
+        for (y = 0; y < FIN_Y; ++y) {
             carte_init->cases[x][y].voisin_haut = NULL;
             carte_init->cases[x][y].voisin_bas = NULL;
             carte_init->cases[x][y].voisin_droit = NULL;
@@ -78,9 +81,11 @@ void init_carte(carte_t *carte_init){
 
             /* initialise la case (y,x) */
             carte_init->cases[x][y].habite = FAUX;
+            carte_init->cases[x][y].lumiere = FAUX;
             carte_init->cases[x][y].num_camera = num++;
             carte_init->cases[x][y].utilise = FAUX;
             carte_init->cases[x][y].acess = VRAI;
+            carte_init->cases[x][y].moove_cooldown = 0.0f;
 
             /* voisin haut */
             if(accessible(x-1, y)){
@@ -142,7 +147,7 @@ void init_carte(carte_t *carte_init){
 
 
 booleen_t accessible(int x, int y){
-    if (y < 0 || y >= Y || x < 0 || x >= X )
+    if (y < 0 || y >= FIN_Y || x < 0 || x >= FIN_X )
         return FAUX;
 
     return VRAI;
