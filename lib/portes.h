@@ -1,5 +1,5 @@
 /**
- * \file carte.h
+ * \file portes.h
  * \brief Header pour le fonctionnement des portes
  * \author Ayaden Hugo
  * \version 1.0
@@ -7,8 +7,7 @@
  * 
  */
 
-#include <stdio.h>
-#include <ia_monstre.h>
+#include <bfs.h>
 
 void fermeture_portes(case_t *joueur);
 void ouverture_portes(carte_t *carte, case_t *joueur);

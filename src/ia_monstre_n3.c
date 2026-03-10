@@ -1,13 +1,13 @@
 /**
  * \file ia_monstre_n3.c
- * \brief Création et initialisation de l'IA du mimic
+ * \brief Création et initialisation de l'IA du mimic pour la nuit 3
  * \author Ayaden Hugo
  * \version 1.0
  * \date 09/03/2026
  * 
  */
 
-#include <ia_monstre.h>
+#include <bfs.h>
 
 /* DEPART DU MIMIC */
 
@@ -27,8 +27,7 @@ void mouvement_mimic(carte_t *carte, case_t *mimic){
     * Si le joueur a la lumière allumée, le mimic le tue, sinon il échoue et retourne à son spawn.
     */
     
-    int action = rand() %5;
-    if(action == 2){
+    if(chance_deplacement() < 5){
             int x = rand() % FIN_X;
             int y = rand() % FIN_Y;
             *mimic = carte->cases[x][y];
@@ -66,7 +65,7 @@ int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur){
 
 
 
-/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois)
+/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois) 
 int main(){
     carte_t *carte = malloc(sizeof(carte_t));
     if (!carte) 
@@ -83,10 +82,16 @@ int main(){
     printf("Le mimic est sur la caméra %d\n", mimic.num_camera);
     while(!fin(carte, &monstre) && !attaque_mimic(*carte, &mimic, &joueur)){
         sleep(2);
-        movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
-        mouvement_mimic(carte, &mimic);
+        if(chance_deplacement() < 3){ // 30% de chance de se déplacer de facon optimisee (hint)
+            move_monster(carte, &monstre, &joueur);
+        }
+        else{
+            movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
+    }
+        mouvement_mimic(carte, &mimic);
     }
     detruire_carte(carte);
 }
+
 */

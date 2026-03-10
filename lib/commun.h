@@ -1,5 +1,5 @@
 /**
- * \file carte.h
+ * \file commun.h
  * \brief Header general
  * \author Ayaden Hugo
  * \version 1.0

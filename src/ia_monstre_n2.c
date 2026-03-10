@@ -1,13 +1,13 @@
 /**
- * \file ia_monstre_n1.c
- * \brief Création et initialisation de l'IA du monstre
+ * \file ia_monstre_n2.c
+ * \brief Création et initialisation de l'IA du monstre a la nuit 2
  * \author Ayaden Hugo
  * \version 1.1
  * \date 16/02/2026
  * 
  */
 
-#include <bfs.h>
+ #include <bfs.h>
 
 /********** DEPLACEMENT DU MONSTRE OPTIMISE AU LONG DE LA PARTIE **********/
 
@@ -78,7 +78,10 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
     return NULL;
 }
 
-
+int chance_deplacement(){
+   int chance = rand() %10;
+   return chance;
+}
 
 void move_monster(carte_t *carte, case_t *monstre, case_t *joueur){
 
@@ -102,7 +105,7 @@ void move_monster(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois) */
+/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois) 
 int main(){
     carte_t *carte = malloc(sizeof(carte_t));
     if (!carte) 
@@ -115,14 +118,16 @@ int main(){
     placement_monstre(carte, &monstre);
     printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
     while(!fin(carte, &monstre)){
-        if(rand() %10 < 3){ // 30% de chance de se déplacer de facon optimisee (hint)
+        if(chance_deplacement() < 3){ // 30% de chance de se déplacer de facon optimisee (hint)
             move_monster(carte, &monstre, &joueur);
         }
         else{
             printf("mouvement normal\n");
             movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
             printf("Le monstre se déplace sur la caméra %d\n", monstre.num_camera);
+            sleep(1);
         }
     }
     detruire_carte(carte);
 }
+*/

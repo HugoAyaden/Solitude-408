@@ -1,6 +1,6 @@
 /**
  * \file ia_monstre_n1.c
- * \brief Création et initialisation de l'IA du monstre
+ * \brief Création et initialisation de l'IA du monstre a la nuit 1
  * \author Ayaden Hugo
  * \version 1.1
  * \date 16/02/2026
@@ -14,6 +14,15 @@
  * 
  * 
  */
+
+
+ /* TODO: INITIALISER DES TIMESTAMPS ET LES COMPARER POUR GARDER LE MONSTRE SUR PLACE
+    EX: TIMESTAMP ACTUEL 9 WHILE TIMESTAMP != 15 check timestamp;
+ */
+int timer_monstre(){
+
+}
+
 void placement_monstre(carte_t *carte, case_t *monstre){
     int x = rand() % START_MONSTRE_X;
     int y = DEPART_Y;

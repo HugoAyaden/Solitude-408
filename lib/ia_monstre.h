@@ -39,3 +39,5 @@ int movement_opportunity(carte_t *carte, case_t *monstre, int y, int x);
 void mouvement_mimic(carte_t *carte, case_t *mimic);
 int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur);
 void placement_mimic(carte_t *carte, case_t *mimic);
+
+int chance_deplacement();
