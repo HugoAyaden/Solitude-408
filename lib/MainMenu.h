@@ -1,5 +1,5 @@
 /**
- * \file menu.h
+ * \file MainMenu.h
  * \brief Header pour la structure du menu principal -> transition -> settings.
  * \author Amara Louay
  * \version 1.0
@@ -20,7 +20,7 @@
 #include <stdlib.h>
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
-typedef enum { STATE_MENU, STATE_SETTINGS } GameState;
+typedef enum { STATE_MENU, STATE_SETTINGS, STATE_PLAYING } GameState;
 
 // Global Settings Variables from save.cfg
 extern int masterVol, musicVol, brightness, mouseSens;
@@ -43,5 +43,11 @@ void draw_centered_text(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL
 
 void run_transition(SDL_Renderer* ren, SDL_Texture* staticTex, float progress);
 SDL_Texture* CreateStaticTexture(SDL_Renderer* renderer);
+
+void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons);
+
+void game_handleEvent(SDL_Event *event, SDL_Window *window);
+void game_update(float deltaTime);
+void render_game(SDL_Renderer *renderer, TTF_Font *fontBattery, TTF_Font *fontButtons, SDL_Window *window);
 
 #endif
