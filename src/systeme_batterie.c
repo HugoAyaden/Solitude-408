@@ -18,10 +18,34 @@
 
 const Uint32 monsterMoveDelay = 1000; // 10 avant chaque déplacement du monstre
 
+// Deso Hugo mais fallait le faire
 static int porteGaucheActive = 0;
 static int porteDroiteActive = 0;
 static int lumiereGaucheActive = 0;
 static int lumiereDroiteActive = 0;
+
+
+static carte_t *carte = NULL;
+static case_t *joueur = NULL;
+static case_t *monstre = NULL;
+
+static SDL_Texture *BLACKOUT = NULL;
+static SDL_Texture *DOORS_OFF_L_OFF = NULL;
+static SDL_Texture *DOORS_OFF_L_ON = NULL;
+static SDL_Texture *L_DOOR_OFF_L_ON = NULL;
+static SDL_Texture *L_DOOR_ON_L_OFF = NULL;
+static SDL_Texture *L_DOOR_ON_L_ON = NULL;
+static SDL_Texture *R_DOOR_OFF_L_ON = NULL;
+static SDL_Texture *R_DOOR_ON_L_OFF = NULL;
+static SDL_Texture *R_DOOR_ON_L_ON = NULL;
+static SDL_Texture *MONITOR_ROOM = NULL;
+static SDL_Texture *MONSTER_L_DOOR_C = NULL;
+static SDL_Texture *MONSTER_L_DOOR_O_A = NULL;
+static SDL_Texture *MONSTER_L_DOOR_O = NULL;
+static SDL_Texture *MONSTER_R_DOOR_C = NULL;
+static SDL_Texture *MONSTER_R_DOOR_O_A = NULL;
+static SDL_Texture *MONSTER_R_DOOR_O = NULL;
+
 
 /**
  * \brief Dessine un bouton interactif avec un texte.
@@ -206,7 +230,7 @@ void battery_init()
  *
  * Initialise la batterie et les boutons.
  */
-void game_init()
+void game_initialise()
 {
     battery_init();
     buttons_init();
@@ -348,7 +372,7 @@ void battery_render(SDL_Renderer *renderer,
  * \param fontButtons Police utilisée pour les boutons.
  * \param window Fenêtre SDL.
  */
-void game_render(SDL_Renderer *renderer,
+void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
                  SDL_Window *window)
@@ -371,70 +395,46 @@ void game_render(SDL_Renderer *renderer,
  */
 
  /**/
-int main()
-{
-    SDL_Init(SDL_INIT_VIDEO);
-    TTF_Init();
-    IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
-
-    SDL_Window *window = SDL_CreateWindow("FNAF",
-                                          SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          WINDOW_WIDTH, WINDOW_HEIGHT,
-                                          SDL_WINDOW_FULLSCREEN_DESKTOP);
-
-    SDL_Renderer *renderer =
-        SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    SDL_Texture *BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
-    SDL_Texture *DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
-    SDL_Texture *DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
-    SDL_Texture *L_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_OFF_L_ON.png");
-    SDL_Texture *L_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_OFF.png");
-    SDL_Texture *L_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_ON.png");
-    SDL_Texture *R_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_OFF_L_ON.png");
-    SDL_Texture *R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
-    SDL_Texture *R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
-    SDL_Texture *MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
-    SDL_Texture *MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
-    SDL_Texture *MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
-    SDL_Texture *MONSTER_L_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O.png");
-    SDL_Texture *MONSTER_R_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_C.png");
-    SDL_Texture *MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
-    SDL_Texture *MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
-    if (!DOORS_OFF_L_OFF || !DOORS_OFF_L_ON || !L_DOOR_OFF_L_ON || !L_DOOR_ON_L_OFF || !L_DOOR_ON_L_ON || !R_DOOR_OFF_L_ON || !R_DOOR_ON_L_OFF || !R_DOOR_ON_L_ON || !MONITOR_ROOM || !MONSTER_L_DOOR_C || !MONSTER_L_DOOR_O_A || !MONSTER_L_DOOR_O || !MONSTER_R_DOOR_C || !MONSTER_R_DOOR_O_A || !MONSTER_R_DOOR_O)
-    {
-        printf("Erreur chargement background : %s\n", IMG_GetError());
-    }
-    TTF_Font *fontBattery = TTF_OpenFont("./assets/font/VCR.ttf", 32);
-    TTF_Font *fontButtons = TTF_OpenFont("./assets/font/VCR.ttf", 20);
-
-    if (!fontBattery || !fontButtons)
-    {
-        printf("Erreur chargement police\n");
-        return 1;
+void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
+    //Load Textures ( interminable )
+    if (BLACKOUT == NULL) {
+        BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
+        DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
+        DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
+        L_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_OFF_L_ON.png");
+        L_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_OFF.png");
+        L_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_ON.png");
+        R_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_OFF_L_ON.png");
+        R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
+        R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
+        MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
+        MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
+        MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
+        MONSTER_L_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O.png");
+        MONSTER_R_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_C.png");
+        MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
+        MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
     }
 
-    game_init();
-    Uint32 monsterLastMove = 0;
-
-
-    carte_t *carte = malloc(sizeof(carte_t));
-    case_t *joueur = malloc(sizeof(case_t));
-    case_t *monstre = malloc(sizeof(case_t));
-    if (!carte) 
-        return 0;
+    //Reset Logic
+    if (!carte) carte = malloc(sizeof(carte_t));
+    if (!joueur) joueur = malloc(sizeof(case_t));
+    if (!monstre) monstre = malloc(sizeof(case_t));
+    
+    battery = 100.0f;
+    porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = 0;
+    
     srand(time(NULL));
     init_carte(carte);
     init_joueur(joueur, carte);
     placement_monstre(carte, monstre);
-    int actual = -1;
-    printf("Le monstre est sur la caméra %d\n", monstre->num_camera);
 
-
-    
+    //Loop
     int running = 1;
     SDL_Event event;
     Uint32 lastTime = SDL_GetTicks();
+    Uint32 monsterLastMove = SDL_GetTicks();
+    int actual = -1;
 
     while (running)
     {
@@ -446,9 +446,9 @@ int main()
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT)
-                running = 0;
+                exit(0);
 
-            game_handleEvent(&event, window);
+            game_handleEvent(&event, window);   
         }
 
         game_update(deltaTime);
@@ -552,22 +552,23 @@ int main()
 
         SDL_RenderCopy(renderer, background, NULL, &bgRect);
 
-        game_render(renderer, fontBattery, fontButtons, window);
+        render_game(renderer, fontBattery, fontButtons, window);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-
-    TTF_CloseFont(fontBattery);
-    TTF_CloseFont(fontButtons);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_DestroyTexture(DOORS_OFF_L_OFF);
-    SDL_DestroyTexture(DOORS_OFF_L_ON);
-    detruire_carte(carte);
-    free(joueur);
-    free(monstre);
-    TTF_Quit();
-    SDL_Quit();
+    if (carte) {
+        detruire_carte(carte);
+        free(carte);
+        carte = NULL;
+    }
+    if (joueur) {
+        free(joueur);
+        joueur = NULL;
+    }
+    if (monstre) {
+        free(monstre);
+        monstre = NULL;
+    }
 }
     
