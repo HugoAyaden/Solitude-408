@@ -81,24 +81,23 @@ int main(int argc, char* argv[]) {
             if(sSound) Mix_PlayChannel(-1, sSound, 0);
         }
 
-        // Transition -> New Game
+        // Transition -> Settings
         if (trans) {
-            progress += 0.005f;
-            
-            if (progress >= 0.5f && state != next) { 
-                state = next; 
-            }
-
-            if (progress >= 1.0f) { 
+        progress += 0.005f;
+        if (progress >= 0.5f && state != next) { 
+            state = next; 
+            if (state == STATE_PLAYING) {
+                game_init(ren, win, vSmall, vSmall); 
+                state = STATE_MENU;
+                next = STATE_MENU;
                 trans = false; 
-                Mix_HaltChannel(-1); 
-
-                if (state == STATE_PLAYING) {
-                    game_init(ren, win, vSmall, vSmall); 
-                    state = STATE_MENU;
-                    next = STATE_MENU;
-                }
+                Mix_HaltChannel(-1);
             }
+        }
+        if (progress >= 1.0f) { 
+            trans = false; 
+            Mix_HaltChannel(-1); 
+        }
         }
 
         // --- 8. Rendering ---
@@ -125,7 +124,7 @@ int main(int argc, char* argv[]) {
     // --- 9. Cleanup & Shutdown ---
     cleanup_menu(); 
     cleanup_settings();
-    // game_cleanup(); 
+    game_final_cleanup();
 
     if(sSound) Mix_FreeChunk(sSound); 
     if(sTex) SDL_DestroyTexture(sTex);

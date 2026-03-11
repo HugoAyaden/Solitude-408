@@ -5,7 +5,7 @@
 
 
 /**
- * \file systeme_batterie.c
+ * \file game_core.c
  * \brief Affichage et gestion d'énergie de la batterie
  * \author Bastien LEFEVRE TAUGOURDEAU
  * \version 1.0
@@ -416,10 +416,9 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
     }
 
-    //Reset Logic
-    if (!carte) carte = malloc(sizeof(carte_t));
-    if (!joueur) joueur = malloc(sizeof(case_t));
-    if (!monstre) monstre = malloc(sizeof(case_t));
+    if (carte == NULL)   carte = malloc(sizeof(carte_t));
+    if (joueur == NULL)  joueur = malloc(sizeof(case_t));
+    if (monstre == NULL) monstre = malloc(sizeof(case_t));
     
     battery = 100.0f;
     porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = 0;
@@ -557,18 +556,20 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-    if (carte) {
-        detruire_carte(carte);
-        free(carte);
+
+}
+
+void game_final_cleanup() {
+    if (carte != NULL) {
+        detruire_carte(carte); 
         carte = NULL;
     }
-    if (joueur) {
+    if (joueur != NULL) {
         free(joueur);
         joueur = NULL;
     }
-    if (monstre) {
+    if (monstre != NULL) {
         free(monstre);
         monstre = NULL;
     }
 }
-    

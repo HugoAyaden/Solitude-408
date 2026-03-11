@@ -49,5 +49,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 void game_handleEvent(SDL_Event *event, SDL_Window *window);
 void game_update(float deltaTime);
 void render_game(SDL_Renderer *renderer, TTF_Font *fontBattery, TTF_Font *fontButtons, SDL_Window *window);
+void game_final_cleanup();
 
 #endif
