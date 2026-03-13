@@ -34,10 +34,18 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 void save_settings() {
     FILE* f = fopen("config/save.cfg", "w");
     if (f) {
-        fprintf(f, "%d %d %d %d %d %d ", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
+        fprintf(f, "%d %d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex, night);
         fclose(f);
     }
     saveNotificationTimer = SDL_GetTicks() + 1000; 
+}
+
+void save_night(int n){
+    FILE* f = fopen("config/save.cfg", "a");
+    if (f) {
+        fprintf(f, "%d", n);
+        fclose(f);
+    }
 }
 
 void load_settings() {

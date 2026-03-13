@@ -2,6 +2,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <portes.h>
+#include <MainMenu.h>
 
 
 /**
@@ -23,11 +24,12 @@ static int porteGaucheActive = 0;
 static int porteDroiteActive = 0;
 static int lumiereGaucheActive = 0;
 static int lumiereDroiteActive = 0;
-
+static int tempsDebut = 0;
 
 static carte_t *carte = NULL;
 static case_t *joueur = NULL;
 static case_t *monstre = NULL;
+static case_t *mimic = NULL;
 
 static SDL_Texture *BLACKOUT = NULL;
 static SDL_Texture *DOORS_OFF_L_OFF = NULL;
@@ -88,14 +90,6 @@ static void drawButton(SDL_Renderer *renderer, TTF_Font *font,
 
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);
-}
-
-void save_night(int n){
-    FILE* f = fopen("config/night.cfg", "a");
-    if (f) {
-        fprintf(f, "%d", n);
-        fclose(f);
-    }
 }
 
 /**
@@ -426,6 +420,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     if (carte == NULL)   carte = malloc(sizeof(carte_t));
     if (joueur == NULL)  joueur = malloc(sizeof(case_t));
     if (monstre == NULL) monstre = malloc(sizeof(case_t));
+
     
     battery = 100.0f;
     porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = 0;
@@ -440,10 +435,17 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     Uint32 monsterLastMove = SDL_GetTicks();
     int actual = -1;
 
-    int night = 0;
+    load_settings();
 
-    while (!fin(carte, monstre))
-    {
+    if(night >= 3){
+        case_t *mimic = malloc(sizeof(case_t));
+        placement_mimic(carte, mimic);
+    }
+    else
+        mimic = NULL;
+    
+
+    while (!fin(carte, monstre)){
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monstre avant chaque déplacement
         float deltaTime = (currentTime - lastTime) / 1000.0f;
@@ -481,10 +483,12 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
                 else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
                     placement_monstre(carte, monstre);
                 }
+
+                //Chaque nuit a sa difficulté d'IA
                 switch(night){
                     case 0:
-                        if(chance_deplacement() < 5) {
-                            placement_monstre(carte, monstre);
+                        if(chance_deplacement() < 10) {
+                            movement_opportunity(carte, monstre, monstre->num_camera % FIN_Y, monstre->num_camera / FIN_Y);
                         }
                         break;
                     case 1:
@@ -496,10 +500,26 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
                                                 monstre->num_camera % FIN_Y,
                                                 monstre->num_camera / FIN_Y);
                         }
+                    case 3:
+                        if(chance_deplacement() < 1) {
+                            move_monster(carte, monstre, joueur);
+                        }
+                        else{
+                            movement_opportunity(carte, monstre,
+                                                monstre->num_camera % FIN_Y,
+                                                monstre->num_camera / FIN_Y);
+                        }
+                        mouvement_mimic(carte, mimic);
                     }
-
+            printf("nuit %d\n", night);
             printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
             printf("portes fermees %d\n", actual);
+            tempsDebut = SDL_GetTicks();
+     if(tempsDebut != 0){
+        Uint32 tempsFin = SDL_GetTicks() +60000*6; // Simule une partie de 6 minutes
+        Uint32 duree = (tempsFin - tempsDebut) / 1000; // Durée en secondes
+        printf("Durée de la partie : %u secondes\n", duree);
+    }
         }
         /*==============================================*/
         if(change == 1){
@@ -573,10 +593,11 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
+    night++;
 
 }
 
-void game_final_cleanup() {
+void game_final_cleanup(){
     if (carte != NULL) {
         detruire_carte(carte); 
         carte = NULL;
@@ -588,5 +609,9 @@ void game_final_cleanup() {
     if (monstre != NULL) {
         free(monstre);
         monstre = NULL;
+    }
+    if (mimic != NULL) {
+        free(mimic);
+        mimic = NULL;
     }
 }

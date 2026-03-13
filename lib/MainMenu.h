@@ -23,12 +23,14 @@ typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuB
 typedef enum { STATE_MENU, STATE_SETTINGS, STATE_PLAYING } GameState;
 
 // Global Settings Variables from save.cfg
-extern int masterVol, musicVol, brightness, mouseSens;
+extern int masterVol, musicVol, brightness, mouseSens, night;
 extern int screenModeIndex; 
 extern int resIndex; 
 
 void load_settings();
 void save_settings();
+int get_night();
+void save_night(int n);
 void draw_brightness_overlay(SDL_Renderer* ren, int sw, int sh);
 int render_settings(SDL_Renderer* ren, TTF_Font* font); 
 void cleanup_settings();

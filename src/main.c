@@ -10,7 +10,16 @@ int main(int argc, char* argv[]) {
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
-    load_settings(); 
+    FILE *f = fopen("config/save.cfg", "r");
+    //Si le fichier des paramètres n'existe pas
+    if(!f){
+        //on le crée et on écrit les paramètres par défaut
+
+        save_settings();
+    } else {
+        //Sinon on y touche pas
+        load_settings();
+    }
 
     // --- 2. Window & Resolution Setup ---
     int w = 1920, h = 1080;
