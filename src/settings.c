@@ -15,7 +15,7 @@
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 
 int resIndex = 2; 
-int night = 0;
+int night = -1;
 
 // Local Settings Variables
 static Mix_Chunk* sGlitch = NULL;
@@ -34,27 +34,36 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 void save_settings() {
     FILE* f = fopen("config/save.cfg", "w");
     if (f) {
-        fprintf(f, "%d %d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex, night);
+        fprintf(f, "%d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
         fclose(f);
     }
     saveNotificationTimer = SDL_GetTicks() + 1000; 
 }
 
-void save_night(int n){
-    FILE* f = fopen("config/save.cfg", "a");
-    if (f) {
-        fprintf(f, "%d", n);
-        fclose(f);
-    }
-}
 
 void load_settings() {
     FILE* f = fopen("config/save.cfg", "r");
     if (f) {
-        if (fscanf(f, "%d %d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex, &night) == 7) {
+        if (fscanf(f, "%d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
             Mix_Volume(-1, (masterVol * MIX_MAX_VOLUME) / 100);
             Mix_VolumeMusic((musicVol * MIX_MAX_VOLUME) / 100);
         }
+        fclose(f);
+    }
+}
+
+void save_night(int night){
+    FILE* w = fopen("config/night.cfg", "w");
+    if(w){
+        fprintf(w, "%i", night);
+        fclose(w);
+    }
+}
+
+void load_night(){
+    FILE* f = fopen("config/night.cfg", "r");
+    if (f) {
+        fscanf(f, "%i", &night); 
         fclose(f);
     }
 }

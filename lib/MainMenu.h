@@ -29,7 +29,8 @@ extern int resIndex;
 
 void load_settings();
 void save_settings();
-int get_night();
+void load_night();
+void save_night(int night);
 void save_night(int n);
 void draw_brightness_overlay(SDL_Renderer* ren, int sw, int sh);
 int render_settings(SDL_Renderer* ren, TTF_Font* font); 
