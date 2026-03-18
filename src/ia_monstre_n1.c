@@ -31,7 +31,6 @@ void placement_monstre(carte_t *carte, case_t *monstre){
     }
     printf("monstre x = %d\n", x);
     *monstre = carte->cases[x][y];
-    monstre->moove_cooldown = 5.0f;
 }
 
 
