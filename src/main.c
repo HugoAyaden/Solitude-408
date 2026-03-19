@@ -70,12 +70,20 @@ int main(int argc, char* argv[]) {
                 if (c == 0) {
                     trans = true; 
                     progress = 0.0f; 
-                    next = STATE_PLAYING; 
+                    next = STATE_NEW_GAME; 
+                    if(sSound) Mix_PlayChannel(-1, sSound, 0); 
+                }
+                // CONTINUE
+                 if (c == 1) {
+                    trans = true; 
+                    progress = 0.0f; 
+                    next = STATE_CONTINUE; 
                     if(sSound) Mix_PlayChannel(-1, sSound, 0); 
                 }
                 // SETTINGS
                 if (c == 2) { 
-                    trans = true; progress = 0.0f; next = STATE_SETTINGS; 
+                    trans = true; progress = 0.0f; 
+                    next = STATE_SETTINGS; 
                     if(sSound) Mix_PlayChannel(-1, sSound, 0); 
                 }
                 // EXIT
@@ -90,23 +98,36 @@ int main(int argc, char* argv[]) {
             if(sSound) Mix_PlayChannel(-1, sSound, 0);
         }
 
-        // Transition -> Settings
-        if (trans) {
-        progress += 0.005f;
+        // Transition -> New Game
+        if (trans && next == STATE_NEW_GAME) {
+            progress += 0.005f;
         if (progress >= 0.5f && state != next) { 
-            state = next; 
-            if (state == STATE_PLAYING) {
+                save_night(0);
                 game_init(ren, win, vSmall, vSmall); 
                 state = STATE_MENU;
                 next = STATE_MENU;
                 trans = false; 
                 Mix_HaltChannel(-1);
+        }
+            if (progress >= 1.0f) { 
+                trans = false; 
+                Mix_HaltChannel(-1); 
             }
         }
-        if (progress >= 1.0f) { 
-            trans = false; 
-            Mix_HaltChannel(-1); 
+         // Transition -> Continue
+        if (trans && next == STATE_CONTINUE) {
+        progress += 0.005f;
+        if (progress >= 0.5f && state != next) { 
+                game_init(ren, win, vSmall, vSmall); 
+                state = STATE_MENU;
+                next = STATE_MENU;
+                trans = false; 
+                Mix_HaltChannel(-1);
         }
+            if (progress >= 1.0f) { 
+                trans = false; 
+                Mix_HaltChannel(-1); 
+            }
         }
 
         // --- 8. Rendering ---

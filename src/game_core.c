@@ -28,6 +28,8 @@ static int lumiereDroiteActive = 0;
 static int tempsDebut = 0;
 static int tempsFin = 0;
 static int change = 1;
+static float finish = 0.0f;
+static int duree = 0;
 
 static carte_t *carte = NULL;
 static case_t *joueur = NULL;
@@ -547,8 +549,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     int pipipou = 0;
     tempsDebut = SDL_GetTicks();
     tempsFin = SDL_GetTicks() + 10000;
-    int duree = 0;
-    while (!fin(carte, monstre) || duree == tempsFin){
+    finish = (tempsFin-duree);
+    while (!fin(carte, monstre) && finish >= 0){
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monstre avant chaque déplacement
         float deltaTime = (currentTime - lastTime) / 1000.0f;
@@ -593,7 +595,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
             printf("portes fermees %d\n", actual);
             duree = SDL_GetTicks();
-            printf("Temps ecoule : %d\n", duree-tempsFin);
+            finish = (tempsFin-duree)+deltaTime*1000;
+            printf("Temps ecoule : %2.f\n", finish);
         }
         /*==============================================*/
         if(change == VRAI){
@@ -625,9 +628,9 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-    if(pipipou){
-    night++;
-    save_night(night);
+    if(finish <=0 && !fin(carte, monstre)){
+        night++;
+        save_night(night);
     }
 }
 

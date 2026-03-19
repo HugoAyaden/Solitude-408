@@ -20,7 +20,7 @@
 #include <stdlib.h>
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
-typedef enum { STATE_MENU, STATE_SETTINGS, STATE_PLAYING } GameState;
+typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE} GameState;
 
 // Global Settings Variables from save.cfg
 extern int masterVol, musicVol, brightness, mouseSens, night;
