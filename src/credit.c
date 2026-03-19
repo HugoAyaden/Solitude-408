@@ -3,7 +3,30 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 
+/**
+ * \file credit.c
+ * \brief Affichage des credits
+ * \author Bastien LEFEVRE TAUGOURDEAU
+ * \version 1.0
+ * \date 19/03/2026
+ *
+ */
 
+/**
+ * \brief Affiche les crédits du jeu avec un défilement vertical.
+ *
+ * Cette fonction affiche un écran de crédits avec un effet de
+ * défilement du texte du bas vers le haut, similaire à celui
+ * des films (style Star Wars). Un fond d'écran est affiché en
+ * arrière-plan et certaines lignes peuvent être mises en valeur
+ * avec une taille de police différente.
+ *
+ * L'affichage s'arrête lorsque tous les crédits sont sortis de
+ * l'écran.
+ *
+ * \param renderer Le renderer SDL utilisé pour le rendu graphique.
+ * \param window La fenêtre SDL utilisée pour récupérer la taille d'affichage.
+ */
 void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
 {
     TTF_Font *fontTitre = TTF_OpenFont("./assets/font/VCR.ttf", 100);
@@ -12,7 +35,7 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
     if (!fontTexte || !fontTitre || !fontSousTitre)
     {
         printf("Erreur police\n");
-        return ;
+        return;
     }
     int width, height;
     SDL_GetWindowSize(window, &width, &height);
@@ -30,10 +53,10 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
         "Solitude408",
         " ",
         " ",
-        "Projet de L2 informatique 2025-2026",
+        "L2 Computer Science Project 2025-2026",
         " ",
         " ",
-        "Developpeur :",
+        "Developers:",
         " ",
         "Louay AMARA",
         "Hugo AYADEN",
@@ -41,24 +64,25 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
         "Bastien LEFEVRE TAUGOURDEAU",
         " ",
         " ",
-        "Outils utilisés :",
+        "Tools Used:",
         " ",
-        "SDL2 (fenêtre du jeu)",
+        "SDL2 (game window)",
         "SDL2_image",
         "SDL2_ttf",
-        "Compilateur GCC",
-        "Langage C",
-        "Gimp (images)",
-        "Audacity (sons)",
+        "GCC Compiler",
+        "C Language",
+        "GIMP (images)",
+        "Audacity (sounds)",
+        "Blender (3D)",
         " ",
         " ",
-        "Musique :",
-        "A definir",
+        "Music:",
+        "To be defined",
         " ",
-        "Merci d'avoir joue !",
+        "Thanks for playing!",
         NULL};
 
-    SDL_Color color = {147, 112, 219, 255}; //purple pour respecter la DA 
+    SDL_Color color = {147, 112, 219, 255}; // purple pour respecter la DA
 
     int y = height;
     int quit = 0;
@@ -83,11 +107,11 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
 
             if (strcmp(credits[i], "Solitude408") == 0)
                 currentFont = fontTitre;
-            if (strcmp(credits[i], "Developpeur :") == 0)
+            if (strcmp(credits[i], "Developers:") == 0)
                 currentFont = fontSousTitre;
-            if (strcmp(credits[i],  "Outils utilisés :") == 0)
+            if (strcmp(credits[i], "Tools Used:") == 0)
                 currentFont = fontSousTitre;
-            if (strcmp(credits[i],  "Projet de L2 informatique 2025-2026") == 0)
+            if (strcmp(credits[i], "L2 Computer Science Project 2025-2026") == 0)
                 currentFont = fontSousTitre;
 
             SDL_Surface *surface = TTF_RenderText_Solid(currentFont, credits[i], color);
@@ -122,9 +146,6 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
     TTF_CloseFont(fontTitre);
 }
 
-// ==========================
-// MAIN DE TEST
-// ==========================
 int main()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -144,8 +165,7 @@ int main()
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-
-    afficher_credits(renderer, window); // la fonction à appeller 
+    afficher_credits(renderer, window); // la fonction à appeller
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
