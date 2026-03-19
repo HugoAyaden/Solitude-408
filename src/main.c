@@ -1,16 +1,22 @@
 #include <MainMenu.h>
 #include <stdio.h>
 
+static int w = 1920;
+static int h = 1080;
 
 static int run = true, trans = false;
 static float progress = 0.0f;
+static GameState state = STATE_MENU, next = STATE_MENU;
 
 void transition() {
-                trans = true; 
-                progress += 0.05f;
-                if (progress >= 0.5f ){
-                    trans = false;
-                }
+    if (trans) {
+        progress += 0.005f;
+        if (progress >= 0.5f && state != next) {
+            state = next;
+            trans  = false;
+            progress = 0.0f;
+        }
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -34,7 +40,6 @@ int main(int argc, char* argv[]) {
     }
 
     // --- 2. Window & Resolution Setup ---
-    int w = 1920, h = 1080;
     if (resIndex == 0)      { w = 3840; h = 2160; }
     else if (resIndex == 1) { w = 2560; h = 1440; }
     else if (resIndex == 3) { w = 1440; h = 900; }
@@ -77,27 +82,28 @@ int main(int argc, char* argv[]) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
 
                 // NEW GAME
-                if (c == 0) {
+                if (c == NEW_GAME) {
                     trans = true; 
                     progress = 0.0f; 
                     next = STATE_NEW_GAME; 
                     if(sSound) Mix_PlayChannel(-1, sSound, 0); 
                 }
                 // CONTINUE
-                 if (c == 1) {
+                 if (c == LOAD_GAME) {
                     trans = true; 
                     progress = 0.0f; 
                     next = STATE_CONTINUE; 
                     if(sSound) Mix_PlayChannel(-1, sSound, 0); 
                 }
                 // SETTINGS
-                if (c == 2) { 
-                    trans = true; progress = 0.0f; 
+                if (c == SETTINGS) { 
+                    trans = true; 
+                    progress = 0.0f; 
                     next = STATE_SETTINGS; 
                     if(sSound) Mix_PlayChannel(-1, sSound, 0); 
                 }
                 // EXIT
-                if (c == 4) run = false; 
+                if (c == EXIT_GAME) run = false; 
             }
 
         }
@@ -113,24 +119,16 @@ int main(int argc, char* argv[]) {
                 trans = false; 
                 Mix_HaltChannel(-1);
         }
-            if (progress >= 1.0f) { 
-                trans = false; 
-                Mix_HaltChannel(-1); 
-            }
         }
          // Transition -> Continue
         if (trans && next == STATE_CONTINUE) {
-        progress += 0.005f;
-        if (progress >= 0.5f && state != next) { 
+            progress += 0.005f;
+            if (progress >= 0.5f && state != next) { 
                 game_init(ren, win, vSmall, vSmall); 
                 state = STATE_MENU;
                 next = STATE_MENU;
                 trans = false; 
                 Mix_HaltChannel(-1);
-        }
-            if (progress >= 1.0f) { 
-                trans = false; 
-                Mix_HaltChannel(-1); 
             }
         }
 
@@ -139,9 +137,17 @@ int main(int argc, char* argv[]) {
             progress += 0.005f;
             if (progress >= 0.5f && state != next) { 
                 state = next;
-                render_settings(ren, vSmall);
-                trans = false; 
                 next = STATE_MENU;
+                trans = false; 
+            }
+        }
+
+        if (next == STATE_MENU && trans) {
+            progress += 0.005f;
+            if (progress >= 0.5f && state != next) { 
+                state = next;
+                next = STATE_MENU;
+                trans = false; 
             }
         }
 
@@ -153,12 +159,14 @@ int main(int argc, char* argv[]) {
             render_menu(ren);
         } 
         else if (state == STATE_SETTINGS) {
-            render_settings(ren, vSmall);
-            if(render_settings(ren, vSmall) == 1){
-                transition();
-                state = STATE_MENU;
+        int r = render_settings(ren, vSmall);
+            if (r == 1 && !trans) {
+                next = STATE_MENU;
+                trans = true;
+                progress = 0.0f;
             }
-        } 
+        }
+
 
         // Overlay static effect during transition
         if (trans) run_transition(ren, sTex, progress);

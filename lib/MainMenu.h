@@ -13,6 +13,12 @@
 #define true 1
 #define false 0
 
+#define NEW_GAME 0
+#define LOAD_GAME 1
+#define SETTINGS 2
+#define CREDITS 3
+#define EXIT_GAME 4
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -21,6 +27,7 @@
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
 typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE} GameState;
+
 
 // Global Settings Variables from save.cfg
 extern int masterVol, musicVol, brightness, mouseSens, night;

@@ -558,7 +558,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         placement_mimic(carte, mimic);
     }
     
-    int pipipou = 0;
     tempsDebut = SDL_GetTicks();
     tempsFin = SDL_GetTicks() + 10000;
     finish = (tempsFin-duree);
@@ -607,7 +606,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
             printf("portes fermees %d\n", actual);
             duree = SDL_GetTicks();
-            finish = (tempsFin-duree)+deltaTime*1000;
+            finish = (tempsFin-duree)+deltaTime;
             printf("Temps ecoule : %2.f\n", finish);
         }
         /*==============================================*/
