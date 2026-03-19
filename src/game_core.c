@@ -17,6 +17,7 @@
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 #define ERROR -1
+#define MAX_NIGHT 2
 
 const Uint32 monsterMoveDelay = 1000; // Temps avant chaque déplacement du monstre en millisecondes (1000 ms = 1 s)
 
@@ -450,6 +451,15 @@ void affichage(){
 
 }
 
+/**
+ * \brief Gère la difficulté du jeu en fonction de la nuit actuelle.
+ *
+ * En fonction de la nuit, le monstre peut se déplacer plus ou moins fréquemment,
+ * et le mimic peut être activé à partir de la nuit 2.
+ *
+ * \param night Numéro de la nuit actuelle (0, 1 ou 2).
+ */
+
 void difficulte(int night){
     switch(night){
         case 0:
@@ -470,7 +480,7 @@ void difficulte(int night){
             }
             break;
         case 2:
-            if(chance_deplacement() < 1) {
+            if(chance_deplacement() < 10) {
                 move_monster(carte, monstre, joueur);
             }
             else{
@@ -479,6 +489,8 @@ void difficulte(int night){
                                     monstre->num_camera / FIN_Y);
             }
             mouvement_mimic(carte, mimic);
+            break;
+        default:
             break;
     }
 }
@@ -492,8 +504,6 @@ void difficulte(int night){
  *
  * \return Code de retour du programme.
  */
-
- /**/
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
     //Load Textures ( interminable )
     if (BLACKOUT == NULL) {
@@ -518,7 +528,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     if (carte == NULL)   carte = malloc(sizeof(carte_t));
     if (joueur == NULL)  joueur = malloc(sizeof(case_t));
     if (monstre == NULL) monstre = malloc(sizeof(case_t));
-
+    if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
     battery = 100.0f;
     porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = 0;
@@ -535,16 +545,18 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     
     load_night();
     load_settings();
-    if(night == ERROR || night >=3 /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
+    if(night == ERROR){
         save_night(0);
         load_night();
     }
-    if(night >= 2){
-        case_t *mimic = malloc(sizeof(case_t));
+    if(night >=MAX_NIGHT+1 /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
+        night = 2;
+        save_night(night);
+        load_night();
+    }
+    if(night >= MAX_NIGHT){
         placement_mimic(carte, mimic);
     }
-    else
-        mimic = NULL;
     
     int pipipou = 0;
     tempsDebut = SDL_GetTicks();

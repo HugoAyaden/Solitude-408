@@ -92,12 +92,6 @@ int main(int argc, char* argv[]) {
 
         }
 
-        // Transition -> Settings
-        if (state == STATE_SETTINGS && !trans && render_settings(ren, vSmall) == 1) {
-            trans = true; progress = 0.0f; next = STATE_MENU; 
-            if(sSound) Mix_PlayChannel(-1, sSound, 0);
-        }
-
         // Transition -> New Game
         if (trans && next == STATE_NEW_GAME) {
             progress += 0.005f;
@@ -127,6 +121,19 @@ int main(int argc, char* argv[]) {
             if (progress >= 1.0f) { 
                 trans = false; 
                 Mix_HaltChannel(-1); 
+            }
+        }
+
+        // Transition -> Settings
+        if (next == STATE_SETTINGS && trans) {
+            progress += 0.005f;
+            if (progress >= 0.5f && state != next) { 
+                render_settings(ren, vSmall)==1;
+                trans = false; 
+                state = next;
+                next = STATE_MENU; 
+            if(sSound) 
+                Mix_PlayChannel(-1, sSound, 0);
             }
         }
 
