@@ -366,6 +366,7 @@ void game_render(SDL_Renderer *renderer,
  *
  * \return Code de retour du programme.
  */
+/*
 int main()
 {
     SDL_Init(SDL_INIT_VIDEO);
@@ -447,3 +448,4 @@ int main()
     TTF_Quit();
     SDL_Quit();
 }
+*/
