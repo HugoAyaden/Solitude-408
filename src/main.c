@@ -1,6 +1,18 @@
 #include <MainMenu.h>
 #include <stdio.h>
 
+
+static int run = true, trans = false;
+static float progress = 0.0f;
+
+void transition() {
+                trans = true; 
+                progress += 0.05f;
+                if (progress >= 0.5f ){
+                    trans = false;
+                }
+}
+
 int main(int argc, char* argv[]) {
     (void)argc; (void)argv; 
 
@@ -51,8 +63,6 @@ int main(int argc, char* argv[]) {
 
     // --- 4. Main Game Loop Variables ---
     GameState state = STATE_MENU, next = STATE_MENU;
-    int run = true, trans = false;
-    float progress = 0.0f;
     SDL_Event e;
 
     while (run) {
@@ -128,14 +138,13 @@ int main(int argc, char* argv[]) {
         if (next == STATE_SETTINGS && trans) {
             progress += 0.005f;
             if (progress >= 0.5f && state != next) { 
-                render_settings(ren, vSmall)==1;
-                trans = false; 
                 state = next;
-                next = STATE_MENU; 
-            if(sSound) 
-                Mix_PlayChannel(-1, sSound, 0);
+                render_settings(ren, vSmall);
+                trans = false; 
+                next = STATE_MENU;
             }
         }
+
 
         // --- 8. Rendering ---
         SDL_RenderClear(ren);
@@ -145,6 +154,10 @@ int main(int argc, char* argv[]) {
         } 
         else if (state == STATE_SETTINGS) {
             render_settings(ren, vSmall);
+            if(render_settings(ren, vSmall) == 1){
+                transition();
+                state = STATE_MENU;
+            }
         } 
 
         // Overlay static effect during transition

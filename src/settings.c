@@ -11,11 +11,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+#define BACK 1
+
 // Global Settings Variables
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 
 int resIndex = 2; 
 int night = -1;
+static int overBack = 0;
+static int justClicked = 0;
+static int mPressed = 0;
+static int isLeftDown = 0;
 
 // Local Settings Variables
 static Mix_Chunk* sGlitch = NULL;
@@ -192,6 +199,7 @@ void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, int vis
     SDL_RenderFillRect(ren, &brH); SDL_RenderFillRect(ren, &brV);
 }
 
+
 // --- Main Render Function ---
 
 int render_settings(SDL_Renderer* ren, TTF_Font* font) {
@@ -352,8 +360,8 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     else SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &sBtn); draw_centered_text(ren, font, "SAVE", sBtn);
 
-    int overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
-    if (overBack && justClicked) { mPressed = isLeftDown; return 1; } 
+    overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
+    if(overBack && isLeftDown) { mPressed = isLeftDown;  return BACK; }
     SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &bBtn); draw_centered_text(ren, font, "BACK", bBtn);
 
