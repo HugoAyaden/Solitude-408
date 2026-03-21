@@ -41,7 +41,7 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 void save_settings() {
     FILE* f = fopen("config/save.cfg", "w");
     if (f) {
-        fprintf(f, "%d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
+        fprintf(f, "Overall volume : [%d]\nMusic volume : [%d]\nBrightness : [%d]\nMouse sensitivity : [%d]\nScreen mode : [%d]\nResolution : [%d]", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
         fclose(f);
     }
     saveNotificationTimer = SDL_GetTicks() + 1000; 
@@ -51,7 +51,7 @@ void save_settings() {
 void load_settings() {
     FILE* f = fopen("config/save.cfg", "r");
     if (f) {
-        if (fscanf(f, "%d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
+        if (fscanf(f, "Overall volume : [%d]\nMusic volume : [%d]\nBrightness : [%d]\nMouse sensitivity : [%d]\nScreen mode : [%d]\nResolution : [%d]", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
             Mix_Volume(-1, (masterVol * MIX_MAX_VOLUME) / 100);
             Mix_VolumeMusic((musicVol * MIX_MAX_VOLUME) / 100);
         }
