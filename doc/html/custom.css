@@ -1,0 +1,9 @@
+#projectlogo img {
+    width: 80px;   /* ajuste comme tu veux */
+    height: auto;
+}
+
+#projecticon img {
+    width: 32px;   /* pour l’icône dans les onglets */
+    height: auto;
+}

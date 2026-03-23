@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Solitude 408: Référence du fichier /info/etu/l2info/l2403524/Documents/L2/Projet/projet-L2-fnaf/src/systeme_batterie.c</title>
+<link rel="icon" href="icon.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Solitude 408
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('systeme__batterie_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier systeme_batterie.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Affichage et gestion d'énergie de la batterie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a498d9f026138406895e9a34b504ac6a6" id="r_a498d9f026138406895e9a34b504ac6a6"><td class="memItemLeft" align="right" valign="top"><a id="a498d9f026138406895e9a34b504ac6a6" name="a498d9f026138406895e9a34b504ac6a6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WINDOW_WIDTH</b>&#160;&#160;&#160;800</td></tr>
+<tr class="memitem:a5473cf64fa979b48335079c99532e243" id="r_a5473cf64fa979b48335079c99532e243"><td class="memItemLeft" align="right" valign="top"><a id="a5473cf64fa979b48335079c99532e243" name="a5473cf64fa979b48335079c99532e243"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WINDOW_HEIGHT</b>&#160;&#160;&#160;600</td></tr>
+<tr class="memitem:aa81e4f1d5d86b03a0ddd00b8945b6180" id="r_aa81e4f1d5d86b03a0ddd00b8945b6180"><td class="memItemLeft" align="right" valign="top"><a id="aa81e4f1d5d86b03a0ddd00b8945b6180" name="aa81e4f1d5d86b03a0ddd00b8945b6180"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BATTERY_DURATION</b>&#160;&#160;&#160;420.0f</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae173cfd5e6f9b80bb7d680cbca8851fd" id="r_ae173cfd5e6f9b80bb7d680cbca8851fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae173cfd5e6f9b80bb7d680cbca8851fd">buttons_init</a> ()</td></tr>
+<tr class="memdesc:ae173cfd5e6f9b80bb7d680cbca8851fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'état des boutons.  <br /></td></tr>
+<tr class="memitem:a0e70c6daabf773b151cbb268eb46a9cb" id="r_a0e70c6daabf773b151cbb268eb46a9cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e70c6daabf773b151cbb268eb46a9cb">buttons_handleEvent</a> (SDL_Event *event, SDL_Window *window)</td></tr>
+<tr class="memdesc:a0e70c6daabf773b151cbb268eb46a9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les événements liés aux boutons.  <br /></td></tr>
+<tr class="memitem:a90427cccca7828179c877865c1caeb60" id="r_a90427cccca7828179c877865c1caeb60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90427cccca7828179c877865c1caeb60">buttons_render</a> (SDL_Renderer *renderer, TTF_Font *font, int windowW, int windowH)</td></tr>
+<tr class="memdesc:a90427cccca7828179c877865c1caeb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche tous les boutons de contrôle.  <br /></td></tr>
+<tr class="memitem:a5801bd126b77810d4a368ed379e52f45" id="r_a5801bd126b77810d4a368ed379e52f45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5801bd126b77810d4a368ed379e52f45">buttons_getDoorCount</a> ()</td></tr>
+<tr class="memdesc:a5801bd126b77810d4a368ed379e52f45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de portes activées.  <br /></td></tr>
+<tr class="memitem:ad95aa2a7f38e49f6a87c0b86fb68eb60" id="r_ad95aa2a7f38e49f6a87c0b86fb68eb60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95aa2a7f38e49f6a87c0b86fb68eb60">buttons_getLightCount</a> ()</td></tr>
+<tr class="memdesc:ad95aa2a7f38e49f6a87c0b86fb68eb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de lumières activées.  <br /></td></tr>
+<tr class="memitem:a72d7f388880cd9e6e0d3265f1a8e8b9a" id="r_a72d7f388880cd9e6e0d3265f1a8e8b9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d7f388880cd9e6e0d3265f1a8e8b9a">game_handleEvent</a> (SDL_Event *event, SDL_Window *window)</td></tr>
+<tr class="memdesc:a72d7f388880cd9e6e0d3265f1a8e8b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestion globale des événements du jeu.  <br /></td></tr>
+<tr class="memitem:a2f3df884c90a301efb19f9575fe9231d" id="r_a2f3df884c90a301efb19f9575fe9231d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f3df884c90a301efb19f9575fe9231d">battery_init</a> ()</td></tr>
+<tr class="memdesc:a2f3df884c90a301efb19f9575fe9231d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la batterie du joueur.  <br /></td></tr>
+<tr class="memitem:a5f5ccbe5abfdef24c8378dc3cf32ffb3" id="r_a5f5ccbe5abfdef24c8378dc3cf32ffb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f5ccbe5abfdef24c8378dc3cf32ffb3">game_init</a> ()</td></tr>
+<tr class="memdesc:a5f5ccbe5abfdef24c8378dc3cf32ffb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les systèmes principaux du jeu.  <br /></td></tr>
+<tr class="memitem:ac8fa856ac0b9c565af7704385f4ea2bc" id="r_ac8fa856ac0b9c565af7704385f4ea2bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8fa856ac0b9c565af7704385f4ea2bc">battery_update</a> (float deltaTime, int doorCount, int lightCount)</td></tr>
+<tr class="memdesc:ac8fa856ac0b9c565af7704385f4ea2bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le niveau de batterie.  <br /></td></tr>
+<tr class="memitem:a2e92cf75e55e8f85782db6220f2acecf" id="r_a2e92cf75e55e8f85782db6220f2acecf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e92cf75e55e8f85782db6220f2acecf">game_update</a> (float deltaTime)</td></tr>
+<tr class="memdesc:a2e92cf75e55e8f85782db6220f2acecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la logique du jeu.  <br /></td></tr>
+<tr class="memitem:a96064741375779b0a0f13379c81981f5" id="r_a96064741375779b0a0f13379c81981f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96064741375779b0a0f13379c81981f5">battery_render</a> (SDL_Renderer *renderer, TTF_Font *font, int windowW, int windowH)</td></tr>
+<tr class="memdesc:a96064741375779b0a0f13379c81981f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la barre de batterie à l'écran.  <br /></td></tr>
+<tr class="memitem:a929f69906b4b84f73575a8a5a04ecce9" id="r_a929f69906b4b84f73575a8a5a04ecce9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a929f69906b4b84f73575a8a5a04ecce9">game_render</a> (SDL_Renderer *renderer, TTF_Font *fontBattery, TTF_Font *fontButtons, SDL_Window *window)</td></tr>
+<tr class="memdesc:a929f69906b4b84f73575a8a5a04ecce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche tous les éléments du jeu.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Affichage et gestion d'énergie de la batterie. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Bastien LEFEVRE TAUGOURDEAU </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10/03/2026 </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a2f3df884c90a301efb19f9575fe9231d" name="a2f3df884c90a301efb19f9575fe9231d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f3df884c90a301efb19f9575fe9231d">&#9670;&#160;</a></span>battery_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void battery_init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la batterie du joueur. </p>
+<p>La batterie commence toujours à 100%. </p>
+
+</div>
+</div>
+<a id="a96064741375779b0a0f13379c81981f5" name="a96064741375779b0a0f13379c81981f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96064741375779b0a0f13379c81981f5">&#9670;&#160;</a></span>battery_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void battery_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowW</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowH</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la barre de batterie à l'écran. </p>
+<p>Dessine une barre de batterie avec une couleur variant du vert au rouge selon le niveau restant.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour dessiner. </td></tr>
+    <tr><td class="paramname">font</td><td>Police utilisée pour afficher le pourcentage. </td></tr>
+    <tr><td class="paramname">windowW</td><td>Largeur de la fenêtre. </td></tr>
+    <tr><td class="paramname">windowH</td><td>Hauteur de la fenêtre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac8fa856ac0b9c565af7704385f4ea2bc" name="ac8fa856ac0b9c565af7704385f4ea2bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8fa856ac0b9c565af7704385f4ea2bc">&#9670;&#160;</a></span>battery_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void battery_update </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>deltaTime</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>doorCount</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lightCount</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour le niveau de batterie. </p>
+<p>La consommation dépend du nombre de portes fermées et de lumières activées.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Temps écoulé depuis la dernière frame. </td></tr>
+    <tr><td class="paramname">doorCount</td><td>Nombre de portes fermées. </td></tr>
+    <tr><td class="paramname">lightCount</td><td>Nombre de lumières allumées. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5801bd126b77810d4a368ed379e52f45" name="a5801bd126b77810d4a368ed379e52f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5801bd126b77810d4a368ed379e52f45">&#9670;&#160;</a></span>buttons_getDoorCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int buttons_getDoorCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de portes activées. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de portes actuellement fermées. </dd></dl>
+
+</div>
+</div>
+<a id="ad95aa2a7f38e49f6a87c0b86fb68eb60" name="ad95aa2a7f38e49f6a87c0b86fb68eb60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95aa2a7f38e49f6a87c0b86fb68eb60">&#9670;&#160;</a></span>buttons_getLightCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int buttons_getLightCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de lumières activées. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de lumières actuellement allumées. </dd></dl>
+
+</div>
+</div>
+<a id="a0e70c6daabf773b151cbb268eb46a9cb" name="a0e70c6daabf773b151cbb268eb46a9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e70c6daabf773b151cbb268eb46a9cb">&#9670;&#160;</a></span>buttons_handleEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void buttons_handleEvent </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *</td>          <td class="paramname"><span class="paramname"><em>window</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les événements liés aux boutons. </p>
+<p>Cette fonction détecte les clics de souris et active ou désactive les boutons correspondants (portes et lumières).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>Événement SDL reçu. </td></tr>
+    <tr><td class="paramname">window</td><td>Fenêtre SDL utilisée pour récupérer la taille. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae173cfd5e6f9b80bb7d680cbca8851fd" name="ae173cfd5e6f9b80bb7d680cbca8851fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae173cfd5e6f9b80bb7d680cbca8851fd">&#9670;&#160;</a></span>buttons_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void buttons_init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise l'état des boutons. </p>
+<p>Tous les boutons (portes et lumières) sont désactivés au lancement du jeu. </p>
+
+</div>
+</div>
+<a id="a90427cccca7828179c877865c1caeb60" name="a90427cccca7828179c877865c1caeb60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90427cccca7828179c877865c1caeb60">&#9670;&#160;</a></span>buttons_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void buttons_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowW</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>windowH</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche tous les boutons de contrôle. </p>
+<p>Dessine les boutons des portes et des lumières sur les côtés gauche et droit de l'écran.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL utilisé pour le dessin. </td></tr>
+    <tr><td class="paramname">font</td><td>Police utilisée pour les labels des boutons. </td></tr>
+    <tr><td class="paramname">windowW</td><td>Largeur de la fenêtre. </td></tr>
+    <tr><td class="paramname">windowH</td><td>Hauteur de la fenêtre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72d7f388880cd9e6e0d3265f1a8e8b9a" name="a72d7f388880cd9e6e0d3265f1a8e8b9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d7f388880cd9e6e0d3265f1a8e8b9a">&#9670;&#160;</a></span>game_handleEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_handleEvent </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *</td>          <td class="paramname"><span class="paramname"><em>window</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestion globale des événements du jeu. </p>
+<p>Transmet les événements SDL aux systèmes concernés (ici les boutons).</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>Événement SDL reçu. </td></tr>
+    <tr><td class="paramname">window</td><td>Fenêtre SDL utilisée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f5ccbe5abfdef24c8378dc3cf32ffb3" name="a5f5ccbe5abfdef24c8378dc3cf32ffb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f5ccbe5abfdef24c8378dc3cf32ffb3">&#9670;&#160;</a></span>game_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les systèmes principaux du jeu. </p>
+<p>Initialise la batterie et les boutons. </p>
+
+</div>
+</div>
+<a id="a929f69906b4b84f73575a8a5a04ecce9" name="a929f69906b4b84f73575a8a5a04ecce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a929f69906b4b84f73575a8a5a04ecce9">&#9670;&#160;</a></span>game_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_render </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *</td>          <td class="paramname"><span class="paramname"><em>fontBattery</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *</td>          <td class="paramname"><span class="paramname"><em>fontButtons</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *</td>          <td class="paramname"><span class="paramname"><em>window</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche tous les éléments du jeu. </p>
+<p>Cette fonction affiche la batterie et les boutons de contrôle dans la fenêtre.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Renderer SDL. </td></tr>
+    <tr><td class="paramname">fontBattery</td><td>Police utilisée pour la batterie. </td></tr>
+    <tr><td class="paramname">fontButtons</td><td>Police utilisée pour les boutons. </td></tr>
+    <tr><td class="paramname">window</td><td>Fenêtre SDL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2e92cf75e55e8f85782db6220f2acecf" name="a2e92cf75e55e8f85782db6220f2acecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e92cf75e55e8f85782db6220f2acecf">&#9670;&#160;</a></span>game_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_update </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>deltaTime</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour la logique du jeu. </p>
+<p>Met à jour l'état de la batterie en fonction de l'utilisation des portes et lumières.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Temps écoulé depuis la dernière frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="systeme__batterie_8c.html">systeme_batterie.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

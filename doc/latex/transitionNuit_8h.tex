@@ -1,0 +1,59 @@
+\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/lib/transition\+Nuit.h}
+\hypertarget{transitionNuit_8h}{}\label{transitionNuit_8h}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/transitionNuit.h@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/transitionNuit.h}}
+
+
+Animation de transition entre deux nuits (effet roue de compteur)  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{transitionNuit_8h_a1f44dd241ecc7609386229302bad206c}{transition\+Nuit}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int nuit\+Actuelle)
+\begin{DoxyCompactList}\small\item\em Affiche une animation de transition entre deux nuits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Animation de transition entre deux nuits (effet roue de compteur) 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien LEFEVRE TAUGOURDEAU 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+23/03/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{transitionNuit_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{transitionNuit_8h_a1f44dd241ecc7609386229302bad206c}\index{transitionNuit.h@{transitionNuit.h}!transitionNuit@{transitionNuit}}
+\index{transitionNuit@{transitionNuit}!transitionNuit.h@{transitionNuit.h}}
+\doxysubsubsection{\texorpdfstring{transitionNuit()}{transitionNuit()}}
+{\footnotesize\ttfamily \label{transitionNuit_8h_a1f44dd241ecc7609386229302bad206c} 
+void transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{nuit\+Actuelle}{}\end{DoxyParamCaption})}
+
+
+
+Affiche une animation de transition entre deux nuits. 
+
+Cette fonction affiche un texte "{}\+Nuit X"{} centré à l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL utilisé pour l\textquotesingle{}affichage \\
+\hline
+{\em window} & La fenêtre SDL (utilisée pour récupérer la taille écran) \\
+\hline
+{\em nuit\+Actuelle} & Numéro de la nuit à afficher\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+SDL et SDL\+\_\+ttf doivent être initialisés 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Une animation est affichée à l\textquotesingle{}écran 
+\end{DoxyPostcond}
