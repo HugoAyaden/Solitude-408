@@ -26,7 +26,7 @@
 #include <stdlib.h>
 
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
-typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE} GameState;
+typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE, STATE_CREDITS} GameState;
 
 
 // Global Settings Variables from save.cfg
@@ -60,5 +60,8 @@ void game_handleEvent(SDL_Event *event, SDL_Window *window);
 void game_update(float deltaTime);
 void render_game(SDL_Renderer *renderer, TTF_Font *fontBattery, TTF_Font *fontButtons, SDL_Window *window);
 void game_final_cleanup();
+
+int render_credits(SDL_Renderer *ren, SDL_Window *win);
+
 
 #endif

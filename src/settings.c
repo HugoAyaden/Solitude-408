@@ -19,10 +19,9 @@ int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 
 int resIndex = 2; 
 int night = -1;
+
 static int overBack = 0;
-static int justClicked = 0;
-static int mPressed = 0;
-static int isLeftDown = 0;
+
 
 // Local Settings Variables
 static Mix_Chunk* sGlitch = NULL;
