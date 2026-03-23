@@ -16,7 +16,8 @@
  */
 
  typedef struct case_s {
-
+    //pour le monstre, temps avant de pouvoir se déplacer à nouveau
+    float moove_cooldown;
     //Y'a t-il un monstre sur la caméra
     booleen_t habite;
 
@@ -48,4 +49,5 @@
 booleen_t accessible(int y, int x);
 void init_carte(carte_t *carte);
 void init_joueur(case_t *joueur, carte_t *carte);
+void init_camera(case_t *camera, carte_t *carte);
 void detruire_carte(carte_t *carte);

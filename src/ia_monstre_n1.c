@@ -19,6 +19,7 @@
  /* TODO: INITIALISER DES TIMESTAMPS ET LES COMPARER POUR GARDER LE MONSTRE SUR PLACE
     EX: TIMESTAMP ACTUEL 9 WHILE TIMESTAMP != 15 check timestamp;
  */
+<<<<<<< HEAD
 void timer_monstre(){
     srand(time(NULL));
     int current_time = time(NULL);
@@ -28,6 +29,10 @@ void timer_monstre(){
         printf("%d\n", current_time);
     }
 }
+=======
+
+
+>>>>>>> dev
 
 void placement_monstre(carte_t *carte, case_t *monstre){
     int x = rand() % START_MONSTRE_X;
@@ -127,7 +132,7 @@ int main(){
     placement_monstre(carte, &monstre);
     printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
     while(!fin(carte, &monstre)){
-        sleep(2);
+        timer();
         movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
         printf("Le monstre se déplace sur la caméra %d\n", monstre.num_camera);
     }

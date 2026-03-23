@@ -1,6 +1,12 @@
 /**
+<<<<<<< HEAD
  * \file ia_monstre.h
  * \brief Header pour les fonctions du monstre
+=======
+<<<<<<< HEAD
+ * \file ia_monstre_n1.h
+ * \brief Header pour les fonctions du monstre la nuit 1
+>>>>>>> dev
  * \author Ayaden Hugo
  * \version 1.0
  * \date 12/02/2026
@@ -20,9 +26,12 @@
 /* DEPART DE LA MATRICE */
 #define DEPART_Y 0
 #define DEPART_X 0
+<<<<<<< HEAD
 #define FIN_Y 5
 #define FIN_X 3
 
+=======
+>>>>>>> dev
 
 void placement_monstre(carte_t *carte, case_t *monstre);
 booleen_t fin(carte_t *carte, case_t *monstre); 
@@ -41,4 +50,7 @@ int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur);
 void placement_mimic(carte_t *carte, case_t *mimic);
 
 int chance_deplacement();
+<<<<<<< HEAD
 void timer_monstre();
+=======
+>>>>>>> dev

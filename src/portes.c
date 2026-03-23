@@ -9,26 +9,43 @@
 
 #include <portes.h>
 
-#define PORTE_HAUT 5
-#define PORTE_BAS 15
 
-void fermeture_portes(case_t *joueur){ 
-    joueur->voisin_haut = NULL;
-    joueur->voisin_bas = NULL;
-    joueur->acess = FAUX;
-    printf("Porte fermée\n"); 
+
+void fermeture_portes_droite(case_t *joueur, carte_t *carte){ 
+    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = NULL;
 
 }
 
-void ouverture_portes(carte_t *carte, case_t *joueur){ 
+void fermeture_portes_gauche(case_t *joueur, carte_t *carte){ 
+    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = NULL;
+
+}
+
+void ouverture_porte_droite(carte_t *carte, case_t *joueur){ 
     /* rétablir les voisins du joueur */
-    joueur->voisin_haut = &carte->cases[X_JOUEUR-1][Y_JOUEUR];
-    joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
-    joueur->acess = VRAI;
-    printf("Porte ouverte\n"); }
+    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = joueur;
+
+}
+
+void ouverture_porte_gauche(carte_t *carte, case_t *joueur){ 
+    /* rétablir les voisins du joueur */
+    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
+}
 
 
+<<<<<<< HEAD
 /*
+=======
+void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
+    placement_monstre(carte, monstre);
+}
+
+
+
+
+
+    /*
+>>>>>>> dev
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -52,7 +69,23 @@ int main(){
         else{
             movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
+<<<<<<< HEAD
             sleep(1); // Attendre 5 seconde avant le prochain déplacement
+=======
+        }
+        sleep(1); // Attendre 1 seconde avant le prochain déplacement
+        if(monstre.num_camera == PORTE_HAUT || monstre.num_camera == PORTE_BAS){
+            if(joueur->acess == FAUX){
+                printf("Le monstre attaque le joueur à la porte mais échoue !\n");
+                attaquer_joueur_echec(carte, &monstre, joueur);
+            }
+            else{
+                if(joueur->acess == VRAI){
+                    attaquer_joueur(carte, &monstre, joueur);
+                    fin(carte, &monstre);
+                }
+            }
+>>>>>>> dev
         }
     }
     free(carte);
@@ -60,4 +93,8 @@ int main(){
     joueur = NULL;
     return 0;
 }
+<<<<<<< HEAD
     */
+=======
+    */
+>>>>>>> dev

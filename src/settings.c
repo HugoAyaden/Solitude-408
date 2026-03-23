@@ -7,14 +7,22 @@
   * 
 */
 
-#include <menu.h>
+#include <MainMenu.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+
+#define BACK 1
 
 // Global Settings Variables
 int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
 int screenModeIndex = 1; 
 int resIndex = 2; 
+int night = -1;
+static int overBack = 0;
+static int justClicked = 0;
+static int mPressed = 0;
+static int isLeftDown = 0;
 
 // Local Settings Variables
 static Mix_Chunk* sGlitch = NULL;
@@ -24,6 +32,7 @@ static SDL_Texture* settingsStaticTex = NULL;
 static SDL_Texture* settingsBG = NULL; 
 static Uint32 saveNotificationTimer = 0; 
 
+typedef enum screen_t {WINDOWED,FULLSCREEN,BORDERLESS};
 // Interface Options
 const char* screenModes[] = {"WINDOWED", "FULLSCREEN", "BORDERLESS"};
 const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
@@ -33,19 +42,36 @@ const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 void save_settings() {
     FILE* f = fopen("config/save.cfg", "w");
     if (f) {
-        fprintf(f, "%d %d %d %d %d %d", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
+        fprintf(f, "Overall volume : [%d]\nMusic volume : [%d]\nBrightness : [%d]\nMouse sensitivity : [%d]\nScreen mode : [%d]\nResolution : [%d]", masterVol, musicVol, brightness, mouseSens, screenModeIndex, resIndex);
         fclose(f);
     }
     saveNotificationTimer = SDL_GetTicks() + 1000; 
 }
 
+
 void load_settings() {
     FILE* f = fopen("config/save.cfg", "r");
     if (f) {
-        if (fscanf(f, "%d %d %d %d %d %d", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
+        if (fscanf(f, "Overall volume : [%d]\nMusic volume : [%d]\nBrightness : [%d]\nMouse sensitivity : [%d]\nScreen mode : [%d]\nResolution : [%d]", &masterVol, &musicVol, &brightness, &mouseSens, &screenModeIndex, &resIndex) == 6) {
             Mix_Volume(-1, (masterVol * MIX_MAX_VOLUME) / 100);
             Mix_VolumeMusic((musicVol * MIX_MAX_VOLUME) / 100);
         }
+        fclose(f);
+    }
+}
+
+void save_night(int night){
+    FILE* w = fopen("config/night.cfg", "w");
+    if(w){
+        fprintf(w, "%i", night);
+        fclose(w);
+    }
+}
+
+void load_night(){
+    FILE* f = fopen("config/night.cfg", "r");
+    if (f) {
+        fscanf(f, "%i", &night); 
         fclose(f);
     }
 }
@@ -174,6 +200,7 @@ void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, int vis
     SDL_RenderFillRect(ren, &brH); SDL_RenderFillRect(ren, &brV);
 }
 
+
 // --- Main Render Function ---
 
 int render_settings(SDL_Renderer* ren, TTF_Font* font) {
@@ -255,11 +282,11 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     if (justClicked) {
         if (SDL_PointInRect(&(SDL_Point){mx, my}, &screenBox)) {
             screenModeIndex = (screenModeIndex + 1) % 3;
-            if (screenModeIndex == 0) {
-                SDL_SetWindowFullscreen(win, 0);
+            if (screenModeIndex == WINDOWED) {
+                SDL_SetWindowFullscreen(win, WINDOWED);
                 SDL_HideWindow(win); SDL_ShowWindow(win); SDL_RaiseWindow(win);
             }
-            else if (screenModeIndex == 1) SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN);
+            else if (screenModeIndex == FULLSCREEN) SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN);
             else SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN_DESKTOP);
         }
         if (SDL_PointInRect(&(SDL_Point){mx, my}, &resBox)) {
@@ -279,8 +306,12 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         SDL_Rect s = { lM, sliderStartY + (i * spacing) + 20, 420, 30 };
         if (isLeftDown && SDL_PointInRect(&(SDL_Point){mx, my}, &s)) {
             *vals[i] = (mx - s.x) * 101 / s.w;
-            if (*vals[i] < 0) { *vals[i] = 0; } 
-            if (*vals[i] > 100) { *vals[i] = 100;}
+            if (*vals[i] < 0) { 
+                *vals[i] = 0;
+            } 
+            if (*vals[i] > 100) {
+                *vals[i] = 100;
+            }
             if (i == 0) Mix_Volume(-1, (*vals[0] * 128) / 100);
             if (i == 1) Mix_VolumeMusic((*vals[1] * 128) / 100);
         }
@@ -334,8 +365,8 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     else SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &sBtn); draw_centered_text(ren, font, "SAVE", sBtn);
 
-    int overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
-    if (overBack && justClicked) { mPressed = isLeftDown; return 1; } 
+    overBack = SDL_PointInRect(&(SDL_Point){mx, my}, &bBtn);
+    if(overBack && isLeftDown) { mPressed = isLeftDown;  return BACK; }
     SDL_SetRenderDrawColor(ren, 188, 188, 198, 255);
     SDL_RenderFillRect(ren, &bBtn); draw_centered_text(ren, font, "BACK", bBtn);
 
