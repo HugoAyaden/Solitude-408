@@ -8,7 +8,6 @@
  * 
  */
 
- typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
 
 #include <carte.h>
 

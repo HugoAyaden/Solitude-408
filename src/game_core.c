@@ -14,8 +14,6 @@
  *
  */
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
 #define BATTERY_DURATION 420.0f
@@ -94,8 +92,8 @@ static void drawButton(SDL_Renderer *renderer, TTF_Font *font,
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     SDL_Rect textRect;
-    textRect.w = surface->w /2;
-    textRect.h = surface->h /2;
+    textRect.w = surface->w / 2;
+    textRect.h = surface->h / 2;
     textRect.x = rect.x + (rect.w - textRect.w) / 2;
     textRect.y = rect.y + (rect.h - textRect.h) / 2;
 
@@ -144,8 +142,7 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
-
-    SDL_Rect btnCameras = {spacingcamera, buttonH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCameras = {spacingcamera, buttonH - 50, buttonWcamera, buttonHcamera};
     SDL_Rect btnPorteGauche = {spacing, h / 2 - buttonH - 10, buttonW, buttonH};
     SDL_Rect btnLumiereGauche = {spacing, h / 2 + 10, buttonW, buttonH};
     SDL_Rect btnLumiereGeneral = {spacing, h / 2 + 160, buttonW, buttonH};
@@ -166,7 +163,6 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 
     if (SDL_PointInRect(&p, &btnCameras))
         moniteurCameras = !moniteurCameras;
-
 
     if (SDL_PointInRect(&p, &btnPorteDroite))
         porteDroiteActive = !porteDroiteActive;
@@ -200,8 +196,7 @@ void buttons_render(SDL_Renderer *renderer,
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
-
-    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCameras = {spacingcamera, windowH - 50, buttonWcamera, buttonHcamera};
     SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
     SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
     SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
@@ -418,7 +413,6 @@ void render_game(SDL_Renderer *renderer,
     buttons_render(renderer, fontButtons, w, h);
 }
 
-
 /**
  * \brief Affiche les différents écrans en fonction des états du jeu
  *
@@ -431,58 +425,70 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
-void affichage(){
-    if(battery <= 0){
-            background = BLACKOUT;
-            change = FAUX;
-            porteDroiteActive = FAUX;
-            porteGaucheActive = FAUX;
-            ouverture_porte_gauche(carte, joueur);
-            ouverture_porte_droite(carte, joueur);
+void affichage()
+{
+    if (battery <= 0)
+    {
+        background = BLACKOUT;
+        change = FAUX;
+        porteDroiteActive = FAUX;
+        porteGaucheActive = FAUX;
+        ouverture_porte_gauche(carte, joueur);
+        ouverture_porte_droite(carte, joueur);
+    }
+    else if (battery > 0 && boutonLumieres)
+    {
+        background = BLACKOUT;
+        change = FAUX;
+        porteDroiteActive = FAUX;
+        porteGaucheActive = FAUX;
+        ouverture_porte_gauche(carte, joueur);
+        ouverture_porte_droite(carte, joueur);
+    }
+    else if (lumiereDroiteActive && !porteDroiteActive)
+    {
+        if (monstre->num_camera == PORTE_HAUT - 1)
+        {
+            background = MONSTER_R_DOOR_O;
         }
-        else if(battery > 0 && boutonLumieres){
-            background = BLACKOUT;
-            change = FAUX;
-            porteDroiteActive = FAUX;
-            porteGaucheActive = FAUX;
-            ouverture_porte_gauche(carte, joueur);
-            ouverture_porte_droite(carte, joueur);
+        else if (monstre->num_camera == PORTE_HAUT)
+        {
+            background = MONSTER_R_DOOR_O_A;
         }
-        else if(lumiereDroiteActive && !porteDroiteActive){
-                if(monstre->num_camera == PORTE_HAUT-1){
-                    background = MONSTER_R_DOOR_O;
-                }
-                else if(monstre->num_camera == PORTE_HAUT){
-                        background = MONSTER_R_DOOR_O_A;
-                    }
-                    else
-                        background = R_DOOR_OFF_L_ON;
-                }
-                else if(lumiereGaucheActive && !porteGaucheActive){
-                    if(monstre->num_camera == PORTE_BAS-1){
-                        background = MONSTER_L_DOOR_O;
-                    }
-                    else if(monstre->num_camera == PORTE_BAS){
-                        background = MONSTER_L_DOOR_O_A;
-                    }
-                    else 
-                        background = L_DOOR_OFF_L_ON;
-                }
-                else if(porteGaucheActive && !lumiereGaucheActive){
-                    background = L_DOOR_ON_L_OFF;
-                }
-                else if(porteDroiteActive && !lumiereDroiteActive){
-                    background = R_DOOR_ON_L_OFF;
-                }
-                else if(porteGaucheActive && lumiereGaucheActive){
-                    background = L_DOOR_ON_L_ON;
-                }
-                else if(porteDroiteActive && lumiereDroiteActive){
-                    background = R_DOOR_ON_L_ON;
-                }
-                else
-                    background = DOORS_OFF_L_OFF;
-
+        else
+            background = R_DOOR_OFF_L_ON;
+    }
+    else if (lumiereGaucheActive && !porteGaucheActive)
+    {
+        if (monstre->num_camera == PORTE_BAS - 1)
+        {
+            background = MONSTER_L_DOOR_O;
+        }
+        else if (monstre->num_camera == PORTE_BAS)
+        {
+            background = MONSTER_L_DOOR_O_A;
+        }
+        else
+            background = L_DOOR_OFF_L_ON;
+    }
+    else if (porteGaucheActive && !lumiereGaucheActive)
+    {
+        background = L_DOOR_ON_L_OFF;
+    }
+    else if (porteDroiteActive && !lumiereDroiteActive)
+    {
+        background = R_DOOR_ON_L_OFF;
+    }
+    else if (porteGaucheActive && lumiereGaucheActive)
+    {
+        background = L_DOOR_ON_L_ON;
+    }
+    else if (porteDroiteActive && lumiereDroiteActive)
+    {
+        background = R_DOOR_ON_L_ON;
+    }
+    else
+        background = DOORS_OFF_L_OFF;
 }
 
 /**
@@ -494,38 +500,45 @@ void affichage(){
  * \param night Numéro de la nuit actuelle (0, 1 ou 2).
  */
 
-void difficulte(int night){
-    switch(night){
-        case 0:
-            if(chance_deplacement() < 1) {
-                movement_opportunity(carte, monstre, 
-                                    monstre->num_camera % FIN_Y, 
-                                    monstre->num_camera / FIN_Y);
-            }
-            break;
-        case 1:
-            if(chance_deplacement() < 3) {
-                move_monster(carte, monstre, joueur);
-            }
-            else{
-                movement_opportunity(carte, monstre,
-                                    monstre->num_camera % FIN_Y,
-                                    monstre->num_camera / FIN_Y);
-            }
-            break;
-        case 2:
-            if(chance_deplacement() < 10) {
-                move_monster(carte, monstre, joueur);
-            }
-            else{
-                movement_opportunity(carte, monstre,
-                                    monstre->num_camera % FIN_Y,
-                                    monstre->num_camera / FIN_Y);
-            }
-            mouvement_mimic(carte, mimic);
-            break;
-        default:
-            break;
+void difficulte(int night)
+{
+    switch (night)
+    {
+    case 0:
+        if (chance_deplacement() < 1)
+        {
+            movement_opportunity(carte, monstre,
+                                 monstre->num_camera % FIN_Y,
+                                 monstre->num_camera / FIN_Y);
+        }
+        break;
+    case 1:
+        if (chance_deplacement() < 3)
+        {
+            move_monster(carte, monstre, joueur);
+        }
+        else
+        {
+            movement_opportunity(carte, monstre,
+                                 monstre->num_camera % FIN_Y,
+                                 monstre->num_camera / FIN_Y);
+        }
+        break;
+    case 2:
+        if (chance_deplacement() < 10)
+        {
+            move_monster(carte, monstre, joueur);
+        }
+        else
+        {
+            movement_opportunity(carte, monstre,
+                                 monstre->num_camera % FIN_Y,
+                                 monstre->num_camera / FIN_Y);
+        }
+        mouvement_mimic(carte, mimic);
+        break;
+    default:
+        break;
     }
 }
 
@@ -538,9 +551,11 @@ void difficulte(int night){
  *
  * \return Code de retour du programme.
  */
-void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
-    //Load Textures ( interminable )
-    if (BLACKOUT == NULL) {
+void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery, TTF_Font *fontButtons)
+{
+    // Load Textures ( interminable )
+    if (BLACKOUT == NULL)
+    {
         BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
         DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
         DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
@@ -559,15 +574,19 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
     }
 
-    if (carte == NULL)   carte = malloc(sizeof(carte_t));
-    if (joueur == NULL)  joueur = malloc(sizeof(case_t));
-    if (monstre == NULL) monstre = malloc(sizeof(case_t));
-    if (mimic == NULL)    mimic = malloc(sizeof(case_t));
-    
-    //POUR UN REDEMARAGE A 0
+    if (carte == NULL)
+        carte = malloc(sizeof(carte_t));
+    if (joueur == NULL)
+        joueur = malloc(sizeof(case_t));
+    if (monstre == NULL)
+        monstre = malloc(sizeof(case_t));
+    if (mimic == NULL)
+        mimic = malloc(sizeof(case_t));
+
+    // POUR UN REDEMARAGE A 0
     battery = 100.0f;
     porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = boutonLumieres = moniteurCameras = 0;
-    
+
     srand(time(NULL));
     init_carte(carte);
     init_joueur(joueur, carte);
@@ -577,32 +596,36 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     Uint32 lastTime = SDL_GetTicks();
     Uint32 monsterLastMove = SDL_GetTicks();
     int actual = -1;
-    
+
     load_night();
     load_settings();
-    if(night == ERROR){
+    if (night == ERROR)
+    {
         save_night(0);
         load_night();
     }
-    if(night >=MAX_NIGHT+1 /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
+    if (night >= MAX_NIGHT + 1 /*A CHANGER AVEC LES NOUVELLES NUITS*/)
+    {
         night = 2;
         save_night(night);
         load_night();
     }
-    if(night >= MAX_NIGHT){
+    if (night >= MAX_NIGHT)
+    {
         placement_mimic(carte, mimic);
     }
-    
+
     tempsDebut = SDL_GetTicks();
     tempsFin = SDL_GetTicks() + 10000;
-    finish = (tempsFin-duree);
-    while (!fin(carte, monstre) && finish >= 0){
+    finish = (tempsFin - duree);
+    while (!fin(carte, monstre) && finish >= 0)
+    {
         Uint32 currentTime = SDL_GetTicks();
-        //Temps du monstre avant chaque déplacement
+        // Temps du monstre avant chaque déplacement
         float deltaTime = (currentTime - lastTime) / 1000.0f;
         lastTime = currentTime;
-        
-        //Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)
+
+        // Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
@@ -612,59 +635,78 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
         game_update(deltaTime);
 
+        // Affichage est gestion panorama
+
+
+
         SDL_RenderClear(renderer);
         int w, h;
         SDL_GetWindowSize(window, &w, &h);
-        SDL_Rect bgRect = {0, 0, w, h};
+
+
+        /* CODE BULLSHIT*/
+        float img_stretch_percentage = 2.0; //pourcentage d'etendue de l'image
+        int img_stretched_res = (int)(w * img_stretch_percentage); //nouvelle resolution de l'image
+        int imgCenterRes =(-img_stretched_res+w)/2; //milieu de l'image pour position
+        int imgW, imgH;
+        SDL_QueryTexture(background, NULL, NULL, &imgW, &imgH);
+        printf("ImgW = %d\n",imgW);
+        printf("ImgH = %d\n",imgH);
+        printf("ImgStretched = %d\n",img_stretched_res);
+
+        SDL_Rect bgRect = {imgCenterRes, 0, img_stretched_res, h};
+        panoramic_game(w, img_stretched_res, &bgRect);
         int lightCount = buttons_getLightCount();
+        
 
-
-    
         /*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
         // Déplacement du monstre toutes les 5 secondes
         if (currentTime - monsterLastMove >= monsterMoveDelay)
         {
             monsterLastMove = currentTime;
 
-                if(porteGaucheActive && monstre->num_camera == PORTE_BAS){
-                    placement_monstre(carte, monstre);
-                }
-                else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
-                    placement_monstre(carte, monstre);
-                }
+            if (porteGaucheActive && monstre->num_camera == PORTE_BAS)
+            {
+                placement_monstre(carte, monstre);
+            }
+            else if (porteDroiteActive && monstre->num_camera == PORTE_HAUT)
+            {
+                placement_monstre(carte, monstre);
+            }
 
-                //Chaque nuit a sa difficulté d'IA
+            // Chaque nuit a sa difficulté d'IA
             difficulte(night);
-
 
             printf("nuit %d\n", night);
             printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
             printf("portes fermees %d\n", actual);
             duree = SDL_GetTicks();
-            finish = (tempsFin-duree)+deltaTime;
+            finish = (tempsFin - duree) + deltaTime;
             printf("Temps ecoule : %2.f\n", finish);
         }
         /*==============================================*/
-        if(battery > 0 && !boutonLumieres){
+        if (battery > 0 && !boutonLumieres)
+        {
             change = VRAI;
         }
-        if(change == VRAI){
-            if(actual != buttons_getDoorCount()){
-                if(porteDroiteActive)
+        if (change == VRAI)
+        {
+            if (actual != buttons_getDoorCount())
+            {
+                if (porteDroiteActive)
                     fermeture_portes_droite(joueur, carte);
-                if(!porteDroiteActive)
+                if (!porteDroiteActive)
                     ouverture_porte_droite(carte, joueur);
-                if(porteGaucheActive)
+                if (porteGaucheActive)
                     fermeture_portes_gauche(joueur, carte);
-                if(!porteGaucheActive)
+                if (!porteGaucheActive)
                     ouverture_porte_gauche(carte, joueur);
-                }
             }
+        }
 
         actual = buttons_getDoorCount();
         if (lightCount >= 2)
             background = DOORS_OFF_L_ON;
-
 
         /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
         affichage();
@@ -677,26 +719,32 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-    if(finish <=0 && !fin(carte, monstre)){
+    if (finish <= 0 && !fin(carte, monstre))
+    {
         night++;
         save_night(night);
     }
 }
 
-void game_final_cleanup(){
-    if (carte != NULL) {
-        detruire_carte(carte); 
+void game_final_cleanup()
+{
+    if (carte != NULL)
+    {
+        detruire_carte(carte);
         carte = NULL;
     }
-    if (joueur != NULL) {
+    if (joueur != NULL)
+    {
         free(joueur);
         joueur = NULL;
     }
-    if (monstre != NULL) {
+    if (monstre != NULL)
+    {
         free(monstre);
         monstre = NULL;
     }
-    if (mimic != NULL) {
+    if (mimic != NULL)
+    {
         free(mimic);
         mimic = NULL;
     }

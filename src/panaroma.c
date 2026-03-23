@@ -1,4 +1,6 @@
 #include <panorama.h>
+
+
 /**
   * \file panorama.c
   * \brief Fournie les fonctions pour le déplacement de camera de jeu
@@ -13,34 +15,40 @@
   * \brief Déplacement gauche-droite de la camera avec la souris, principalement pour la salle principal.
   * \param screen_width Entier, longeur de l'ecran
   * \param imgW Entier, longeur de l'image
-  * \param dst SDL_Rect, rectangle de rendu
+  * \param imgRect SDL_Rect, rectangle de rendu
   * \author Dos Santos Mathis
   * \version 1.0
   * \date 19/03/2026
   *
 */
-void panoramic_game(int screen_width, int imgW, SDL_Rect* dst) {
+void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
-    float res_percentage = 0.95; //pourcentage pour determiner zone de deplacement camera
+
+    float res_percentage = 0.95;                                    //pourcentage pour determiner zone de deplacement camera
+    int pixel_offset = 10;                                          //decalage pixel deplacement
+    int move_zone_left = (int)screen_width * res_percentage;        //position par rapport a l'ecran ou la camera commence à bouger - gauche
+    int move_zone_right = (int)screen_width * (1 - res_percentage); //position par rapport a l'ecran ou la camera commence à bouger - droit
+    int img_limit_right = -imgW + screen_width;                     //limite de position de l'image a droite
+    int img_limit_left = 0;                                         //limite de position de l'image a gauche
 
     // Déplacer l'image horizontalement
-    if (mouseX >= (int)(screen_width * res_percentage) && dst->x > (-imgW + screen_width)) {
+    if (mouseX >= move_zone_left && imgRect->x > img_limit_right) {
 
-        if ((dst->x - 10) <= (-imgW + screen_width)) {
-            dst->x = (-imgW + screen_width);
+        if ((imgRect->x - pixel_offset) <= img_limit_right) {
+            imgRect->x = img_limit_right;
         }
         else {
-            dst->x -= 10;
+            imgRect->x -= pixel_offset;
         }
     }
-    else if (mouseX <= (int)(screen_width * (1 - res_percentage)) && dst->x < 0) {
-        if ((dst->x + 10) >= 0)
+    else if (mouseX <= move_zone_right && imgRect->x < img_limit_left) {
+        if ((imgRect->x + pixel_offset) >= img_limit_left)
         {
-            dst->x = 0;
+            imgRect->x = img_limit_left;
         }
         else {
-            dst->x += 10;
+            imgRect->x += pixel_offset;
         }
     }
 }
@@ -50,38 +58,41 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* dst) {
   * \brief Déplacement gauche-droite de la camera automatique, principalement pour les cameras.
   * \param screen_width int, longeur de l'ecran
   * \param imgW int, longeur de l'image
-  * \param dst SDL_Rect*, rectangle de rendu
+  * \param imgRect SDL_Rect*, rectangle de rendu
   * \param direction Direction*, direction de deplacement
   * \author Dos Santos Mathis
   * \version 1.0
   * \date 19/03/2026
   *
 */
-void panoramic_camera(int screen_width, int imgW, SDL_Rect* dst, direction_t* direction) {
+void panoramic_camera(int screen_width, int imgW, SDL_Rect* imgRect, direction_t* direction) {
+    int pixel_offset = 1;                                           //decalage pixel deplacement
+    int img_limit_right = -imgW + screen_width;                     //limite de position de l'image a droite
+    int img_limit_left = 0;                                         //limite de position de l'image a gauche
 
     // Déplacer l'image horizontalement camera automatiquement
-    if (*direction == RIGHT)
+    if (*direction == GAUCHE)
     {
-        if ((dst->x + 3) >= 0)
+        if ((imgRect->x + pixel_offset) >= img_limit_left)
         {
-            dst->x = 0;
-            *direction = LEFT;
+            imgRect->x = img_limit_left;
+            *direction = DROITE;
         }
         else
         {
-            dst->x += 3;
+            imgRect->x += pixel_offset;
         }
     }
-    if (*direction == LEFT)
+    if (*direction == DROITE)
     {
-        if ((dst->x - 5) <= (-imgW + screen_width))
+        if ((imgRect->x - pixel_offset) <= img_limit_right)
         {
-            dst->x = (-imgW + screen_width);
-            *direction = RIGHT;
+            imgRect->x = img_limit_right;
+            *direction = GAUCHE;
         }
         else
         {
-            dst->x -= 3;
+            imgRect->x -= pixel_offset;
         }
     }
 }
@@ -127,7 +138,7 @@ void panorama_init()
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // Charger l'image
-    SDL_Surface* surface = IMG_Load("assets/img/background/testing1.png");
+    SDL_Surface* surface = IMG_Load("assets/img/background/MONITOR ROOM.png");
     if (!surface)
     {
         printf("Erreur chargement PNG : %s\n", IMG_GetError());
@@ -140,12 +151,16 @@ void panorama_init()
     int imgW, imgH;
     SDL_QueryTexture(texture, NULL, NULL, &imgW, &imgH);
 
-    SDL_Rect dst = { -imgW / 2, 0, imgW, screen_height }; // position initiale
+    float img_stretch_percentage = 1.4; //pourcentage d'etendue de l'image
+    int img_stretched_res = (int)(screen_width * img_stretch_percentage); //nouvelle resolution de l'image
+    int imgCenterRes =(-img_stretched_res+screen_width)/2; //milieu de l'image pour position
+
+    SDL_Rect imgRect = { imgCenterRes, 0, img_stretched_res, screen_height }; // position initiale
     int running = 1;
     SDL_Event event;
 
     // Enum pour la direction camera
-    direction_t direction = LEFT;
+    direction_t direction = GAUCHE;
 
     while (running)
     {
@@ -155,13 +170,13 @@ void panorama_init()
                 running = 0;
         }
         //call fonction panoramic main room
-        panoramic_game(screen_width, imgW, &dst);
+        //panoramic_game(screen_width, img_stretched_res, &imgRect);
         //call fonction panoramic main room
-        //panoramic_camera(screen_width, imgW, &dst, &direction);
+        panoramic_camera(screen_width, img_stretched_res, &imgRect, &direction);
 
         // Rendu
         SDL_RenderClear(renderer);
-        SDL_RenderCopy(renderer, texture, NULL, &dst);
+        SDL_RenderCopy(renderer, texture, NULL, &imgRect);
         SDL_RenderPresent(renderer);
 
         SDL_Delay(16); // -60 FPS

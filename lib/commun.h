@@ -23,3 +23,4 @@
 #define X_JOUEUR 1
 
 typedef enum {FAUX,VRAI} booleen_t;
+typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
