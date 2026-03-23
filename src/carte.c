@@ -9,9 +9,6 @@
 
 
 #include <carte.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 
 
 /* MURS DANS LES CARTES */
@@ -64,6 +61,18 @@ void init_joueur(case_t *joueur, carte_t *carte){
     joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
     joueur->voisin_gauche = NULL;
     joueur->voisin_droit = NULL;
+}
+
+void init_camera(case_t *camera, carte_t *carte){
+    camera->habite = VRAI;
+    camera->num_camera = 10;
+    camera->utilise = FAUX;
+    camera->lumiere = VRAI;
+    camera->acess = VRAI;
+    camera->voisin_haut = NULL;
+    camera->voisin_bas = NULL;
+    camera->voisin_gauche = NULL;
+    camera->voisin_droit = NULL;
 }
 
 

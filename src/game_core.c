@@ -7,9 +7,9 @@
 
 /**
  * \file game_core.c
- * \brief Affichage et gestion d'énergie de la batterie
- * \author Bastien LEFEVRE TAUGOURDEAU
- * \version 1.0
+ * \brief Boucle principale de jeu
+ * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \version 1.3
  * \date 10/03/2026
  *
  */
@@ -19,10 +19,16 @@
 #define ERROR -1
 #define MAX_NIGHT 2
 #define BATTERY_DURATION 420.0f
+#define CAMERA_5 5
+#define CAMERA_15 15
+#define CAMERA_4 4
+#define CAMERA_14 14
+#define TEMPS_NUIT 20000
+
 
 static float battery = 100.0f;
 
-const Uint32 monsterMoveDelay = 1000; // Temps avant chaque déplacement du monstre en millisecondes (1000 ms = 1 s)
+const Uint32 monsterMoveDelay = 2000; // Temps avant chaque déplacement du monstre en millisecondes (1000 ms = 1 s)
 
 // Deso Hugo mais fallait le faire
 static int porteGaucheActive = 0;
@@ -35,6 +41,7 @@ static int change = 1;
 static float finish = 0.0f;
 static int duree = 0;
 static int moniteurCameras = 0;
+static int camera15on = 0;
 
 static booleen_t boutonLumieres = FAUX;
 
@@ -54,12 +61,20 @@ static SDL_Texture *R_DOOR_OFF_L_ON = NULL;
 static SDL_Texture *R_DOOR_ON_L_OFF = NULL;
 static SDL_Texture *R_DOOR_ON_L_ON = NULL;
 static SDL_Texture *MONITOR_ROOM = NULL;
+static SDL_Texture *STATIC = NULL;
 static SDL_Texture *MONSTER_L_DOOR_C = NULL;
 static SDL_Texture *MONSTER_L_DOOR_O_A = NULL;
 static SDL_Texture *MONSTER_L_DOOR_O = NULL;
 static SDL_Texture *MONSTER_R_DOOR_C = NULL;
 static SDL_Texture *MONSTER_R_DOOR_O_A = NULL;
 static SDL_Texture *MONSTER_R_DOOR_O = NULL;
+
+
+
+static case_t * camera = NULL;
+
+
+
 
 /**
  * \brief Dessine un bouton interactif avec un texte.
@@ -119,6 +134,7 @@ void buttons_init()
     lumiereDroiteActive = 0;
     boutonLumieres = 0;
     moniteurCameras = 0;
+    camera15on = 0;
 }
 /**
  * \brief Gère les événements liés aux boutons.
@@ -145,7 +161,7 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int spacingcamera = 500;
 
 
-    SDL_Rect btnCameras = {spacingcamera, buttonH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCameras = {spacingcamera, h -50, buttonWcamera, buttonHcamera};
     SDL_Rect btnPorteGauche = {spacing, h / 2 - buttonH - 10, buttonW, buttonH};
     SDL_Rect btnLumiereGauche = {spacing, h / 2 + 10, buttonW, buttonH};
     SDL_Rect btnLumiereGeneral = {spacing, h / 2 + 160, buttonW, buttonH};
@@ -216,6 +232,66 @@ void buttons_render(SDL_Renderer *renderer,
     drawButton(renderer, font, btnLumiereGeneral, boutonLumieres, "LIGHT_G");
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
+
+void camera_buttons_render(SDL_Renderer *renderer,
+                    TTF_Font *font,
+                    int windowW,
+                    int windowH)
+{
+    int buttonW = 60;
+    int buttonH = 60;
+    int spacing = 20;    
+    int buttonWcamera = 860;
+    int buttonHcamera = 60;
+    int spacingcamera = 500;
+
+
+    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCamera15 = {spacing, windowH / 2 - 160, buttonW, buttonH};
+
+    drawButton(renderer, font, btnCamera15, camera15on, "CAM 5");
+    drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
+}
+
+void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
+{
+    if (event->type != SDL_MOUSEBUTTONDOWN)
+        return;
+
+    int w, h;
+    SDL_GetWindowSize(window, &w, &h);
+
+    int buttonW = 60;
+    int buttonH = 60;
+    int spacing = 20;
+    int buttonWcamera = 860;
+    int buttonHcamera = 60;
+    int spacingcamera = 500;
+
+
+    SDL_Rect btnCameras = {spacingcamera, h -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCamera15 = {spacing, h / 2 - 160, buttonW, buttonH};
+
+    int mx = event->button.x;
+    int my = event->button.y;
+
+    SDL_Point p = {mx, my};
+
+    if (SDL_PointInRect(&p, &btnCamera15)){
+        camera15on = !camera15on;
+        camera->num_camera = CAMERA_15;
+    }
+    if (SDL_PointInRect(&p, &btnCameras))
+    moniteurCameras = !moniteurCameras;
+}
+
+void change_camera(case_t * camera, case_t * monstre){
+    if(camera15on && camera->num_camera == CAMERA_15 && monstre->num_camera == CAMERA_15){
+        background = MONITOR_ROOM;
+    }
+    else
+        background = STATIC;
+}
 /**
  * \brief Retourne le nombre de portes activées.
  *
@@ -247,7 +323,10 @@ int buttons_getLightCount()
  */
 void game_handleEvent(SDL_Event *event, SDL_Window *window)
 {
-    buttons_handleEvent(event, window);
+    if(moniteurCameras == 0)
+        buttons_handleEvent(event, window);
+    else
+        camera_buttons_handleEvent(event, window);
 }
 
 /**
@@ -415,8 +494,13 @@ void render_game(SDL_Renderer *renderer,
     SDL_GetWindowSize(window, &w, &h);
 
     battery_render(renderer, fontBattery, w, h);
-    buttons_render(renderer, fontButtons, w, h);
+    if(moniteurCameras == 0)
+        buttons_render(renderer, fontButtons, w, h);
+    else
+        camera_buttons_render(renderer, fontButtons, w, h);
 }
+
+
 
 
 /**
@@ -432,7 +516,8 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
 void affichage(){
-    if(battery <= 0){
+        if(moniteurCameras == 0){
+        if(battery <= 0){
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -482,7 +567,10 @@ void affichage(){
         }
         else
             background = DOORS_OFF_L_OFF;
-
+    }
+    else{
+        change_camera(camera, monstre);
+    }
 }
 
 /**
@@ -551,6 +639,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
         R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
         MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
+        STATIC = IMG_LoadTexture(renderer, "./assets/img/INgame/static.gif");
         MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
         MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
         MONSTER_L_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O.png");
@@ -560,17 +649,19 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
 
     if (carte == NULL)   carte = malloc(sizeof(carte_t));
+    if (camera == NULL)   camera = malloc(sizeof(carte_t));
     if (joueur == NULL)  joueur = malloc(sizeof(case_t));
     if (monstre == NULL) monstre = malloc(sizeof(case_t));
     if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
     //POUR UN REDEMARAGE A 0
     battery = 100.0f;
-    porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = boutonLumieres = moniteurCameras = 0;
+    porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = boutonLumieres = moniteurCameras = camera15on = 0;
     
     srand(time(NULL));
     init_carte(carte);
     init_joueur(joueur, carte);
+    init_camera(camera, carte);
     placement_monstre(carte, monstre);
 
     SDL_Event event;
@@ -594,7 +685,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
     
     tempsDebut = SDL_GetTicks();
-    tempsFin = SDL_GetTicks() + 10000;
+
+    tempsFin = SDL_GetTicks() + TEMPS_NUIT;
     finish = (tempsFin-duree);
     while (!fin(carte, monstre) && finish >= 0){
         Uint32 currentTime = SDL_GetTicks();
@@ -689,15 +781,15 @@ void game_final_cleanup(){
         carte = NULL;
     }
     if (joueur != NULL) {
-        free(joueur);
         joueur = NULL;
     }
+    if (camera != NULL) {
+        camera = NULL;
+    }
     if (monstre != NULL) {
-        free(monstre);
         monstre = NULL;
     }
     if (mimic != NULL) {
-        free(mimic);
         mimic = NULL;
     }
 }
