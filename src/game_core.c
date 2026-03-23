@@ -449,39 +449,39 @@ void affichage(){
             ouverture_porte_droite(carte, joueur);
         }
         else if(lumiereDroiteActive && !porteDroiteActive){
-                if(monstre->num_camera == PORTE_HAUT-1){
-                    background = MONSTER_R_DOOR_O;
-                }
-                else if(monstre->num_camera == PORTE_HAUT){
-                        background = MONSTER_R_DOOR_O_A;
-                    }
-                    else
-                        background = R_DOOR_OFF_L_ON;
-                }
-                else if(lumiereGaucheActive && !porteGaucheActive){
-                    if(monstre->num_camera == PORTE_BAS-1){
-                        background = MONSTER_L_DOOR_O;
-                    }
-                    else if(monstre->num_camera == PORTE_BAS){
-                        background = MONSTER_L_DOOR_O_A;
-                    }
-                    else 
-                        background = L_DOOR_OFF_L_ON;
-                }
-                else if(porteGaucheActive && !lumiereGaucheActive){
-                    background = L_DOOR_ON_L_OFF;
-                }
-                else if(porteDroiteActive && !lumiereDroiteActive){
-                    background = R_DOOR_ON_L_OFF;
-                }
-                else if(porteGaucheActive && lumiereGaucheActive){
-                    background = L_DOOR_ON_L_ON;
-                }
-                else if(porteDroiteActive && lumiereDroiteActive){
-                    background = R_DOOR_ON_L_ON;
-                }
-                else
-                    background = DOORS_OFF_L_OFF;
+            if(monstre->num_camera == PORTE_HAUT-1){
+                background = MONSTER_R_DOOR_O;
+            }
+        else if(monstre->num_camera == PORTE_HAUT){
+                background = MONSTER_R_DOOR_O_A;
+            }
+            else
+                background = R_DOOR_OFF_L_ON;
+        }
+        else if(lumiereGaucheActive && !porteGaucheActive){
+            if(monstre->num_camera == PORTE_BAS-1){
+                background = MONSTER_L_DOOR_O;
+            }
+            else if(monstre->num_camera == PORTE_BAS){
+                background = MONSTER_L_DOOR_O_A;
+            }
+            else 
+                background = L_DOOR_OFF_L_ON;
+        }
+        else if(porteGaucheActive && !lumiereGaucheActive){
+            background = L_DOOR_ON_L_OFF;
+        }
+        else if(porteDroiteActive && !lumiereDroiteActive){
+            background = R_DOOR_ON_L_OFF;
+        }
+        else if(porteGaucheActive && lumiereGaucheActive){
+            background = L_DOOR_ON_L_ON;
+        }
+        else if(porteDroiteActive && lumiereDroiteActive){
+            background = R_DOOR_ON_L_ON;
+        }
+        else
+            background = DOORS_OFF_L_OFF;
 
 }
 

@@ -32,6 +32,7 @@ static SDL_Texture* settingsStaticTex = NULL;
 static SDL_Texture* settingsBG = NULL; 
 static Uint32 saveNotificationTimer = 0; 
 
+typedef enum screen_t {WINDOWED,FULLSCREEN,BORDERLESS};
 // Interface Options
 const char* screenModes[] = {"WINDOWED", "FULLSCREEN", "BORDERLESS"};
 const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
@@ -281,11 +282,11 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     if (justClicked) {
         if (SDL_PointInRect(&(SDL_Point){mx, my}, &screenBox)) {
             screenModeIndex = (screenModeIndex + 1) % 3;
-            if (screenModeIndex == 0) {
-                SDL_SetWindowFullscreen(win, 0);
+            if (screenModeIndex == WINDOWED) {
+                SDL_SetWindowFullscreen(win, WINDOWED);
                 SDL_HideWindow(win); SDL_ShowWindow(win); SDL_RaiseWindow(win);
             }
-            else if (screenModeIndex == 1) SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN);
+            else if (screenModeIndex == FULLSCREEN) SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN);
             else SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN_DESKTOP);
         }
         if (SDL_PointInRect(&(SDL_Point){mx, my}, &resBox)) {
@@ -305,8 +306,12 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
         SDL_Rect s = { lM, sliderStartY + (i * spacing) + 20, 420, 30 };
         if (isLeftDown && SDL_PointInRect(&(SDL_Point){mx, my}, &s)) {
             *vals[i] = (mx - s.x) * 101 / s.w;
-            if (*vals[i] < 0) { *vals[i] = 0; } 
-            if (*vals[i] > 100) { *vals[i] = 100;}
+            if (*vals[i] < 0) { 
+                *vals[i] = 0;
+            } 
+            if (*vals[i] > 100) {
+                *vals[i] = 100;
+            }
             if (i == 0) Mix_Volume(-1, (*vals[0] * 128) / 100);
             if (i == 1) Mix_VolumeMusic((*vals[1] * 128) / 100);
         }
