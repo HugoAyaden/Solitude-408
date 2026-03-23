@@ -3,6 +3,19 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 
+
+/**
+ * \file transitionNuit.c
+ * \brief Implémentation de l'animation de transition entre les nuits
+ * \author Bastien LEFEVRE TAUGOURDEAU
+ * \version 1.0
+ * \date 23/03/2026
+ *
+ * 
+ * Une animation qui permet d'afficher le changement de nuit
+ * pour comprendre qu'on passe à la nuit suivante (on a donc gagné la nuit -1)
+ */
+
 int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle)
 {
     TTF_Font *font = TTF_OpenFont("./assets/font/VCR.ttf", 60);
