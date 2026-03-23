@@ -146,7 +146,7 @@ void afficher_credits(SDL_Renderer *renderer, SDL_Window *window)
     TTF_CloseFont(fontTitre);
 }
 
-int main()
+/*int main()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return 1;
@@ -175,4 +175,4 @@ int main()
     SDL_Quit();
 
     return 0;
-}
+}*/
