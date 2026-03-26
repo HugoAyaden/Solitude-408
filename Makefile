@@ -64,24 +64,8 @@ clean:
 	@$(call RM, $(BINDIR))
 
 run: $(TARGET)
-<<<<<<< HEAD
-	./$(TARGET)
-
-print-info:
-	@echo "Sources: $(SRCS)"
-	@echo "Objects: $(OBJS)"
-
-###############################################################################
-# Notes:
-# - To build with debug symbols: make DEBUG=1
-# - To enable SDL linking, adjust SDL_DIR or override INCLUDES/LIBS on the make
-#   command line, e.g.:
-#     make INCLUDES='-I/home/user/SDL2/include' LIBS='-L/home/user/SDL2/lib -lSDL2'
-###############################################################################
-=======
 ifeq ($(OS),Windows_NT)
 	@.\$(subst /,\,$(TARGET))
 else
 	@./$(TARGET)
 endif
->>>>>>> dev

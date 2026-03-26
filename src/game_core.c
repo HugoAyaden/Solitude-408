@@ -54,6 +54,7 @@ static SDL_Texture *background;
 static SDL_Texture *BLACKOUT = NULL;
 static SDL_Texture *DOORS_OFF_L_OFF = NULL;
 static SDL_Texture *DOORS_OFF_L_ON = NULL;
+static SDL_Texture *DOORS_ON_L_ON = NULL;
 static SDL_Texture *L_DOOR_OFF_L_ON = NULL;
 static SDL_Texture *L_DOOR_ON_L_OFF = NULL;
 static SDL_Texture *L_DOOR_ON_L_ON = NULL;
@@ -632,6 +633,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
         DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
         DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
+        DOORS_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_ON_L_ON.png");
         L_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_OFF_L_ON.png");
         L_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_OFF.png");
         L_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_ON.png");

@@ -14,12 +14,9 @@
  /* TAILLE DE LA CARTE */
 #define FIN_Y 5
 #define FIN_X 3
-<<<<<<< HEAD
-=======
 
 #define PORTE_HAUT 5
 #define PORTE_BAS 15
->>>>>>> dev
 
 /* POSITION DU JOUEUR */
 #define Y_JOUEUR 4

@@ -26,12 +26,10 @@
 /* DEPART DE LA MATRICE */
 #define DEPART_Y 0
 #define DEPART_X 0
-<<<<<<< HEAD
+
 #define FIN_Y 5
 #define FIN_X 3
 
-=======
->>>>>>> dev
 
 void placement_monstre(carte_t *carte, case_t *monstre);
 booleen_t fin(carte_t *carte, case_t *monstre); 
@@ -50,7 +48,4 @@ int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur);
 void placement_mimic(carte_t *carte, case_t *mimic);
 
 int chance_deplacement();
-<<<<<<< HEAD
 void timer_monstre();
-=======
->>>>>>> dev

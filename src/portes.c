@@ -33,9 +33,6 @@ void ouverture_porte_gauche(carte_t *carte, case_t *joueur){
 }
 
 
-<<<<<<< HEAD
-/*
-=======
 void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
     placement_monstre(carte, monstre);
 }
@@ -45,7 +42,6 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
     /*
->>>>>>> dev
 int main(){
 
     carte_t *carte = malloc(sizeof(carte_t));
@@ -69,9 +65,6 @@ int main(){
         else{
             movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
             printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
-<<<<<<< HEAD
-            sleep(1); // Attendre 5 seconde avant le prochain déplacement
-=======
         }
         sleep(1); // Attendre 1 seconde avant le prochain déplacement
         if(monstre.num_camera == PORTE_HAUT || monstre.num_camera == PORTE_BAS){
@@ -85,7 +78,6 @@ int main(){
                     fin(carte, &monstre);
                 }
             }
->>>>>>> dev
         }
     }
     free(carte);
@@ -93,8 +85,4 @@ int main(){
     joueur = NULL;
     return 0;
 }
-<<<<<<< HEAD
     */
-=======
-    */
->>>>>>> dev

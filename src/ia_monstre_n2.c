@@ -105,7 +105,7 @@ void move_monster(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois) */
+/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois)
 int main(){
     carte_t *carte = malloc(sizeof(carte_t));
     if (!carte) 
@@ -129,3 +129,5 @@ int main(){
     }
     detruire_carte(carte);
 }
+
+*/
