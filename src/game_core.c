@@ -18,7 +18,6 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define BATTERY_DURATION 420.0f
 #define TEMPS_NUIT 20000
 
 
@@ -52,12 +51,8 @@ static int camera6on = 0;
 static int camera7on = 0;
 static int camera8on = 0;
 static int camera9on = 0;
-static int camera10on = 0;
-static int camera11on = 0;
-static int camera12on = 0;
-static int camera13on = 0;
-static int camera14on = 0;
-static int camera15on = 0;
+
+float BATTERY_DURATION = 420.0f;
 
 static int cameraMap = 0;
 int windowW = 0;
@@ -82,6 +77,11 @@ static SDL_Texture *R_DOOR_OFF_L_ON = NULL;
 static SDL_Texture *R_DOOR_ON_L_OFF = NULL;
 static SDL_Texture *R_DOOR_ON_L_ON = NULL;
 static SDL_Texture *MONITOR_ROOM = NULL;
+static SDL_Texture *MONITOR_ROOM_M = NULL;
+static SDL_Texture *CORRIDOR = NULL;
+static SDL_Texture *CORRIDOR_M = NULL;
+static SDL_Texture *COMMAND_ROOM = NULL;
+static SDL_Texture *COMMAND_ROOM_M = NULL;
 static SDL_Texture *STATIC = NULL;
 static SDL_Texture *MONSTER_L_DOOR_C = NULL;
 static SDL_Texture *MONSTER_L_DOOR_O_A = NULL;
@@ -89,6 +89,10 @@ static SDL_Texture *MONSTER_L_DOOR_O = NULL;
 static SDL_Texture *MONSTER_R_DOOR_C = NULL;
 static SDL_Texture *MONSTER_R_DOOR_O_A = NULL;
 static SDL_Texture *MONSTER_R_DOOR_O = NULL;
+static Uint32 lastSound = 0; 
+static Uint32 now = 0; 
+
+Mix_Chunk* song = NULL;
 
 
 
@@ -144,7 +148,7 @@ static void drawButton(SDL_Renderer *renderer, TTF_Font *font,
 /**
  * \brief Initialise l'état des boutons.
  *
- * Tous les boutons (portes et lumières) sont désactivés
+ * Tous les boutons (portes, lumieres et cameras) sont désactivés
  * au lancement du jeu.
  */
 void buttons_init()
@@ -155,13 +159,19 @@ void buttons_init()
     lumiereDroiteActive = 0;
     boutonLumieres = 0;
     moniteurCameras = 0;
+    camera1on = 0;
+    camera2on = 0;
+    camera3on = 0;
     camera4on = 0;
+    camera5on = 0;
     camera6on = 0;
+    camera7on = 0;
+    camera8on = 0;
+    camera9on = 0;
 }
 
 int cameraButton(){
-    return camera1on + camera2on + camera3on + camera4on + camera5on + camera6on + camera7on + camera8on + camera9on + camera10on + camera11on + camera12on + camera13on
-     + camera14on + camera15on;
+    return camera1on + camera2on + camera3on + camera4on + camera5on + camera6on + camera7on + camera8on + camera9on;
 }
 /**
  * \brief Gère les événements liés aux boutons.
@@ -259,6 +269,15 @@ void buttons_render(SDL_Renderer *renderer,
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
 
+
+/**
+ * \brief Permet l'affichage des boutons de la camera
+ * 
+ * \param renderer Renderer SDL utilisé pour le dessin.
+ * \param font Police utilisée pour les labels des boutons (inutile ici)
+ * \param windowW Largeur de la fenêtre.
+ * \param windowH Hauteur de la fenêtre.
+ */
 void camera_buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
@@ -267,6 +286,7 @@ void camera_buttons_render(SDL_Renderer *renderer,
 
     int buttonW = 44;
     int buttonH = 27;
+
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
 
     //camera 3
@@ -323,6 +343,11 @@ void camera_buttons_render(SDL_Renderer *renderer,
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
 
+
+/**
+ * \brief Permet la gestion des boutons des caméras
+ *
+ */
 void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 {
     if (event->type != SDL_MOUSEBUTTONDOWN)
@@ -413,7 +438,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
             camera9on = 0;
         }
         camera4on = !camera4on;
-        camera->num_camera = CAMERA_4;
+        camera->num_camera = CAMERA_8;
     }
     if (SDL_PointInRect(&p, &btnCamera5)){
         if(cameraButton() && camera5on == 0){
@@ -491,21 +516,47 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
             camera9on = 0;
         }
         camera9on = !camera9on;
-        camera->num_camera = CAMERA_9;
+        camera->num_camera = CAMERA_12;
     }
     if (SDL_PointInRect(&p, &btnCameras))
     moniteurCameras = !moniteurCameras;
 }
 
+/**
+ * \brief Permet l'affichage des cameras
+ *
+ * Les numeros des cameras sont suivant le schéma de "carte.c"
+ * et non celui du jeu (par souci de réalisme).
+ */
 void change_camera(case_t * camera, case_t * monstre){
-    if(camera8on && camera->num_camera == CAMERA_1 && monstre->num_camera == CAMERA_1){
-        background = MONITOR_ROOM;
+    if(camera8on && camera->num_camera == CAMERA_1){
+        if (monstre->num_camera == CAMERA_1)
+            background = MONITOR_ROOM_M;
+        else
+            background = MONITOR_ROOM;
+    }
+    else if(camera4on && camera->num_camera == CAMERA_8){
+        if (monstre->num_camera == CAMERA_8)
+            background = CORRIDOR_M;
+        else
+            background = CORRIDOR;
+    }
+    else if(camera9on && camera->num_camera == CAMERA_12){
+        if (monstre->num_camera == CAMERA_12)
+            background = COMMAND_ROOM_M;
+        else
+            background = COMMAND_ROOM;
     }
     else
         background = STATIC;
 }
 
 
+
+/**
+ * \brief Affiche la carte de la camera
+ *
+ */
 static void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
                        SDL_Rect rect, int active, const char *label)
 {
@@ -529,6 +580,11 @@ static void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
     SDL_DestroyTexture(texture);
 }
 
+
+/**
+ * \brief Rend le rectangle affiché précedemment
+ *
+ */
 void renderCameraMap(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
@@ -612,11 +668,14 @@ void game_initialise()
  * \param lightCount Nombre de lumières allumées.
  */
 void battery_update(float deltaTime, int doorCount, int lightCount)
-{
+{   
+        BATTERY_DURATION = 2000.0f - night*500;
     float drainRate = 100.0f / BATTERY_DURATION;
 
-    if (doorCount == 2)
+    if (doorCount == 2 && cameraButton())
         drainRate *= 4.0f;
+    else if (doorCount == 2 && !cameraButton())
+        drainRate *= 3.0f;
     else if (doorCount == 1)
         drainRate *= 2.0f;
 
@@ -775,6 +834,8 @@ void affichage(){
             change = FAUX;
             porteDroiteActive = FAUX;
             porteGaucheActive = FAUX;
+            lumiereDroiteActive = FAUX;
+            lumiereGaucheActive = FAUX;
             ouverture_porte_gauche(carte, joueur);
             ouverture_porte_droite(carte, joueur);
         }
@@ -783,6 +844,8 @@ void affichage(){
             change = FAUX;
             porteDroiteActive = FAUX;
             porteGaucheActive = FAUX;
+            lumiereDroiteActive = FAUX;
+            lumiereGaucheActive = FAUX;
             ouverture_porte_gauche(carte, joueur);
             ouverture_porte_droite(carte, joueur);
         }
@@ -791,7 +854,17 @@ void affichage(){
                 background = MONSTER_R_DOOR_O;
             }
         else if(monstre->num_camera == PORTE_HAUT){
+
+            // A FIX
+                lastSound = SDL_GetTicks() + 1000;
+                now = SDL_GetTicks();
                 background = MONSTER_R_DOOR_O_A;
+                if (now < lastSound){
+                song = Mix_LoadWAV("assets/audio/sound/ATTACK.wav");
+                Mix_VolumeChunk(song, 100);
+                if(song) 
+                    Mix_PlayChannel(-1, song, 0); 
+                }
             }
             else
                 background = R_DOOR_OFF_L_ON;
@@ -893,6 +966,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
         R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
         MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
+        MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
+        MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
+        MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
+        COMMAND_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM.png");
+        COMMAND_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM_M.png");
+        CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR.png");
+        CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.mp4");
         STATIC = IMG_LoadTexture(renderer, "./assets/img/INgame/static.gif");
         MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
         MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
@@ -928,14 +1008,15 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         save_night(0);
         load_night();
     }
-    if(night >=MAX_NIGHT+1 /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
-        night = 2;
+    if(night >MAX_NIGHT /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
+        night = MAX_NIGHT;
         save_night(night);
         load_night();
     }
     if(night >= MAX_NIGHT){
         placement_mimic(carte, mimic);
     }
+    
     
     tempsDebut = SDL_GetTicks();
 
