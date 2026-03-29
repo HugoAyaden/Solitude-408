@@ -1,3 +1,4 @@
+
 # Solitude 408
 
 ## Membres du projet:
@@ -42,6 +43,47 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
 
 link
 
+### Installation(Linux):
+
+1. Dans le terminal Linux, installer les packages suivant:
+2. Build-essential (make + gcc):
+```
+sudo  apt update
+sudo  apt install build-essential
+```
+3. pkg-config:
+```
+sudo  apt install pkg-config
+```
+4. Sdl 2:
+```
+sudo  apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+```
+4. Git:
+```
+sudo  apt install git
+```
+5. Cloner le dépôt (dernière branche jouable: dev).
+```
+git clone https://github.com/HugoAyaden/Solitude-408.git
+``` 
+6. Entrer dans la racine du dépôt:
+```
+cd Solitude-408
+```
+6. Changer de branch pour "dev":
+```
+git checkout dev
+```
+7. Compiler le jeu avec:
+```
+make all
+```
+8. Lancer le jeu avec:
+```
+./bin/Solitude408.exe
+```
+
 ### Installation(Windows+MSYS2):
 1. Télécharger et installer Msys2: 
 [Lien MSYS2](https://www.msys2.org/)
@@ -79,11 +121,15 @@ git clone https://github.com/HugoAyaden/Solitude-408.git
    ```
 /Solitude-408
 ```
-11. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
+11. Changer de branch pour "dev":
+```
+git checkout dev
+```
+12. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
 ```
 make all
 ```
-12. Toujours dans le terminal MSYS2 MINGW64, lancer le jeu avec:
+13. Toujours dans le terminal MSYS2 MINGW64, lancer le jeu avec:
 ```
 ./bin/Solitude408.exe
 ```
