@@ -19,16 +19,18 @@
 #define ERROR -1
 #define MAX_NIGHT 2
 #define BATTERY_DURATION 420.0f
-#define CAMERA_5 5
-#define CAMERA_15 15
-#define CAMERA_4 4
-#define CAMERA_14 14
 #define TEMPS_NUIT 20000
 
 
 static float battery = 100.0f;
 
 const Uint32 monsterMoveDelay = 2000; // Temps avant chaque déplacement du monstre en millisecondes (1000 ms = 1 s)
+
+
+typedef enum {CAMERA_0, CAMERA_1, CAMERA_2, CAMERA_3, CAMERA_4, CAMERA_5, 
+              CAMERA_6, CAMERA_7, CAMERA_8, CAMERA_9 ,CAMERA_10, CAMERA_11,
+              CAMERA_12, CAMERA_13, CAMERA_14, CAMERA_15
+            } num_cameras;
 
 // Deso Hugo mais fallait le faire
 static int porteGaucheActive = 0;
@@ -41,7 +43,25 @@ static int change = 1;
 static float finish = 0.0f;
 static int duree = 0;
 static int moniteurCameras = 0;
+static int camera1on = 0;
+static int camera2on = 0;
+static int camera3on = 0;
+static int camera4on = 0;
+static int camera5on = 0;
+static int camera6on = 0;
+static int camera7on = 0;
+static int camera8on = 0;
+static int camera9on = 0;
+static int camera10on = 0;
+static int camera11on = 0;
+static int camera12on = 0;
+static int camera13on = 0;
+static int camera14on = 0;
 static int camera15on = 0;
+
+static int cameraMap = 0;
+int windowW = 0;
+int windowH = 0;
 
 static booleen_t boutonLumieres = FAUX;
 
@@ -135,7 +155,13 @@ void buttons_init()
     lumiereDroiteActive = 0;
     boutonLumieres = 0;
     moniteurCameras = 0;
-    camera15on = 0;
+    camera4on = 0;
+    camera6on = 0;
+}
+
+int cameraButton(){
+    return camera1on + camera2on + camera3on + camera4on + camera5on + camera6on + camera7on + camera8on + camera9on + camera10on + camera11on + camera12on + camera13on
+     + camera14on + camera15on;
 }
 /**
  * \brief Gère les événements liés aux boutons.
@@ -151,8 +177,7 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     if (event->type != SDL_MOUSEBUTTONDOWN)
         return;
 
-    int w, h;
-    SDL_GetWindowSize(window, &w, &h);
+    SDL_GetWindowSize(window, &windowW, &windowH);
 
     int buttonW = 60;
     int buttonH = 60;
@@ -162,13 +187,13 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int spacingcamera = 500;
 
 
-    SDL_Rect btnCameras = {spacingcamera, h -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnPorteGauche = {spacing, h / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGauche = {spacing, h / 2 + 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGeneral = {spacing, h / 2 + 160, buttonW, buttonH};
+    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
 
-    SDL_Rect btnPorteDroite = {w - buttonW - spacing, h / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereDroite = {w - buttonW - spacing, h / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnPorteDroite = {windowW - buttonW - spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereDroite = {windowW - buttonW - spacing, windowH / 2 + 10, buttonW, buttonH};
 
     int mx = event->button.x;
     int my = event->button.y;
@@ -239,8 +264,40 @@ void camera_buttons_render(SDL_Renderer *renderer,
                     int windowW,
                     int windowH)
 {
-    int buttonW = 60;
-    int buttonH = 60;
+
+    int buttonW = 44;
+    int buttonH = 27;
+    /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
+
+    //camera 3
+    int buttonX3 = windowW-274;
+    int buttonY3 = windowH/2 + 2;
+
+    //camera 4
+    int buttonX4 = windowW-339;
+    int buttonY4 = windowH/2+11;
+
+    //camera 5
+    int buttonX5 = windowW-470;
+    int buttonY5 = windowH/2+57;
+
+    //camera 6
+    int buttonX6 = windowW-470;
+    int buttonY6 = windowH/2-53;
+
+    //camera 7
+    int buttonX7 = windowW-276;
+    int buttonY7= windowH/2-176;
+
+    //camera 8
+    int buttonX8 = windowW-450;
+    int buttonY8 = windowH/2-176;
+
+    //camera 9
+    int buttonX9 = windowW-339;
+    int buttonY9 = windowH/2+145;
+
+    //toggle camera
     int spacing = 20;    
     int buttonWcamera = 860;
     int buttonHcamera = 60;
@@ -248,9 +305,21 @@ void camera_buttons_render(SDL_Renderer *renderer,
 
 
     SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnCamera15 = {spacing, windowH / 2 - 160, buttonW, buttonH};
+    SDL_Rect btnCamera3 = {buttonX3, buttonY3, buttonW, buttonH};
+    SDL_Rect btnCamera4 = {buttonX4, buttonY4, buttonW, buttonH};
+    SDL_Rect btnCamera5 = {buttonX5, buttonY5, buttonW, buttonH};
+    SDL_Rect btnCamera6 = {buttonX6, buttonY6, buttonW, buttonH};
+    SDL_Rect btnCamera7 = {buttonX7, buttonY7, buttonW, buttonH};
+    SDL_Rect btnCamera8 = {buttonX8, buttonY8, buttonW, buttonH};
+    SDL_Rect btnCamera9 = {buttonX9, buttonY9, buttonW, buttonH};
 
-    drawButton(renderer, font, btnCamera15, camera15on, "CAM 5");
+    drawButton(renderer, font, btnCamera3, camera3on, " ");
+    drawButton(renderer, font, btnCamera4, camera4on, " ");
+    drawButton(renderer, font, btnCamera5, camera5on, " ");
+    drawButton(renderer, font, btnCamera6, camera6on, " ");
+    drawButton(renderer, font, btnCamera7, camera7on, " ");
+    drawButton(renderer, font, btnCamera8, camera8on, " ");
+    drawButton(renderer, font, btnCamera9, camera9on, " ");
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
 
@@ -259,40 +328,222 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     if (event->type != SDL_MOUSEBUTTONDOWN)
         return;
 
-    int w, h;
-    SDL_GetWindowSize(window, &w, &h);
+    SDL_GetWindowSize(window, &windowW, &windowH);
 
-    int buttonW = 60;
-    int buttonH = 60;
-    int spacing = 20;
+
+    int buttonW = 44;
+    int buttonH = 27;
+
+    /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
+
+    //camera 3
+    int buttonX3 = windowW-274;
+    int buttonY3 = windowH/2 + 2;
+
+    //camera 4
+    int buttonX4 = windowW-339;
+    int buttonY4 = windowH/2+11;
+
+    //camera 5
+    int buttonX5 = windowW-470;
+    int buttonY5 = windowH/2+57;
+
+    //camera 6
+    int buttonX6 = windowW-470;
+    int buttonY6 = windowH/2-53;
+
+    //camera 7
+    int buttonX7 = windowW-276;
+    int buttonY7= windowH/2-176;
+
+    //camera 8
+    int buttonX8 = windowW-450;
+    int buttonY8 = windowH/2-176;
+
+    //camera 9
+    int buttonX9 = windowW-339;
+    int buttonY9 = windowH/2+145;
+
+    //toggle camera
+    int spacing = 20;    
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
 
-    SDL_Rect btnCameras = {spacingcamera, h -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnCamera15 = {spacing, h / 2 - 160, buttonW, buttonH};
+    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCamera3 = {buttonX3, buttonY3, buttonW, buttonH};
+    SDL_Rect btnCamera4 = {buttonX4, buttonY4, buttonW, buttonH};
+    SDL_Rect btnCamera5 = {buttonX5, buttonY5, buttonW, buttonH};
+    SDL_Rect btnCamera6 = {buttonX6, buttonY6, buttonW, buttonH};
+    SDL_Rect btnCamera7 = {buttonX7, buttonY7, buttonW, buttonH};
+    SDL_Rect btnCamera8 = {buttonX8, buttonY8, buttonW, buttonH};
+    SDL_Rect btnCamera9 = {buttonX9, buttonY9, buttonW, buttonH};
 
     int mx = event->button.x;
     int my = event->button.y;
 
     SDL_Point p = {mx, my};
 
-    if (SDL_PointInRect(&p, &btnCamera15)){
-        camera15on = !camera15on;
-        camera->num_camera = CAMERA_15;
+    if (SDL_PointInRect(&p, &btnCamera3)){
+        if(cameraButton() && camera3on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera3on = !camera3on;
+        camera->num_camera = CAMERA_9;
+    }
+    if (SDL_PointInRect(&p, &btnCamera4)){
+        if(cameraButton() && camera4on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera4on = !camera4on;
+        camera->num_camera = CAMERA_4;
+    }
+    if (SDL_PointInRect(&p, &btnCamera5)){
+        if(cameraButton() && camera5on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera5on = !camera5on;
+        camera->num_camera = CAMERA_5;
+    }
+    if (SDL_PointInRect(&p, &btnCamera6)){
+        if(cameraButton() && camera6on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera6on = !camera6on;
+        camera->num_camera = CAMERA_6;
+    }
+    if (SDL_PointInRect(&p, &btnCamera7)){
+        if(cameraButton() && camera7on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera7on = !camera7on;
+        camera->num_camera = CAMERA_7;
+    }
+
+    //CAMERA 1 DANS LA MATRICE
+    if (SDL_PointInRect(&p, &btnCamera8)){
+        if(cameraButton() && camera8on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera8on = !camera8on;
+        camera->num_camera = CAMERA_1;
+    }
+    //CAMERA 1 DANS LA MATRICE
+    if (SDL_PointInRect(&p, &btnCamera9)){
+        if(cameraButton() && camera9on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera9on = !camera9on;
+        camera->num_camera = CAMERA_9;
     }
     if (SDL_PointInRect(&p, &btnCameras))
     moniteurCameras = !moniteurCameras;
 }
 
 void change_camera(case_t * camera, case_t * monstre){
-    if(camera15on && camera->num_camera == CAMERA_15 && monstre->num_camera == CAMERA_15){
+    if(camera8on && camera->num_camera == CAMERA_1 && monstre->num_camera == CAMERA_1){
         background = MONITOR_ROOM;
     }
     else
         background = STATIC;
 }
+
+
+static void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
+                       SDL_Rect rect, int active, const char *label)
+{
+
+    SDL_Surface *surface = IMG_Load("./assets/img/INgame/cam_map.png");
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    SDL_Rect textRect;
+
+    /* La taille de la surface que la map prend (ici, tout) */
+    textRect.w = surface->w;
+    textRect.h = surface->h;
+
+    /* Placement de la map des camera sur l'ecran */
+    textRect.x = rect.x + 800;
+    textRect.y = rect.y - 200;
+
+    SDL_RenderCopy(renderer, texture, NULL, &textRect);
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+}
+
+void renderCameraMap(SDL_Renderer *renderer,
+                    TTF_Font *font,
+                    int windowW,
+                    int windowH)
+{
+    int buttonWcamera = 860;
+    int buttonHcamera = 60;
+    int spacingcamera = 500;
+
+
+    SDL_Rect mapCamera = {spacingcamera, windowH/2, buttonWcamera, buttonHcamera};
+
+    drawCamera(renderer, font, mapCamera, cameraMap, "");
+}
+
 /**
  * \brief Retourne le nombre de portes activées.
  *
@@ -491,14 +742,15 @@ void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontButtons,
                  SDL_Window *window)
 {
-    int w, h;
-    SDL_GetWindowSize(window, &w, &h);
+    SDL_GetWindowSize(window, &windowW, &windowH);
 
-    battery_render(renderer, fontBattery, w, h);
+    battery_render(renderer, fontBattery, windowW, windowH);
     if(moniteurCameras == 0)
-        buttons_render(renderer, fontButtons, w, h);
-    else
-        camera_buttons_render(renderer, fontButtons, w, h);
+        buttons_render(renderer, fontButtons, windowW, windowH);
+    else{
+        camera_buttons_render(renderer, fontButtons, windowW, windowH);
+        renderCameraMap(renderer, fontButtons,windowW,windowH);
+    }
 }
 
 
@@ -657,8 +909,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
     //POUR UN REDEMARAGE A 0
-    battery = 100.0f;
-    porteGaucheActive = porteDroiteActive = lumiereGaucheActive = lumiereDroiteActive = boutonLumieres = moniteurCameras = camera15on = 0;
+    game_initialise();
     
     srand(time(NULL));
     init_carte(carte);
@@ -707,9 +958,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         game_update(deltaTime);
 
         SDL_RenderClear(renderer);
-        int w, h;
-        SDL_GetWindowSize(window, &w, &h);
-        SDL_Rect bgRect = {0, 0, w, h};
+        SDL_GetWindowSize(window, &windowW, &windowH);
+        SDL_Rect bgRect = {0, 0, windowW, windowH};
         int lightCount = buttons_getLightCount();
 
 

@@ -31,7 +31,7 @@ INCLUDES := -I./lib $(shell pkg-config --cflags sdl2 SDL2_ttf SDL2_image SDL2_mi
 LIBS := $(shell pkg-config --libs sdl2 SDL2_ttf SDL2_image SDL2_mixer) $(EXTRA_LIBS)
 
 # --- PROJECT STRUCTURE ---
-SRCDIRS := src fichiers test
+SRCDIRS := src
 SRCS := $(foreach d,$(SRCDIRS),$(wildcard $(d)/*.c))
 
 OBJDIR := obj

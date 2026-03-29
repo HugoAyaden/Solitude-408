@@ -20,9 +20,6 @@ int screenModeIndex = 1;
 int resIndex = 2; 
 int night = -1;
 static int overBack = 0;
-static int justClicked = 0;
-static int mPressed = 0;
-static int isLeftDown = 0;
 
 // Local Settings Variables
 static Mix_Chunk* sGlitch = NULL;
@@ -32,7 +29,7 @@ static SDL_Texture* settingsStaticTex = NULL;
 static SDL_Texture* settingsBG = NULL; 
 static Uint32 saveNotificationTimer = 0; 
 
-typedef enum screen_t {WINDOWED,FULLSCREEN,BORDERLESS};
+typedef enum screen_t {WINDOWED,FULLSCREEN};
 // Interface Options
 const char* screenModes[] = {"WINDOWED", "FULLSCREEN", "BORDERLESS"};
 const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
