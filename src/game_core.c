@@ -618,6 +618,16 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
     tempsDebut = SDL_GetTicks();
     tempsFin = SDL_GetTicks() + 10000;
     finish = (tempsFin - duree);
+    //rect de jeu pour panorama
+    int w, h;
+    int imgW, imgH;
+    SDL_GetWindowSize(window, &w, &h); //obtient la taille de la fenetre
+    SDL_QueryTexture(background, NULL, NULL, &imgW, &imgH); //recup des infos background
+    float img_stretch_percentage = 2.0; //pourcentage d'etendue de l'image
+    int img_stretched_res = (int)(w * img_stretch_percentage); //nouvelle resolution de l'image
+    int imgCenterRes =(-img_stretched_res+w)/2; //milieu de l'image pour position
+    SDL_Rect bgRect = {imgCenterRes, 0, img_stretched_res, h};
+
     while (!fin(carte, monstre) && finish >= 0)
     {
         Uint32 currentTime = SDL_GetTicks();
@@ -640,22 +650,18 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
 
 
         SDL_RenderClear(renderer);
-        int w, h;
-        SDL_GetWindowSize(window, &w, &h);
 
 
         /* CODE BULLSHIT*/
-        float img_stretch_percentage = 2.0; //pourcentage d'etendue de l'image
-        int img_stretched_res = (int)(w * img_stretch_percentage); //nouvelle resolution de l'image
-        int imgCenterRes =(-img_stretched_res+w)/2; //milieu de l'image pour position
-        int imgW, imgH;
-        SDL_QueryTexture(background, NULL, NULL, &imgW, &imgH);
-        printf("ImgW = %d\n",imgW);
-        printf("ImgH = %d\n",imgH);
-        printf("ImgStretched = %d\n",img_stretched_res);
+        
+        //printf("ImgW = %d\n",imgW);
+        //printf("ImgH = %d\n",imgH);
+        //printf("ImgStretched = %d\n",img_stretched_res);
 
-        SDL_Rect bgRect = {imgCenterRes, 0, img_stretched_res, h};
+        
         panoramic_game(w, img_stretched_res, &bgRect);
+
+
         int lightCount = buttons_getLightCount();
         
 

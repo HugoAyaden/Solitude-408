@@ -32,23 +32,29 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
     int img_limit_right = -imgW + screen_width;                     //limite de position de l'image a droite
     int img_limit_left = 0;                                         //limite de position de l'image a gauche
 
+
     // Déplacer l'image horizontalement
     if (mouseX >= move_zone_left && imgRect->x > img_limit_right) {
 
         if ((imgRect->x - pixel_offset) <= img_limit_right) {
             imgRect->x = img_limit_right;
+                printf("PosX Img droite = %d\n",  imgRect->x);
+
         }
         else {
             imgRect->x -= pixel_offset;
+                printf("PosX Img droite = %d\n",  imgRect->x);
         }
     }
     else if (mouseX <= move_zone_right && imgRect->x < img_limit_left) {
         if ((imgRect->x + pixel_offset) >= img_limit_left)
         {
             imgRect->x = img_limit_left;
+            printf("PosX Img gauche = %d\n", imgRect->x);
         }
         else {
             imgRect->x += pixel_offset;
+            printf("PosX Img gauche = %d\n", imgRect->x);
         }
     }
 }
