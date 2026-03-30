@@ -1,5 +1,4 @@
 #include <MainMenu.h>
-#include <stdio.h>
 
 static int w = 1920;
 static int h = 1080;

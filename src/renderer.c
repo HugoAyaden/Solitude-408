@@ -1,8 +1,4 @@
-#include <game_core.h>
-
-
-
-
+#include <renderer.h>
 
 /**
  * \brief Affiche tous les boutons de contrôle.

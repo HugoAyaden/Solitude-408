@@ -9,43 +9,7 @@
 #ifndef CARTE_H
 #define CARTE_H
  #include <commun.h>
-
-/* 
- * certaines caméras peuvent être initialisées mais ne pas être accessible
- * le monstre s'y trouve mais il n'est pas possible pour le joueur
- * d'en être certain (peur)
- */
-
- typedef struct case_s {
-    //pour le monstre, temps avant de pouvoir se déplacer à nouveau
-    float moove_cooldown;
-    //Y'a t-il un monstre sur la caméra
-    booleen_t habite;
-
-    int num_camera;
-    //le booleen dit si la caméra est utilisée actuellement ou non (FAUX ou VRAI)
-    booleen_t utilise;
-
-   /*
-    * si la lumière est allumée ou éteinte, cela influence le comportement du mimic, 
-    * si la salle du joueur est allumée lors de son attaque il tue le joueur sinon il passe et il retourne a son spawn
-    */
-
-    booleen_t lumiere; 
-    //majoriterement VRAI sauf pour des zones d'histoire (cabine de notre collegue)
-    booleen_t acess;
-
-    struct case_s * voisin_haut;
-    struct case_s * voisin_droit;
-    struct case_s * voisin_gauche;
-    struct case_s * voisin_bas;
-
- }case_t;
-
- typedef struct carte_s {
-
-   case_t cases[FIN_X][FIN_Y];
-}carte_t;
+#include <constantes.h>s
 
 booleen_t accessible(int y, int x);
 void init_carte(carte_t *carte);

@@ -19,22 +19,8 @@
 #define CREDITS 3
 #define EXIT_GAME 4
 
-#include <commun.h>
 #include <game_core.h>
-typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
-typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE} GameState;
 
-
-// Global Settings Variables from save.cfg
-extern int masterVol, musicVol, brightness, mouseSens, night;
-extern int screenModeIndex; 
-extern int resIndex; 
-
-void load_settings();
-void save_settings();
-void load_night();
-void save_night(int night);
-void save_night(int n);
 void draw_brightness_overlay(SDL_Renderer* ren, int sw, int sh);
 int render_settings(SDL_Renderer* ren, TTF_Font* font); 
 void cleanup_settings();

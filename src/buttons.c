@@ -1,4 +1,4 @@
-#include <game_core.h>
+#include <buttons.h>
 
 /**
  * \brief Initialise l'état des boutons.
@@ -26,7 +26,8 @@ void buttons_init()
 }
 
 int cameraButton(){
-    return camera1on + camera2on + camera3on + camera4on + camera5on + camera6on + camera7on + camera8on + camera9on;
+    return (camera1on + camera2on + camera3on + camera4on + camera5on + 
+            camera6on + camera7on + camera8on + camera9on);
 }
 
 /**

@@ -1,6 +1,3 @@
-#include <commun.h>
-#include <portes.h>
-#include <MainMenu.h>
 #include <game_core.h>
 
 
@@ -297,6 +294,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         save_night(night);
         load_night();
     }
+
     if(night >= MAX_NIGHT){
         placement_mimic(carte, mimic);
     }
