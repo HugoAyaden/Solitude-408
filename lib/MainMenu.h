@@ -19,12 +19,8 @@
 #define CREDITS 3
 #define EXIT_GAME 4
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
-#include <stdlib.h>
-
+#include <commun.h>
+#include <game_core.h>
 typedef struct { SDL_Rect rect; SDL_Texture* texture; const char* label; } MenuButton;
 typedef enum { STATE_MENU, STATE_SETTINGS, STATE_NEW_GAME, STATE_CONTINUE} GameState;
 
@@ -53,12 +49,5 @@ void draw_centered_text(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL
 
 void run_transition(SDL_Renderer* ren, SDL_Texture* staticTex, float progress);
 SDL_Texture* CreateStaticTexture(SDL_Renderer* renderer);
-
-void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons);
-
-void game_handleEvent(SDL_Event *event, SDL_Window *window);
-void game_update(float deltaTime);
-void render_game(SDL_Renderer *renderer, TTF_Font *fontBattery, TTF_Font *fontButtons, SDL_Window *window);
-void game_final_cleanup();
 
 #endif

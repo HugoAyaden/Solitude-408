@@ -6,6 +6,8 @@
  * \date 09/03/2026
  * 
  */
+#ifndef BFS_H
+#define BFS_H
 
 #include <ia_monstre.h>
 
@@ -16,3 +18,5 @@ typedef struct {
 
 case_t *bfs_next_step(case_t *start, case_t *goal);
 void move_monster(carte_t *carte, case_t *monstre, case_t *joueur);
+
+#endif

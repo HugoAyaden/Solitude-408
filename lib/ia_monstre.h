@@ -1,17 +1,14 @@
 /**
-<<<<<<< HEAD
  * \file ia_monstre.h
  * \brief Header pour les fonctions du monstre
-=======
-<<<<<<< HEAD
- * \file ia_monstre_n1.h
- * \brief Header pour les fonctions du monstre la nuit 1
->>>>>>> dev
  * \author Ayaden Hugo
  * \version 1.0
  * \date 12/02/2026
  * 
  */
+
+#ifndef IA_MONSTRE_H
+#define IA_MONSTRE_H
 
  typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
 
@@ -49,3 +46,5 @@ void placement_mimic(carte_t *carte, case_t *mimic);
 
 int chance_deplacement();
 void timer_monstre();
+
+#endif
