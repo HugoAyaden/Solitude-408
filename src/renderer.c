@@ -87,8 +87,7 @@ void camera_buttons_render(SDL_Renderer *renderer,
     int buttonX9 = windowW-339;
     int buttonY9 = windowH/2+145;
 
-    //toggle camera
-    int spacing = 20;    
+    //toggle camera   
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;

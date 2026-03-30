@@ -1,8 +1,11 @@
 #ifndef GAME_CORE_H
 #define GAME_CORE_H
 
-#include <settings.h>
 #include <constantes.h>
+#include <buttons.h>
+#include <settings.h>
+#include <portes.h>
+#include <renderer.h>
 
 
 void change_camera(case_t * camera, case_t * monstre);

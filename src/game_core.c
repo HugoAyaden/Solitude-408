@@ -16,8 +16,6 @@
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 20000
 
-const Uint32 monsterMoveDelay = 2000; // Temps avant chaque déplacement du monstre en millisecondes (1000 ms = 1 s)
-
 /**
  * \brief Permet l'affichage des cameras
  *

@@ -9,12 +9,6 @@
 
 #include <MainMenu.h>
 
-static SDL_Texture* bgTexture = NULL;
-static SDL_Texture* titleText = NULL;
-static SDL_Rect titleRect;
-static MenuButton buttons[5];
-static int assetsLoaded = false;
-
 void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) {
     if (assetsLoaded) return;
 

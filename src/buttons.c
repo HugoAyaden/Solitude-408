@@ -44,7 +44,7 @@ int cameraButton(){
  * \param label Texte affiché sur le bouton.
  */
 
-static void drawButton(SDL_Renderer *renderer, TTF_Font *font,
+void drawButton(SDL_Renderer *renderer, TTF_Font *font,
                        SDL_Rect rect, int active, const char *label)
 {
     if (active)
@@ -313,7 +313,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
  * \brief Affiche la carte de la camera
  *
  */
-static void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
+void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
                        SDL_Rect rect, int active, const char *label)
 {
 

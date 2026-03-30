@@ -1,11 +1,5 @@
 #include <MainMenu.h>
 
-static int w = 1920;
-static int h = 1080;
-
-static int run = true, trans = false;
-static float progress = 0.0f;
-static GameState state = STATE_MENU, next = STATE_MENU;
 
 void transition() {
     if (trans) {
