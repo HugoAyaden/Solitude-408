@@ -20,8 +20,6 @@ typedef struct case_s {
     struct case_s *voisin_bas;
 } case_t;
 
-typedef enum {WINDOWED,FULLSCREEN,BORDERLESS}screen_t;
-
 typedef struct carte_s {
     case_t cases[FIN_X][FIN_Y];
 } carte_t;
@@ -32,6 +30,14 @@ typedef struct {
     const char *label;
 } MenuButton;
 
+
+typedef struct {
+    case_t *cell;
+    case_t *parent;
+} queue_node_t;
+
+typedef enum {WINDOWED,FULLSCREEN,BORDERLESS}screen_t;
+
 typedef enum {
     STATE_MENU,
     STATE_SETTINGS,
@@ -39,6 +45,8 @@ typedef enum {
     STATE_CONTINUE
 } GameState;
 
+
+/* ============CAMERAS.H==================== */
 typedef enum {
     CAMERA_0, CAMERA_1, CAMERA_2, CAMERA_3,
     CAMERA_4, CAMERA_5, CAMERA_6, CAMERA_7,
@@ -50,10 +58,16 @@ typedef struct {
     booleen_t active;
 } camera_t;
 
-typedef struct {
-    case_t *cell;
-    case_t *parent;
-} queue_node_t;
+extern int moniteurCameras;
+extern int camera1on;
+extern int camera2on;
+extern int camera3on;
+extern int camera4on;
+extern int camera5on;
+extern int camera6on;
+extern int camera7on;
+extern int camera8on;
+extern int camera9on;
 
 extern float battery;
 extern int porteGaucheActive;
@@ -65,16 +79,6 @@ extern int tempsFin;
 extern int change;
 extern float finish;
 extern int duree;
-extern int moniteurCameras;
-extern int camera1on;
-extern int camera2on;
-extern int camera3on;
-extern int camera4on;
-extern int camera5on;
-extern int camera6on;
-extern int camera7on;
-extern int camera8on;
-extern int camera9on;
 extern float BATTERY_DURATION;
 extern int cameraMap;
 extern int windowW;
@@ -142,5 +146,5 @@ extern SDL_Texture *titleText;
 extern SDL_Rect titleRect;
 extern MenuButton buttons[5];
 extern int assetsLoaded;
-
+extern Uint32 lastTime;
 #endif

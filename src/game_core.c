@@ -196,31 +196,27 @@ void difficulte(int night){
 
 
 void update(){
-    /*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
-        // Déplacement du monstre toutes les 5 secondes
-        if (currentTime - monsterLastMove >= monsterMoveDelay)
-        {
-            monsterLastMove = currentTime;
+/*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
+    // Déplacement du monstre toutes les 5 secondes
 
-                if(porteGaucheActive && monstre->num_camera == PORTE_BAS){
-                    placement_monstre(carte, monstre);
-                }
-                else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
-                    placement_monstre(carte, monstre);
-                }
+    if(porteGaucheActive && monstre->num_camera == PORTE_BAS){
+        placement_monstre(carte, monstre);
+    }
+    else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
+        placement_monstre(carte, monstre);
+    }
 
-                //Chaque nuit a sa difficulté d'IA
-            difficulte(night);
+        //Chaque nuit a sa difficulté d'IA
+    difficulte(night);
 
 
-            printf("nuit %d\n", night);
-            printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
-            duree = SDL_GetTicks();
-            finish = (tempsFin-duree)+deltaTime;
-            printf("Temps ecoule : %2.f\n", finish);
-        }
-        /*==============================================*/
+    printf("nuit %d\n", night);
+    printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
+    duree = SDL_GetTicks();
+    finish = (tempsFin-duree)+deltaTime;
+    printf("Temps ecoule : %2.f\n", finish);
 }
+    /*==============================================*/
 
 /**
  * \brief Fonction principale du programme.
@@ -277,8 +273,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     placement_monstre(carte, monstre);
 
     SDL_Event event;
-    Uint32 lastTime = SDL_GetTicks();
-    Uint32 monsterLastMove = SDL_GetTicks();
+    lastTime = SDL_GetTicks();
+    monsterLastMove = SDL_GetTicks();
     int actual = -1;
     
     load_night();
@@ -297,11 +293,11 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         placement_mimic(carte, mimic);
     }
     
-    
     tempsDebut = SDL_GetTicks();
 
-    tempsFin = SDL_GetTicks() + TEMPS_NUIT;
-    finish = (tempsFin-duree);
+    tempsFin = tempsDebut + TEMPS_NUIT;
+    duree = tempsDebut;
+    finish = TEMPS_NUIT;
     while (!fin(carte, monstre) && finish >= 0){
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monstre avant chaque déplacement
@@ -324,12 +320,18 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         int lightCount = buttons_getLightCount();
 
 
-        //Update de l'état du monstre
+        //Update de l'état du monstre (timer hors de la loop pour ne pas le corrompre)
+        if (currentTime - monsterLastMove >= monsterMoveDelay)
+        {
+            monsterLastMove = currentTime;
         update();
+        }
 
         if(battery > 0 && !boutonLumieres){
             change = VRAI;
         }
+
+        //WHILE BATTERY > 0
         if(change == VRAI){
             if(actual != buttons_getDoorCount()){
                 if(porteDroiteActive)
@@ -342,7 +344,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
                     ouverture_porte_gauche(carte, joueur);
                 }
             }
-
+        
         actual = buttons_getDoorCount();
         if (lightCount >= 2)
             background = DOORS_OFF_L_ON;

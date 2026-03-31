@@ -87,3 +87,4 @@ SDL_Texture *titleText = NULL;
 SDL_Rect titleRect;
 MenuButton buttons[5];
 int assetsLoaded = false;
+Uint32 lastTime = 0;
