@@ -1,3 +1,12 @@
+/**
+ * \file buttons.c
+ * \brief File for every button interaction
+ * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \version 1.1
+ * \date 29/03/2026
+ *
+ */
+
 #include <buttons.h>
 
 /**
@@ -132,7 +141,7 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 }
 
 /**
- * \brief Permet la gestion des boutons des caméras
+ * \brief Allow video camera change through buttons
  *
  */
 void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
@@ -176,8 +185,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int buttonX9 = windowW-339;
     int buttonY9 = windowH/2+145;
 
-    //toggle camera
-    int spacing = 20;    
+    //toggle camera   
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
@@ -310,7 +318,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 }
 
 /**
- * \brief Affiche la carte de la camera
+ * \brief Affiche la map de la camera
  *
  */
 void drawCamera(SDL_Renderer *renderer, TTF_Font *font,

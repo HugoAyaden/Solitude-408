@@ -1,3 +1,12 @@
+/**
+ * \file game_core.h
+ * \brief Heador for the main game loop
+ * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \version 1.4
+ * \date 10/03/2026
+ *
+ */
+
 #ifndef GAME_CORE_H
 #define GAME_CORE_H
 
@@ -8,7 +17,7 @@
 #include <renderer.h>
 
 
-void change_camera(case_t * camera, case_t * monstre);
+void change_camera(case_t * camera, case_t * monster);
 int buttons_getDoorCount();
 int buttons_getLightCount();
 void game_handleEvent(SDL_Event *event, SDL_Window *window);

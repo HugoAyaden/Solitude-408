@@ -1,6 +1,6 @@
 /**
  * \file ia_monstre.h
- * \brief Header pour les fonctions du monstre
+ * \brief Header for the monster's functionement
  * \author Ayaden Hugo
  * \version 1.0
  * \date 12/02/2026
@@ -12,37 +12,33 @@
 
  typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
 
-#include <carte.h>
+#include <map.h>
 
-/* DEPART DE CHACUN DES MONSTRES 
- *(le Y reste toujours le meme, l'autre coté du vaisseau par rapport au joueur)
+/* EVERY MONSTER'S START 
+ *(The Y always stays the same, opposite of the player)
  */
 #define START_MONSTRE_X 3
 #define START_MIMIC_X 1
 
-/* DEPART DE LA MATRICE */
+/* MATRICE'S START */
 #define DEPART_Y 0
 #define DEPART_X 0
 
-#define FIN_Y 5
-#define FIN_X 3
+/* MATRICE'S END */
+#define END_Y 5
+#define END_X 3
 
 
-void placement_monstre(carte_t *carte, case_t *monstre);
-booleen_t fin(carte_t *carte, case_t *monstre); 
+void placement_monstre(carte_t *map, case_t *monster);
+booleen_t fin(carte_t *map, case_t *monster); 
 
 
-void deplacement(carte_t * carte, case_t * monstre, int direction); 
+void deplacement(carte_t * map, case_t * monster, int direction); 
+int movement_opportunity(carte_t *map, case_t *monster, int y, int x);
 
-/* 
- * Le monstre va tirer un chiffre au hasard, voir si il peut y accéder
- * si oui il se déplace sinon il en tire un autre jusqu'à ce qu'il puisse se déplacer
- */
-int movement_opportunity(carte_t *carte, case_t *monstre, int y, int x);
-
-void mouvement_mimic(carte_t *carte, case_t *mimic);
-int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur);
-void placement_mimic(carte_t *carte, case_t *mimic);
+void mouvement_mimic(carte_t *map, case_t *mimic);
+int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur);
+void placement_mimic(carte_t *map, case_t *mimic);
 
 int chance_deplacement();
 void timer_monstre();

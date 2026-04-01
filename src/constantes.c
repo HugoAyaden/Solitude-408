@@ -1,3 +1,12 @@
+/**
+ * \file constants.c
+ * \brief Initialisation of every variable.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 31/03/2026
+ * 
+ */
+
 #include "constantes.h"
 
 float battery = 100.0f;
@@ -25,9 +34,9 @@ int cameraMap = 0;
 int windowW = 0;
 int windowH = 0;
 booleen_t boutonLumieres = FAUX;
-carte_t *carte = NULL;
+carte_t *map = NULL;
 case_t *joueur = NULL;
-case_t *monstre = NULL;
+case_t *monster = NULL;
 case_t *mimic = NULL;
 SDL_Texture *background = NULL;
 SDL_Texture *BLACKOUT = NULL;
@@ -88,3 +97,4 @@ SDL_Rect titleRect;
 MenuButton buttons[5];
 int assetsLoaded = false;
 Uint32 lastTime = 0;
+int lightCount = 0;

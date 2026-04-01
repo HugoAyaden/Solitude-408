@@ -1,26 +1,32 @@
 /**
  * \file ia_monstre_n3.c
- * \brief Création et initialisation de l'IA du mimic pour la nuit 3
+ * \brief Creation and initialisation of the monster's AI for night 3
  * \author Ayaden Hugo
- * \version 1.0
+ * \version 1.1
  * \date 09/03/2026
  * 
  */
 
 #include <bfs.h>
 
-/* DEPART DU MIMIC */
 
- void placement_mimic(carte_t *carte, case_t *mimic){
-    *mimic = carte->cases[START_MIMIC_X][DEPART_Y];
+/**
+ * \brief Mimic's spawnpoint
+ * \param map
+ * \param mimic
+ *
+ */
+
+ void placement_mimic(carte_t *map, case_t *mimic){
+    *mimic = map->cases[START_MIMIC_X][DEPART_Y];
  }
 
 
 /* DEPLACEMENT DU MIMIC AU LONG DE LA PARTIE */
 
-void mouvement_mimic(carte_t *carte, case_t *mimic){
+void mouvement_mimic(carte_t *map, case_t *mimic){
     
-   /* Le mimic se déplace de manière aléatoire sur la carte.
+   /* Le mimic se déplace de manière aléatoire sur la map.
     * Il a une chance sur 5 de se déplacer à chaque tour.
     * S'il se trouve à côté du joueur, il attaque.
     * Sinon, il continue à errer.
@@ -28,34 +34,34 @@ void mouvement_mimic(carte_t *carte, case_t *mimic){
     */
     
     if(chance_deplacement() < 5){
-            int x = rand() % FIN_X;
-            int y = rand() % FIN_Y;
-            *mimic = carte->cases[x][y];
-        while(mimic->num_camera == carte->cases[X_JOUEUR][Y_JOUEUR].num_camera){
+            int x = rand() % END_X;
+            int y = rand() % END_Y;
+            *mimic = map->cases[x][y];
+        while(mimic->num_camera == map->cases[X_JOUEUR][Y_JOUEUR].num_camera){
             printf("mimic x = %d\n", x);
-            x = rand() % FIN_X;
-            y = rand() % FIN_Y;
-            *mimic = carte->cases[x][y];
+            x = rand() % END_X;
+            y = rand() % END_Y;
+            *mimic = map->cases[x][y];
         }
-        printf("Le mimic se déplace vers la caméra %d\n", mimic->num_camera);
-        *mimic = carte->cases[x][y];
+        printf("Mimic move to %d th camera\n", mimic->num_camera);
+        *mimic = map->cases[x][y];
     }
     else{
-        printf("Le mimic ne bouge pas\n");
+        printf("Mimic don't move\n");
     }
 }
 
 
 
-int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur){
-    if(mimic->num_camera == carte.cases[X_JOUEUR-1][Y_JOUEUR].num_camera ||  mimic->num_camera == carte.cases[X_JOUEUR+1][Y_JOUEUR].num_camera){
+int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur){
+    if(mimic->num_camera == map.cases[X_JOUEUR-1][Y_JOUEUR].num_camera ||  mimic->num_camera == map.cases[X_JOUEUR+1][Y_JOUEUR].num_camera){
         if(joueur->lumiere == VRAI){
-            printf("Le mimic attaque le joueur et le tue !\n");
+            printf("Mimic attacks and kills !\n");
             return VRAI;
         }
         else{
-            printf("Le mimic attaque le joueur mais il échoue et retourne à son spawn !\n");
-            placement_mimic(&carte, mimic);
+            printf("Mimic attacks but fails and respawn !\n");
+            placement_mimic(&map, mimic);
         }
     }
     return FAUX;
@@ -67,30 +73,30 @@ int attaque_mimic(carte_t carte, case_t *mimic, case_t *joueur){
 
 /* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois)
 int main(){
-    carte_t *carte = malloc(sizeof(carte_t));
-    if (!carte) 
+    carte_t *map = malloc(sizeof(carte_t));
+    if (!map) 
         return 0;
     srand(time(NULL));
-    init_carte(carte);
-    case_t monstre;
+    init_carte(map);
+    case_t monster;
     case_t mimic;
     case_t joueur;
-    init_joueur(&joueur, carte);
-    placement_monstre(carte, &monstre);
-    placement_mimic(carte, &mimic);
-    printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
+    init_joueur(&joueur, map);
+    placement_monstre(map, &monster);
+    placement_mimic(map, &mimic);
+    printf("Le monster est sur la caméra %d\n", monster.num_camera);
     printf("Le mimic est sur la caméra %d\n", mimic.num_camera);
-    while(!fin(carte, &monstre) && !attaque_mimic(*carte, &mimic, &joueur)){
+    while(!fin(map, &monster) && !attaque_mimic(*map, &mimic, &joueur)){
         sleep(2);
         if(chance_deplacement() < 3){ // 30% de chance de se déplacer de facon optimisee (hint)
-            move_monster(carte, &monstre, &joueur);
+            move_monster(map, &monster, &joueur);
         }
         else{
-            movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
-            printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
+            movement_opportunity(map, &monster, monster.num_camera % END_Y, monster.num_camera / END_Y);
+            printf("Le monster se déplace vers la caméra %d\n", monster.num_camera);
     }
-        mouvement_mimic(carte, &mimic);
+        mouvement_mimic(map, &mimic);
     }
-    detruire_carte(carte);
+    detruire_carte(map);
 }
 */

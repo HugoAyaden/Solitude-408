@@ -1,3 +1,12 @@
+/**
+ * \file settings.h
+ * \brief Header for the settings.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 31/03/2026
+ * 
+ */
+
 #ifndef SETTINGS_H
 #define SETTINGS_H
 

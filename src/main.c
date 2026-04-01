@@ -1,3 +1,12 @@
+/**
+ * \file main.c
+ * \brief FIle for the game to decite game state.
+ * \author Amara Louay
+ * \version 1.0
+ * \date 31/03/2026
+ * 
+ */
+
 #include <MainMenu.h>
 
 
