@@ -90,9 +90,9 @@ void move_monster(carte_t *map, case_t *monster, case_t *joueur){
     if (next != NULL) {
         *monster = *next;
 
-        printf("Le monster avance (opti) vers la caméra %d\n", monster->num_camera);
+        printf("The monster moves (opti) towards camera %d\n", monster->num_camera);
     } else {
-        printf("Le monster ne trouve aucun chemin.\n");
+        printf("The moster didn't find a way.\n");
     }
 }
 

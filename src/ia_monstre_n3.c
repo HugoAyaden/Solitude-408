@@ -33,7 +33,7 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
     * Si le joueur a la lumière allumée, le mimic le tue, sinon il échoue et retourne à son spawn.
     */
     
-    if(chance_deplacement() < 5){
+    if(chance_deplacement() < 1){
             int x = rand() % END_X;
             int y = rand() % END_Y;
             *mimic = map->cases[x][y];
@@ -44,7 +44,6 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
             *mimic = map->cases[x][y];
         }
         printf("Mimic move to %d th camera\n", mimic->num_camera);
-        *mimic = map->cases[x][y];
     }
     else{
         printf("Mimic don't move\n");
