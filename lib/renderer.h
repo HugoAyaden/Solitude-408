@@ -33,7 +33,7 @@ void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
                  SDL_Window *window);
-void affichage();
+void affichage(int*in_camera);
 
 
 #endif

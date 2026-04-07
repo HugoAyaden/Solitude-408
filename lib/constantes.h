@@ -62,6 +62,13 @@ typedef struct {
     booleen_t active;
 } camera_t;
 
+ typedef enum {
+    HAUT, 
+    DROITE, 
+    BAS, 
+    GAUCHE
+} direction_t;
+
 extern int moniteurCameras;
 extern int camera1on;
 extern int camera2on;
@@ -151,4 +158,10 @@ extern SDL_Rect titleRect;
 extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
+extern int pixel_offset_game;
+extern int pixel_offset_cam;
+extern float res_percentage;
+extern int img_limit_left;
+extern float img_stretch_game_percentage;
+extern float img_stretch_cam_percentage;
 #endif

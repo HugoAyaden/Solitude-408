@@ -23,8 +23,7 @@ void buttons_render(SDL_Renderer *renderer,
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
-
-    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCameras = {spacingcamera, windowH - 50, buttonWcamera, buttonHcamera};
     SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
     SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
     SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
@@ -42,16 +41,16 @@ void buttons_render(SDL_Renderer *renderer,
 
 /**
  * \brief Permet l'affichage des boutons de la camera
- * 
+ *
  * \param renderer Renderer SDL utilisé pour le dessin.
  * \param font Police utilisée pour les labels des boutons (inutile ici)
  * \param windowW Largeur de la fenêtre.
  * \param windowH Hauteur de la fenêtre.
  */
 void camera_buttons_render(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                           TTF_Font *font,
+                           int windowW,
+                           int windowH)
 {
 
     int buttonW = 44;
@@ -59,41 +58,40 @@ void camera_buttons_render(SDL_Renderer *renderer,
 
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
 
-    //camera 3
-    int buttonX3 = windowW-274;
-    int buttonY3 = windowH/2 + 2;
+    // camera 3
+    int buttonX3 = windowW - 274;
+    int buttonY3 = windowH / 2 + 2;
 
-    //camera 4
-    int buttonX4 = windowW-339;
-    int buttonY4 = windowH/2+11;
+    // camera 4
+    int buttonX4 = windowW - 339;
+    int buttonY4 = windowH / 2 + 11;
 
-    //camera 5
-    int buttonX5 = windowW-470;
-    int buttonY5 = windowH/2+57;
+    // camera 5
+    int buttonX5 = windowW - 470;
+    int buttonY5 = windowH / 2 + 57;
 
-    //camera 6
-    int buttonX6 = windowW-470;
-    int buttonY6 = windowH/2-53;
+    // camera 6
+    int buttonX6 = windowW - 470;
+    int buttonY6 = windowH / 2 - 53;
 
-    //camera 7
-    int buttonX7 = windowW-276;
-    int buttonY7= windowH/2-176;
+    // camera 7
+    int buttonX7 = windowW - 276;
+    int buttonY7 = windowH / 2 - 176;
 
-    //camera 8
-    int buttonX8 = windowW-450;
-    int buttonY8 = windowH/2-176;
+    // camera 8
+    int buttonX8 = windowW - 450;
+    int buttonY8 = windowH / 2 - 176;
 
-    //camera 9
-    int buttonX9 = windowW-339;
-    int buttonY9 = windowH/2+145;
+    // camera 9
+    int buttonX9 = windowW - 339;
+    int buttonY9 = windowH / 2 + 145;
 
-    //toggle camera   
+    // toggle camera
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
-
-    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCameras = {spacingcamera, windowH - 50, buttonWcamera, buttonHcamera};
     SDL_Rect btnCamera3 = {buttonX3, buttonY3, buttonW, buttonH};
     SDL_Rect btnCamera4 = {buttonX4, buttonY4, buttonW, buttonH};
     SDL_Rect btnCamera5 = {buttonX5, buttonY5, buttonW, buttonH};
@@ -117,16 +115,15 @@ void camera_buttons_render(SDL_Renderer *renderer,
  *
  */
 void renderCameraMap(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                     TTF_Font *font,
+                     int windowW,
+                     int windowH)
 {
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
-
-    SDL_Rect mapCamera = {spacingcamera, windowH/2, buttonWcamera, buttonHcamera};
+    SDL_Rect mapCamera = {spacingcamera, windowH / 2, buttonWcamera, buttonHcamera};
 
     drawCamera(renderer, font, mapCamera, cameraMap, "");
 }
@@ -231,11 +228,12 @@ void render_game(SDL_Renderer *renderer,
     SDL_GetWindowSize(window, &windowW, &windowH);
 
     battery_render(renderer, fontBattery, windowW, windowH);
-    if(moniteurCameras == 0)
+    if (moniteurCameras == 0)
         buttons_render(renderer, fontButtons, windowW, windowH);
-    else{
+    else
+    {
         camera_buttons_render(renderer, fontButtons, windowW, windowH);
-        renderCameraMap(renderer, fontButtons,windowW,windowH);
+        renderCameraMap(renderer, fontButtons, windowW, windowH);
     }
 }
 
@@ -251,9 +249,13 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
-void affichage(){
-        if(moniteurCameras == 0){
-        if(battery <= 0){
+void affichage(int *in_camera)
+{
+    if (moniteurCameras == 0)
+    {
+        *in_camera = 0;
+        if (battery <= 0)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -263,7 +265,8 @@ void affichage(){
             ouverture_porte_gauche(carte, joueur);
             ouverture_porte_droite(carte, joueur);
         }
-        else if(battery > 0 && boutonLumieres){
+        else if (battery > 0 && boutonLumieres)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -273,52 +276,65 @@ void affichage(){
             ouverture_porte_gauche(carte, joueur);
             ouverture_porte_droite(carte, joueur);
         }
-        else if(lumiereDroiteActive && !porteDroiteActive){
-            if(monstre->num_camera == PORTE_HAUT-1){
+        else if (lumiereDroiteActive && !porteDroiteActive)
+        {
+            if (monstre->num_camera == PORTE_HAUT - 1)
+            {
                 background = MONSTER_R_DOOR_O;
             }
-        else if(monstre->num_camera == PORTE_HAUT){
+            else if (monstre->num_camera == PORTE_HAUT)
+            {
 
-            // A FIX
+                // A FIX
                 lastSound = SDL_GetTicks() + 1000;
                 now = SDL_GetTicks();
                 background = MONSTER_R_DOOR_O_A;
-                if (now < lastSound){
-                song = Mix_LoadWAV("assets/audio/sound/ATTACK.wav");
-                Mix_VolumeChunk(song, 100);
-                if(song) 
-                    Mix_PlayChannel(-1, song, 0); 
+                if (now < lastSound)
+                {
+                    song = Mix_LoadWAV("assets/audio/sound/ATTACK.wav");
+                    Mix_VolumeChunk(song, 100);
+                    if (song)
+                        Mix_PlayChannel(-1, song, 0);
                 }
             }
             else
                 background = R_DOOR_OFF_L_ON;
         }
-        else if(lumiereGaucheActive && !porteGaucheActive){
-            if(monstre->num_camera == PORTE_BAS-1){
+        else if (lumiereGaucheActive && !porteGaucheActive)
+        {
+            if (monstre->num_camera == PORTE_BAS - 1)
+            {
                 background = MONSTER_L_DOOR_O;
             }
-            else if(monstre->num_camera == PORTE_BAS){
+            else if (monstre->num_camera == PORTE_BAS)
+            {
                 background = MONSTER_L_DOOR_O_A;
             }
-            else 
+            else
                 background = L_DOOR_OFF_L_ON;
         }
-        else if(porteGaucheActive && !lumiereGaucheActive){
+        else if (porteGaucheActive && !lumiereGaucheActive)
+        {
             background = L_DOOR_ON_L_OFF;
         }
-        else if(porteDroiteActive && !lumiereDroiteActive){
+        else if (porteDroiteActive && !lumiereDroiteActive)
+        {
             background = R_DOOR_ON_L_OFF;
         }
-        else if(porteGaucheActive && lumiereGaucheActive){
+        else if (porteGaucheActive && lumiereGaucheActive)
+        {
             background = L_DOOR_ON_L_ON;
         }
-        else if(porteDroiteActive && lumiereDroiteActive){
+        else if (porteDroiteActive && lumiereDroiteActive)
+        {
             background = R_DOOR_ON_L_ON;
         }
         else
             background = DOORS_OFF_L_OFF;
     }
-    else{
+    else
+    {
+        *in_camera = 1;
         change_camera(camera, monstre);
     }
 }

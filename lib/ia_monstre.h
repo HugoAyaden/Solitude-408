@@ -10,8 +10,6 @@
 #ifndef IA_MONSTRE_H
 #define IA_MONSTRE_H
 
- typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
-
 #include <carte.h>
 
 /* DEPART DE CHACUN DES MONSTRES 

@@ -298,13 +298,33 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     tempsFin = tempsDebut + TEMPS_NUIT;
     duree = tempsDebut;
     finish = TEMPS_NUIT;
+
+
+    //panorama
+    int imgW, imgH;
+    int in_camera = 0;
+    direction_t camera_direction = GAUCHE;
+    SDL_GetWindowSize(window, &windowW, &windowH);                        //obtient la taille de la fenetre
+    SDL_QueryTexture(background, NULL, NULL, &imgW, &imgH);               //recup des infos background
+    int img_stretchedW_game_res = (int)(windowW * img_stretch_game_percentage);      //nouvelle resolution de l'image
+    int img_stretchedH_game_res = (int)(windowH * img_stretch_game_percentage);      //nouvelle resolution de l'image
+    int img_centerW_game_res =(int)(-img_stretchedW_game_res+windowW)/2;                     //milieu de l'image pour position largeur
+    int img_centerH_game_res =(int)(-img_stretchedH_game_res+windowH)/2;                     //milieu de l'image pour position hauteur
+
+
+    int img_stretchedW_cam_res = (int)(windowW * img_stretch_cam_percentage);      //nouvelle resolution de l'image
+    int img_stretchedH_cam_res = (int)(windowH * img_stretch_cam_percentage);      //nouvelle resolution de l'image
+    int img_centerW_cam_res =(int)(-img_stretchedW_cam_res+windowW)/2;                     //milieu de l'image pour position largeur
+    int img_centerH_cam_res =(int)(-img_stretchedH_cam_res+windowH)/2;                     //milieu de l'image pour position hauteur
+    SDL_Rect bgRect = {img_centerW_game_res, img_centerH_game_res, img_stretchedW_game_res, img_stretchedH_game_res};
+    SDL_Rect bgRectCam = {img_centerW_cam_res, img_centerH_cam_res, img_stretchedW_cam_res, img_stretchedH_cam_res};
     while (!fin(carte, monstre) && finish >= 0){
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monstre avant chaque déplacement
         deltaTime = (currentTime - lastTime) / 1000.0f;
         lastTime = currentTime;
         
-        //Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)
+        //Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)img_stretch_game_percentage
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
@@ -315,8 +335,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         game_update(deltaTime);
 
         SDL_RenderClear(renderer);
-        SDL_GetWindowSize(window, &windowW, &windowH);
-        SDL_Rect bgRect = {0, 0, windowW, windowH};
+
+        //Call deplacement de jeu
+        if(in_camera == 0){
+            panoramic_game(windowW, img_stretchedW_game_res, &bgRect);
+        } else {
+            panoramic_camera(windowW, img_stretchedH_cam_res, &bgRectCam, &camera_direction);
+        }
         int lightCount = buttons_getLightCount();
 
 
@@ -351,10 +376,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
 
         /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
-        affichage();
+        affichage(&in_camera);
         /*=========================================================*/
-
-        SDL_RenderCopy(renderer, background, NULL, &bgRect);
+        if(in_camera == 0){
+            SDL_RenderCopy(renderer, background, NULL, &bgRect);
+        } else {
+            SDL_RenderCopy(renderer, background, NULL, &bgRectCam);
+        }
 
         render_game(renderer, fontBattery, fontButtons, window);
 
