@@ -1,6 +1,6 @@
 /**
  * \file portes.c
- * \brief Fonctions des portes du jeu.
+ * \brief File for in-game doors.
  * \author Ayaden Hugo
  * \version 1.0
  * \date 11/02/2026
@@ -11,30 +11,30 @@
 
 
 
-void fermeture_portes_droite(case_t *joueur, carte_t *carte){ 
-    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = NULL;
+void fermeture_portes_droite(case_t *joueur, carte_t *map){ 
+    map->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = NULL;
 
 }
 
-void fermeture_portes_gauche(case_t *joueur, carte_t *carte){ 
-    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = NULL;
+void fermeture_portes_gauche(case_t *joueur, carte_t *map){ 
+    map->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = NULL;
 
 }
 
-void ouverture_porte_droite(carte_t *carte, case_t *joueur){ 
+void ouverture_porte_droite(carte_t *map, case_t *joueur){ 
     /* rétablir les voisins du joueur */
-    carte->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = joueur;
+    map->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = joueur;
 
 }
 
-void ouverture_porte_gauche(carte_t *carte, case_t *joueur){ 
+void ouverture_porte_gauche(carte_t *map, case_t *joueur){ 
     /* rétablir les voisins du joueur */
-    carte->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
+    map->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
 }
 
 
-void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
-    placement_monstre(carte, monstre);
+void attaquer_joueur_echec(carte_t *map, case_t *monster, case_t *joueur){
+    placement_monstre(map, monster);
 }
 
 
@@ -44,43 +44,43 @@ void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur){
     /*
 int main(){
 
-    carte_t *carte = malloc(sizeof(carte_t));
+    carte_t *map = malloc(sizeof(carte_t));
     case_t *joueur = malloc(sizeof(case_t));
-    if (!carte || !joueur) {
-        free(carte);
+    if (!map || !joueur) {
+        free(map);
         free(joueur);
         return 0;
     }
-    init_carte(carte);
-    init_joueur(joueur, carte);
-    carte->cases[X_JOUEUR][Y_JOUEUR] = *joueur;
-    case_t monstre;
+    init_carte(map);
+    init_joueur(joueur, map);
+    map->cases[X_JOUEUR][Y_JOUEUR] = *joueur;
+    case_t monster;
     case_t mimic;
-    placement_mimic(carte, &mimic);
-    placement_monstre(carte, &monstre);
-    printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
-    while(!fin(carte, &monstre) && !attaque_mimic(*carte, &mimic, joueur)){
+    placement_mimic(map, &mimic);
+    placement_monstre(map, &monster);
+    printf("Le monster est sur la caméra %d\n", monster.num_camera);
+    while(!fin(map, &monster) && !attaque_mimic(*map, &mimic, joueur)){
         if(chance_deplacement() < 5 )
-            move_monster(carte, &monstre, joueur);
+            move_monster(map, &monster, joueur);
         else{
-            movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
-            printf("Le monstre se déplace vers la caméra %d\n", monstre.num_camera);
+            movement_opportunity(map, &monster, monster.num_camera % END_Y, monster.num_camera / END_Y);
+            printf("Le monster se déplace vers la caméra %d\n", monster.num_camera);
         }
         sleep(1); // Attendre 1 seconde avant le prochain déplacement
-        if(monstre.num_camera == PORTE_HAUT || monstre.num_camera == PORTE_BAS){
+        if(monster.num_camera == PORTE_HAUT || monster.num_camera == PORTE_BAS){
             if(joueur->acess == FAUX){
-                printf("Le monstre attaque le joueur à la porte mais échoue !\n");
-                attaquer_joueur_echec(carte, &monstre, joueur);
+                printf("Le monster attaque le joueur à la porte mais échoue !\n");
+                attaquer_joueur_echec(map, &monster, joueur);
             }
             else{
                 if(joueur->acess == VRAI){
-                    attaquer_joueur(carte, &monstre, joueur);
-                    fin(carte, &monstre);
+                    attaquer_joueur(map, &monster, joueur);
+                    fin(map, &monster);
                 }
             }
         }
     }
-    free(carte);
+    free(map);
     free(joueur);
     joueur = NULL;
     return 0;

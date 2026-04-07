@@ -1,6 +1,6 @@
 /** 
   * \file settings.c
-  * \brief Création et initialisation du menu paramètres.
+  * \brief Création and initialisation of settings.
   * \author Amara Louay
   * \version 1.0
   * \date 11/02/2026

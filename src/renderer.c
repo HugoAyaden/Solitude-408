@@ -1,3 +1,12 @@
+/**
+ * \file renderer.c
+ * \brief File for every in game render.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 31/03/2026
+ * 
+ */
+
 #include <renderer.h>
 
 /**
@@ -242,7 +251,7 @@ void render_game(SDL_Renderer *renderer,
 /**
  * \brief Affiche les différents écrans en fonction des états du jeu
  *
- * Chaque action du joueur et du monstre sont affichée
+ * Chaque action du joueur et du monster sont affichée
  * en temps réel lorsque la fonction le permet
  *
  * \param change Vrai les boutons peuvent etre actionnés sinon Faux
@@ -252,7 +261,7 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
 void affichage(){
-        if(moniteurCameras == 0){
+    if(moniteurCameras == 0){
         if(battery <= 0){
             background = BLACKOUT;
             change = FAUX;
@@ -260,8 +269,8 @@ void affichage(){
             porteGaucheActive = FAUX;
             lumiereDroiteActive = FAUX;
             lumiereGaucheActive = FAUX;
-            ouverture_porte_gauche(carte, joueur);
-            ouverture_porte_droite(carte, joueur);
+            ouverture_porte_gauche(map, joueur);
+            ouverture_porte_droite(map, joueur);
         }
         else if(battery > 0 && boutonLumieres){
             background = BLACKOUT;
@@ -270,14 +279,14 @@ void affichage(){
             porteGaucheActive = FAUX;
             lumiereDroiteActive = FAUX;
             lumiereGaucheActive = FAUX;
-            ouverture_porte_gauche(carte, joueur);
-            ouverture_porte_droite(carte, joueur);
+            ouverture_porte_gauche(map, joueur);
+            ouverture_porte_droite(map, joueur);
         }
         else if(lumiereDroiteActive && !porteDroiteActive){
-            if(monstre->num_camera == PORTE_HAUT-1){
+            if(monster->num_camera == PORTE_HAUT-1){
                 background = MONSTER_R_DOOR_O;
             }
-        else if(monstre->num_camera == PORTE_HAUT){
+        else if(monster->num_camera == PORTE_HAUT){
 
             // A FIX
                 lastSound = SDL_GetTicks() + 1000;
@@ -294,10 +303,10 @@ void affichage(){
                 background = R_DOOR_OFF_L_ON;
         }
         else if(lumiereGaucheActive && !porteGaucheActive){
-            if(monstre->num_camera == PORTE_BAS-1){
+            if(monster->num_camera == PORTE_BAS-1){
                 background = MONSTER_L_DOOR_O;
             }
-            else if(monstre->num_camera == PORTE_BAS){
+            else if(monster->num_camera == PORTE_BAS){
                 background = MONSTER_L_DOOR_O_A;
             }
             else 
@@ -318,7 +327,8 @@ void affichage(){
         else
             background = DOORS_OFF_L_OFF;
     }
+    //If the monitor is on we display the camera backgrounds
     else{
-        change_camera(camera, monstre);
+        change_camera(camera, monster);
     }
 }

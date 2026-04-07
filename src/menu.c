@@ -1,6 +1,6 @@
 /** 
   * \file menu.c
-  * \brief Création et initialisation du menu principal.
+  * \brief Creation and rendering of the Main Menu.
   * \author Amara Louay
   * \version 1.0
   * \date 03/02/2026

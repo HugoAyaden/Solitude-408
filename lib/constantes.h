@@ -1,3 +1,12 @@
+/**
+ * \file constants.h
+ * \brief Header for initialisation of every variable.
+ * \author Ayaden Hugo
+ * \version 1.0
+ * \date 31/03/2026
+ * 
+ */
+
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
@@ -11,10 +20,7 @@
 #define false 0
 
 typedef struct case_s {
-    float moove_cooldown;
-    booleen_t habite;
     int num_camera;
-    booleen_t utilise;
     booleen_t lumiere;
     booleen_t acess;
     struct case_s *voisin_haut;
@@ -73,6 +79,8 @@ extern int camera7on;
 extern int camera8on;
 extern int camera9on;
 
+/*=============================================*/
+
 extern float battery;
 extern int porteGaucheActive;
 extern int porteDroiteActive;
@@ -88,9 +96,9 @@ extern int cameraMap;
 extern int windowW;
 extern int windowH;
 extern booleen_t boutonLumieres;
-extern carte_t *carte;
+extern carte_t *map;
 extern case_t *joueur;
-extern case_t *monstre;
+extern case_t *monster;
 extern case_t *mimic;
 extern SDL_Texture *background;
 extern SDL_Texture *BLACKOUT;
@@ -151,4 +159,5 @@ extern SDL_Rect titleRect;
 extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
+extern int lightCount;
 #endif

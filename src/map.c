@@ -1,6 +1,6 @@
 /**
- * \file carte.c
- * \brief Création et initialisation de la carte du jeu.
+ * \file map.c
+ * \brief Création and initialisation of game's map.
  * \author Ayaden Hugo
  * \version 1.0
  * \date 11/02/2026
@@ -8,7 +8,7 @@
  */
 
 
-#include <carte.h>
+#include <map.h>
 
 
 /* MURS DANS LES CARTES */
@@ -51,22 +51,18 @@ CARTE DE JEU
 
 */
 
-void init_joueur(case_t *joueur, carte_t *carte){
-    joueur->habite = VRAI;
-    joueur->num_camera = carte->cases[X_JOUEUR][Y_JOUEUR].num_camera;
-    joueur->utilise = FAUX;
+void init_joueur(case_t *joueur, carte_t *map){
+    joueur->num_camera = map->cases[X_JOUEUR][Y_JOUEUR].num_camera;
     joueur->lumiere = VRAI;
     joueur->acess = VRAI;
-    joueur->voisin_haut = &carte->cases[X_JOUEUR-1][Y_JOUEUR];
-    joueur->voisin_bas = &carte->cases[X_JOUEUR+1][Y_JOUEUR];
+    joueur->voisin_haut = &map->cases[X_JOUEUR-1][Y_JOUEUR];
+    joueur->voisin_bas = &map->cases[X_JOUEUR+1][Y_JOUEUR];
     joueur->voisin_gauche = NULL;
     joueur->voisin_droit = NULL;
 }
 
-void init_camera(case_t *camera, carte_t *carte){
-    camera->habite = VRAI;
+void init_camera(case_t *camera, carte_t *map){
     camera->num_camera = 10;
-    camera->utilise = FAUX;
     camera->lumiere = VRAI;
     camera->acess = VRAI;
     camera->voisin_haut = NULL;
@@ -89,12 +85,9 @@ void init_carte(carte_t *carte_init){
 
 
             /* initialise la case (y,x) */
-            carte_init->cases[x][y].habite = FAUX;
             carte_init->cases[x][y].lumiere = FAUX;
             carte_init->cases[x][y].num_camera = num++;
-            carte_init->cases[x][y].utilise = FAUX;
             carte_init->cases[x][y].acess = VRAI;
-            carte_init->cases[x][y].moove_cooldown = 0.0f;
 
             /* voisin haut */
             if(accessible(x-1, y)){
@@ -136,7 +129,7 @@ void init_carte(carte_t *carte_init){
                         carte_init->cases[x][y].voisin_gauche = NULL;
                         carte_init->cases[x][y-1].voisin_droit = NULL;
                 }
-                /* Pour le mur 5 et 15, le monstre arrive et ne peut pas repartir ( obligé d'attaquer le joueur )*/
+                /* Pour le mur 5 et 15, le monster arrive et ne peut pas repartir ( obligé d'attaquer le joueur )*/
                 else if(y == MUR_5_Y && x == MUR_5_X){
                         carte_init->cases[x][y].voisin_gauche = NULL;
                         carte_init->cases[x][y-1].voisin_droit = &carte_init->cases[x][y];
@@ -162,16 +155,16 @@ booleen_t accessible(int x, int y){
     return VRAI;
 }
 
-void detruire_carte(carte_t *carte){ 
-    free(carte); 
+void detruire_carte(carte_t *map){ 
+    free(map); 
 }
 
 
 /* TEST DE LA CARTE 
 int main(){
-    carte_t *carte = malloc(sizeof(carte_t));
-    if (!carte) return 1;
-    init_carte(carte);
+    carte_t *map = malloc(sizeof(carte_t));
+    if (!map) return 1;
+    init_carte(map);
 
     int y, x;
     for (x = 0; x < X; x++) {
@@ -180,14 +173,14 @@ int main(){
                 printf("M ");
             if (y == Y_JOUEUR && x == X_JOUEUR)
                     printf("J ");
-            if (carte->cases[x][y].voisin_droit == NULL)
-                printf("|%d ", carte->cases[x][y].num_camera);
+            if (map->cases[x][y].voisin_droit == NULL)
+                printf("|%d ", map->cases[x][y].num_camera);
             else 
-                printf("%d ", carte->cases[x][y].num_camera); 
+                printf("%d ", map->cases[x][y].num_camera); 
         }
         printf("\n\n");
     }
-    detruire_carte(carte);
+    detruire_carte(map);
     return 0;
     
 }

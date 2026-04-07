@@ -1,6 +1,6 @@
 /** 
   * \file transition.c
-  * \brief Création et initialisation de la transition menu->paramètres.
+  * \brief Création and initialisation of transitions menu->settings.
   * \author Amara Louay
   * \version 1.0
   * \date 11/02/2026

@@ -1,14 +1,13 @@
-#include <game_core.h>
-
-
 /**
  * \file game_core.c
- * \brief Boucle principale de jeu
+ * \brief Main game loop
  * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
- * \version 1.3
+ * \version 1.4
  * \date 10/03/2026
  *
  */
+
+#include <game_core.h>
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -19,24 +18,24 @@
 /**
  * \brief Permet l'affichage des cameras
  *
- * Les numeros des cameras sont suivant le schéma de "carte.c"
+ * Les numeros des cameras sont suivant le schéma de "map.c"
  * et non celui du jeu (par souci de réalisme).
  */
-void change_camera(case_t * camera, case_t * monstre){
+void change_camera(case_t * camera, case_t * monster){
     if(camera8on && camera->num_camera == CAMERA_1){
-        if (monstre->num_camera == CAMERA_1)
+        if (monster->num_camera == CAMERA_1)
             background = MONITOR_ROOM_M;
         else
             background = MONITOR_ROOM;
     }
     else if(camera4on && camera->num_camera == CAMERA_8){
-        if (monstre->num_camera == CAMERA_8)
+        if (monster->num_camera == CAMERA_8)
             background = CORRIDOR_M;
         else
             background = CORRIDOR;
     }
     else if(camera9on && camera->num_camera == CAMERA_12){
-        if (monstre->num_camera == CAMERA_12)
+        if (monster->num_camera == CAMERA_12)
             background = COMMAND_ROOM_M;
         else
             background = COMMAND_ROOM;
@@ -153,7 +152,7 @@ void game_update(float deltaTime)
 /**
  * \brief Gère la difficulté du jeu en fonction de la nuit actuelle.
  *
- * En fonction de la nuit, le monstre peut se déplacer plus ou moins fréquemment,
+ * En fonction de la nuit, le monster peut se déplacer plus ou moins fréquemment,
  * et le mimic peut être activé à partir de la nuit 2.
  *
  * \param night Numéro de la nuit actuelle (0, 1 ou 2).
@@ -162,32 +161,32 @@ void game_update(float deltaTime)
 void difficulte(int night){
     switch(night){
         case 0:
-            if(chance_deplacement() < 1) {
-                movement_opportunity(carte, monstre, 
-                                    monstre->num_camera % FIN_Y, 
-                                    monstre->num_camera / FIN_Y);
+            if(chance_deplacement() <= 1) {
+                movement_opportunity(map, monster, 
+                                    monster->num_camera % FIN_Y, 
+                                    monster->num_camera / FIN_Y);
             }
             break;
         case 1:
-            if(chance_deplacement() < 3) {
-                move_monster(carte, monstre, joueur);
+            if(chance_deplacement() <= 3) {
+                move_monster(map, monster, joueur);
             }
             else{
-                movement_opportunity(carte, monstre,
-                                    monstre->num_camera % FIN_Y,
-                                    monstre->num_camera / FIN_Y);
+                movement_opportunity(map, monster,
+                                    monster->num_camera % FIN_Y,
+                                    monster->num_camera / FIN_Y);
             }
             break;
         case 2:
             if(chance_deplacement() < 10) {
-                move_monster(carte, monstre, joueur);
+                move_monster(map, monster, joueur);
             }
             else{
-                movement_opportunity(carte, monstre,
-                                    monstre->num_camera % FIN_Y,
-                                    monstre->num_camera / FIN_Y);
+                movement_opportunity(map, monster,
+                                    monster->num_camera % FIN_Y,
+                                    monster->num_camera / FIN_Y);
             }
-            mouvement_mimic(carte, mimic);
+            mouvement_mimic(map, mimic);
             break;
         default:
             break;
@@ -197,13 +196,13 @@ void difficulte(int night){
 
 void update(){
 /*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
-    // Déplacement du monstre toutes les 5 secondes
+    // Déplacement du monster toutes les 5 secondes
 
-    if(porteGaucheActive && monstre->num_camera == PORTE_BAS){
-        placement_monstre(carte, monstre);
+    if(porteGaucheActive && monster->num_camera == PORTE_BAS){
+        placement_monstre(map, monster);
     }
-    else if(porteDroiteActive && monstre->num_camera == PORTE_HAUT){
-        placement_monstre(carte, monstre);
+    else if(porteDroiteActive && monster->num_camera == PORTE_HAUT){
+        placement_monstre(map, monster);
     }
 
         //Chaque nuit a sa difficulté d'IA
@@ -211,7 +210,7 @@ void update(){
 
 
     printf("nuit %d\n", night);
-    printf("Le monstre se déplace sur la caméra %d\n", monstre->num_camera);
+    printf("Le monster se déplace sur la caméra %d\n", monster->num_camera);
     duree = SDL_GetTicks();
     finish = (tempsFin-duree)+deltaTime;
     printf("Temps ecoule : %2.f\n", finish);
@@ -257,20 +256,20 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
     }
 
-    if (carte == NULL)   carte = malloc(sizeof(carte_t));
+    if (map == NULL)   map = malloc(sizeof(carte_t));
     if (camera == NULL)   camera = malloc(sizeof(carte_t));
     if (joueur == NULL)  joueur = malloc(sizeof(case_t));
-    if (monstre == NULL) monstre = malloc(sizeof(case_t));
+    if (monster == NULL) monster = malloc(sizeof(case_t));
     if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
     //POUR UN REDEMARAGE A 0
     game_initialise();
     
     srand(time(NULL));
-    init_carte(carte);
-    init_joueur(joueur, carte);
-    init_camera(camera, carte);
-    placement_monstre(carte, monstre);
+    init_carte(map);
+    init_joueur(joueur, map);
+    init_camera(camera, map);
+    placement_monstre(map, monster);
 
     SDL_Event event;
     lastTime = SDL_GetTicks();
@@ -288,9 +287,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         save_night(night);
         load_night();
     }
-
     if(night >= MAX_NIGHT){
-        placement_mimic(carte, mimic);
+        placement_mimic(map, mimic);
     }
     
     tempsDebut = SDL_GetTicks();
@@ -298,13 +296,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     tempsFin = tempsDebut + TEMPS_NUIT;
     duree = tempsDebut;
     finish = TEMPS_NUIT;
-    while (!fin(carte, monstre) && finish >= 0){
+    while (!fin(map, monster) && finish >= 0){
         Uint32 currentTime = SDL_GetTicks();
-        //Temps du monstre avant chaque déplacement
+        //Temps du monster avant chaque déplacement
         deltaTime = (currentTime - lastTime) / 1000.0f;
         lastTime = currentTime;
         
-        //Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)
+        //ESCAPE TO LEAVE THE GAME (no pause button otherwise no pressure)
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
@@ -317,10 +315,10 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderClear(renderer);
         SDL_GetWindowSize(window, &windowW, &windowH);
         SDL_Rect bgRect = {0, 0, windowW, windowH};
-        int lightCount = buttons_getLightCount();
+        lightCount = buttons_getLightCount();
 
 
-        //Update de l'état du monstre (timer hors de la loop pour ne pas le corrompre)
+        //Update monster state (timer out of the loop to not crash it)
         if (currentTime - monsterLastMove >= monsterMoveDelay)
         {
             monsterLastMove = currentTime;
@@ -335,13 +333,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         if(change == VRAI){
             if(actual != buttons_getDoorCount()){
                 if(porteDroiteActive)
-                    fermeture_portes_droite(joueur, carte);
+                    fermeture_portes_droite(joueur, map);
                 if(!porteDroiteActive)
-                    ouverture_porte_droite(carte, joueur);
+                    ouverture_porte_droite(map, joueur);
                 if(porteGaucheActive)
-                    fermeture_portes_gauche(joueur, carte);
+                    fermeture_portes_gauche(joueur, map);
                 if(!porteGaucheActive)
-                    ouverture_porte_gauche(carte, joueur);
+                    ouverture_porte_gauche(map, joueur);
                 }
             }
         
@@ -350,9 +348,9 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             background = DOORS_OFF_L_ON;
 
 
-        /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
+        /*=DIFFERENTS DISPLAYS OF EACH BACKGROUND=*/
         affichage();
-        /*=========================================================*/
+        /*========================================*/
 
         SDL_RenderCopy(renderer, background, NULL, &bgRect);
 
@@ -361,16 +359,16 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-    if(finish <=0 && !fin(carte, monstre)){
+    if(finish <=0 && !fin(map, monster)){
         night++;
         save_night(night);
     }
 }
 
 void game_final_cleanup(){
-    if (carte != NULL) {
-        detruire_carte(carte); 
-        carte = NULL;
+    if (map != NULL) {
+        detruire_carte(map); 
+        map = NULL;
     }
     if (joueur != NULL) {
         joueur = NULL;
@@ -378,8 +376,8 @@ void game_final_cleanup(){
     if (camera != NULL) {
         camera = NULL;
     }
-    if (monstre != NULL) {
-        monstre = NULL;
+    if (monster != NULL) {
+        monster = NULL;
     }
     if (mimic != NULL) {
         mimic = NULL;

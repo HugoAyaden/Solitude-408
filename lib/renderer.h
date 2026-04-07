@@ -1,9 +1,9 @@
 /**
- * \file buttons.h
- * \brief Header pour la structure du menu principal -> transition -> settings.
- * \author Amara Louay
+ * \file renderer.h
+ * \brief Header for every in game render.
+ * \author Ayaden Hugo
  * \version 1.0
- * \date 11/02/2026
+ * \date 31/03/2026
  * 
  */
 
