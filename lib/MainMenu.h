@@ -10,9 +10,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#define true 1
-#define false 0
-
 #define NEW_GAME 0
 #define LOAD_GAME 1
 #define SETTINGS 2

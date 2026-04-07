@@ -66,39 +66,29 @@ int main(int argc, char* argv[]) {
     while (run) {
         // --- 5. Event Handling ---
         while (SDL_PollEvent(&e)) {
-            // Global Exit
             if (e.type == SDL_QUIT) run = false;
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) run = false;
 
-            // Menu Events
-            if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
-                int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
-
-                // NEW GAME
-                if (c == NEW_GAME) {
-                    trans = true; 
-                    progress = 0.0f; 
-                    next = STATE_NEW_GAME; 
-                    if(sSound) Mix_PlayChannel(-1, sSound, 0); 
+            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
+                // If in Menu, Escape quits. If in Settings/Credits, Escape goes BACK.
+                if (state == STATE_MENU) {
+                    run = false;
+                } else if (!trans) {
+                    next = STATE_MENU;
+                    trans = true;
+                    progress = 0.0f;
+                    if(sSound) Mix_PlayChannel(-1, sSound, 0);
                 }
-                // CONTINUE
-                 if (c == LOAD_GAME) {
-                    trans = true; 
-                    progress = 0.0f; 
-                    next = STATE_CONTINUE; 
-                    if(sSound) Mix_PlayChannel(-1, sSound, 0); 
-                }
-                // SETTINGS
-                if (c == SETTINGS) { 
-                    trans = true; 
-                    progress = 0.0f; 
-                    next = STATE_SETTINGS; 
-                    if(sSound) Mix_PlayChannel(-1, sSound, 0); 
-                }
-                // EXIT
-                if (c == EXIT_GAME) run = false; 
             }
 
+            // Menu Click Events
+            if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
+                int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
+                if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
+                if (c == LOAD_GAME) { trans = true; progress = 0.0f; next = STATE_CONTINUE; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
+                if (c == SETTINGS) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
+                if (c == CREDITS) { trans = true; progress = 0.0f; next = STATE_CREDITS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
+                if (c == EXIT_GAME) run = false; 
+            }
         }
 
         // Transition -> New Game
@@ -113,6 +103,7 @@ int main(int argc, char* argv[]) {
                 Mix_HaltChannel(-1);
         }
         }
+
          // Transition -> Continue
         if (trans && next == STATE_CONTINUE) {
             progress += 0.005f;
@@ -130,37 +121,59 @@ int main(int argc, char* argv[]) {
             progress += 0.005f;
             if (progress >= 0.5f && state != next) { 
                 state = next;
-                next = STATE_MENU;
+                next = STATE_MENU; // Prepare 'next' to be the way back
                 trans = false; 
             }
         }
 
+        // Transition -> Credits
+        if (next == STATE_CREDITS && trans) {
+            progress += 0.005f;
+            if (progress >= 0.5f && state != next) { 
+                state = next;
+                next = STATE_MENU; // Fix: Set next to MENU so we don't loop credits
+                trans = false; 
+            }
+        }
+
+        // Transition -> Menu (Escape)
         if (next == STATE_MENU && trans) {
             progress += 0.005f;
             if (progress >= 0.5f && state != next) { 
                 state = next;
-                next = STATE_MENU;
+                // next stays STATE_MENU
                 trans = false; 
             }
         }
-
 
         // --- 8. Rendering ---
         SDL_RenderClear(ren);
 
         if (state == STATE_MENU) {
             render_menu(ren);
-        } 
-        else if (state == STATE_SETTINGS) {
-        int r = render_settings(ren, vSmall);
+        } else if (state == STATE_SETTINGS) {
+            int r = render_settings(ren, vSmall);
             if (r == 1 && !trans) {
                 next = STATE_MENU;
                 trans = true;
                 progress = 0.0f;
+                if(sSound) Mix_PlayChannel(-1, sSound, 0);
+            }
+        } else if (state == STATE_CREDITS && !trans) { // <--- ADDED && !trans HERE
+            int r = render_credits(ren, win);
+            
+            // Clear events 
+            SDL_Event trash;
+            while(SDL_PollEvent(&trash));
+
+            if (r == 1 && !trans) {
+                next = STATE_MENU;
+                trans = true;
+                progress = 0.0f;
+                if(sSound) Mix_PlayChannel(-1, sSound, 0);
             }
         }
-
-
+    
         // Overlay static effect during transition
         if (trans) run_transition(ren, sTex, progress);
 

@@ -7,6 +7,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+#define true 1
+#define false 0
+
 typedef struct case_s {
     float moove_cooldown;
     booleen_t habite;
@@ -42,7 +45,8 @@ typedef enum {
     STATE_MENU,
     STATE_SETTINGS,
     STATE_NEW_GAME,
-    STATE_CONTINUE
+    STATE_CONTINUE,
+    STATE_CREDITS
 } GameState;
 
 
