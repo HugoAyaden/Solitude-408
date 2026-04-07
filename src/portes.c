@@ -34,7 +34,7 @@ void ouverture_porte_gauche(carte_t *map, case_t *joueur){
 
 
 void attaquer_joueur_echec(carte_t *map, case_t *monster, case_t *joueur){
-    placement_monstre(map, monster);
+    placing_monster(map, monster);
 }
 
 
@@ -57,7 +57,7 @@ int main(){
     case_t monster;
     case_t mimic;
     placement_mimic(map, &mimic);
-    placement_monstre(map, &monster);
+    placing_monster(map, &monster);
     printf("Le monster est sur la caméra %d\n", monster.num_camera);
     while(!fin(map, &monster) && !attaque_mimic(*map, &mimic, joueur)){
         if(chance_deplacement() < 5 )

@@ -6,7 +6,8 @@
 /**
  * \file transitionNuit.h
  * \brief Animation de transition entre deux nuits (effet roue de compteur)
- * \author Bastien LEFEVRE TAUGOURDEAU
+ * \author Bastien L
+ * EFEVRE TAUGOURDEAU
  * \version 1.0
  * \date 23/03/2026
  */

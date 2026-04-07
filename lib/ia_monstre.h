@@ -29,7 +29,7 @@
 #define END_X 3
 
 
-void placement_monstre(carte_t *map, case_t *monster);
+void placing_monster(carte_t *map, case_t *monster);
 booleen_t fin(carte_t *map, case_t *monster); 
 
 

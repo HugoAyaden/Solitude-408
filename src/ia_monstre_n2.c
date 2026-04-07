@@ -113,7 +113,7 @@ int main(){
     case_t monster;
     case_t joueur;
     init_joueur(&joueur, map);
-    placement_monstre(map, &monster);
+    placing_monster(map, &monster);
     printf("Le monster est sur la caméra %d\n", monster.num_camera);
     while(!fin(map, &monster)){
         if(chance_deplacement() < 3){ // 30% de chance de se déplacer de facon optimisee (hint)

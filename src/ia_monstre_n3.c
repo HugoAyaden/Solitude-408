@@ -81,7 +81,7 @@ int main(){
     case_t mimic;
     case_t joueur;
     init_joueur(&joueur, map);
-    placement_monstre(map, &monster);
+    placing_monster(map, &monster);
     placement_mimic(map, &mimic);
     printf("Le monster est sur la caméra %d\n", monster.num_camera);
     printf("Le mimic est sur la caméra %d\n", mimic.num_camera);

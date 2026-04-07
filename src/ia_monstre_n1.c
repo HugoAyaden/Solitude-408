@@ -10,19 +10,14 @@
 #include "ia_monstre.h"
 
 /**
- * \brief Parmis les endroits ou le monster peut spawn on en choisin un (soit 0 soit 2) puisque 1 est la case du mimic.
+ * \brief Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic's spawn.
  * 
  * 
  */
 
 
- /* TODO: INITIALISER DES TIMESTAMPS ET LES COMPARER POUR GARDER LE MONSTRE SUR PLACE
-    EX: TIMESTAMP ACTUEL 9 WHILE TIMESTAMP != 15 check timestamp;
- */
 
-
-
-void placement_monstre(carte_t *map, case_t *monster){
+void placing_monster(carte_t *map, case_t *monster){
     int x = rand() % START_MONSTRE_X;
     int y = DEPART_Y;
     while(x == 1){
@@ -113,7 +108,7 @@ int main(){
     case_t monster;
     case_t joueur;
     init_joueur(&joueur, map);
-    placement_monstre(map, &monster);
+    placing_monster(map, &monster);
     printf("Le monster est sur la caméra %d\n", monster.num_camera);
     while(!fin(map, &monster)){
         timer();

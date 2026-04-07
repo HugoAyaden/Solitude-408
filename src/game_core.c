@@ -199,10 +199,10 @@ void update(){
     // Déplacement du monster toutes les 5 secondes
 
     if(porteGaucheActive && monster->num_camera == PORTE_BAS){
-        placement_monstre(map, monster);
+        placing_monster(map, monster);
     }
     else if(porteDroiteActive && monster->num_camera == PORTE_HAUT){
-        placement_monstre(map, monster);
+        placing_monster(map, monster);
     }
 
         //Chaque nuit a sa difficulté d'IA
@@ -269,7 +269,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     init_carte(map);
     init_joueur(joueur, map);
     init_camera(camera, map);
-    placement_monstre(map, monster);
+    placing_monster(map, monster);
 
     SDL_Event event;
     lastTime = SDL_GetTicks();
