@@ -69,7 +69,7 @@ void render_menu(SDL_Renderer* renderer) {
     // 3. Dynamic Interactive Buttons
     int buttonColumnX = sw / 15; //// Calculate column position 
     int startY = sh / 2 - 100;    // Centered vertically in the lower half
-    int spacingY = sh / 14;      // Spacing scales with screen height
+    int spacingY = sh / 16;      // Spacing scales with screen height
 
     for (int i = 0; i < 5; i++) {
         // Update button hitboxes every frame to match current resolution

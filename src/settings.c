@@ -11,6 +11,27 @@
 
 #define BACK 1
 
+// Global Settings Variables
+int masterVol = 80, musicVol = 60, brightness = 50, mouseSens = 40;
+int screenModeIndex = 1; 
+int resIndex = 2; 
+int night = -1;
+
+static int overBack = 0;
+
+
+// Local Settings Variables
+static Mix_Chunk* sGlitch = NULL;
+
+// Background Textures
+static SDL_Texture* settingsStaticTex = NULL;
+static SDL_Texture* settingsBG = NULL; 
+static Uint32 saveNotificationTimer = 0; 
+
+typedef enum screen_t {WINDOWED,FULLSCREEN,BORDERLESS};
+// Interface Options
+const char* screenModes[] = {"WINDOWED", "FULLSCREEN", "BORDERLESS"};
+const char* resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"};
 
 // --- Save/Load Logic ---
 
@@ -320,12 +341,7 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
 
     // --- 10. Save Glitch ---
     if (now < saveNotificationTimer) {
-        if (!sGlitch) {
-            sGlitch = Mix_LoadWAV("assets/audio/sound/save.wav"); 
-            Mix_VolumeChunk(sGlitch, 10); 
-        }
         draw_vhs_save_text(ren, font, ">>TAPE SAVED", sw, sh);
-        if(sGlitch) Mix_PlayChannel(-1, sGlitch, 0); 
     }
 
 
