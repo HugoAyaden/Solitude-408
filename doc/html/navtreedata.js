@@ -37,6 +37,10 @@ var NAVTREE =
       [ "Documentation doxygene:", "index.html#autotoc_md10", null ],
       [ "Installation(Windows+MSYS2):", "index.html#autotoc_md11", null ]
     ] ],
+    [ "Classes", "annotated.html", [
+      [ "Liste des classes", "annotated.html", "annotated_dup" ],
+      [ "Index des classes", "classes.html", null ]
+    ] ],
     [ "Fichiers", "files.html", [
       [ "Liste des fichiers", "files.html", "files_dup" ],
       [ "Membres de fichier", "globals.html", [
@@ -49,7 +53,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"credit_8c.html"
+"MainMenu_8h.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

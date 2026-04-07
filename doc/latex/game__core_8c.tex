@@ -1,0 +1,219 @@
+\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/src/game\+\_\+core.c}
+\hypertarget{game__core_8c}{}\label{game__core_8c}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/game\_core.c@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/game\_core.c}}
+
+
+Main game loop.  
+
+
+{\ttfamily \#include $<$game\+\_\+core.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{game__core_8c_a498d9f026138406895e9a34b504ac6a6}\label{game__core_8c_a498d9f026138406895e9a34b504ac6a6} 
+\#define {\bfseries WINDOW\+\_\+\+WIDTH}~800
+\item 
+\Hypertarget{game__core_8c_a5473cf64fa979b48335079c99532e243}\label{game__core_8c_a5473cf64fa979b48335079c99532e243} 
+\#define {\bfseries WINDOW\+\_\+\+HEIGHT}~600
+\item 
+\Hypertarget{game__core_8c_a8fe83ac76edc595f6b98cd4a4127aed5}\label{game__core_8c_a8fe83ac76edc595f6b98cd4a4127aed5} 
+\#define {\bfseries ERROR}~-\/1
+\item 
+\Hypertarget{game__core_8c_a66114906c636ae41c23957753a3a5153}\label{game__core_8c_a66114906c636ae41c23957753a3a5153} 
+\#define {\bfseries MAX\+\_\+\+NIGHT}~2
+\item 
+\Hypertarget{game__core_8c_a9adb344fd98021698ccfd0925a2a2d32}\label{game__core_8c_a9adb344fd98021698ccfd0925a2a2d32} 
+\#define {\bfseries TEMPS\+\_\+\+NUIT}~20000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__core_8c_a5448c0771e1cae40dc53c7031f8f82df}{change\+\_\+camera}} (\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}camera, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
+\begin{DoxyCompactList}\small\item\em Permet l\textquotesingle{}affichage des cameras. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__core_8c_a5801bd126b77810d4a368ed379e52f45}{buttons\+\_\+get\+Door\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de portes activées. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__core_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60}{buttons\+\_\+get\+Light\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de lumières activées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a}{game\+\_\+handle\+Event}} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}event, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Gestion globale des événements du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_a2f3df884c90a301efb19f9575fe9231d}{battery\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialise la batterie du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8}{game\+\_\+initialise}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les systèmes principaux du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc}{battery\+\_\+update}} (float delta\+Time, int door\+Count, int light\+Count)
+\begin{DoxyCompactList}\small\item\em Met à jour le niveau de batterie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf}{game\+\_\+update}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f}{difficulte}} (int night)
+\begin{DoxyCompactList}\small\item\em Gère la difficulté du jeu en fonction de la nuit actuelle. \end{DoxyCompactList}\item 
+\Hypertarget{game__core_8c_ac5c54df7ed3b930268c8d7752c101725}\label{game__core_8c_ac5c54df7ed3b930268c8d7752c101725} 
+void {\bfseries update} ()
+\item 
+void \mbox{\hyperlink{game__core_8c_a94bcac50e1f482606eaabe3bc54b8b2a}{game\+\_\+init}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Battery, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Buttons)
+\begin{DoxyCompactList}\small\item\em Fonction principale du programme. \end{DoxyCompactList}\item 
+\Hypertarget{game__core_8c_a004c5ba3c009c8ac1d4445c8e1acd526}\label{game__core_8c_a004c5ba3c009c8ac1d4445c8e1acd526} 
+void {\bfseries game\+\_\+final\+\_\+cleanup} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Main game loop. 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+4 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10/03/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{game__core_8c_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__core_8c_a2f3df884c90a301efb19f9575fe9231d}\index{game\_core.c@{game\_core.c}!battery\_init@{battery\_init}}
+\index{battery\_init@{battery\_init}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{battery\_init()}{battery\_init()}}
+{\footnotesize\ttfamily \label{game__core_8c_a2f3df884c90a301efb19f9575fe9231d} 
+void battery\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise la batterie du joueur. 
+
+La batterie commence toujours à 100\%. \Hypertarget{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc}\index{game\_core.c@{game\_core.c}!battery\_update@{battery\_update}}
+\index{battery\_update@{battery\_update}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{battery\_update()}{battery\_update()}}
+{\footnotesize\ttfamily \label{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc} 
+void battery\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{, }\item[{int}]{door\+Count}{, }\item[{int}]{light\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour le niveau de batterie. 
+
+La consommation dépend du nombre de portes fermées et de lumières activées.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
+\hline
+{\em door\+Count} & Nombre de portes fermées. \\
+\hline
+{\em light\+Count} & Nombre de lumières allumées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__core_8c_a5801bd126b77810d4a368ed379e52f45}\index{game\_core.c@{game\_core.c}!buttons\_getDoorCount@{buttons\_getDoorCount}}
+\index{buttons\_getDoorCount@{buttons\_getDoorCount}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_getDoorCount()}{buttons\_getDoorCount()}}
+{\footnotesize\ttfamily \label{game__core_8c_a5801bd126b77810d4a368ed379e52f45} 
+int buttons\+\_\+get\+Door\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de portes activées. 
+
+\begin{DoxyReturn}{Renvoie}
+Nombre de portes actuellement fermées. 
+\end{DoxyReturn}
+\Hypertarget{game__core_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60}\index{game\_core.c@{game\_core.c}!buttons\_getLightCount@{buttons\_getLightCount}}
+\index{buttons\_getLightCount@{buttons\_getLightCount}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_getLightCount()}{buttons\_getLightCount()}}
+{\footnotesize\ttfamily \label{game__core_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60} 
+int buttons\+\_\+get\+Light\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de lumières activées. 
+
+\begin{DoxyReturn}{Renvoie}
+Nombre de lumières actuellement allumées. 
+\end{DoxyReturn}
+\Hypertarget{game__core_8c_a5448c0771e1cae40dc53c7031f8f82df}\index{game\_core.c@{game\_core.c}!change\_camera@{change\_camera}}
+\index{change\_camera@{change\_camera}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{change\_camera()}{change\_camera()}}
+{\footnotesize\ttfamily \label{game__core_8c_a5448c0771e1cae40dc53c7031f8f82df} 
+void change\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{camera}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monster}{}\end{DoxyParamCaption})}
+
+
+
+Permet l\textquotesingle{}affichage des cameras. 
+
+Les numeros des cameras sont suivant le schéma de "{}map.\+c"{} et non celui du jeu (par souci de réalisme). \Hypertarget{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f}\index{game\_core.c@{game\_core.c}!difficulte@{difficulte}}
+\index{difficulte@{difficulte}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{difficulte()}{difficulte()}}
+{\footnotesize\ttfamily \label{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f} 
+void difficulte (\begin{DoxyParamCaption}\item[{int}]{night}{}\end{DoxyParamCaption})}
+
+
+
+Gère la difficulté du jeu en fonction de la nuit actuelle. 
+
+En fonction de la nuit, le monster peut se déplacer plus ou moins fréquemment, et le mimic peut être activé à partir de la nuit 2.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em night} & Numéro de la nuit actuelle (0, 1 ou 2). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__core_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a}\index{game\_core.c@{game\_core.c}!game\_handleEvent@{game\_handleEvent}}
+\index{game\_handleEvent@{game\_handleEvent}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{game\_handleEvent()}{game\_handleEvent()}}
+{\footnotesize\ttfamily \label{game__core_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a} 
+void game\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Gestion globale des événements du jeu. 
+
+Transmet les événements SDL aux systèmes concernés (ici les boutons).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement SDL reçu. \\
+\hline
+{\em window} & Fenêtre SDL utilisée. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__core_8c_a94bcac50e1f482606eaabe3bc54b8b2a}\index{game\_core.c@{game\_core.c}!game\_init@{game\_init}}
+\index{game\_init@{game\_init}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{game\_init()}{game\_init()}}
+{\footnotesize\ttfamily \label{game__core_8c_a94bcac50e1f482606eaabe3bc54b8b2a} 
+void game\+\_\+init (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons}{}\end{DoxyParamCaption})}
+
+
+
+Fonction principale du programme. 
+
+Initialise SDL, charge les ressources, lance la boucle principale du jeu et gère le rendu et les événements.
+
+\begin{DoxyReturn}{Renvoie}
+Code de retour du programme. 
+\end{DoxyReturn}
+\Hypertarget{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8}\index{game\_core.c@{game\_core.c}!game\_initialise@{game\_initialise}}
+\index{game\_initialise@{game\_initialise}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{game\_initialise()}{game\_initialise()}}
+{\footnotesize\ttfamily \label{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8} 
+void game\+\_\+initialise (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les systèmes principaux du jeu. 
+
+Initialise la batterie et les boutons. \Hypertarget{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf}\index{game\_core.c@{game\_core.c}!game\_update@{game\_update}}
+\index{game\_update@{game\_update}!game\_core.c@{game\_core.c}}
+\doxysubsubsection{\texorpdfstring{game\_update()}{game\_update()}}
+{\footnotesize\ttfamily \label{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf} 
+void game\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour la logique du jeu. 
+
+Met à jour l\textquotesingle{}état de la batterie en fonction de l\textquotesingle{}utilisation des portes et lumières.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
+\hline
+\end{DoxyParams}
