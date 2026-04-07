@@ -261,7 +261,7 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
 void affichage(){
-        if(moniteurCameras == 0){
+    if(moniteurCameras == 0){
         if(battery <= 0){
             background = BLACKOUT;
             change = FAUX;
@@ -327,6 +327,7 @@ void affichage(){
         else
             background = DOORS_OFF_L_OFF;
     }
+    //If the monitor is on we display the camera backgrounds
     else{
         change_camera(camera, monster);
     }

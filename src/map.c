@@ -52,9 +52,7 @@ CARTE DE JEU
 */
 
 void init_joueur(case_t *joueur, carte_t *map){
-    joueur->habite = VRAI;
     joueur->num_camera = map->cases[X_JOUEUR][Y_JOUEUR].num_camera;
-    joueur->utilise = FAUX;
     joueur->lumiere = VRAI;
     joueur->acess = VRAI;
     joueur->voisin_haut = &map->cases[X_JOUEUR-1][Y_JOUEUR];
@@ -64,9 +62,7 @@ void init_joueur(case_t *joueur, carte_t *map){
 }
 
 void init_camera(case_t *camera, carte_t *map){
-    camera->habite = VRAI;
     camera->num_camera = 10;
-    camera->utilise = FAUX;
     camera->lumiere = VRAI;
     camera->acess = VRAI;
     camera->voisin_haut = NULL;
@@ -89,12 +85,9 @@ void init_carte(carte_t *carte_init){
 
 
             /* initialise la case (y,x) */
-            carte_init->cases[x][y].habite = FAUX;
             carte_init->cases[x][y].lumiere = FAUX;
             carte_init->cases[x][y].num_camera = num++;
-            carte_init->cases[x][y].utilise = FAUX;
             carte_init->cases[x][y].acess = VRAI;
-            carte_init->cases[x][y].moove_cooldown = 0.0f;
 
             /* voisin haut */
             if(accessible(x-1, y)){

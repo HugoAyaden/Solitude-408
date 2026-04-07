@@ -123,8 +123,10 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     if (SDL_PointInRect(&p, &btnPorteGauche))
         porteGaucheActive = !porteGaucheActive;
 
-    if (SDL_PointInRect(&p, &btnLumiereGeneral))
+    if (SDL_PointInRect(&p, &btnLumiereGeneral)){
         boutonLumieres = !boutonLumieres;
+        joueur->lumiere = !joueur->lumiere;
+    }
 
     if (SDL_PointInRect(&p, &btnCameras))
         moniteurCameras = !moniteurCameras;

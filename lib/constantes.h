@@ -20,10 +20,7 @@
 #define false 0
 
 typedef struct case_s {
-    float moove_cooldown;
-    booleen_t habite;
     int num_camera;
-    booleen_t utilise;
     booleen_t lumiere;
     booleen_t acess;
     struct case_s *voisin_haut;

@@ -161,14 +161,14 @@ void game_update(float deltaTime)
 void difficulte(int night){
     switch(night){
         case 0:
-            if(chance_deplacement() < 1) {
+            if(chance_deplacement() <= 1) {
                 movement_opportunity(map, monster, 
                                     monster->num_camera % FIN_Y, 
                                     monster->num_camera / FIN_Y);
             }
             break;
         case 1:
-            if(chance_deplacement() < 3) {
+            if(chance_deplacement() <= 3) {
                 move_monster(map, monster, joueur);
             }
             else{

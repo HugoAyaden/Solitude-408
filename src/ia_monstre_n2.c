@@ -88,9 +88,7 @@ void move_monster(carte_t *map, case_t *monster, case_t *joueur){
     case_t *next = bfs_next_step(monster, joueur);
 
     if (next != NULL) {
-        monster->habite = FAUX;
         *monster = *next;
-        monster->habite = VRAI;
 
         printf("Le monster avance (opti) vers la caméra %d\n", monster->num_camera);
     } else {

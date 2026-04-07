@@ -62,7 +62,6 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
         case HAUT: 
         if(monster->voisin_haut != NULL){ 
             *monster = *monster->voisin_haut;
-            monster->habite = VRAI;
             return VRAI; 
         } 
         else
@@ -72,7 +71,6 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
         case DROITE: 
         if(monster->voisin_droit != NULL){ 
             *monster = *monster->voisin_droit; 
-            monster->habite = VRAI;
             return VRAI; 
         } 
         else
@@ -82,7 +80,6 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
         case BAS: 
         if(monster->voisin_bas != NULL){ 
             *monster = *monster->voisin_bas; 
-            monster->habite = VRAI;
             return VRAI; 
         } 
         else
@@ -92,7 +89,6 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
         case GAUCHE: 
         if(monster->voisin_gauche != NULL){
             *monster = *monster->voisin_gauche; 
-            monster->habite = VRAI;
             return VRAI; 
         } 
         else
