@@ -29,15 +29,7 @@ int main(int argc, char* argv[]) {
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
     FILE *f = fopen("config/save.cfg", "r");
-    //Si le fichier des paramètres n'existe pas
-    if(!f){
-        //on le crée et on écrit les paramètres par défaut
-
-        save_settings();
-    } else {
-        //Sinon on y touche pas
-        load_settings();
-    }
+    if(!f) save_settings(); else load_settings();
 
     // --- 2. Window & Resolution Setup ---
     if (resIndex == 0)      { w = 3840; h = 2160; }
@@ -53,104 +45,108 @@ int main(int argc, char* argv[]) {
 
     // --- 3. Asset Loading ---
     SDL_Surface* icon = IMG_Load("assets/img/icon/icon.png"); 
-    if (icon) {
-        SDL_SetWindowIcon(win, icon);        
-        SDL_FreeSurface(icon); 
-    }
+    if (icon) { SDL_SetWindowIcon(win, icon); SDL_FreeSurface(icon); }
 
     TTF_Font *vSmall = TTF_OpenFont("assets/font/VCR.ttf", 30);
     TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 80);
-    Mix_Chunk* sSound = Mix_LoadWAV("assets/audio/sound/static.wav");
+    
+    Mix_Chunk* sTran = Mix_LoadWAV("assets/audio/sound/static.wav"); 
+    if(sTran) Mix_VolumeChunk(sTran, 10);
+    
+    Mix_Music* sOst = Mix_LoadMUS("assets/audio/sound/ost.wav"); 
+    if(sOst) Mix_VolumeMusic(30);
+
     SDL_Texture* sTex = CreateStaticTexture(ren);
+
+    // --- Music Timer Variables ---
+    Uint32 musicStartTime = SDL_GetTicks() + 1500; // First start timer
+    int musicStarted = false;
 
     // Initialize Menu Module
     init_menu(ren, vSmall, vLarge);
 
-    // --- 4. Main Game Loop Variables ---
     GameState state = STATE_MENU, next = STATE_MENU;
     SDL_Event e;
 
     while (run) {
+        Uint32 now = SDL_GetTicks();
+
+        // --- 4. Music Logic (Wait & Resume) ---
+        if (!musicStarted && sOst && now >= musicStartTime) {
+            Mix_PlayMusic(sOst, -1);
+            musicStarted = true;
+        }
+
         // --- 5. Event Handling ---
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) run = false;
 
             if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
-                // If in Menu, Escape quits. If in Settings/Credits, Escape goes BACK.
                 if (state == STATE_MENU) {
                     run = false;
                 } else if (!trans) {
                     next = STATE_MENU;
                     trans = true;
                     progress = 0.0f;
-                    if(sSound) Mix_PlayChannel(-1, sSound, 0);
+                    if(sTran) Mix_PlayChannel(-1, sTran, 0);
                 }
             }
 
-            // Menu Click Events
             if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
-                if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
-                if (c == LOAD_GAME) { trans = true; progress = 0.0f; next = STATE_CONTINUE; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
-                if (c == SETTINGS) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
-                if (c == CREDITS) { trans = true; progress = 0.0f; next = STATE_CREDITS; if(sSound) Mix_PlayChannel(-1, sSound, 0); }
+                if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
+                if (c == LOAD_GAME) { trans = true; progress = 0.0f; next = STATE_CONTINUE; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
+                if (c == SETTINGS) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
+                if (c == CREDITS) { trans = true; progress = 0.0f; next = STATE_CREDITS; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
                 if (c == EXIT_GAME) run = false; 
             }
         }
 
-        // Transition -> New Game
+        // --- 6. Transitions ---
+
+        // Transition -> New Game (Fades Music)
         if (trans && next == STATE_NEW_GAME) {
             progress += 0.005f;
-        if (progress >= 0.5f && state != next) { 
+            if (progress >= 0.5f && state != next) { 
+                Mix_FadeOutMusic(2500); 
                 save_night(0);
                 game_init(ren, win, vSmall, vSmall); 
-                state = STATE_MENU;
-                next = STATE_MENU;
-                trans = false; 
+                
+                // BACK FROM GAME: Reset music timer
+                state = STATE_MENU; next = STATE_MENU; trans = false;
+                musicStarted = false; 
+                musicStartTime = SDL_GetTicks() + 1500; 
                 Mix_HaltChannel(-1);
-        }
+            }
         }
 
-         // Transition -> Continue
+        // Transition -> Continue (Fade)
         if (trans && next == STATE_CONTINUE) {
             progress += 0.005f;
             if (progress >= 0.5f && state != next) { 
+                Mix_FadeOutMusic(2500);
                 game_init(ren, win, vSmall, vSmall); 
-                state = STATE_MENU;
-                next = STATE_MENU;
-                trans = false; 
+                
+                // BACK FROM GAME: Reset music timer
+                state = STATE_MENU; next = STATE_MENU; trans = false;
+                musicStarted = false; 
+                musicStartTime = SDL_GetTicks() + 3000; 
                 Mix_HaltChannel(-1);
             }
         }
 
-        // Transition -> Settings
+        // Other Transitions
         if (next == STATE_SETTINGS && trans) {
             progress += 0.005f;
-            if (progress >= 0.5f && state != next) { 
-                state = next;
-                next = STATE_MENU; // Prepare 'next' to be the way back
-                trans = false; 
-            }
+            if (progress >= 0.5f && state != next) { state = next; next = STATE_MENU; trans = false; }
         }
-
-        // Transition -> Credits
         if (next == STATE_CREDITS && trans) {
             progress += 0.005f;
-            if (progress >= 0.5f && state != next) { 
-                state = next;
-                next = STATE_MENU; // Fix: Set next to MENU so we don't loop credits
-                trans = false; 
-            }
+            if (progress >= 0.5f && state != next) { state = next; next = STATE_MENU; trans = false; }
         }
-
-        // Transition -> Menu (Escape)
         if (next == STATE_MENU && trans) {
             progress += 0.005f;
-            if (progress >= 0.5f && state != next) { 
-                state = next;
-                // next stays STATE_MENU
-                trans = false; 
-            }
+            if (progress >= 0.5f && state != next) { state = next; trans = false; }
         }
 
         // --- 8. Rendering ---
@@ -161,30 +157,18 @@ int main(int argc, char* argv[]) {
         } else if (state == STATE_SETTINGS) {
             int r = render_settings(ren, vSmall);
             if (r == 1 && !trans) {
-                next = STATE_MENU;
-                trans = true;
-                progress = 0.0f;
-                if(sSound) Mix_PlayChannel(-1, sSound, 0);
+                next = STATE_MENU; trans = true; progress = 0.0f;
+                if(sTran) Mix_PlayChannel(-1, sTran, 0);
             }
-        } else if (state == STATE_CREDITS && !trans) { // <--- ADDED && !trans HERE
-            int r = render_credits(ren, win);
-            
-            // Clear events 
-            SDL_Event trash;
-            while(SDL_PollEvent(&trash));
-
-            if (r == 1 && !trans) {
-                next = STATE_MENU;
-                trans = true;
-                progress = 0.0f;
-                if(sSound) Mix_PlayChannel(-1, sSound, 0);
-            }
+        } else if (state == STATE_CREDITS && !trans) {
+            render_credits(ren, win);
+            SDL_Event trash; while(SDL_PollEvent(&trash));
+            next = STATE_MENU; trans = true; progress = 0.0f;
+            if(sTran) Mix_PlayChannel(-1, sTran, 0);
         }
     
-        // Overlay static effect during transition
         if (trans) run_transition(ren, sTex, progress);
 
-        // Global Overlays (Brightness)
         int sw, sh;
         SDL_GetRendererOutputSize(ren, &sw, &sh);
         draw_brightness_overlay(ren, sw, sh);
@@ -192,16 +176,13 @@ int main(int argc, char* argv[]) {
         SDL_RenderPresent(ren);
     }
 
-    // --- 9. Cleanup & Shutdown ---
-    cleanup_menu(); 
-    cleanup_settings();
-    game_final_cleanup();
-
-    if(sSound) Mix_FreeChunk(sSound); 
+    // --- 9. Cleanup ---
+    cleanup_menu(); cleanup_settings(); game_final_cleanup();
+    if(sOst) Mix_FreeMusic(sOst);
+    if(sTran) Mix_FreeChunk(sTran); 
     if(sTex) SDL_DestroyTexture(sTex);
     TTF_CloseFont(vSmall); TTF_CloseFont(vLarge);
     SDL_DestroyRenderer(ren); SDL_DestroyWindow(win);
     Mix_CloseAudio(); TTF_Quit(); IMG_Quit(); SDL_Quit();
-    
     return 0;
 }
