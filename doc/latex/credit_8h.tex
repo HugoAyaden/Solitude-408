@@ -1,0 +1,67 @@
+\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/lib/credit.h}
+\hypertarget{credit_8h}{}\label{credit_8h}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/credit.h@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/credit.h}}
+
+
+Gestion et affichage des crédits du jeu.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{credit_8h_a755b02686e23c3358e8ff668a0fead1e}{afficher\+\_\+credits}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Affiche les crédits du jeu avec un défilement vertical. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion et affichage des crédits du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien LEFEVRE TAUGOURDEAU 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026
+\end{DoxyDate}
+Ce module permet d\textquotesingle{}afficher les crédits du jeu avec un effet de défilement vertical (style générique de fin). 
+
+\label{doc-func-members}
+\Hypertarget{credit_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{credit_8h_a755b02686e23c3358e8ff668a0fead1e}\index{credit.h@{credit.h}!afficher\_credits@{afficher\_credits}}
+\index{afficher\_credits@{afficher\_credits}!credit.h@{credit.h}}
+\doxysubsubsection{\texorpdfstring{afficher\_credits()}{afficher\_credits()}}
+{\footnotesize\ttfamily \label{credit_8h_a755b02686e23c3358e8ff668a0fead1e} 
+void afficher\+\_\+credits (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Affiche les crédits du jeu avec un défilement vertical. 
+
+Cette fonction affiche un écran de crédits avec un effet de défilement du texte du bas vers le haut. Un fond d\textquotesingle{}écran est affiché et certaines lignes peuvent être mises en valeur avec différentes tailles de police.
+
+L\textquotesingle{}affichage se termine lorsque tous les crédits sont sortis de l\textquotesingle{}écran ou si l\textquotesingle{}utilisateur ferme la fenêtre ou appuie sur Échap.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL utilisé pour le rendu graphique. \\
+\hline
+{\em window} & La fenêtre SDL utilisée pour récupérer la taille d\textquotesingle{}affichage.\\
+\hline
+\end{DoxyParams}
+Cette fonction affiche un écran de crédits avec un effet de défilement du texte du bas vers le haut, similaire à celui des films (style Star Wars). Un fond d\textquotesingle{}écran est affiché en arrière-\/plan et certaines lignes peuvent être mises en valeur avec une taille de police différente.
+
+L\textquotesingle{}affichage s\textquotesingle{}arrête lorsque tous les crédits sont sortis de l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL utilisé pour le rendu graphique. \\
+\hline
+{\em window} & La fenêtre SDL utilisée pour récupérer la taille d\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}

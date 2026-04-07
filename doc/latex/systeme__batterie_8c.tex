@@ -1,0 +1,270 @@
+\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/src/systeme\+\_\+batterie.c}
+\hypertarget{systeme__batterie_8c}{}\label{systeme__batterie_8c}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/systeme\_batterie.c@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/systeme\_batterie.c}}
+
+
+Affichage et gestion d\textquotesingle{}énergie de la batterie.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{systeme__batterie_8c_a498d9f026138406895e9a34b504ac6a6}\label{systeme__batterie_8c_a498d9f026138406895e9a34b504ac6a6} 
+\#define {\bfseries WINDOW\+\_\+\+WIDTH}~800
+\item 
+\Hypertarget{systeme__batterie_8c_a5473cf64fa979b48335079c99532e243}\label{systeme__batterie_8c_a5473cf64fa979b48335079c99532e243} 
+\#define {\bfseries WINDOW\+\_\+\+HEIGHT}~600
+\item 
+\Hypertarget{systeme__batterie_8c_aa81e4f1d5d86b03a0ddd00b8945b6180}\label{systeme__batterie_8c_aa81e4f1d5d86b03a0ddd00b8945b6180} 
+\#define {\bfseries BATTERY\+\_\+\+DURATION}~420.\+0f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{systeme__batterie_8c_ae173cfd5e6f9b80bb7d680cbca8851fd}{buttons\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}état des boutons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a0e70c6daabf773b151cbb268eb46a9cb}{buttons\+\_\+handle\+Event}} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}event, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Gère les événements liés aux boutons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a90427cccca7828179c877865c1caeb60}{buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Affiche tous les boutons de contrôle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{systeme__batterie_8c_a5801bd126b77810d4a368ed379e52f45}{buttons\+\_\+get\+Door\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de portes activées. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{systeme__batterie_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60}{buttons\+\_\+get\+Light\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de lumières activées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a}{game\+\_\+handle\+Event}} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}event, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Gestion globale des événements du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a2f3df884c90a301efb19f9575fe9231d}{battery\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialise la batterie du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a5f5ccbe5abfdef24c8378dc3cf32ffb3}{game\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les systèmes principaux du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_ac8fa856ac0b9c565af7704385f4ea2bc}{battery\+\_\+update}} (float delta\+Time, int door\+Count, int light\+Count)
+\begin{DoxyCompactList}\small\item\em Met à jour le niveau de batterie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a2e92cf75e55e8f85782db6220f2acecf}{game\+\_\+update}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a96064741375779b0a0f13379c81981f5}{battery\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Affiche la barre de batterie à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systeme__batterie_8c_a929f69906b4b84f73575a8a5a04ecce9}{game\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Battery, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Buttons, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Affiche tous les éléments du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Affichage et gestion d\textquotesingle{}énergie de la batterie. 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien LEFEVRE TAUGOURDEAU 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10/03/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{systeme__batterie_8c_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{systeme__batterie_8c_a2f3df884c90a301efb19f9575fe9231d}\index{systeme\_batterie.c@{systeme\_batterie.c}!battery\_init@{battery\_init}}
+\index{battery\_init@{battery\_init}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{battery\_init()}{battery\_init()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a2f3df884c90a301efb19f9575fe9231d} 
+void battery\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise la batterie du joueur. 
+
+La batterie commence toujours à 100\%. \Hypertarget{systeme__batterie_8c_a96064741375779b0a0f13379c81981f5}\index{systeme\_batterie.c@{systeme\_batterie.c}!battery\_render@{battery\_render}}
+\index{battery\_render@{battery\_render}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{battery\_render()}{battery\_render()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a96064741375779b0a0f13379c81981f5} 
+void battery\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la barre de batterie à l\textquotesingle{}écran. 
+
+Dessine une barre de batterie avec une couleur variant du vert au rouge selon le niveau restant.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Renderer SDL utilisé pour dessiner. \\
+\hline
+{\em font} & Police utilisée pour afficher le pourcentage. \\
+\hline
+{\em windowW} & Largeur de la fenêtre. \\
+\hline
+{\em windowH} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_ac8fa856ac0b9c565af7704385f4ea2bc}\index{systeme\_batterie.c@{systeme\_batterie.c}!battery\_update@{battery\_update}}
+\index{battery\_update@{battery\_update}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{battery\_update()}{battery\_update()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_ac8fa856ac0b9c565af7704385f4ea2bc} 
+void battery\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{, }\item[{int}]{door\+Count}{, }\item[{int}]{light\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour le niveau de batterie. 
+
+La consommation dépend du nombre de portes fermées et de lumières activées.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
+\hline
+{\em door\+Count} & Nombre de portes fermées. \\
+\hline
+{\em light\+Count} & Nombre de lumières allumées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_a5801bd126b77810d4a368ed379e52f45}\index{systeme\_batterie.c@{systeme\_batterie.c}!buttons\_getDoorCount@{buttons\_getDoorCount}}
+\index{buttons\_getDoorCount@{buttons\_getDoorCount}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_getDoorCount()}{buttons\_getDoorCount()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a5801bd126b77810d4a368ed379e52f45} 
+int buttons\+\_\+get\+Door\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de portes activées. 
+
+\begin{DoxyReturn}{Renvoie}
+Nombre de portes actuellement fermées. 
+\end{DoxyReturn}
+\Hypertarget{systeme__batterie_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60}\index{systeme\_batterie.c@{systeme\_batterie.c}!buttons\_getLightCount@{buttons\_getLightCount}}
+\index{buttons\_getLightCount@{buttons\_getLightCount}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_getLightCount()}{buttons\_getLightCount()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60} 
+int buttons\+\_\+get\+Light\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de lumières activées. 
+
+\begin{DoxyReturn}{Renvoie}
+Nombre de lumières actuellement allumées. 
+\end{DoxyReturn}
+\Hypertarget{systeme__batterie_8c_a0e70c6daabf773b151cbb268eb46a9cb}\index{systeme\_batterie.c@{systeme\_batterie.c}!buttons\_handleEvent@{buttons\_handleEvent}}
+\index{buttons\_handleEvent@{buttons\_handleEvent}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_handleEvent()}{buttons\_handleEvent()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a0e70c6daabf773b151cbb268eb46a9cb} 
+void buttons\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Gère les événements liés aux boutons. 
+
+Cette fonction détecte les clics de souris et active ou désactive les boutons correspondants (portes et lumières).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement SDL reçu. \\
+\hline
+{\em window} & Fenêtre SDL utilisée pour récupérer la taille. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_ae173cfd5e6f9b80bb7d680cbca8851fd}\index{systeme\_batterie.c@{systeme\_batterie.c}!buttons\_init@{buttons\_init}}
+\index{buttons\_init@{buttons\_init}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_init()}{buttons\_init()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_ae173cfd5e6f9b80bb7d680cbca8851fd} 
+void buttons\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise l\textquotesingle{}état des boutons. 
+
+Tous les boutons (portes et lumières) sont désactivés au lancement du jeu. \Hypertarget{systeme__batterie_8c_a90427cccca7828179c877865c1caeb60}\index{systeme\_batterie.c@{systeme\_batterie.c}!buttons\_render@{buttons\_render}}
+\index{buttons\_render@{buttons\_render}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_render()}{buttons\_render()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a90427cccca7828179c877865c1caeb60} 
+void buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Affiche tous les boutons de contrôle. 
+
+Dessine les boutons des portes et des lumières sur les côtés gauche et droit de l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Renderer SDL utilisé pour le dessin. \\
+\hline
+{\em font} & Police utilisée pour les labels des boutons. \\
+\hline
+{\em windowW} & Largeur de la fenêtre. \\
+\hline
+{\em windowH} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a}\index{systeme\_batterie.c@{systeme\_batterie.c}!game\_handleEvent@{game\_handleEvent}}
+\index{game\_handleEvent@{game\_handleEvent}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{game\_handleEvent()}{game\_handleEvent()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a} 
+void game\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Gestion globale des événements du jeu. 
+
+Transmet les événements SDL aux systèmes concernés (ici les boutons).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement SDL reçu. \\
+\hline
+{\em window} & Fenêtre SDL utilisée. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_a5f5ccbe5abfdef24c8378dc3cf32ffb3}\index{systeme\_batterie.c@{systeme\_batterie.c}!game\_init@{game\_init}}
+\index{game\_init@{game\_init}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{game\_init()}{game\_init()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a5f5ccbe5abfdef24c8378dc3cf32ffb3} 
+void game\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les systèmes principaux du jeu. 
+
+Initialise la batterie et les boutons. \Hypertarget{systeme__batterie_8c_a929f69906b4b84f73575a8a5a04ecce9}\index{systeme\_batterie.c@{systeme\_batterie.c}!game\_render@{game\_render}}
+\index{game\_render@{game\_render}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{game\_render()}{game\_render()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a929f69906b4b84f73575a8a5a04ecce9} 
+void game\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Affiche tous les éléments du jeu. 
+
+Cette fonction affiche la batterie et les boutons de contrôle dans la fenêtre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Renderer SDL. \\
+\hline
+{\em font\+Battery} & Police utilisée pour la batterie. \\
+\hline
+{\em font\+Buttons} & Police utilisée pour les boutons. \\
+\hline
+{\em window} & Fenêtre SDL. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systeme__batterie_8c_a2e92cf75e55e8f85782db6220f2acecf}\index{systeme\_batterie.c@{systeme\_batterie.c}!game\_update@{game\_update}}
+\index{game\_update@{game\_update}!systeme\_batterie.c@{systeme\_batterie.c}}
+\doxysubsubsection{\texorpdfstring{game\_update()}{game\_update()}}
+{\footnotesize\ttfamily \label{systeme__batterie_8c_a2e92cf75e55e8f85782db6220f2acecf} 
+void game\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour la logique du jeu. 
+
+Met à jour l\textquotesingle{}état de la batterie en fonction de l\textquotesingle{}utilisation des portes et lumières.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
+\hline
+\end{DoxyParams}
