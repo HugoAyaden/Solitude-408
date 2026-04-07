@@ -10,7 +10,7 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
-#include <commun.h>
+#include "commun.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>

@@ -12,7 +12,7 @@
 
  typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
 
-#include <map.h>
+#include "map.h"
 
 /* EVERY MONSTER'S START 
  *(The Y always stays the same, opposite of the player)

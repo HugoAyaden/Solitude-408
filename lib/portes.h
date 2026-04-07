@@ -10,7 +10,7 @@
 #ifndef PORTES_H
 #define PORTES_H
 
-#include <bfs.h>
+#include "bfs.h"
 
 void fermeture_portes_droite(case_t *joueur, carte_t *map);
 void fermeture_portes_gauche(case_t *joueur, carte_t *map);

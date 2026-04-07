@@ -7,7 +7,7 @@
   * 
 */
 
-#include <MainMenu.h>
+#include "MainMenu.h"
 
 void init_menu(SDL_Renderer* renderer, TTF_Font* mainFont, TTF_Font* titleFont) {
     if (assetsLoaded) return;

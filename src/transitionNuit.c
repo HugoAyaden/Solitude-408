@@ -1,9 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
-#include <stdio.h>
-
-
 /**
  * \file transitionNuit.c
  * \brief Implémentation de l'animation de transition entre les nuits
@@ -15,6 +9,9 @@
  * Une animation qui permet d'afficher le changement de nuit
  * pour comprendre qu'on passe à la nuit suivante (on a donc gagné la nuit -1)
  */
+
+
+#include "constantes.h"
 
 int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle)
 {

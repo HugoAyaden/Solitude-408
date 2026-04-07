@@ -16,7 +16,7 @@
 #define CREDITS 3
 #define EXIT_GAME 4
 
-#include <game_core.h>
+#include "game_core.h"
 
 void init_menu(SDL_Renderer* renderer, TTF_Font* vcrSmall, TTF_Font* vcrLarge);
 void render_menu(SDL_Renderer* renderer);

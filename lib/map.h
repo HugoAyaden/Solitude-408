@@ -8,8 +8,8 @@
  */
 #ifndef CARTE_H
 #define CARTE_H
-#include <commun.h>
-#include <constantes.h>
+#include "commun.h"
+#include "constantes.h"
 
 booleen_t accessible(int y, int x);
 void init_carte(carte_t *map);

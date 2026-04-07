@@ -7,7 +7,7 @@
  *
  */
 
-#include <game_core.h>
+#include "game_core.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600

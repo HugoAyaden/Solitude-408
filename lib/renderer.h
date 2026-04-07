@@ -11,7 +11,7 @@
 #define BUTTON_H
 
 
-#include <game_core.h>
+#include "game_core.h"
 
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,

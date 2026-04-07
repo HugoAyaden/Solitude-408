@@ -1,8 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
-#include <stdio.h>
-
 /**
  * \file credits.c
  * \brief Affichage des credits
@@ -11,6 +6,8 @@
  * \date 19/03/2026
  *
  */
+
+#include "constantes.h"
 
 /**
  * \brief Affiche les crédits du jeu avec un défilement vertical.

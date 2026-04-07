@@ -7,7 +7,7 @@
  *
  */
 
-#include <buttons.h>
+#include "buttons.h"
 
 /**
  * \brief Initialise l'état des boutons.

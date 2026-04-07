@@ -9,8 +9,8 @@
 #ifndef BFS_H
 #define BFS_H
 
-#include <constantes.h>
-#include <ia_monstre.h>
+#include "constantes.h"
+#include "ia_monstre.h"
 
 case_t *bfs_next_step(case_t *start, case_t *goal);
 void move_monster(carte_t *map, case_t *monster, case_t *joueur);

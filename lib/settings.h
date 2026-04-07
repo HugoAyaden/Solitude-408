@@ -10,7 +10,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include <constantes.h>
+#include "constantes.h"
 
 void load_settings();
 void save_settings();
