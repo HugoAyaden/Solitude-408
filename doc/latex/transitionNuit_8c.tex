@@ -1,5 +1,5 @@
-\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/src/transition\+Nuit.c}
-\hypertarget{transitionNuit_8c}{}\label{transitionNuit_8c}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/transitionNuit.c@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/transitionNuit.c}}
+\doxysection{src/transition\+Nuit.c File Reference}
+\hypertarget{transitionNuit_8c}{}\label{transitionNuit_8c}\index{src/transitionNuit.c@{src/transitionNuit.c}}
 
 
 Implémentation de l\textquotesingle{}animation de transition entre les nuits.  
@@ -9,17 +9,17 @@ Implémentation de l\textquotesingle{}animation de transition entre les nuits.
 {\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
 {\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-\doxysubsubsection*{Fonctions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}{transition\+Nuit}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int nuit\+Actuelle)
 \begin{DoxyCompactList}\small\item\em Affiche une animation de transition entre deux nuits. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\doxysubsection{Detailed Description}
 Implémentation de l\textquotesingle{}animation de transition entre les nuits. 
 
-\begin{DoxyAuthor}{Auteur}
+\begin{DoxyAuthor}{Author}
 Bastien LEFEVRE TAUGOURDEAU 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -32,7 +32,7 @@ Une animation qui permet d\textquotesingle{}afficher le changement de nuit pour 
 
 \label{doc-func-members}
 \Hypertarget{transitionNuit_8c_doc-func-members}
-\doxysubsection{Documentation des fonctions}
+\doxysubsection{Function Documentation}
 \Hypertarget{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}\index{transitionNuit.c@{transitionNuit.c}!transitionNuit@{transitionNuit}}
 \index{transitionNuit@{transitionNuit}!transitionNuit.c@{transitionNuit.c}}
 \doxysubsubsection{\texorpdfstring{transitionNuit()}{transitionNuit()}}
@@ -46,7 +46,7 @@ Affiche une animation de transition entre deux nuits.
 Cette fonction affiche un texte "{}\+Nuit X"{} centré à l\textquotesingle{}écran.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em renderer} & Le renderer SDL utilisé pour l\textquotesingle{}affichage \\
 \hline
 {\em window} & La fenêtre SDL (utilisée pour récupérer la taille écran) \\
@@ -54,7 +54,7 @@ Cette fonction affiche un texte "{}\+Nuit X"{} centré à l\textquotesingle{}éc
 {\em nuit\+Actuelle} & Numéro de la nuit à afficher\\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{Précondition}
+\begin{DoxyPrecond}{Precondition}
 SDL et SDL\+\_\+ttf doivent être initialisés 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}

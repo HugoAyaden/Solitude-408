@@ -8,5 +8,5 @@ var searchData=
   ['membres_20du_20projet_3a_5',['Membres du projet:',['../index.html#autotoc_md1',1,'']]],
   ['menu_2ec_6',['menu.c',['../menu_8c.html',1,'']]],
   ['menubutton_7',['MenuButton',['../structMenuButton.html',1,'']]],
-  ['msys2_20_3a_8',['Installation(Windows+MSYS2):',['../index.html#autotoc_md11',1,'']]]
+  ['msys2_20_3a_8',['Installation(Windows+MSYS2):',['../index.html#autotoc_md12',1,'']]]
 ];

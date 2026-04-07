@@ -35,17 +35,18 @@ var NAVTREE =
       [ "Lien Gantt temps réel(Google Sheet):", "index.html#autotoc_md8", null ],
       [ "Lien Livrables (Google drive):", "index.html#autotoc_md9", null ],
       [ "Documentation doxygene:", "index.html#autotoc_md10", null ],
-      [ "Installation(Windows+MSYS2):", "index.html#autotoc_md11", null ]
+      [ "Installation(Linux):", "index.html#autotoc_md11", null ],
+      [ "Installation(Windows+MSYS2):", "index.html#autotoc_md12", null ]
     ] ],
     [ "Classes", "annotated.html", [
-      [ "Liste des classes", "annotated.html", "annotated_dup" ],
-      [ "Index des classes", "classes.html", null ]
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ]
     ] ],
-    [ "Fichiers", "files.html", [
-      [ "Liste des fichiers", "files.html", "files_dup" ],
-      [ "Membres de fichier", "globals.html", [
-        [ "Tout", "globals.html", null ],
-        [ "Fonctions", "globals_func.html", null ]
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
       ] ]
     ] ]
   ] ]
@@ -56,6 +57,6 @@ var NAVTREEINDEX =
 "MainMenu_8h.html"
 ];
 
-var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
-var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';
-var LISTOFALLMEMBERS = 'Liste de tous les membres';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

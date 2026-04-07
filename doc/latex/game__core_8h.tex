@@ -1,5 +1,5 @@
-\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/lib/game\+\_\+core.h}
-\hypertarget{game__core_8h}{}\label{game__core_8h}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/game\_core.h@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/lib/game\_core.h}}
+\doxysection{lib/game\+\_\+core.h File Reference}
+\hypertarget{game__core_8h}{}\label{game__core_8h}\index{lib/game\_core.h@{lib/game\_core.h}}
 
 
 Heador for the main game loop.  
@@ -10,7 +10,7 @@ Heador for the main game loop.
 {\ttfamily \#include $<$settings.\+h$>$}\newline
 {\ttfamily \#include $<$portes.\+h$>$}\newline
 {\ttfamily \#include $<$renderer.\+h$>$}\newline
-\doxysubsubsection*{Fonctions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{game__core_8h_a5448c0771e1cae40dc53c7031f8f82df}{change\+\_\+camera}} (\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}camera, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
@@ -41,10 +41,10 @@ void {\bfseries game\+\_\+final\+\_\+cleanup} ()
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\doxysubsection{Detailed Description}
 Heador for the main game loop. 
 
-\begin{DoxyAuthor}{Auteur}
+\begin{DoxyAuthor}{Author}
 Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -57,7 +57,7 @@ Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
 
 \label{doc-func-members}
 \Hypertarget{game__core_8h_doc-func-members}
-\doxysubsection{Documentation des fonctions}
+\doxysubsection{Function Documentation}
 \Hypertarget{game__core_8h_a2f3df884c90a301efb19f9575fe9231d}\index{game\_core.h@{game\_core.h}!battery\_init@{battery\_init}}
 \index{battery\_init@{battery\_init}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{battery\_init()}{battery\_init()}}
@@ -81,7 +81,7 @@ Met à jour le niveau de batterie.
 La consommation dépend du nombre de portes fermées et de lumières activées.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
 \hline
 {\em door\+Count} & Nombre de portes fermées. \\
@@ -99,7 +99,7 @@ int buttons\+\_\+get\+Door\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 Retourne le nombre de portes activées. 
 
-\begin{DoxyReturn}{Renvoie}
+\begin{DoxyReturn}{Returns}
 Nombre de portes actuellement fermées. 
 \end{DoxyReturn}
 \Hypertarget{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}\index{game\_core.h@{game\_core.h}!buttons\_getLightCount@{buttons\_getLightCount}}
@@ -112,7 +112,7 @@ int buttons\+\_\+get\+Light\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 Retourne le nombre de lumières activées. 
 
-\begin{DoxyReturn}{Renvoie}
+\begin{DoxyReturn}{Returns}
 Nombre de lumières actuellement allumées. 
 \end{DoxyReturn}
 \Hypertarget{game__core_8h_a5448c0771e1cae40dc53c7031f8f82df}\index{game\_core.h@{game\_core.h}!change\_camera@{change\_camera}}
@@ -138,7 +138,7 @@ Gère la difficulté du jeu en fonction de la nuit actuelle.
 En fonction de la nuit, le monster peut se déplacer plus ou moins fréquemment, et le mimic peut être activé à partir de la nuit 2.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em night} & Numéro de la nuit actuelle (0, 1 ou 2). \\
 \hline
 \end{DoxyParams}
@@ -155,7 +155,7 @@ Gestion globale des événements du jeu.
 Transmet les événements SDL aux systèmes concernés (ici les boutons).
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em event} & Événement SDL reçu. \\
 \hline
 {\em window} & Fenêtre SDL utilisée. \\
@@ -173,7 +173,7 @@ Fonction principale du programme.
 
 Initialise SDL, charge les ressources, lance la boucle principale du jeu et gère le rendu et les événements.
 
-\begin{DoxyReturn}{Renvoie}
+\begin{DoxyReturn}{Returns}
 Code de retour du programme. 
 \end{DoxyReturn}
 \Hypertarget{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}\index{game\_core.h@{game\_core.h}!game\_initialise@{game\_initialise}}
@@ -199,7 +199,7 @@ Met à jour la logique du jeu.
 Met à jour l\textquotesingle{}état de la batterie en fonction de l\textquotesingle{}utilisation des portes et lumières.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
 \hline
 \end{DoxyParams}

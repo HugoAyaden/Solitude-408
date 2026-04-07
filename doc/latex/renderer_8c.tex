@@ -1,12 +1,12 @@
-\doxysection{Référence du fichier /info/etu/l2info/l2403524/\+Documents/\+L2/\+Projet/projet-\/\+L2-\/fnaf/src/renderer.c}
-\hypertarget{renderer_8c}{}\label{renderer_8c}\index{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/renderer.c@{/info/etu/l2info/l2403524/Documents/L2/Projet/projet-\/L2-\/fnaf/src/renderer.c}}
+\doxysection{src/renderer.c File Reference}
+\hypertarget{renderer_8c}{}\label{renderer_8c}\index{src/renderer.c@{src/renderer.c}}
 
 
 File for every in game render.  
 
 
 {\ttfamily \#include $<$renderer.\+h$>$}\newline
-\doxysubsubsection*{Fonctions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{renderer_8c_a90427cccca7828179c877865c1caeb60}{buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
@@ -24,10 +24,10 @@ void \mbox{\hyperlink{renderer_8c_a6b166b657304caeee111f82843bb7d26}{affichage}}
 \begin{DoxyCompactList}\small\item\em Affiche les différents écrans en fonction des états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\doxysubsection{Detailed Description}
 File for every in game render. 
 
-\begin{DoxyAuthor}{Auteur}
+\begin{DoxyAuthor}{Author}
 Ayaden Hugo 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -40,7 +40,7 @@ Ayaden Hugo
 
 \label{doc-func-members}
 \Hypertarget{renderer_8c_doc-func-members}
-\doxysubsection{Documentation des fonctions}
+\doxysubsection{Function Documentation}
 \Hypertarget{renderer_8c_a6b166b657304caeee111f82843bb7d26}\index{renderer.c@{renderer.c}!affichage@{affichage}}
 \index{affichage@{affichage}!renderer.c@{renderer.c}}
 \doxysubsubsection{\texorpdfstring{affichage()}{affichage()}}
@@ -54,7 +54,7 @@ Affiche les différents écrans en fonction des états du jeu.
 Chaque action du joueur et du monster sont affichée en temps réel lorsque la fonction le permet
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em change} & Vrai les boutons peuvent etre actionnés sinon Faux \\
 \hline
 {\em porte\+Droite\+Active} & Vrai si la porte droite est fermée sinon faux \\
@@ -79,7 +79,7 @@ Affiche la barre de batterie à l\textquotesingle{}écran.
 Dessine une barre de batterie avec une couleur variant du vert au rouge selon le niveau restant.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em renderer} & Renderer SDL utilisé pour dessiner. \\
 \hline
 {\em font} & Police utilisée pour afficher le pourcentage. \\
@@ -102,7 +102,7 @@ Affiche tous les boutons de contrôle.
 Dessine les boutons des portes et des lumières sur les côtés gauche et droit de l\textquotesingle{}écran.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em renderer} & Renderer SDL utilisé pour le dessin. \\
 \hline
 {\em font} & Police utilisée pour les labels des boutons. \\
@@ -123,7 +123,7 @@ void camera\+\_\+buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+
 Permet l\textquotesingle{}affichage des boutons de la camera. 
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em renderer} & Renderer SDL utilisé pour le dessin. \\
 \hline
 {\em font} & Police utilisée pour les labels des boutons (inutile ici) \\
@@ -146,7 +146,7 @@ Affiche tous les éléments du jeu.
 Cette fonction affiche la batterie et les boutons de contrôle dans la fenêtre.
 
 
-\begin{DoxyParams}{Paramètres}
+\begin{DoxyParams}{Parameters}
 {\em renderer} & Renderer SDL. \\
 \hline
 {\em font\+Battery} & Police utilisée pour la batterie. \\
