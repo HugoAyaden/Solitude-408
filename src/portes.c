@@ -34,6 +34,7 @@ void ouverture_porte_gauche(carte_t *map, case_t *joueur){
 
 
 void attaquer_joueur_echec(carte_t *map, case_t *monster, case_t *joueur){
+    Mix_PlayChannel(-1, doorKnocking, 0);
     placing_monster(map, monster);
 }
 

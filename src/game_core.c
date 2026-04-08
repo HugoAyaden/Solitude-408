@@ -206,10 +206,10 @@ void update(){
     // Déplacement du monster toutes les 5 secondes
 
     if(porteGaucheActive && monster->num_camera == PORTE_BAS){
-        placing_monster(map, monster);
+        attaquer_joueur_echec(map, monster, joueur);
     }
     else if(porteDroiteActive && monster->num_camera == PORTE_HAUT){
-        placing_monster(map, monster);
+        attaquer_joueur_echec(map, monster, joueur);
     }
 
         //Chaque nuit a sa difficulté d'IA
@@ -263,6 +263,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
         cameraStatic = Mix_LoadMUS("assets/audio/sound/camera-static.wav");
         cameraSwitch = Mix_LoadWAV("assets/audio/sound/camera-switch.wav");
+        doorKnocking = Mix_LoadWAV("assets/audio/sound/door_knocking.wav");
 
         monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
         mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
