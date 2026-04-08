@@ -13,7 +13,7 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define TEMPS_NUIT 20000
+#define TEMPS_NUIT 360000
 
 /**
  * \brief Permet l'affichage des cameras
@@ -254,6 +254,9 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_C.png");
         MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
+
+        monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
+        mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
     }
 
     if (map == NULL)   map = malloc(sizeof(carte_t));

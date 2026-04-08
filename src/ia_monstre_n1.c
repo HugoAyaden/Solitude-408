@@ -26,6 +26,9 @@ void placing_monster(carte_t *map, case_t *monster){
     }
     printf("monster x = %d\n", x);
     *monster = map->cases[x][y];
+    Mix_VolumeChunk(monsterSpawn, (masterVol));
+    Mix_PlayChannel(-1, monsterSpawn, 0);
+    
 }
 
 

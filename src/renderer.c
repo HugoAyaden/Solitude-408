@@ -287,17 +287,7 @@ void affichage(){
                 background = MONSTER_R_DOOR_O;
             }
         else if(monster->num_camera == PORTE_HAUT){
-
-            // A FIX
-                lastSound = SDL_GetTicks() + 1000;
-                now = SDL_GetTicks();
                 background = MONSTER_R_DOOR_O_A;
-                if (now < lastSound){
-                song = Mix_LoadWAV("assets/audio/sound/ATTACK.wav");
-                Mix_VolumeChunk(song, 100);
-                if(song) 
-                    Mix_PlayChannel(-1, song, 0); 
-                }
             }
             else
                 background = R_DOOR_OFF_L_ON;

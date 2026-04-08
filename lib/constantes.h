@@ -160,4 +160,7 @@ extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
 extern int lightCount;
+
+extern Mix_Chunk* monsterSpawn;
+extern Mix_Chunk* mimicMove;
 #endif
