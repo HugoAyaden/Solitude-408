@@ -1,18 +1,18 @@
 /**
  * \file bfs.h
- * \brief Header pour la recherche optimisée du chemin du monstre vers le joueur
+ * \brief Header for the optimised research of the player by the monster
  * \author Ayaden Hugo
  * \version 1.0
  * \date 09/03/2026
  * 
  */
+#ifndef BFS_H
+#define BFS_H
 
-#include <ia_monstre.h>
-
-typedef struct {
-    case_t *cell;
-    case_t *parent;
-} queue_node_t;
+#include "constantes.h"
+#include "ia_monstre.h"
 
 case_t *bfs_next_step(case_t *start, case_t *goal);
-void move_monster(carte_t *carte, case_t *monstre, case_t *joueur);
+void move_monster(carte_t *map, case_t *monster, case_t *joueur);
+
+#endif

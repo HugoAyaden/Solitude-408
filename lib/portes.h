@@ -1,17 +1,23 @@
 /**
- * \file carte.h
- * \brief Header pour le fonctionnement des portes
+ * \file portes.h
+ * \brief Header for in game doors
  * \author Ayaden Hugo
  * \version 1.0
  * \date 15/02/2026
  * 
  */
 
-#include <stdio.h>
-#include <ia_monstre.h>
+#ifndef PORTES_H
+#define PORTES_H
 
-void fermeture_portes(case_t *joueur);
-void ouverture_portes(carte_t *carte, case_t *joueur);
-void attaquer_joueur(carte_t *carte, case_t *monstre, case_t *joueur);
-void attaquer_joueur_echec(carte_t *carte, case_t *monstre, case_t *joueur);
+#include "bfs.h"
+
+void fermeture_portes_droite(case_t *joueur, carte_t *map);
+void fermeture_portes_gauche(case_t *joueur, carte_t *map);
+void ouverture_porte_droite(carte_t *map, case_t *joueur);
+void ouverture_porte_gauche(carte_t *map, case_t *joueur);
+void attaquer_joueur(carte_t *map, case_t *monster, case_t *joueur);
+void attaquer_joueur_echec(carte_t *map, case_t *monster, case_t *joueur);
+
+#endif
 

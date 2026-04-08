@@ -1,13 +1,13 @@
 /**
- * \file ia_monstre_n1.c
- * \brief Création et initialisation de l'IA du monstre
+ * \file ia_monstre_n2.c
+ * \brief Creation and initialisation of the monster's AI for night 2
  * \author Ayaden Hugo
  * \version 1.1
  * \date 16/02/2026
  * 
  */
 
-#include <bfs.h>
+ #include "bfs.h"
 
 /********** DEPLACEMENT DU MONSTRE OPTIMISE AU LONG DE LA PARTIE **********/
 
@@ -78,20 +78,21 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
     return NULL;
 }
 
+int chance_deplacement(){
+   int chance = rand() %10;
+   return chance;
+}
 
+void move_monster(carte_t *map, case_t *monster, case_t *joueur){
 
-void move_monster(carte_t *carte, case_t *monstre, case_t *joueur){
-
-    case_t *next = bfs_next_step(monstre, joueur);
+    case_t *next = bfs_next_step(monster, joueur);
 
     if (next != NULL) {
-        monstre->habite = FAUX;
-        *monstre = *next;
-        monstre->habite = VRAI;
+        *monster = *next;
 
-        printf("Le monstre avance (opti) vers la caméra %d\n", monstre->num_camera);
+        printf("The monster moves (opti) towards camera %d\n", monster->num_camera);
     } else {
-        printf("Le monstre ne trouve aucun chemin.\n");
+        printf("The moster didn't find a way.\n");
     }
 }
 
@@ -102,27 +103,3 @@ void move_monster(carte_t *carte, case_t *monstre, case_t *joueur){
 
 
 
-/* TEST DU SPAWN L'IA MONSTRE ET DE SON DEPLACEMENT (sans le systeme de portes donc le joueur perd a chaque fois) */
-int main(){
-    carte_t *carte = malloc(sizeof(carte_t));
-    if (!carte) 
-        return 0;
-    srand(time(NULL));
-    init_carte(carte);
-    case_t monstre;
-    case_t joueur;
-    init_joueur(&joueur, carte);
-    placement_monstre(carte, &monstre);
-    printf("Le monstre est sur la caméra %d\n", monstre.num_camera);
-    while(!fin(carte, &monstre)){
-        if(rand() %10 < 3){ // 30% de chance de se déplacer de facon optimisee (hint)
-            move_monster(carte, &monstre, &joueur);
-        }
-        else{
-            printf("mouvement normal\n");
-            movement_opportunity(carte, &monstre, monstre.num_camera % FIN_Y, monstre.num_camera / FIN_Y);
-            printf("Le monstre se déplace sur la caméra %d\n", monstre.num_camera);
-        }
-    }
-    detruire_carte(carte);
-}
