@@ -64,6 +64,7 @@ int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur){
         if(joueur->lumiere == VRAI){
             printf("Mimic attacks and kills !\n");
             mimic->num_camera = map.cases[X_JOUEUR][Y_JOUEUR].num_camera;
+            fin(&map, mimic);
             return VRAI;
         }
         else{
