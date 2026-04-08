@@ -158,34 +158,41 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int buttonH = 27;
 
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
+    //camera 1
+    int buttonX1 = windowW-150;
+    int buttonY1 = windowH/2-54;
+
+    //camera 2
+    int buttonX2 = windowW-150;
+    int buttonY2 = windowH/2+55;
 
     //camera 3
-    int buttonX3 = windowW-274;
-    int buttonY3 = windowH/2 + 2;
+    int buttonX3 = windowW-272;
+    int buttonY3 = windowH/2 + 1;
 
     //camera 4
-    int buttonX4 = windowW-339;
-    int buttonY4 = windowH/2+11;
+    int buttonX4 = windowW-337;
+    int buttonY4 = windowH/2+10;
 
     //camera 5
-    int buttonX5 = windowW-470;
-    int buttonY5 = windowH/2+57;
+    int buttonX5 = windowW-468;
+    int buttonY5 = windowH/2+55;
 
     //camera 6
-    int buttonX6 = windowW-470;
-    int buttonY6 = windowH/2-53;
+    int buttonX6 = windowW-468;
+    int buttonY6 = windowH/2-54;
 
     //camera 7
-    int buttonX7 = windowW-276;
-    int buttonY7= windowH/2-176;
+    int buttonX7 = windowW-274;
+    int buttonY7= windowH/2-177;
 
     //camera 8
-    int buttonX8 = windowW-450;
-    int buttonY8 = windowH/2-176;
+    int buttonX8 = windowW-448;
+    int buttonY8 = windowH/2-177;
 
     //camera 9
-    int buttonX9 = windowW-339;
-    int buttonY9 = windowH/2+145;
+    int buttonX9 = windowW-337;
+    int buttonY9 = windowH/2+144;
 
     //toggle camera   
     int buttonWcamera = 860;
@@ -194,6 +201,8 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 
 
     SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
+    SDL_Rect btnCamera1 = {buttonX1, buttonY1, buttonW, buttonH};
+    SDL_Rect btnCamera2 = {buttonX2, buttonY2, buttonW, buttonH};
     SDL_Rect btnCamera3 = {buttonX3, buttonY3, buttonW, buttonH};
     SDL_Rect btnCamera4 = {buttonX4, buttonY4, buttonW, buttonH};
     SDL_Rect btnCamera5 = {buttonX5, buttonY5, buttonW, buttonH};
@@ -206,7 +215,36 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     int my = event->button.y;
 
     SDL_Point p = {mx, my};
-
+    if (SDL_PointInRect(&p, &btnCamera1)){
+        if(cameraButton() && camera1on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera1on = !camera1on;
+        camera->num_camera = CAMERA_5;
+    }
+    if (SDL_PointInRect(&p, &btnCamera2)){
+        if(cameraButton() && camera2on == 0){
+            camera1on = 0;
+            camera2on = 0;
+            camera3on = 0;
+            camera4on = 0;
+            camera5on = 0;
+            camera6on = 0;
+            camera7on = 0;
+            camera8on = 0;
+            camera9on = 0;
+        }
+        camera2on = !camera2on;
+        camera->num_camera = CAMERA_15;
+    }
     if (SDL_PointInRect(&p, &btnCamera3)){
         if(cameraButton() && camera3on == 0){
             camera1on = 0;
