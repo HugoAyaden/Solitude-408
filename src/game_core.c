@@ -31,7 +31,13 @@ void change_camera(case_t * camera, case_t * monster){
     }
 
     if(camera8on && camera->num_camera == CAMERA_1){
-        if (monster->num_camera == CAMERA_1)
+        if(mimic != NULL && mimic->num_camera == CAMERA_1){
+                if(monster->num_camera == CAMERA_1)
+                    background = MONITOR_ROOM_MI_M;
+                else
+                    background = MONITOR_ROOM_MI;
+            }
+        else if (monster->num_camera == CAMERA_1)
             background = MONITOR_ROOM_M;
         else
             background = MONITOR_ROOM;
@@ -271,19 +277,38 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     //Load Textures ( interminable )
     if (BLACKOUT == NULL) {
         BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
-        DOORS_OFF_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_OFF.png");
-        DOORS_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_OFF_L_ON.png");
-        DOORS_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/DOORS_ON_L_ON.png");
-        L_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_OFF_L_ON.png");
-        L_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_OFF.png");
-        L_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/L_DOOR_ON_L_ON.png");
-        R_DOOR_OFF_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_OFF_L_ON.png");
-        R_DOOR_ON_L_OFF = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_OFF.png");
-        R_DOOR_ON_L_ON = IMG_LoadTexture(renderer, "./assets/img/INgame/R_DOOR_ON_L_ON.png");
+
+       // Load Textures (internimable)
+int BLACKOUT = NULL;
+BLACKOUT = IMG_LoadTexture(renderer, "assets/img/InGame/BLACKOUT.png");
+
+R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
+R_D_OFF_LI_OFF_L_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
+R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M.png");
+R_D_OFF_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_ON_LI_OFF.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_ON_LI_OFF.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_OFF_L_D_OFF_LI_OFF.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_OFF_L_D_OFF_LI_ON.png");
+R_D_ON_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_OFF_M.png");
+R_D_ON_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_OFF.png");
+R_D_ON_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
+
         MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
         MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
         MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
         MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
+        MONITOR_ROOM_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_MI.png");
+        MONITOR_ROOM_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_MI_M.png");
         COMMAND_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM.png");
         COMMAND_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM_M.png");
         CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR.png");
@@ -403,7 +428,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         
         actual = buttons_getDoorCount();
         if (lightCount >= 2)
-            background = DOORS_OFF_L_ON;
+            background = R_D_OFF_LI_ON_L_D_OFF_LI_ON;
 
 
         /*=DIFFERENTS DISPLAYS OF EACH BACKGROUND=*/

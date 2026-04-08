@@ -294,40 +294,24 @@ void affichage(){
             ouverture_porte_gauche(map, joueur);
             ouverture_porte_droite(map, joueur);
         }
-        else if(lumiereDroiteActive && !porteDroiteActive){
-            if(monster->num_camera == PORTE_HAUT-1){
-                background = MONSTER_R_DOOR_O;
-            }
-        else if(monster->num_camera == PORTE_HAUT){
-                background = MONSTER_R_DOOR_O_A;
-            }
-            else
-                background = R_DOOR_OFF_L_ON;
+        else if(!porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
+            background = R_D_OFF_LI_OFF_L_OFF_L_OFF_LI_OFF;
         }
-        else if(lumiereGaucheActive && !porteGaucheActive){
-            if(monster->num_camera == PORTE_BAS-1){
-                background = MONSTER_L_DOOR_O;
-            }
-            else if(monster->num_camera == PORTE_BAS){
-                background = MONSTER_L_DOOR_O_A;
-            }
-            else 
-                background = L_DOOR_OFF_L_ON;
+         else if(porteDroiteActive && porteGaucheActive && !lumiereDroiteActive && !lumiereGaucheActive){
+            background = R_D_OFF_LI_OFF_L_OFF_L_ON_LI_OFF;
         }
-        else if(porteGaucheActive && !lumiereGaucheActive){
-            background = L_DOOR_ON_L_OFF;
+        else if(!porteDroiteActive && !porteGaucheActive && lumiereDroiteActive && lumiereGaucheActive){
+            background = R_D_ON_LI_ON_L_D_OFF_LI_OFF;
         }
-        else if(porteDroiteActive && !lumiereDroiteActive){
-            background = R_DOOR_ON_L_OFF;
+        else if(!porteDroiteActive && !porteGaucheActive && lumiereDroiteActive && !lumiereGaucheActive){
+            background = R_D_ON_LI_OFF_L_D_OFF_LI_OFF;
         }
-        else if(porteGaucheActive && lumiereGaucheActive){
-            background = L_DOOR_ON_L_ON;
+        else if(!porteDroiteActive && !porteGaucheActive && !lumiereDroiteActive && lumiereGaucheActive){
+            background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF;
+            
         }
-        else if(porteDroiteActive && lumiereDroiteActive){
-            background = R_DOOR_ON_L_ON;
-        }
-        else
-            background = DOORS_OFF_L_OFF;
+
+        
     }
     //If the monitor is on we display the camera backgrounds
     else{
