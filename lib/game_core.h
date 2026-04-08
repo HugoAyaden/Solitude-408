@@ -9,10 +9,10 @@
 #include <panorama.h>
 
 
-void change_camera(case_t * camera, case_t * monstre);
+void change_camera(case_t * camera, case_t * monstre, camera_type* camera_type);
 int buttons_getDoorCount();
 int buttons_getLightCount();
-void game_handleEvent(SDL_Event *event, SDL_Window *window);
+void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res,int img_stretchedH_game_res,int img_centerW_game_res,int img_centerH_game_res);
 void battery_init();
 void game_initialise();
 void battery_update(float deltaTime, int doorCount, int lightCount);

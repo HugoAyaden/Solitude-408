@@ -33,7 +33,9 @@ void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
                  SDL_Window *window);
-void affichage(int*in_camera);
+void affichage(camera_type*camera_type);
+
+extern SDL_Rect btnPorteGauche; 
 
 
 #endif

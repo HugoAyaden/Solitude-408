@@ -249,11 +249,11 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
-void affichage(int *in_camera)
+void affichage(camera_type *camera_type)
 {
     if (moniteurCameras == 0)
     {
-        *in_camera = 0;
+        *camera_type = GAME;
         if (battery <= 0)
         {
             background = BLACKOUT;
@@ -334,7 +334,6 @@ void affichage(int *in_camera)
     }
     else
     {
-        *in_camera = 1;
-        change_camera(camera, monstre);
+        change_camera(camera, monstre, camera_type);
     }
 }

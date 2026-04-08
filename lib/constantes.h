@@ -62,12 +62,18 @@ typedef struct {
     booleen_t active;
 } camera_t;
 
- typedef enum {
+typedef enum {
     HAUT, 
     DROITE, 
     BAS, 
     GAUCHE
 } direction_t;
+
+typedef enum {
+    FIXED,
+    GAME,
+    SIDEWAYS
+} camera_type;
 
 extern int moniteurCameras;
 extern int camera1on;

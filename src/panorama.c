@@ -32,23 +32,19 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
 
         if ((imgRect->x - pixel_offset_game) <= img_limit_right) {
             imgRect->x = img_limit_right;
-                printf("PosX Img droite = %d\n",  imgRect->x);
 
         }
         else {
             imgRect->x -= pixel_offset_game;
-                printf("PosX Img droite = %d\n",  imgRect->x);
         }
     }
     else if (mouseX <= move_zone_right && imgRect->x < img_limit_left) {
         if ((imgRect->x + pixel_offset_game) >= img_limit_left)
         {
             imgRect->x = img_limit_left;
-            printf("PosX Img gauche = %d\n", imgRect->x);
         }
         else {
             imgRect->x += pixel_offset_game;
-            printf("PosX Img gauche = %d\n", imgRect->x);
         }
     }
 }
@@ -66,7 +62,7 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
   *
 */
 void panoramic_camera(int screen_width, int imgW, SDL_Rect* imgRect, direction_t* direction) {
-    int img_limit_right = -imgW + screen_width;                     //limite de position de l'image a droite
+    int img_limit_right = -imgW + screen_width; //limite de position de l'image a droite
 
     // Déplacer l'image horizontalement camera automatiquement
     if (*direction == GAUCHE)
@@ -75,13 +71,10 @@ void panoramic_camera(int screen_width, int imgW, SDL_Rect* imgRect, direction_t
         {
             imgRect->x = img_limit_left;
             *direction = DROITE;
-            printf("Gauche limit: true\n");
         }
         else
         {
             imgRect->x += pixel_offset_cam;
-            printf("Gauche : %d\n", imgRect->x);
-            printf("Gauche limit: %d\n", img_limit_left);
         }
     }
     if (*direction == DROITE)
@@ -90,12 +83,52 @@ void panoramic_camera(int screen_width, int imgW, SDL_Rect* imgRect, direction_t
         {
             imgRect->x = img_limit_right;
             *direction = GAUCHE;
-            printf("Droite limit: true\n");
         }
         else
         {
             imgRect->x -= pixel_offset_cam;
-            printf("Droite : %d\n", imgRect->x);
         }
     }
+}
+
+/**
+  * \fn void panoramic_buttons(int screen_width, int imgW, SDL_Rect* dst)
+  * \brief Déplacement gauche-droite des bouttons avec la souris, principalement pour la salle principal.
+  * \param screen_width Entier, longeur de l'ecran
+  * \param imgW Entier, longeur de l'image
+  * \param imgRect SDL_Rect, rectangle de rendu
+  * \author Dos Santos Mathis
+  * \version 1.0
+  * \date 19/03/2026
+  *
+*/
+void panoramic_buttons(int screen_width, int imgW, SDL_Rect* imgRect) {
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+    int move_zone_left = (int)screen_width * res_percentage;        //position par rapport a l'ecran ou la camera commence à bouger - gauche
+    int move_zone_right = (int)screen_width * (1 - res_percentage); //position par rapport a l'ecran ou la camera commence à bouger - droit
+    int img_limit_right = -imgW + screen_width;                     //limite de position de l'image a droite
+
+        imgRect->x += pixel_offset_game;
+
+    // Déplacer l'image horizontalement
+    /*if (mouseX >= move_zone_left && imgRect->x > img_limit_right) {
+
+        if ((imgRect->x - pixel_offset_game) <= img_limit_right) {
+            imgRect->x = img_limit_right;
+
+        }
+        else {
+            imgRect->x -= pixel_offset_game;
+        }
+    }
+    else if (mouseX <= move_zone_right && imgRect->x < img_limit_left) {
+        if ((imgRect->x + pixel_offset_game) >= img_limit_left)
+        {
+            imgRect->x = img_limit_left;
+        }
+        else {
+            imgRect->x += pixel_offset_game;
+        }
+    }*/
 }
