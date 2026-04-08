@@ -417,7 +417,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         night++;
         save_night(night);
     }
-    if(cameraStatic) Mix_FreeMusic(cameraStatic);
 }
 
 void game_final_cleanup(){
