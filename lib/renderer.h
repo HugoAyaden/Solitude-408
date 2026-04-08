@@ -13,6 +13,8 @@
 
 #include "game_core.h"
 
+int render_credits(SDL_Renderer *renderer, SDL_Window *window);
+
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
