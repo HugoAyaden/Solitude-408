@@ -82,13 +82,14 @@ int buttons_getLightCount()
  *
  * \param event Événement SDL reçu.
  * \param window Fenêtre SDL utilisée.
+ * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu.
  */
-void game_handleEvent(SDL_Event *event, SDL_Window *window, int img_stretchedW_game_res, int img_stretchedH_game_res, int img_centerW_game_res, int img_centerH_game_res)
+void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
     if (moniteurCameras == 0)
-        buttons_handleEvent(event, window, img_stretchedW_game_res, img_stretchedH_game_res, img_centerW_game_res, img_centerH_game_res);
+        buttons_handleEvent(event, window,img_stretchedW_game_res);
     else
-        camera_buttons_handleEvent(event, window, img_stretchedW_game_res, img_stretchedH_game_res, img_centerW_game_res, img_centerH_game_res);
+        camera_buttons_handleEvent(event, window);
 }
 
 /**
@@ -349,6 +350,8 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
     SDL_Rect bgRectGame = {img_centerW_game_res, img_centerH_game_res, img_stretchedW_game_res, img_stretchedH_game_res};
     SDL_Rect bgRectCam = {img_centerW_cam_res, img_centerH_cam_res, img_stretchedW_cam_res, img_stretchedH_cam_res};
 
+    camera_offset_x = bgRectGame.x; // initialisation de l'offset de la camera pour les boutons
+
     while (!fin(carte, monstre) && finish >= 0)
     {
         Uint32 currentTime = SDL_GetTicks();
@@ -361,7 +364,7 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
                 exit(0);
-            game_handleEvent(&event, window, img_stretchedW_game_res, img_stretchedH_game_res, img_centerW_game_res, img_centerH_game_res);
+            game_handleEvent(&event, window,img_stretchedW_game_res);
         }
 
         game_update(deltaTime);
@@ -374,7 +377,7 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
         } else if(camera_type == SIDEWAYS){
             panoramic_camera(windowW, img_stretchedW_cam_res, &bgRectCam, &camera_direction);
         }
-        panoramic_camera(windowW, img_stretchedW_cam_res, &btnPorteGauche, &camera_direction);
+    
         int lightCount = buttons_getLightCount();
 
         // Update de l'état du monstre (timer hors de la loop pour ne pas le corrompre)
@@ -425,7 +428,7 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
             SDL_RenderCopy(renderer, background, NULL, &bgRect);
         }
 
-        render_game(renderer, fontBattery, fontButtons, window);
+        render_game(renderer, fontBattery, fontButtons, window, img_stretchedW_game_res);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);

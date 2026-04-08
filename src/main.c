@@ -159,7 +159,7 @@ int main(int argc, char* argv[]) {
                 progress = 0.0f;
                 if(sSound) Mix_PlayChannel(-1, sSound, 0);
             }
-        } else if (state == STATE_CREDITS && !trans) { // <--- ADDED && !trans HERE
+        } /*else if (state == STATE_CREDITS && !trans) { // <--- ADDED && !trans HERE
             int r = render_credits(ren, win);
             
             // Clear events 
@@ -172,7 +172,7 @@ int main(int argc, char* argv[]) {
                 progress = 0.0f;
                 if(sSound) Mix_PlayChannel(-1, sSound, 0);
             }
-        }
+        }*/
     
         // Overlay static effect during transition
         if (trans) run_transition(ren, sTex, progress);

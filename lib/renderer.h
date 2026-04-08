@@ -16,7 +16,8 @@
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
-                    int windowH);
+                    int windowH,
+                    int img_stretchedW_game_res);
 void camera_buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
@@ -32,7 +33,8 @@ void battery_render(SDL_Renderer *renderer,
 void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
-                 SDL_Window *window);
+                 SDL_Window *window,
+                 int img_stretchedW_game_res);
 void affichage(camera_type*camera_type);
 
 extern SDL_Rect btnPorteGauche; 

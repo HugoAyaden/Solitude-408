@@ -37,6 +37,8 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
         else {
             imgRect->x -= pixel_offset_game;
         }
+
+        camera_offset_x = imgRect->x;
     }
     else if (mouseX <= move_zone_right && imgRect->x < img_limit_left) {
         if ((imgRect->x + pixel_offset_game) >= img_limit_left)
@@ -46,6 +48,7 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
         else {
             imgRect->x += pixel_offset_game;
         }
+        camera_offset_x = imgRect->x;
     }
 }
 

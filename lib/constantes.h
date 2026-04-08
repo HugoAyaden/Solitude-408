@@ -170,4 +170,7 @@ extern float res_percentage;
 extern int img_limit_left;
 extern float img_stretch_game_percentage;
 extern float img_stretch_cam_percentage;
+extern int camera_offset_x;
+extern int spacing_amount;
+extern int is_first_draw;
 #endif
