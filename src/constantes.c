@@ -98,6 +98,8 @@ MenuButton buttons[5];
 int assetsLoaded = false;
 Uint32 lastTime = 0;
 int lightCount = 0;
+Mix_Music* cameraStatic = 0;
+Mix_Chunk* cameraSwitch = 0;
 
 Mix_Chunk* monsterSpawn = 0;
 Mix_Chunk* mimicMove = 0;

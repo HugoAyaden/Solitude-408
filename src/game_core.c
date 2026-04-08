@@ -22,6 +22,13 @@
  * et non celui du jeu (par souci de réalisme).
  */
 void change_camera(case_t * camera, case_t * monster){
+    static int last_camera = -1;
+    Mix_VolumeMusic(30);
+    if(camera->num_camera != last_camera){
+        Mix_PlayChannel(-1, cameraSwitch, 0);
+        last_camera = camera->num_camera;
+    }
+
     if(camera8on && camera->num_camera == CAMERA_1){
         if (monster->num_camera == CAMERA_1)
             background = MONITOR_ROOM_M;
@@ -254,6 +261,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         MONSTER_R_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_C.png");
         MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
         MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
+        cameraStatic = Mix_LoadMUS("assets/audio/sound/camera-static.wav");
+        cameraSwitch = Mix_LoadWAV("assets/audio/sound/camera-switch.wav");
 
         monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
         mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
@@ -267,6 +276,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     
     //POUR UN REDEMARAGE A 0
     game_initialise();
+    Mix_PlayMusic(cameraStatic, -1);
     
     srand(time(NULL));
     init_carte(map);
@@ -300,6 +310,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     duree = tempsDebut;
     finish = TEMPS_NUIT;
     while (!fin(map, monster) && finish >= 0){
+        if(cameraStatic || cameraSwitch) Mix_VolumeMusic(0);
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monster avant chaque déplacement
         deltaTime = (currentTime - lastTime) / 1000.0f;
@@ -366,6 +377,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         night++;
         save_night(night);
     }
+    if(cameraStatic) Mix_FreeMusic(cameraStatic);
 }
 
 void game_final_cleanup(){
@@ -385,4 +397,5 @@ void game_final_cleanup(){
     if (mimic != NULL) {
         mimic = NULL;
     }
+    
 }
