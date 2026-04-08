@@ -279,29 +279,49 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
 
        // Load Textures (internimable)
-int BLACKOUT = NULL;
-BLACKOUT = IMG_LoadTexture(renderer, "assets/img/InGame/BLACKOUT.png");
+BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
 
-R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
-R_D_OFF_LI_OFF_L_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
-R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M.png");
-R_D_OFF_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON.png");
-R_D_OFF_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_OFF_L_D_ON_LI_OFF.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M.png");
-R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
-R_D_OFF_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_LI_ON_L_D_ON_LI_OFF.png");
-R_D_ON_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_OFF_L_D_OFF_LI_OFF.png");
-R_D_ON_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_OFF_L_D_OFF_LI_ON.png");
-R_D_ON_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_OFF_M.png");
-R_D_ON_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_OFF.png");
-R_D_ON_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_ON_LI_ON_L_D_OFF_LI_ON.png");
-R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
+R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
+R_D_OFF_LI_OFF_L_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
+R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M.png");
+R_D_OFF_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_OFF.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_OFF.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON.png");
+R_D_ON_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_l_D_OFF_LI_OFF_M.png");
+R_D_ON_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
+R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
+
+R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W.png");
+R_D_OFF_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON.png");
+R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D.png");
+R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W.png");
+
+R_D_OFF_LI_ON_L_D_ON_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M.png");
+R_D_OFF_LI_ON_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W.png");
+R_D_ON_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M.png");
+
+R_D_ON_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_OFF.png");
+R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
+R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W.png");
+R_D_ON_LI_ON_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M.png");
+R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D.png");
+R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D.png");
+R_D_ON_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_OFF.png");
+
+R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W.png");
+R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON.png");
 
         MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
         MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
@@ -446,7 +466,6 @@ R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/InGame
         night++;
         save_night(night);
     }
-    if(cameraStatic) Mix_FreeMusic(cameraStatic);
 }
 
 void game_final_cleanup(){
