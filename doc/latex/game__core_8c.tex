@@ -5,7 +5,15 @@
 Main game loop.  
 
 
-{\ttfamily \#include $<$game\+\_\+core.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+core.\+h"{}}\newline
+Include dependency graph for game\+\_\+core.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,7 +30,7 @@ Main game loop.
 \#define {\bfseries MAX\+\_\+\+NIGHT}~2
 \item 
 \Hypertarget{game__core_8c_a9adb344fd98021698ccfd0925a2a2d32}\label{game__core_8c_a9adb344fd98021698ccfd0925a2a2d32} 
-\#define {\bfseries TEMPS\+\_\+\+NUIT}~20000
+\#define {\bfseries TEMPS\+\_\+\+NUIT}~360000
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -82,7 +90,15 @@ void battery\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Initialise la batterie du joueur. 
 
-La batterie commence toujours à 100\%. \Hypertarget{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc}\index{game\_core.c@{game\_core.c}!battery\_update@{battery\_update}}
+La batterie commence toujours à 100\%. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_a2f3df884c90a301efb19f9575fe9231d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc}\index{game\_core.c@{game\_core.c}!battery\_update@{battery\_update}}
 \index{battery\_update@{battery\_update}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{battery\_update()}{battery\_update()}}
 {\footnotesize\ttfamily \label{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc} 
@@ -103,6 +119,14 @@ La consommation dépend du nombre de portes fermées et de lumières activées.
 {\em light\+Count} & Nombre de lumières allumées. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_ac8fa856ac0b9c565af7704385f4ea2bc_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{game__core_8c_a5801bd126b77810d4a368ed379e52f45}\index{game\_core.c@{game\_core.c}!buttons\_getDoorCount@{buttons\_getDoorCount}}
 \index{buttons\_getDoorCount@{buttons\_getDoorCount}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{buttons\_getDoorCount()}{buttons\_getDoorCount()}}
@@ -116,6 +140,14 @@ Retourne le nombre de portes activées.
 \begin{DoxyReturn}{Returns}
 Nombre de portes actuellement fermées. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_a5801bd126b77810d4a368ed379e52f45_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{game__core_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60}\index{game\_core.c@{game\_core.c}!buttons\_getLightCount@{buttons\_getLightCount}}
 \index{buttons\_getLightCount@{buttons\_getLightCount}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{buttons\_getLightCount()}{buttons\_getLightCount()}}
@@ -129,6 +161,14 @@ Retourne le nombre de lumières activées.
 \begin{DoxyReturn}{Returns}
 Nombre de lumières actuellement allumées. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_ad95aa2a7f38e49f6a87c0b86fb68eb60_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{game__core_8c_a5448c0771e1cae40dc53c7031f8f82df}\index{game\_core.c@{game\_core.c}!change\_camera@{change\_camera}}
 \index{change\_camera@{change\_camera}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{change\_camera()}{change\_camera()}}
@@ -139,7 +179,15 @@ void change\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc
 
 Permet l\textquotesingle{}affichage des cameras. 
 
-Les numeros des cameras sont suivant le schéma de "{}map.\+c"{} et non celui du jeu (par souci de réalisme). \Hypertarget{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f}\index{game\_core.c@{game\_core.c}!difficulte@{difficulte}}
+Les numeros des cameras sont suivant le schéma de "{}map.\+c"{} et non celui du jeu (par souci de réalisme). Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_a5448c0771e1cae40dc53c7031f8f82df_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f}\index{game\_core.c@{game\_core.c}!difficulte@{difficulte}}
 \index{difficulte@{difficulte}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{difficulte()}{difficulte()}}
 {\footnotesize\ttfamily \label{game__core_8c_a1180d11ae6bf626037812eacb7c43e3f} 
@@ -175,6 +223,22 @@ Transmet les événements SDL aux systèmes concernés (ici les boutons).
 {\em window} & Fenêtre SDL utilisée. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{game__core_8c_a72d7f388880cd9e6e0d3265f1a8e8b9a_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{game__core_8c_a94bcac50e1f482606eaabe3bc54b8b2a}\index{game\_core.c@{game\_core.c}!game\_init@{game\_init}}
 \index{game\_init@{game\_init}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{game\_init()}{game\_init()}}
@@ -190,6 +254,14 @@ Initialise SDL, charge les ressources, lance la boucle principale du jeu et gèr
 \begin{DoxyReturn}{Returns}
 Code de retour du programme. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__core_8c_a94bcac50e1f482606eaabe3bc54b8b2a_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8}\index{game\_core.c@{game\_core.c}!game\_initialise@{game\_initialise}}
 \index{game\_initialise@{game\_initialise}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{game\_initialise()}{game\_initialise()}}
@@ -200,7 +272,23 @@ void game\+\_\+initialise (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Initialise les systèmes principaux du jeu. 
 
-Initialise la batterie et les boutons. \Hypertarget{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf}\index{game\_core.c@{game\_core.c}!game\_update@{game\_update}}
+Initialise la batterie et les boutons. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{game__core_8c_ae160d5ac2d5e8a4733277396412d76e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf}\index{game\_core.c@{game\_core.c}!game\_update@{game\_update}}
 \index{game\_update@{game\_update}!game\_core.c@{game\_core.c}}
 \doxysubsubsection{\texorpdfstring{game\_update()}{game\_update()}}
 {\footnotesize\ttfamily \label{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf} 
@@ -217,3 +305,19 @@ Met à jour l\textquotesingle{}état de la batterie en fonction de l\textquotesi
 {\em delta\+Time} & Temps écoulé depuis la dernière frame. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{game__core_8c_a2e92cf75e55e8f85782db6220f2acecf_icgraph}
+\end{center}
+\end{figure}

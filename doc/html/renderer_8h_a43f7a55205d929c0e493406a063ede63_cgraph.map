@@ -1,0 +1,5 @@
+<map id="camera_buttons_render" name="camera_buttons_render">
+<area shape="rect" id="Node000001" title="Permet l&#39;affichage des boutons de la camera." alt="" coords="5,5,181,31"/>
+<area shape="rect" id="Node000002" href="$buttons_8c.html#a0ef71e5a094c3243eda55d8804b4c988" title="Dessine un bouton interactif avec un texte." alt="" coords="229,5,327,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,15,216,15,216,21,181,21"/>
+</map>

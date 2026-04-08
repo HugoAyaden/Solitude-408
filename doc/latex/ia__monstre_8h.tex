@@ -5,7 +5,23 @@
 Header for the monster\textquotesingle{}s functionement.  
 
 
-{\ttfamily \#include $<$map.\+h$>$}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+Include dependency graph for ia\+\_\+monstre.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,9 +56,9 @@ enum {\bfseries direction\+\_\+t} \{ {\bfseries HAUT}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{ia__monstre_8h_a916fea5e57978fff0af3a6d45b803a4a}\label{ia__monstre_8h_a916fea5e57978fff0af3a6d45b803a4a} 
-void {\bfseries placement\+\_\+monstre} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
-\begin{DoxyCompactList}\small\item\em Parmis les endroits ou le monster peut spawn on en choisin un (soit 0 soit 2) puisque 1 est la case du mimic. \end{DoxyCompactList}\item 
+\Hypertarget{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41}\label{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41} 
+void {\bfseries placing\+\_\+monster} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
+\begin{DoxyCompactList}\small\item\em Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic\textquotesingle{}s spawn. \end{DoxyCompactList}\item 
 \Hypertarget{ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3}\label{ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3} 
 booleen\+\_\+t {\bfseries fin} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
 \item 
@@ -102,3 +118,11 @@ Mimic\textquotesingle{}s spawnpoint.
 {\em mimic} & \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,22 @@
+<map id="lib/buttons.h" name="lib/buttons.h">
+<area shape="rect" id="Node000001" title="Header pour la structure du menu principal &#45;&gt; transition &#45;&gt; settings." alt="" coords="420,5,523,31"/>
+<area shape="rect" id="Node000002" href="$game__core_8h.html" title="Heador for the main game loop." alt="" coords="339,79,465,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="452,43,415,80,411,77,449,39"/>
+<area shape="rect" id="Node000010" href="$buttons_8c.html" title="File for every button interaction." alt="" coords="489,79,595,104"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="495,39,532,77,529,80,491,43"/>
+<area shape="rect" id="Node000003" href="$MainMenu_8h.html" title="Header for the Main Menu structure &#45;&gt; transition &#45;&gt; settings." alt="" coords="169,152,291,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,112,259,154,257,149,361,107"/>
+<area shape="rect" id="Node000007" href="$renderer_8h.html" title="Header for every in game render." alt="" coords="348,152,456,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="396,118,398,152,392,152,391,118"/>
+<area shape="rect" id="Node000009" href="$game__core_8c.html" title="Main game loop." alt="" coords="481,152,609,177"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="438,108,523,149,520,154,436,112"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title="FIle for the game to decite game state." alt="" coords="5,225,95,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,185,80,228,78,223,188,180"/>
+<area shape="rect" id="Node000005" href="$menu_8c.html" title="Creation and rendering of the Main Menu." alt="" coords="119,225,213,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="212,189,178,227,174,223,208,186"/>
+<area shape="rect" id="Node000006" href="$transition_8c.html" title="Création and initialisation of transitions menu&#45;&gt;settings." alt="" coords="237,225,356,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="252,186,288,223,284,227,249,190"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="408,139,406,104,412,104,413,138"/>
+<area shape="rect" id="Node000008" href="$renderer_8c.html" title="File for every in game render." alt="" coords="380,225,491,251"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="416,189,432,224,428,226,411,191"/>
+</map>

@@ -5,7 +5,15 @@
 File for every in game render.  
 
 
-{\ttfamily \#include $<$renderer.\+h$>$}\newline
+{\ttfamily \#include "{}renderer.\+h"{}}\newline
+Include dependency graph for renderer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,6 +74,22 @@ Chaque action du joueur et du monster sont affichée en temps réel lorsque la f
 {\em lumière\+Gauche\+Active} & Vrai si la lumiere gauche est allumee sinon faux \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{renderer_8c_a6b166b657304caeee111f82843bb7d26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{renderer_8c_a6b166b657304caeee111f82843bb7d26_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{renderer_8c_a96064741375779b0a0f13379c81981f5}\index{renderer.c@{renderer.c}!battery\_render@{battery\_render}}
 \index{battery\_render@{battery\_render}!renderer.c@{renderer.c}}
 \doxysubsubsection{\texorpdfstring{battery\_render()}{battery\_render()}}
@@ -89,6 +113,14 @@ Dessine une barre de batterie avec une couleur variant du vert au rouge selon le
 {\em windowH} & Hauteur de la fenêtre. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a96064741375779b0a0f13379c81981f5_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{renderer_8c_a90427cccca7828179c877865c1caeb60}\index{renderer.c@{renderer.c}!buttons\_render@{buttons\_render}}
 \index{buttons\_render@{buttons\_render}!renderer.c@{renderer.c}}
 \doxysubsubsection{\texorpdfstring{buttons\_render()}{buttons\_render()}}
@@ -112,6 +144,22 @@ Dessine les boutons des portes et des lumières sur les côtés gauche et droit 
 {\em windowH} & Hauteur de la fenêtre. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{renderer_8c_a90427cccca7828179c877865c1caeb60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a90427cccca7828179c877865c1caeb60_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{renderer_8c_a43f7a55205d929c0e493406a063ede63}\index{renderer.c@{renderer.c}!camera\_buttons\_render@{camera\_buttons\_render}}
 \index{camera\_buttons\_render@{camera\_buttons\_render}!renderer.c@{renderer.c}}
 \doxysubsubsection{\texorpdfstring{camera\_buttons\_render()}{camera\_buttons\_render()}}
@@ -133,6 +181,22 @@ Permet l\textquotesingle{}affichage des boutons de la camera.
 {\em windowH} & Hauteur de la fenêtre. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{renderer_8c_a43f7a55205d929c0e493406a063ede63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a43f7a55205d929c0e493406a063ede63_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{renderer_8c_a3d3788e8ed9e22d2c2404038b232e058}\index{renderer.c@{renderer.c}!render\_game@{render\_game}}
 \index{render\_game@{render\_game}!renderer.c@{renderer.c}}
 \doxysubsubsection{\texorpdfstring{render\_game()}{render\_game()}}
@@ -156,3 +220,19 @@ Cette fonction affiche la batterie et les boutons de contrôle dans la fenêtre.
 {\em window} & Fenêtre SDL. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a3d3788e8ed9e22d2c2404038b232e058_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{renderer_8c_a3d3788e8ed9e22d2c2404038b232e058_icgraph}
+\end{center}
+\end{figure}

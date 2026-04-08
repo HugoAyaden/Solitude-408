@@ -1,0 +1,9 @@
+<map id="lib/MainMenu.h" name="lib/MainMenu.h">
+<area shape="rect" id="Node000001" title="Header for the Main Menu structure &#45;&gt; transition &#45;&gt; settings." alt="" coords="105,5,227,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title="FIle for the game to decite game state." alt="" coords="5,79,95,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,40,70,81,68,76,134,35"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html" title="Creation and rendering of the Main Menu." alt="" coords="119,79,213,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,44,169,79,163,79,163,44"/>
+<area shape="rect" id="Node000004" href="$transition_8c.html" title="Création and initialisation of transitions menu&#45;&gt;settings." alt="" coords="237,79,356,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="201,35,277,76,274,81,198,40"/>
+</map>

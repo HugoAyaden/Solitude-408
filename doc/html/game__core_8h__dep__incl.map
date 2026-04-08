@@ -1,0 +1,18 @@
+<map id="lib/game_core.h" name="lib/game_core.h">
+<area shape="rect" id="Node000001" title="Heador for the main game loop." alt="" coords="339,5,465,31"/>
+<area shape="rect" id="Node000002" href="$MainMenu_8h.html" title="Header for the Main Menu structure &#45;&gt; transition &#45;&gt; settings." alt="" coords="169,79,291,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,38,259,81,257,76,361,33"/>
+<area shape="rect" id="Node000006" href="$renderer_8h.html" title="Header for every in game render." alt="" coords="348,79,456,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="396,44,398,78,392,79,391,45"/>
+<area shape="rect" id="Node000008" href="$game__core_8c.html" title="Main game loop." alt="" coords="481,79,609,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="438,34,523,76,520,81,436,39"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title="FIle for the game to decite game state." alt="" coords="5,152,95,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,111,80,154,78,149,188,106"/>
+<area shape="rect" id="Node000004" href="$menu_8c.html" title="Creation and rendering of the Main Menu." alt="" coords="119,152,213,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="212,116,178,154,174,150,208,113"/>
+<area shape="rect" id="Node000005" href="$transition_8c.html" title="Création and initialisation of transitions menu&#45;&gt;settings." alt="" coords="237,152,356,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="252,113,288,150,284,154,249,116"/>
+<area shape="poly" id="edge6_Node000006_Node000001" title=" " alt="" coords="408,65,406,31,412,31,413,65"/>
+<area shape="rect" id="Node000007" href="$renderer_8c.html" title="File for every in game render." alt="" coords="380,152,491,177"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="416,115,432,151,428,153,411,118"/>
+</map>
