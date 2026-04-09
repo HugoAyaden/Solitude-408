@@ -67,6 +67,20 @@ int main(int argc, char* argv[]) {
     // Initialize Menu Module
     init_menu(ren, vSmall, vLarge);
 
+    // =========================================
+    // --- PRELOAD ASSETS (The Loading Screen) ---
+    // Draw a black screen so the boot-up feels clean
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+    SDL_RenderClear(ren);
+    
+    // Optional Pro-Move: If you want to render "LOADING..." text here, you can!
+    
+    SDL_RenderPresent(ren);
+
+    // Now freeze the CPU for a second to load everything into RAM
+    preload_assets(ren); 
+    // =========================================
+
     GameState state = STATE_MENU, next = STATE_MENU;
     SDL_Event e;
 
