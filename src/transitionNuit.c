@@ -20,6 +20,7 @@ TTF_Font *font = NULL;
 SDL_Rect rect;
 SDL_Rect rect2;
 SDL_Rect rect3;
+SDL_Rect winRect;
 
 static int fade_in_chiffre_nuit(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre){
     for (int alpha = 0; alpha <= 255; alpha += 5)
@@ -103,6 +104,92 @@ static int fade_out(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chif
         SDL_RenderPresent(renderer);
         SDL_Delay(20);
     }
+    return 1;
+}
+
+static int fade_in_text(SDL_Renderer *renderer, SDL_Texture *winText)
+{
+    for (int alpha = 0; alpha <= 255; alpha += 5)
+    {
+        while (SDL_PollEvent(&event))
+            if (event.type == SDL_QUIT) return -1;
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
+        SDL_SetTextureAlphaMod(winText, alpha);
+        SDL_RenderCopy(renderer, winText, NULL, &winRect);
+
+        SDL_RenderPresent(renderer);
+        SDL_Delay(20);
+    }
+    return 1;
+}
+
+static int fade_out_text(SDL_Renderer *renderer, SDL_Texture *winText)
+{
+    for (int alpha = 255; alpha >= 0; alpha -= 5)
+    {
+        while (SDL_PollEvent(&event))
+            if (event.type == SDL_QUIT) return -1;
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
+        SDL_SetTextureAlphaMod(winText, alpha);
+        SDL_RenderCopy(renderer, winText, NULL, &winRect);
+
+        SDL_RenderPresent(renderer);
+        SDL_Delay(20);
+    }
+    return 1;
+}
+
+int transitionWin(SDL_Renderer *renderer, SDL_Window *window){
+    font = TTF_OpenFont("./assets/font/VCR.ttf", 60);
+    if (!font)
+    {
+        printf("Erreur police\n");
+        return-1;
+    }
+    SDL_Color colorFont = {147, 112, 219, 255};
+    char texte[50];
+    sprintf(texte, "YOU WIN");
+
+    SDL_Surface *surface = TTF_RenderText_Solid(font, texte, colorFont);
+    if (!surface)
+    {
+        TTF_CloseFont(font);
+        return -2;
+    }
+
+    SDL_Texture *winText = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+
+    if (!winText)
+    {
+        TTF_CloseFont(font);
+        return -3;
+    }
+
+    int largeur, hauteur;
+    SDL_GetWindowSize(window, &largeur, &hauteur);
+    winRect.w = 0;
+    winRect.h = 0;
+    SDL_QueryTexture(winText, NULL, NULL, &winRect.w, &winRect.h);
+    winRect.x = (largeur - winRect.w) / 2;
+    winRect.y = (hauteur - winRect.h) / 2;
+
+    // Fade in
+    fade_in_text(renderer, winText);
+    
+    SDL_Delay(2000); // Hold the "YOU WIN" message for a moment
+
+    // Fade out
+    fade_out_text(renderer, winText);
+
+    SDL_DestroyTexture(winText);
+    TTF_CloseFont(font);
     return 1;
 }
 

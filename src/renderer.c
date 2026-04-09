@@ -300,7 +300,7 @@ void affichage(){
                 background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M;
             }
             else if(monster->num_camera == PORTE_BAS-1){
-                //background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W;
+                background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W;
             }
             else
             background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON;
@@ -316,12 +316,13 @@ void affichage(){
         //TOUT
         else if(porteDroiteActive && lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT-1){
-            //   background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D;
+               background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D;
             }
              else if(monster->num_camera == PORTE_BAS-1){
-             //   background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W;
+                background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W;
             }
-            //background = R_D_ON_LI_ON_L_D_ON_LI_ON;
+            else 
+                background = R_D_ON_LI_ON_L_D_ON_LI_ON;
         }
         //LUMIERE DROITE
         else if(!porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
@@ -381,10 +382,10 @@ void affichage(){
         //LUMIERE DROITE PORTE GAUCHE
         else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT){
-                //background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
+                background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
             }
             else if(monster->num_camera == PORTE_HAUT-1){
-                //background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W;
+                background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D;
             }
             else 
                 background = R_D_OFF_LI_ON_L_D_ON_LI_OFF;

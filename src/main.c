@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
     Mix_Chunk* sTran = Mix_LoadWAV("assets/audio/sound/static.wav"); 
     if(sTran) Mix_VolumeChunk(sTran, 10);
     
-    Mix_Music* sOst = Mix_LoadMUS("assets/audio/sound/ost.wav"); 
+    sOst = Mix_LoadMUS("assets/audio/sound/ost.wav"); 
     if(sOst) Mix_VolumeMusic(30);
 
     SDL_Texture* sTex = CreateStaticTexture(ren);
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
             if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
                 // NO FADEOUT HERE ANYMORE! Let the music play!
-                if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
+                if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sTran) Mix_PlayChannel(-1, sTran, 0);  }
                 if (c == LOAD_GAME) { trans = true; progress = 0.0f; next = STATE_CONTINUE; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
                 if (c == SETTINGS) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
                 if (c == CREDITS) { trans = true; progress = 0.0f; next = STATE_CREDITS; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
@@ -138,7 +138,6 @@ int main(int argc, char* argv[]) {
                 next = STATE_MENU; 
                 trans = false;
                 progress = 0.0f;
-                musicStarted = false; 
                 musicStartTime = SDL_GetTicks() + 3000; 
                 Mix_HaltChannel(-1);
             }

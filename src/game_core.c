@@ -298,6 +298,14 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_ON_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
+    R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D.png");
+    R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W.png");
+    R_D_OFF_LI_ON_L_D_ON_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M.png");
+    R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D.png");
+    R_D_ON_LI_ON_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M_W.png");
+    R_D_ON_LI_ON_L_D_ON_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M.png");
+    R_D_ON_LI_ON_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON.png");
+
 
     R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W.png");
     R_D_OFF_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON.png");
@@ -521,10 +529,20 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
-    if(finish <=0 && !fin(map, monster)){
-        transitionNuit(renderer, window, night);
-        night++;
-        save_night(night);
+    if(finish <=0 && !fin(map, monster) && !fin(map, mimic)){
+        if(night == MAX_NIGHT){
+            transitionWin(renderer, window);
+            Mix_PlayMusic(sOst, -1);
+            Mix_VolumeMusic(musicVol);
+            render_credits(renderer, window);
+        }
+        else{
+            transitionNuit(renderer, window, night);
+            night++;
+            save_night(night);
+            Mix_PlayMusic(sOst, -1);
+            Mix_VolumeMusic(musicVol);
+        }
     }
 }
 
@@ -545,5 +563,13 @@ void game_final_cleanup(){
     if (mimic != NULL) {
         mimic = NULL;
     }
-    
+    Mix_FreeMusic(cameraStatic);
+    Mix_FreeChunk(cameraSwitch);
+    Mix_FreeChunk(doorKnocking);
+    Mix_FreeChunk(monsterSpawn);
+    Mix_FreeChunk(mimicMove);
+    Mix_FreeChunk(door_close);
+    Mix_FreeChunk(light_on);
+    Mix_FreeChunk(button_on);
+    Mix_FreeChunk(button_off);
 }

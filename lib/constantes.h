@@ -136,6 +136,15 @@ extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D;
 
 extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W;
 extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_ON;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M_W ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
 
 extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_OFF ;
 extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D ;
@@ -204,6 +213,7 @@ extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
 extern int lightCount;
+extern Mix_Music* sOst; 
 extern Mix_Music* cameraStatic;
 extern Mix_Chunk* cameraSwitch;
 extern Mix_Chunk* doorKnocking;
