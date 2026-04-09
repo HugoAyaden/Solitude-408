@@ -371,14 +371,6 @@ void affichage(){
             else 
                 background = R_D_ON_LI_OFF_L_D_OFF_LI_ON;
         }
-        //LUMIERE GAUCHE PORTE GAUCHE
-         else if(!porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
-            if(monster->num_camera == PORTE_BAS-1){
-                background = R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W;
-            }
-            else
-                background = R_D_OFF_LI_OFF_L_D_ON_LI_ON;
-        }
         //LUMIERE DROITE PORTE GAUCHE
         else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT){

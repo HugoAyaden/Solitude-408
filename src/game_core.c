@@ -13,7 +13,7 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define TEMPS_NUIT 1000
+#define TEMPS_NUIT 360000
 #define monsterMoveDelay 3000
 
 /**
@@ -294,7 +294,7 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_OFF_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_OFF.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON.png");
-    R_D_ON_LI_ON_L_D_OFF_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_l_D_OFF_LI_OFF_M.png");
+    R_D_ON_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_OFF.png");
     R_D_ON_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
