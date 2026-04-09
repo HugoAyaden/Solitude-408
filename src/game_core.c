@@ -16,7 +16,8 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define TEMPS_NUIT 360000
+//#define TEMPS_NUIT 360000
+#define TEMPS_NUIT 10000
 #define monsterMoveDelay 3000
 
 /**
@@ -124,7 +125,7 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     else if (camera9on && camera->num_camera == CAMERA_12)
     {
         *camera_type = SIDEWAYS;
-        if (monstre->num_camera == CAMERA_12)
+        if (monster->num_camera == CAMERA_12)
             background = COMMAND_ROOM_M;
         else
             background = COMMAND_ROOM;
@@ -468,51 +469,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     tempsFin = tempsDebut + TEMPS_NUIT;
     duree = tempsDebut;
     finish = TEMPS_NUIT;
-
-    // ==========================================
-    // --- 1. START FADING THE MENU MUSIC ---
-    Mix_FadeOutMusic(1500); // 1.5 second fade out
-
-    // --- 2. CINEMATIC FADE-IN FROM BLACK ---
-    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-    SDL_GetWindowSize(window, &windowW, &windowH);
-    SDL_Rect bgRect = {0, 0, windowW, windowH};
-
-    for (int alpha = 255; alpha >= 0; alpha -= 5) {
-        SDL_RenderClear(renderer);
-        
-        lightCount = buttons_getLightCount();
-        affichage(); 
-        
-        SDL_RenderCopy(renderer, background, NULL, &bgRect);
-        render_game(renderer, fontBattery, fontButtons, window);
-
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, alpha);
-        SDL_RenderFillRect(renderer, NULL);
-        
-        SDL_RenderPresent(renderer);
-        SDL_Delay(16); // 60fps smooth fade
-    }
-
-    // --- 3. HOLD UNTIL MUSIC FADES OUT COMPLETELY ---
-    // We keep rendering the normal game so the screen doesn't freeze
-    // while waiting for the last few milliseconds of the music fade out!
-
-    while(Mix_PlayingMusic()) {
-        SDL_RenderClear(renderer);
-        lightCount = buttons_getLightCount();
-        affichage();
-        SDL_RenderCopy(renderer, background, NULL, &bgRect);
-        render_game(renderer, fontBattery, fontButtons, window);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(16);
-    }
-
-    // --- 4. START THE CREEPY IN-GAME AMBIENCE ---
-    Mix_PlayMusic(cameraStatic, -1);
-    // ==========================================
-
-
+   
     /*=========GESTION PANORAMA==========*/
     int imgW, imgH;
     camera_type camera_type = GAME;
@@ -539,8 +496,47 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
     camera_offset_x = bgRectGame.x; // initialisation de l'offset de la camera pour les boutons
 
+    // ==========================================
+    // --- 1. START FADING THE MENU MUSIC ---
+    Mix_FadeOutMusic(1500); // 1.5 second fade out
 
+    // --- 2. CINEMATIC FADE-IN FROM BLACK ---
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    
 
+    for (int alpha = 255; alpha >= 0; alpha -= 5) {
+        SDL_RenderClear(renderer);
+        
+        lightCount = buttons_getLightCount();
+        affichage(&camera_type); 
+        
+        SDL_RenderCopy(renderer, background, NULL, &bgRectGame);
+        render_game(renderer, fontBattery, fontButtons, window, img_stretchedW_game_res);
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, alpha);
+        SDL_RenderFillRect(renderer, NULL);
+        
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16); // 60fps smooth fade
+    }
+
+    // --- 3. HOLD UNTIL MUSIC FADES OUT COMPLETELY ---
+    // We keep rendering the normal game so the screen doesn't freeze
+    // while waiting for the last few milliseconds of the music fade out!
+
+    while(Mix_PlayingMusic()) {
+        SDL_RenderClear(renderer);
+        lightCount = buttons_getLightCount();
+        affichage(&camera_type);
+        SDL_RenderCopy(renderer, background, NULL, &bgRectGame);
+        render_game(renderer, fontBattery, fontButtons, window, img_stretchedW_game_res);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
+    }
+
+    // --- 4. START THE CREEPY IN-GAME AMBIENCE ---
+    Mix_PlayMusic(cameraStatic, -1);
+    // ==========================================
 
      while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
         if(cameraStatic || cameraSwitch) Mix_VolumeMusic(0);

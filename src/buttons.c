@@ -160,39 +160,39 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
     //camera 1
-    int buttonX1 = windowW-150;
+    int buttonX1 = windowW-154+buttonW;
     int buttonY1 = windowH/2-54;
 
     //camera 2
-    int buttonX2 = windowW-150;
+    int buttonX2 = windowW-154+buttonW;
     int buttonY2 = windowH/2+55;
 
     //camera 3
-    int buttonX3 = windowW-272;
+    int buttonX3 = windowW-276+buttonW;
     int buttonY3 = windowH/2 + 1;
 
     //camera 4
-    int buttonX4 = windowW-337;
+    int buttonX4 = windowW-341+buttonW;
     int buttonY4 = windowH/2+10;
 
     //camera 5
-    int buttonX5 = windowW-468;
+    int buttonX5 = windowW-472+buttonW;
     int buttonY5 = windowH/2+55;
 
     //camera 6
-    int buttonX6 = windowW-468;
+    int buttonX6 = windowW-472+buttonW;
     int buttonY6 = windowH/2-54;
 
     //camera 7
-    int buttonX7 = windowW-274;
+    int buttonX7 = windowW-278+buttonW;
     int buttonY7= windowH/2-177;
 
     //camera 8
-    int buttonX8 = windowW-448;
+    int buttonX8 = windowW-452+buttonW;
     int buttonY8 = windowH/2-177;
 
     //camera 9
-    int buttonX9 = windowW-337;
+    int buttonX9 = windowW-341+buttonW;
     int buttonY9 = windowH/2+144;
 
     //toggle camera   
