@@ -15,6 +15,7 @@
 #include "settings.h"
 #include "portes.h"
 #include "renderer.h"
+#include "transitionNuit.h"
 
 
 void change_camera(case_t * camera, case_t * monster);

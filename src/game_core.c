@@ -13,8 +13,8 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define TEMPS_NUIT 360000
-#define monsterMoveDelay 1000
+#define TEMPS_NUIT 1000
+#define monsterMoveDelay 3000
 
 /**
  * \brief Permet l'affichage des cameras
@@ -215,7 +215,7 @@ void difficulte(int night){
             }
             break;
         case 1:
-            if(chance_deplacement() <= 3) {
+            if(chance_deplacement() <= 5) {
                 move_monster(map, monster, joueur);
             }
             else{
@@ -274,10 +274,6 @@ void update(){
  * \return Code de retour du programme.
  */
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
-    //Load Textures ( interminable )
-    if (BLACKOUT == NULL) {
-        BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
-
        // Load Textures (internimable)
 BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
 
@@ -355,7 +351,6 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
 
         monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
         mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
-    }
 
     if (map == NULL)   map = malloc(sizeof(carte_t));
     if (camera == NULL)   camera = malloc(sizeof(carte_t));
@@ -363,6 +358,9 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
     if (monster == NULL) monster = malloc(sizeof(case_t));
     if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
+    //transition ici
+    
+
     //POUR UN REDEMARAGE A 0
     game_initialise();
     Mix_PlayMusic(cameraStatic, -1);
@@ -463,6 +461,7 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
         SDL_Delay(16);
     }
     if(finish <=0 && !fin(map, monster)){
+        transitionNuit(renderer, window, night);
         night++;
         save_night(night);
     }

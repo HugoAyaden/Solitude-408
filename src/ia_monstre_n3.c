@@ -38,7 +38,7 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
             attaque_mimic(*map, mimic, joueur);
     }
     else{
-        if(chance_deplacement() < 10){
+        if(chance_deplacement() < 1){
                 int x = rand() % END_X;
                 int y = rand() % END_Y;
                 *mimic = map->cases[x][y];

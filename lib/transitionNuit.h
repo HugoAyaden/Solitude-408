@@ -1,7 +1,7 @@
 #ifndef TRANSITION_NUIT_H
 #define TRANSITION_NUIT_H
 
-#include <SDL2/SDL.h>
+#include "constantes.h"
 
 /**
  * \file transitionNuit.h
@@ -25,5 +25,10 @@
  * \post Une animation est affichée à l'écran
  */
 void transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle);
+
+static int fade_in_chiffre_nuit(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre);
+static int fade_in_next(SDL_Renderer *renderer, SDL_Texture *chiffreNext);
+static int fade_out_chiffre(SDL_Renderer *renderer, SDL_Texture *chiffre);
+static int fade_out(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre);
 
 #endif
