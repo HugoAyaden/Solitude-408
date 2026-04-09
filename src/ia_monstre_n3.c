@@ -38,7 +38,7 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
             attaque_mimic(*map, mimic, joueur);
     }
     else{
-        if(chance_deplacement() < 1){
+        if(chance_deplacement() < PERCENT_MOVE_MIMIC){
                 int x = rand() % END_X;
                 int y = rand() % END_Y;
                 *mimic = map->cases[x][y];
@@ -68,6 +68,8 @@ int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur){
         }
         else{
             printf("Mimic attacks but fails and respawn !\n");
+            Mix_VolumeChunk(sad_mimic, (masterVol));
+            Mix_PlayChannel(-1, sad_mimic, 0);
             placement_mimic(&map, mimic);
         }
     return FAUX;

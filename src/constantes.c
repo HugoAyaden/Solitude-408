@@ -9,6 +9,10 @@
 
 #include "constantes.h"
 
+
+int PERCENT_MOVE_MIMIC = 20;
+float PERCENT_MOVE_MONSTER = 70;
+
 float battery = 100.0f;
 int porteGaucheActive = 0;
 int porteDroiteActive = 0;
@@ -159,3 +163,4 @@ Mix_Chunk* door_close = NULL;
 Mix_Chunk* light_on = NULL;
 Mix_Chunk* button_on = NULL;
 Mix_Chunk* button_off = NULL;
+Mix_Chunk* sad_mimic = NULL;

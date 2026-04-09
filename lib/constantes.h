@@ -19,6 +19,9 @@
 #define true 1
 #define false 0
 
+extern int PERCENT_MOVE_MIMIC;
+extern float PERCENT_MOVE_MONSTER;
+
 typedef struct case_s {
     int num_camera;
     booleen_t lumiere;
@@ -223,4 +226,5 @@ extern Mix_Chunk* door_close;
 extern Mix_Chunk* light_on;
 extern Mix_Chunk* button_on;
 extern Mix_Chunk* button_off;
+extern Mix_Chunk* sad_mimic;
 #endif

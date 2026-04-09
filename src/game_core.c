@@ -208,14 +208,14 @@ void game_update(float deltaTime)
 void difficulte(int night){
     switch(night){
         case 0:
-            if(chance_deplacement() <= 1) {
+            if(chance_deplacement() <= PERCENT_MOVE_MONSTER/7) {
                 movement_opportunity(map, monster, 
                                     monster->num_camera % FIN_Y, 
                                     monster->num_camera / FIN_Y);
             }
             break;
         case 1:
-            if(chance_deplacement() <= 5) {
+            if(chance_deplacement() <= PERCENT_MOVE_MONSTER/2) {
                 move_monster(map, monster, joueur);
             }
             else{
@@ -225,7 +225,7 @@ void difficulte(int night){
             }
             break;
         case 2:
-            if(chance_deplacement() < 7) {
+            if(chance_deplacement() < PERCENT_MOVE_MONSTER) {
                 move_monster(map, monster, joueur);
             }
             else{
@@ -364,6 +364,7 @@ void preload_assets(SDL_Renderer* renderer) {
     light_on = Mix_LoadWAV("./assets/audio/sound/light_on.wav");
     button_on = Mix_LoadWAV("./assets/audio/sound/button_on.wav");
     button_off = Mix_LoadWAV("./assets/audio/sound/button_off.wav");
+    sad_mimic = Mix_LoadWAV("./assets/audio/sound/sad.wav");
 
 }
 

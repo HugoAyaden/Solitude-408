@@ -79,7 +79,7 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
 }
 
 int chance_deplacement(){
-   int chance = rand() %10;
+   int chance = rand() %100;
    return chance;
 }
 
