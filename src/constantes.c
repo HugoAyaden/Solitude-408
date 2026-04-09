@@ -93,6 +93,6 @@ int pixel_offset_cam = 1;           //decalage pixel deplacement camera
 float res_percentage = 0.95;        //pourcentage pour determiner zone de deplacement camera
 int img_limit_left = 0;             //limite de position de l'image a gauche
 float img_stretch_game_percentage = 1.8; //pourcentage d'etendue de l'image jeu
-float img_stretch_cam_percentage = 1.2; //pourcentage d'etendue de l'image cam
+float img_stretch_cam_percentage = 1.1; //pourcentage d'etendue de l'image cam
 int camera_offset_x = 0;                //PAS UNE CONSTANTE, recup la position de l'image pour calculer la position des boutons
 int spacing_amount = 6;                 //pourcentage de l'image de jeu ou les boutons de portes sont affichés, plus c'est petit plus ils sont proches du centre

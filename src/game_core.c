@@ -15,6 +15,40 @@
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 20000
 
+
+/**
+ * \brief Image static anim
+ *
+ * Les numeros des cameras sont suivant le schéma de "carte.c"
+ * et non celui du jeu (par souci de réalisme).
+ */
+void static_vid(SDL_Renderer *renderer){
+        //test animation
+    IMG_Animation *anim = IMG_LoadAnimation("./assets/img/INgame/static.gif");
+    SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture*));
+    for (int i = 0; i < anim->count; i++) {
+    textures[i] = SDL_CreateTextureFromSurface(renderer, anim->frames[i]);
+    }
+    int currentFrame = 0;
+    Uint32 lastFrameTime = 0;
+    int time = 0;
+    while (time<1000) {
+
+        Uint32 now = SDL_GetTicks();
+
+        if (now - lastFrameTime >= anim->delays[currentFrame]) {
+            currentFrame = (currentFrame + 1) % anim->count;
+            lastFrameTime = now;
+        }
+
+        SDL_Rect dst = { 0, 0, windowW, windowH };
+        SDL_RenderCopy(renderer, textures[currentFrame], NULL, &dst);
+
+        SDL_RenderPresent(renderer);
+        time++;
+    }
+}
+
 /**
  * \brief Permet l'affichage des cameras
  *
@@ -246,6 +280,8 @@ void update()
  */
 void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery, TTF_Font *fontButtons)
 {
+
+
     // Load Textures ( interminable )
     if (BLACKOUT == NULL)
     {
@@ -352,6 +388,9 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
 
     camera_offset_x = bgRectGame.x; // initialisation de l'offset de la camera pour les boutons
 
+
+
+
     while (!fin(carte, monstre) && finish >= 0)
     {
         Uint32 currentTime = SDL_GetTicks();
@@ -359,7 +398,7 @@ void game_init(SDL_Renderer *renderer, SDL_Window *window, TTF_Font *fontBattery
         deltaTime = (currentTime - lastTime) / 1000.0f;
         lastTime = currentTime;
 
-        // Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)img_stretch_game_percentage
+        // Echap pour quitter le jeu (pas de retour au menu sinon pression inexistante)
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))

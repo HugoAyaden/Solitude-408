@@ -150,31 +150,31 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
 
     //camera 3
-    int buttonX3 = windowW-274;
+    int buttonX3 = windowW-280 + buttonW;
     int buttonY3 = windowH/2 + 2;
 
     //camera 4
-    int buttonX4 = windowW-339;
+    int buttonX4 = windowW-345 + buttonW;
     int buttonY4 = windowH/2+11;
 
     //camera 5
-    int buttonX5 = windowW-470;
+    int buttonX5 = windowW-476 + buttonW;
     int buttonY5 = windowH/2+57;
 
     //camera 6
-    int buttonX6 = windowW-470;
+    int buttonX6 = windowW-476 + buttonW;
     int buttonY6 = windowH/2-53;
 
     //camera 7
-    int buttonX7 = windowW-276;
+    int buttonX7 = windowW-282 + buttonW;
     int buttonY7= windowH/2-176;
 
     //camera 8
-    int buttonX8 = windowW-450;
+    int buttonX8 = windowW-456 + buttonW;
     int buttonY8 = windowH/2-176;
 
     //camera 9
-    int buttonX9 = windowW-339;
+    int buttonX9 = windowW-345 + buttonW;
     int buttonY9 = windowH/2+145;
 
     //toggle camera
@@ -326,7 +326,7 @@ void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
     textRect.h = surface->h;
     
     /* Placement de la map des camera sur l'ecran */
-    textRect.x = rect.x + 800;
+    textRect.x = windowW - textRect.w;
     textRect.y = rect.y - 200;
 
     SDL_RenderCopy(renderer, texture, NULL, &textRect);
