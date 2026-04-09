@@ -1,0 +1,128 @@
+\doxysection{lib/ia\+\_\+monstre.h File Reference}
+\hypertarget{ia__monstre_8h}{}\label{ia__monstre_8h}\index{lib/ia\_monstre.h@{lib/ia\_monstre.h}}
+
+
+Header for the monster\textquotesingle{}s functionement.  
+
+
+{\ttfamily \#include "{}map.\+h"{}}\newline
+Include dependency graph for ia\+\_\+monstre.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ia__monstre_8h_a5c23619cf9d96202516ecd7513d15344}\label{ia__monstre_8h_a5c23619cf9d96202516ecd7513d15344} 
+\#define {\bfseries START\+\_\+\+MONSTRE\+\_\+X}~3
+\item 
+\Hypertarget{ia__monstre_8h_a3dcb996b1c274f3c0e800bf49defaab0}\label{ia__monstre_8h_a3dcb996b1c274f3c0e800bf49defaab0} 
+\#define {\bfseries START\+\_\+\+MIMIC\+\_\+X}~1
+\item 
+\Hypertarget{ia__monstre_8h_a783a7264767fb66de2dc50094d6dd01c}\label{ia__monstre_8h_a783a7264767fb66de2dc50094d6dd01c} 
+\#define {\bfseries DEPART\+\_\+Y}~0
+\item 
+\Hypertarget{ia__monstre_8h_a0c273e0640bf2003d52863210dcccd67}\label{ia__monstre_8h_a0c273e0640bf2003d52863210dcccd67} 
+\#define {\bfseries DEPART\+\_\+X}~0
+\item 
+\Hypertarget{ia__monstre_8h_ab77702e9e9b698c94206821fe30ce611}\label{ia__monstre_8h_ab77702e9e9b698c94206821fe30ce611} 
+\#define {\bfseries END\+\_\+Y}~5
+\item 
+\Hypertarget{ia__monstre_8h_a68b3f8caccfd8de4d8533abdc5bc88e2}\label{ia__monstre_8h_a68b3f8caccfd8de4d8533abdc5bc88e2} 
+\#define {\bfseries END\+\_\+X}~3
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ia__monstre_8h_ae9ae980041e438eed7a3af43ce4e9f6b}\label{ia__monstre_8h_ae9ae980041e438eed7a3af43ce4e9f6b} 
+enum {\bfseries direction\+\_\+t} \{ {\bfseries HAUT}
+, {\bfseries DROITE}
+, {\bfseries BAS}
+, {\bfseries GAUCHE}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41}\label{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41} 
+void {\bfseries placing\+\_\+monster} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
+\begin{DoxyCompactList}\small\item\em Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic\textquotesingle{}s spawn. \end{DoxyCompactList}\item 
+\Hypertarget{ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3}\label{ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3} 
+booleen\+\_\+t {\bfseries fin} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster)
+\item 
+\Hypertarget{ia__monstre_8h_a401ae60828b76e8759b7e6de15cc5c2a}\label{ia__monstre_8h_a401ae60828b76e8759b7e6de15cc5c2a} 
+void {\bfseries deplacement} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster, int direction)
+\item 
+\Hypertarget{ia__monstre_8h_a44bea8a0c598b28e63dc806e7ae551ea}\label{ia__monstre_8h_a44bea8a0c598b28e63dc806e7ae551ea} 
+int {\bfseries movement\+\_\+opportunity} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster, int y, int x)
+\item 
+\Hypertarget{ia__monstre_8h_afd8e5bb77c7fba1a170e8f5be2fe6c4d}\label{ia__monstre_8h_afd8e5bb77c7fba1a170e8f5be2fe6c4d} 
+void {\bfseries mouvement\+\_\+mimic} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}mimic)
+\item 
+\Hypertarget{ia__monstre_8h_a188de5940534dd87ffb6708a075c6d7d}\label{ia__monstre_8h_a188de5940534dd87ffb6708a075c6d7d} 
+int {\bfseries attaque\+\_\+mimic} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}mimic, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\item 
+void \mbox{\hyperlink{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c}{placement\+\_\+mimic}} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}mimic)
+\begin{DoxyCompactList}\small\item\em Mimic\textquotesingle{}s spawnpoint. \end{DoxyCompactList}\item 
+\Hypertarget{ia__monstre_8h_a5c366f731dc2c18a20808cbe4049d036}\label{ia__monstre_8h_a5c366f731dc2c18a20808cbe4049d036} 
+int {\bfseries chance\+\_\+deplacement} ()
+\item 
+\Hypertarget{ia__monstre_8h_a9c7062eb1b4fac9a5696802291917759}\label{ia__monstre_8h_a9c7062eb1b4fac9a5696802291917759} 
+void {\bfseries timer\+\_\+monstre} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for the monster\textquotesingle{}s functionement. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12/02/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{ia__monstre_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c}\index{ia\_monstre.h@{ia\_monstre.h}!placement\_mimic@{placement\_mimic}}
+\index{placement\_mimic@{placement\_mimic}!ia\_monstre.h@{ia\_monstre.h}}
+\doxysubsubsection{\texorpdfstring{placement\_mimic()}{placement\_mimic()}}
+{\footnotesize\ttfamily \label{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c} 
+void placement\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic}{}\end{DoxyParamCaption})}
+
+
+
+Mimic\textquotesingle{}s spawnpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em mimic} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c_icgraph}
+\end{center}
+\end{figure}

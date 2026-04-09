@@ -1,0 +1,48 @@
+<map id="game_init" name="game_init">
+<area shape="rect" id="Node000001" title="Fonction principale du programme." alt="" coords="5,208,92,233"/>
+<area shape="rect" id="Node000002" href="$renderer_8c.html#a6b166b657304caeee111f82843bb7d26" title="Affiche les différents écrans en fonction des états du jeu." alt="" coords="172,5,255,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,207,79,133,105,88,138,48,158,34,161,38,142,52,109,91,84,136,56,209"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a5801bd126b77810d4a368ed379e52f45" title="Retourne le nombre de portes activées." alt="" coords="358,55,526,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="52,207,82,149,107,117,139,92,188,70,242,58,295,53,345,53,345,59,295,58,242,63,190,75,141,96,111,121,86,152,57,209"/>
+<area shape="rect" id="Node000005" href="$game__core_8c.html#ad95aa2a7f38e49f6a87c0b86fb68eb60" title="Retourne le nombre de lumières activées." alt="" coords="357,153,527,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="89,205,139,193,245,177,343,168,344,174,245,183,141,198,90,210"/>
+<area shape="rect" id="Node000006" href="$game__core_8c.html#a72d7f388880cd9e6e0d3265f1a8e8b9a" title="Gestion globale des événements du jeu." alt="" coords="140,208,287,233"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="92,218,126,218,126,223,92,223"/>
+<area shape="rect" id="Node000009" href="$game__core_8c.html#ae160d5ac2d5e8a4733277396412d76e8" title="Initialise les systèmes principaux du jeu." alt="" coords="152,257,275,283"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="92,231,158,251,156,256,91,236"/>
+<area shape="rect" id="Node000012" href="$game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf" title="Met à jour la logique du jeu." alt="" coords="158,107,269,132"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="63,206,96,178,139,149,165,135,167,140,141,154,100,182,66,210"/>
+<area shape="rect" id="Node000014" href="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c" title="Mimic&#39;s spawnpoint." alt="" coords="144,307,283,332"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="65,232,98,261,141,292,157,299,154,304,139,296,95,266,61,236"/>
+<area shape="rect" id="Node000015" href="$ia__monstre__n1_8c.html#a8707e9cc750ba0548d0643087d11cd41" title="Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic&#39;s spawn." alt="" coords="148,356,279,381"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="58,232,89,285,113,315,142,341,152,348,149,352,138,345,109,319,85,288,54,235"/>
+<area shape="rect" id="Node000016" href="$renderer_8c.html#a3d3788e8ed9e22d2c2404038b232e058" title="Affiche tous les éléments du jeu." alt="" coords="159,449,267,475"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="57,232,89,303,114,348,142,391,187,438,183,442,138,394,109,350,84,305,53,235"/>
+<area shape="rect" id="Node000003" href="$game__core_8c.html#a5448c0771e1cae40dc53c7031f8f82df" title="Permet l&#39;affichage des cameras." alt="" coords="379,5,505,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,15,366,15,366,21,255,21"/>
+<area shape="rect" id="Node000007" href="$buttons_8c.html#a0e70c6daabf773b151cbb268eb46a9cb" title="Gère les événements liés aux boutons." alt="" coords="363,203,521,228"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="287,216,349,215,349,220,287,222"/>
+<area shape="rect" id="Node000008" href="$buttons_8c.html#a9515c4dd6739c32c637758377982f107" title="Allow video camera change through buttons." alt="" coords="335,252,549,277"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="281,231,363,247,362,252,280,236"/>
+<area shape="rect" id="Node000010" href="$game__core_8c.html#a2f3df884c90a301efb19f9575fe9231d" title="Initialise la batterie du joueur." alt="" coords="393,301,491,327"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="276,279,380,300,379,305,275,284"/>
+<area shape="rect" id="Node000011" href="$buttons_8c.html#ae173cfd5e6f9b80bb7d680cbca8851fd" title="Initialise l&#39;état des boutons." alt="" coords="393,351,491,376"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="264,280,288,292,303,303,312,315,322,325,336,336,380,352,378,357,333,340,318,329,308,318,299,307,285,296,261,285"/>
+<area shape="poly" id="edge13_Node000012_Node000004" title=" " alt="" coords="268,104,334,89,370,81,371,86,335,94,270,109"/>
+<area shape="poly" id="edge14_Node000012_Node000005" title=" " alt="" coords="269,128,366,148,365,153,268,133"/>
+<area shape="rect" id="Node000013" href="$game__core_8c.html#ac8fa856ac0b9c565af7704385f4ea2bc" title="Met à jour le niveau de batterie." alt="" coords="381,104,503,129"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="269,116,368,115,368,120,269,121"/>
+<area shape="rect" id="Node000017" href="$renderer_8c.html#a96064741375779b0a0f13379c81981f5" title="Affiche la barre de batterie à l&#39;écran." alt="" coords="383,400,501,425"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="267,448,369,426,370,431,268,453"/>
+<area shape="rect" id="Node000018" href="$renderer_8c.html#a90427cccca7828179c877865c1caeb60" title="Affiche tous les boutons de contrôle." alt="" coords="382,449,502,475"/>
+<area shape="poly" id="edge19_Node000016_Node000018" title=" " alt="" coords="268,459,368,459,368,465,268,465"/>
+<area shape="rect" id="Node000020" href="$renderer_8c.html#a43f7a55205d929c0e493406a063ede63" title="Permet l&#39;affichage des boutons de la camera." alt="" coords="354,499,530,524"/>
+<area shape="poly" id="edge21_Node000016_Node000020" title=" " alt="" coords="268,471,370,493,369,498,267,476"/>
+<area shape="rect" id="Node000021" href="$renderer_8c.html#ae7abc85994e18f760aa0722975ddd643" title="Rend le rectangle affiché précedemment." alt="" coords="371,548,513,573"/>
+<area shape="poly" id="edge23_Node000016_Node000021" title=" " alt="" coords="233,473,278,504,336,534,358,542,357,547,334,539,275,508,230,477"/>
+<area shape="rect" id="Node000019" href="$buttons_8c.html#a0ef71e5a094c3243eda55d8804b4c988" title="Dessine un bouton interactif avec un texte." alt="" coords="601,475,699,500"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="503,467,588,477,587,482,502,472"/>
+<area shape="poly" id="edge22_Node000020_Node000019" title=" " alt="" coords="530,499,588,492,588,497,531,504"/>
+<area shape="rect" id="Node000022" href="$buttons_8c.html#a3185b927868bf54271d47b9baac0608e" title="Affiche la map de la camera." alt="" coords="597,548,703,573"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="513,558,584,558,584,563,513,563"/>
+</map>

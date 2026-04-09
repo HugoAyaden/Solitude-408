@@ -1,0 +1,269 @@
+\doxysection{lib/renderer.h File Reference}
+\hypertarget{renderer_8h}{}\label{renderer_8h}\index{lib/renderer.h@{lib/renderer.h}}
+
+
+Header for every in game render.  
+
+
+{\ttfamily \#include "{}game\+\_\+core.\+h"{}}\newline
+Include dependency graph for renderer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{renderer_8h_adf8cc5156f8e1a98f12a42a1bb7e4274}{render\+\_\+credits}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Affiche les crédits du jeu avec un défilement vertical. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a90427cccca7828179c877865c1caeb60}{buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Affiche tous les boutons de contrôle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a43f7a55205d929c0e493406a063ede63}{camera\+\_\+buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Permet l\textquotesingle{}affichage des boutons de la camera. \end{DoxyCompactList}\item 
+\Hypertarget{renderer_8h_ae7abc85994e18f760aa0722975ddd643}\label{renderer_8h_ae7abc85994e18f760aa0722975ddd643} 
+void {\bfseries render\+Camera\+Map} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Rend le rectangle affiché précedemment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a96064741375779b0a0f13379c81981f5}{battery\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Affiche la barre de batterie à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a3d3788e8ed9e22d2c2404038b232e058}{render\+\_\+game}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Battery, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Buttons, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Affiche tous les éléments du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a6b166b657304caeee111f82843bb7d26}{affichage}} ()
+\begin{DoxyCompactList}\small\item\em Affiche les différents écrans en fonction des états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for every in game render. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31/03/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{renderer_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{renderer_8h_a6b166b657304caeee111f82843bb7d26}\index{renderer.h@{renderer.h}!affichage@{affichage}}
+\index{affichage@{affichage}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{affichage()}{affichage()}}
+{\footnotesize\ttfamily \label{renderer_8h_a6b166b657304caeee111f82843bb7d26} 
+void affichage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche les différents écrans en fonction des états du jeu. 
+
+Chaque action du joueur et du monster sont affichée en temps réel lorsque la fonction le permet
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & Vrai les boutons peuvent etre actionnés sinon Faux \\
+\hline
+{\em porte\+Droite\+Active} & Vrai si la porte droite est fermée sinon faux \\
+\hline
+{\em porte\+Gauche\+Active} & Vrai si la porte gauche est fermée sinon faux \\
+\hline
+{\em lumière\+Droite\+Active} & Vrai si la lumiere droite est allumee sinon faux \\
+\hline
+{\em lumière\+Gauche\+Active} & Vrai si la lumiere gauche est allumee sinon faux \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{renderer_8h_a6b166b657304caeee111f82843bb7d26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{renderer_8h_a6b166b657304caeee111f82843bb7d26_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8h_a96064741375779b0a0f13379c81981f5}\index{renderer.h@{renderer.h}!battery\_render@{battery\_render}}
+\index{battery\_render@{battery\_render}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{battery\_render()}{battery\_render()}}
+{\footnotesize\ttfamily \label{renderer_8h_a96064741375779b0a0f13379c81981f5} 
+void battery\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la barre de batterie à l\textquotesingle{}écran. 
+
+Dessine une barre de batterie avec une couleur variant du vert au rouge selon le niveau restant.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer SDL utilisé pour dessiner. \\
+\hline
+{\em font} & Police utilisée pour afficher le pourcentage. \\
+\hline
+{\em windowW} & Largeur de la fenêtre. \\
+\hline
+{\em windowH} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h_a96064741375779b0a0f13379c81981f5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8h_a90427cccca7828179c877865c1caeb60}\index{renderer.h@{renderer.h}!buttons\_render@{buttons\_render}}
+\index{buttons\_render@{buttons\_render}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{buttons\_render()}{buttons\_render()}}
+{\footnotesize\ttfamily \label{renderer_8h_a90427cccca7828179c877865c1caeb60} 
+void buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Affiche tous les boutons de contrôle. 
+
+Dessine les boutons des portes et des lumières sur les côtés gauche et droit de l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer SDL utilisé pour le dessin. \\
+\hline
+{\em font} & Police utilisée pour les labels des boutons. \\
+\hline
+{\em windowW} & Largeur de la fenêtre. \\
+\hline
+{\em windowH} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{renderer_8h_a90427cccca7828179c877865c1caeb60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h_a90427cccca7828179c877865c1caeb60_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8h_a43f7a55205d929c0e493406a063ede63}\index{renderer.h@{renderer.h}!camera\_buttons\_render@{camera\_buttons\_render}}
+\index{camera\_buttons\_render@{camera\_buttons\_render}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{camera\_buttons\_render()}{camera\_buttons\_render()}}
+{\footnotesize\ttfamily \label{renderer_8h_a43f7a55205d929c0e493406a063ede63} 
+void camera\+\_\+buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Permet l\textquotesingle{}affichage des boutons de la camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer SDL utilisé pour le dessin. \\
+\hline
+{\em font} & Police utilisée pour les labels des boutons (inutile ici) \\
+\hline
+{\em windowW} & Largeur de la fenêtre. \\
+\hline
+{\em windowH} & Hauteur de la fenêtre. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{renderer_8h_a43f7a55205d929c0e493406a063ede63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h_a43f7a55205d929c0e493406a063ede63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8h_adf8cc5156f8e1a98f12a42a1bb7e4274}\index{renderer.h@{renderer.h}!render\_credits@{render\_credits}}
+\index{render\_credits@{render\_credits}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_credits()}{render\_credits()}}
+{\footnotesize\ttfamily \label{renderer_8h_adf8cc5156f8e1a98f12a42a1bb7e4274} 
+int render\+\_\+credits (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Affiche les crédits du jeu avec un défilement vertical. 
+
+Cette fonction affiche un écran de crédits avec un effet de défilement du texte du bas vers le haut, similaire à celui des films (style Star Wars). Un fond d\textquotesingle{}écran est affiché en arrière-\/plan et certaines lignes peuvent être mises en valeur avec une taille de police différente.
+
+L\textquotesingle{}affichage s\textquotesingle{}arrête lorsque tous les crédits sont sortis de l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Le renderer SDL utilisé pour le rendu graphique. \\
+\hline
+{\em window} & La fenêtre SDL utilisée pour récupérer la taille d\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a3d3788e8ed9e22d2c2404038b232e058}\index{renderer.h@{renderer.h}!render\_game@{render\_game}}
+\index{render\_game@{render\_game}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_game()}{render\_game()}}
+{\footnotesize\ttfamily \label{renderer_8h_a3d3788e8ed9e22d2c2404038b232e058} 
+void render\+\_\+game (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Affiche tous les éléments du jeu. 
+
+Cette fonction affiche la batterie et les boutons de contrôle dans la fenêtre.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer SDL. \\
+\hline
+{\em font\+Battery} & Police utilisée pour la batterie. \\
+\hline
+{\em font\+Buttons} & Police utilisée pour les boutons. \\
+\hline
+{\em window} & Fenêtre SDL. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h_a3d3788e8ed9e22d2c2404038b232e058_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{renderer_8h_a3d3788e8ed9e22d2c2404038b232e058_icgraph}
+\end{center}
+\end{figure}

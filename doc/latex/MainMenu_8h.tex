@@ -1,0 +1,77 @@
+\doxysection{lib/\+Main\+Menu.h File Reference}
+\hypertarget{MainMenu_8h}{}\label{MainMenu_8h}\index{lib/MainMenu.h@{lib/MainMenu.h}}
+
+
+Header for the Main Menu structure -\/\texorpdfstring{$>$}{>} transition -\/\texorpdfstring{$>$}{>} settings.  
+
+
+{\ttfamily \#include "{}game\+\_\+core.\+h"{}}\newline
+Include dependency graph for Main\+Menu.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{MainMenu_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{MainMenu_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{MainMenu_8h_a58e1803e6011957aeca94db5c9304243}\label{MainMenu_8h_a58e1803e6011957aeca94db5c9304243} 
+\#define {\bfseries NEW\+\_\+\+GAME}~0
+\item 
+\Hypertarget{MainMenu_8h_aee9c50717007de95f65eeb3fb1c30708}\label{MainMenu_8h_aee9c50717007de95f65eeb3fb1c30708} 
+\#define {\bfseries LOAD\+\_\+\+GAME}~1
+\item 
+\Hypertarget{MainMenu_8h_aa2d5c758628dddfa26e73ca5a245222a}\label{MainMenu_8h_aa2d5c758628dddfa26e73ca5a245222a} 
+\#define {\bfseries SETTINGS}~2
+\item 
+\Hypertarget{MainMenu_8h_a28017dea6f5becdb38eba6eac6f51bbc}\label{MainMenu_8h_a28017dea6f5becdb38eba6eac6f51bbc} 
+\#define {\bfseries CREDITS}~3
+\item 
+\Hypertarget{MainMenu_8h_af26e8d7a88e676b61e8215e828a01653}\label{MainMenu_8h_af26e8d7a88e676b61e8215e828a01653} 
+\#define {\bfseries EXIT\+\_\+\+GAME}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6}\label{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6} 
+void {\bfseries init\+\_\+menu} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}vcr\+Small, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}vcr\+Large)
+\item 
+\Hypertarget{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26}\label{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26} 
+void {\bfseries render\+\_\+menu} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\item 
+\Hypertarget{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd}\label{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd} 
+int {\bfseries check\+\_\+menu\+\_\+click} (SDL\+\_\+\+Point mouse\+Pos)
+\item 
+\Hypertarget{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c}\label{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c} 
+void {\bfseries cleanup\+\_\+menu} ()
+\item 
+\Hypertarget{MainMenu_8h_aa3c46761a27e9706578731eb7e7cc9d8}\label{MainMenu_8h_aa3c46761a27e9706578731eb7e7cc9d8} 
+void {\bfseries run\+\_\+transition} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}static\+Tex, float progress)
+\item 
+\Hypertarget{MainMenu_8h_a0931e4d330253db23e29405638187ea1}\label{MainMenu_8h_a0931e4d330253db23e29405638187ea1} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries Create\+Static\+Texture} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for the Main Menu structure -\/\texorpdfstring{$>$}{>} transition -\/\texorpdfstring{$>$}{>} settings. 
+
+\begin{DoxyAuthor}{Author}
+Amara Louay 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+11/02/2026 
+\end{DoxyDate}

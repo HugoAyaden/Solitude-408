@@ -1,0 +1,45 @@
+\doxysection{ia\+\_\+monstre.\+h}
+\hypertarget{ia__monstre_8h_source}{}\label{ia__monstre_8h_source}\index{lib/ia\_monstre.h@{lib/ia\_monstre.h}}
+\mbox{\hyperlink{ia__monstre_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ IA\_MONSTRE\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IA\_MONSTRE\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{HAUT,\ DROITE,\ BAS,\ GAUCHE\}\ direction\_t;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{map_8h}{map.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{/*\ EVERY\ MONSTER'S\ START\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *(The\ Y\ always\ stays\ the\ same,\ opposite\ of\ the\ player)}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ START\_MONSTRE\_X\ 3}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ START\_MIMIC\_X\ 1}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ MATRICE'S\ START\ */}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ DEPART\_Y\ 0}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ DEPART\_X\ 0}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{/*\ MATRICE'S\ END\ */}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ END\_Y\ 5}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ END\_X\ 3}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41}{placing\_monster}}(carte\_t\ *map,\ case\_t\ *monster);}
+\DoxyCodeLine{00033\ booleen\_t\ fin(carte\_t\ *map,\ case\_t\ *monster);\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ deplacement(carte\_t\ *\ map,\ case\_t\ *\ monster,\ \textcolor{keywordtype}{int}\ direction);\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ movement\_opportunity(carte\_t\ *map,\ case\_t\ *monster,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ x);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ mouvement\_mimic(carte\_t\ *map,\ case\_t\ *mimic);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{int}\ attaque\_mimic(carte\_t\ map,\ case\_t\ *mimic,\ case\_t\ *joueur);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c}{placement\_mimic}}(carte\_t\ *map,\ case\_t\ *mimic);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ chance\_deplacement();}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ timer\_monstre();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

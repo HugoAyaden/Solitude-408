@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 
 
+=======
+>>>>>>> origin/dev
 /**
  * \file transitionNuit.c
  * \brief Implémentation de l'animation de transition entre les nuits
@@ -16,6 +19,12 @@
  * pour comprendre qu'on passe à la nuit suivante (on a donc gagné la nuit -1)
  */
 
+<<<<<<< HEAD
+=======
+
+#include "constantes.h"
+
+>>>>>>> origin/dev
 int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle)
 {
     TTF_Font *font = TTF_OpenFont("./assets/font/VCR.ttf", 60);
