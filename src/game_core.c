@@ -352,6 +352,10 @@ void preload_assets(SDL_Renderer* renderer) {
 
     monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
     mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
+    door_close = Mix_LoadWAV("./assets/audio/sound/door_close.wav");
+    light_on = Mix_LoadWAV("./assets/audio/sound/light_on.wav");
+    button_on = Mix_LoadWAV("./assets/audio/sound/button_on.wav");
+    button_off = Mix_LoadWAV("./assets/audio/sound/button_off.wav");
 
 }
 
