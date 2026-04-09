@@ -44,6 +44,19 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
 
 link
 
+### Comment jouer?:
+Votre objectif est de survivre 5 minutes aux attaques du monstre pendant chaque nuit.
+Pour vous défendre, il faut:
+ - Regarder les caméras pour déduire la position du monstre.
+ - Fermer la porte si le monstre apparaît devant celle-ci.
+Il vous faut aussi gérer votre batterie jusqu'à la fin de la nuit:
+- Laisser les lumières des portes et la lumière générale drainent la batterie
+La lumière permet de voir si le monstre est à la porte.
+
+Avec votre souris, vous pouvez déplacer la caméra de jeu pour afficher les portes et les boutons.
+Pour cela, il faut que la souris soit aux extrémités gauche ou droite de la fenêtre de jeu.
+
+
 ### Installation(Linux):
 
 1. Dans le terminal Linux, installer les packages suivant:
@@ -64,25 +77,17 @@ sudo  apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-de
 ```
 sudo  apt install git
 ```
-5. Cloner le dépôt (dernière branche jouable: dev).
-```
-git clone https://github.com/HugoAyaden/Solitude-408.git
-``` 
-6. Entrer dans la racine du dépôt:
+5. Télécharger le dépôt et entrer dans la racine du dépôt.
 ```
 cd Solitude-408
 ```
-6. Changer de branch pour "dev":
-```
-git checkout dev
-```
-7. Compiler le jeu avec:
+6. Compiler le jeu avec:
 ```
 make all
 ```
-8. Lancer le jeu avec:
+7. Lancer le jeu avec:
 ```
-./bin/Solitude408.exe
+./bin/Solitude408
 ```
 
 ### Installation(Windows+MSYS2):
@@ -114,17 +119,13 @@ pacman -S pacman -S mingw-w64-x86_64-gcc
 ```
 msys64/home/<utilisateur>
 ``` 
-9. Cloner le dépôt dedans.
+9. Télécharger le depôt et le mettre dans le dossier suivant:.
 ```
-git clone https://github.com/HugoAyaden/Solitude-408.git
+msys64/home/<utilisateur>/<le_depot>
 ``` 
 10. Toujours dans le terminal MSYS2 MINGW64, aller à la racine du dépôt:
    ```
 /Solitude-408
-```
-11. Changer de branch pour "dev":
-```
-git checkout dev
 ```
 12. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
 ```
