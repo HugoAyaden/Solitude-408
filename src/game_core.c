@@ -274,6 +274,8 @@ void update(){
  * \return Code de retour du programme.
  */
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
+
+
     //Load Textures ( interminable )
     if (BLACKOUT == NULL) {
         BLACKOUT = IMG_LoadTexture(renderer, "./assets/img/INgame/BLACKOUT.png");
@@ -365,7 +367,6 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
     
     //POUR UN REDEMARAGE A 0
     game_initialise();
-    Mix_PlayMusic(cameraStatic, -1);
     
     srand(time(NULL));
     init_carte(map);
@@ -398,6 +399,50 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
     tempsFin = tempsDebut + TEMPS_NUIT;
     duree = tempsDebut;
     finish = TEMPS_NUIT;
+
+    // ==========================================
+    // --- 1. START FADING THE MENU MUSIC ---
+    Mix_FadeOutMusic(1500); // 1.5 second fade out
+
+    // --- 2. CINEMATIC FADE-IN FROM BLACK ---
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_GetWindowSize(window, &windowW, &windowH);
+    SDL_Rect bgRect = {0, 0, windowW, windowH};
+
+    for (int alpha = 255; alpha >= 0; alpha -= 5) {
+        SDL_RenderClear(renderer);
+        
+        lightCount = buttons_getLightCount();
+        affichage(); 
+        
+        SDL_RenderCopy(renderer, background, NULL, &bgRect);
+        render_game(renderer, fontBattery, fontButtons, window);
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, alpha);
+        SDL_RenderFillRect(renderer, NULL);
+        
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16); // 60fps smooth fade
+    }
+
+    // --- 3. HOLD UNTIL MUSIC FADES OUT COMPLETELY ---
+    // We keep rendering the normal game so the screen doesn't freeze
+    // while waiting for the last few milliseconds of the music fade out!
+    
+    while(Mix_PlayingMusic()) {
+        SDL_RenderClear(renderer);
+        lightCount = buttons_getLightCount();
+        affichage();
+        SDL_RenderCopy(renderer, background, NULL, &bgRect);
+        render_game(renderer, fontBattery, fontButtons, window);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
+    }
+
+    // --- 4. START THE CREEPY IN-GAME AMBIENCE ---
+    Mix_PlayMusic(cameraStatic, -1);
+    // ==========================================
+
     while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
         if(cameraStatic || cameraSwitch) Mix_VolumeMusic(0);
         Uint32 currentTime = SDL_GetTicks();
