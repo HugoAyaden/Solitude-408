@@ -8,7 +8,7 @@
  */
 
 #include "MainMenu.h"
-
+#include "transition.h" 
 
 void transition() {
     if (trans) {
@@ -24,7 +24,7 @@ void transition() {
 int main(int argc, char* argv[]) {
     (void)argc; (void)argv; 
 
-    // --- 1. Subsystems Initialization ---
+    // --- 1. Initialization ---
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) return 1;
     if (TTF_Init() == -1) return 1;
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
@@ -61,11 +61,25 @@ int main(int argc, char* argv[]) {
     SDL_Texture* sTex = CreateStaticTexture(ren);
 
     // --- Music Timer Variables ---
-    Uint32 musicStartTime = SDL_GetTicks() + 1500; // First start timer
+    Uint32 musicStartTime = SDL_GetTicks() + 1500; 
     int musicStarted = false;
 
     // Initialize Menu Module
     init_menu(ren, vSmall, vLarge);
+
+    // =========================================
+    // --- PRELOAD ASSETS (The Loading Screen) ---
+    // Draw a black screen so the boot-up feels clean
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+    SDL_RenderClear(ren);
+    
+    // Optional Pro-Move: If you want to render "LOADING..." text here, you can!
+    
+    SDL_RenderPresent(ren);
+
+    // Now freeze the CPU for a second to load everything into RAM
+    preload_assets(ren); 
+    // =========================================
 
     GameState state = STATE_MENU, next = STATE_MENU;
     SDL_Event e;
@@ -87,15 +101,14 @@ int main(int argc, char* argv[]) {
                 if (state == STATE_MENU) {
                     run = false;
                 } else if (!trans) {
-                    next = STATE_MENU;
-                    trans = true;
-                    progress = 0.0f;
+                    next = STATE_MENU; trans = true; progress = 0.0f;
                     if(sTran) Mix_PlayChannel(-1, sTran, 0);
                 }
             }
 
             if (e.type == SDL_MOUSEBUTTONDOWN && !trans && state == STATE_MENU) {
                 int c = check_menu_click((SDL_Point){e.button.x, e.button.y});
+                // NO FADEOUT HERE ANYMORE! Let the music play!
                 if (c == NEW_GAME) { trans = true; progress = 0.0f; next = STATE_NEW_GAME; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
                 if (c == LOAD_GAME) { trans = true; progress = 0.0f; next = STATE_CONTINUE; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
                 if (c == SETTINGS) { trans = true; progress = 0.0f; next = STATE_SETTINGS; if(sTran) Mix_PlayChannel(-1, sTran, 0); }
@@ -105,32 +118,26 @@ int main(int argc, char* argv[]) {
         }
 
         // --- 6. Transitions ---
+        // Transition -> New Game & Continue
+        if (trans && (next == STATE_NEW_GAME || next == STATE_CONTINUE)) {
+            
+            if (progress < 0.5f) {
+                progress += 0.005f; // 1. Static builds up
+            } else {
+                // 2. Max static reached! Draw PURE BLACK SCREEN.
+                SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+                SDL_RenderClear(ren);
+                SDL_RenderPresent(ren);
 
-        // Transition -> New Game (Fades Music)
-        if (trans && next == STATE_NEW_GAME) {
-            progress += 0.005f;
-            if (progress >= 0.5f && state != next) { 
-                Mix_FadeOutMusic(2500); 
-                save_night(0);
+                // 3. Launch game! (Music is STILL PLAYING seamlessly during the heavy loading)
+                if (next == STATE_NEW_GAME) save_night(0);
                 game_init(ren, win, vSmall, vSmall); 
                 
-                // BACK FROM GAME: Reset music timer
-                state = STATE_MENU; next = STATE_MENU; trans = false;
-                musicStarted = false; 
-                musicStartTime = SDL_GetTicks() + 1500; 
-                Mix_HaltChannel(-1);
-            }
-        }
-
-        // Transition -> Continue (Fade)
-        if (trans && next == STATE_CONTINUE) {
-            progress += 0.005f;
-            if (progress >= 0.5f && state != next) { 
-                Mix_FadeOutMusic(2500);
-                game_init(ren, win, vSmall, vSmall); 
-                
-                // BACK FROM GAME: Reset music timer
-                state = STATE_MENU; next = STATE_MENU; trans = false;
+                // 4. BACK FROM GAME
+                state = STATE_MENU; 
+                next = STATE_MENU; 
+                trans = false;
+                progress = 0.0f;
                 musicStarted = false; 
                 musicStartTime = SDL_GetTicks() + 3000; 
                 Mix_HaltChannel(-1);
@@ -182,7 +189,7 @@ int main(int argc, char* argv[]) {
     cleanup_menu(); cleanup_settings(); game_final_cleanup();
     if(sOst) Mix_FreeMusic(sOst);
     if(sTran) Mix_FreeChunk(sTran); 
-    if(sTex) SDL_DestroyTexture(sTex);
+    if(sTex) SDL_DestroyTexture(sTex);  
     TTF_CloseFont(vSmall); TTF_CloseFont(vLarge);
     SDL_DestroyRenderer(ren); SDL_DestroyWindow(win);
     Mix_CloseAudio(); TTF_Quit(); IMG_Quit(); SDL_Quit();

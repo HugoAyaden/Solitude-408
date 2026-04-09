@@ -146,3 +146,7 @@ Mix_Chunk* doorKnocking = 0;
 
 Mix_Chunk* monsterSpawn = 0;
 Mix_Chunk* mimicMove = 0;
+Mix_Chunk* door_close = 0;
+Mix_Chunk* light_on = 0;
+Mix_Chunk* button_on = 0;
+Mix_Chunk* button_off = 0;
