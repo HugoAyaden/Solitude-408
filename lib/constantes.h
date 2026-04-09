@@ -209,4 +209,6 @@ extern Mix_Chunk* cameraSwitch;
 extern Mix_Chunk* doorKnocking;
 extern Mix_Chunk* monsterSpawn;
 extern Mix_Chunk* mimicMove;
+extern Mix_Chunk* door_close;
+extern Mix_Chunk* light_on;
 #endif

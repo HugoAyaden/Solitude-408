@@ -355,6 +355,8 @@ R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON
 
         monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
         mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
+        door_close = Mix_LoadWAV("./assets/audio/sound/door_close.wav");
+        light_on = Mix_LoadWAV("./assets/audio/sound/light_on.wav");
     }
 
     if (map == NULL)   map = malloc(sizeof(carte_t));
