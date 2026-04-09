@@ -1,3 +1,6 @@
+
+
+
 /**
  * \file game_core.c
  * \brief Main game loop
@@ -17,12 +20,45 @@
 #define monsterMoveDelay 3000
 
 /**
+ * \brief Image static anim
+ *
+ * Les numeros des cameras sont suivant le schéma de "carte.c"
+ * et non celui du jeu (par souci de réalisme).
+ */
+void static_vid(SDL_Renderer *renderer){
+        //test animation
+    IMG_Animation *anim = IMG_LoadAnimation("./assets/img/INgame/static.gif");
+    SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture*));
+    for (int i = 0; i < anim->count; i++) {
+    textures[i] = SDL_CreateTextureFromSurface(renderer, anim->frames[i]);
+    }
+    int currentFrame = 0;
+    Uint32 lastFrameTime = 0;
+    int time = 0;
+    while (time<1000) {
+
+        Uint32 now = SDL_GetTicks();
+
+        if (now - lastFrameTime >= anim->delays[currentFrame]) {
+            currentFrame = (currentFrame + 1) % anim->count;
+            lastFrameTime = now;
+        }
+
+        SDL_Rect dst = { 0, 0, windowW, windowH };
+        SDL_RenderCopy(renderer, textures[currentFrame], NULL, &dst);
+
+        SDL_RenderPresent(renderer);
+        time++;
+    }
+}
+
+/**
  * \brief Permet l'affichage des cameras
  *
  * Les numeros des cameras sont suivant le schéma de "map.c"
  * et non celui du jeu (par souci de réalisme).
  */
-void change_camera(case_t * camera, case_t * monster){
+void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     static int last_camera = -1;
     Mix_VolumeMusic(30);
     if(camera->num_camera != last_camera){
@@ -31,6 +67,7 @@ void change_camera(case_t * camera, case_t * monster){
     }
 
     if(camera8on && camera->num_camera == CAMERA_1){
+        *camera_type = SIDEWAYS;
         if(mimic != NULL && mimic->num_camera == CAMERA_1){
                 if(monster->num_camera == CAMERA_1)
                     background = MONITOR_ROOM_MI_M;
@@ -45,6 +82,7 @@ void change_camera(case_t * camera, case_t * monster){
 
 
     else if(camera1on && camera->num_camera == CAMERA_5){
+        *camera_type = SIDEWAYS;
         if(mimic != NULL && mimic->num_camera == CAMERA_5){
                 if(monster->num_camera == CAMERA_5)
                     background = R_D_M_MI;
@@ -58,6 +96,7 @@ void change_camera(case_t * camera, case_t * monster){
     }
 
     else if(camera2on && camera->num_camera == CAMERA_15){
+        *camera_type = SIDEWAYS;
         if(mimic != NULL && mimic->num_camera == CAMERA_15){
                 if(monster->num_camera == CAMERA_15)
                     background = L_D_M_MI;
@@ -70,6 +109,7 @@ void change_camera(case_t * camera, case_t * monster){
             background = L_D;
     }
     else if(camera4on && camera->num_camera == CAMERA_8){
+        *camera_type = SIDEWAYS;
         if(mimic != NULL && mimic->num_camera == CAMERA_8){
                 if(monster->num_camera == CAMERA_8)
                     background = CORRIDOR_M_MI;
@@ -81,16 +121,20 @@ void change_camera(case_t * camera, case_t * monster){
         else
             background = CORRIDOR;
     }
-    else if(camera9on && camera->num_camera == CAMERA_12){
-        if (monster->num_camera == CAMERA_12)
+    else if (camera9on && camera->num_camera == CAMERA_12)
+    {
+        *camera_type = SIDEWAYS;
+        if (monstre->num_camera == CAMERA_12)
             background = COMMAND_ROOM_M;
         else
             background = COMMAND_ROOM;
     }
     else
+    {
+        *camera_type = FIXED;
         background = STATIC;
+    }
 }
-
 
 /**
  * \brief Retourne le nombre de portes activées.
@@ -120,11 +164,12 @@ int buttons_getLightCount()
  *
  * \param event Événement SDL reçu.
  * \param window Fenêtre SDL utilisée.
+ * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu.
  */
-void game_handleEvent(SDL_Event *event, SDL_Window *window)
+void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
-    if(moniteurCameras == 0)
-        buttons_handleEvent(event, window);
+    if (moniteurCameras == 0)
+        buttons_handleEvent(event, window,img_stretchedW_game_res);
     else
         camera_buttons_handleEvent(event, window);
 }
@@ -160,8 +205,8 @@ void game_initialise()
  * \param lightCount Nombre de lumières allumées.
  */
 void battery_update(float deltaTime, int doorCount, int lightCount)
-{   
-        BATTERY_DURATION = 2000.0f - night*500;
+{
+    BATTERY_DURATION = 2000.0f - night * 500;
     float drainRate = 100.0f / BATTERY_DURATION;
 
     if (doorCount == 2 && cameraButton())
@@ -252,17 +297,16 @@ void update(){
         attaquer_joueur_echec(map, monster, joueur);
     }
 
-        //Chaque nuit a sa difficulté d'IA
+    // Chaque nuit a sa difficulté d'IA
     difficulte(night);
-
 
     printf("nuit %d\n", night);
     printf("Le monster se déplace sur la caméra %d\n", monster->num_camera);
     duree = SDL_GetTicks();
-    finish = (tempsFin-duree)+deltaTime;
+    finish = (tempsFin - duree) + deltaTime;
     printf("Temps ecoule : %2.f\n", finish);
 }
-    /*==============================================*/
+/*==============================================*/
 
 /**
  * \brief Function to preload the assets at game launch.
@@ -390,7 +434,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
     //POUR UN REDEMARAGE A 0
     game_initialise();
-    
+
     srand(time(NULL));
     init_carte(map);
     init_joueur(joueur, map);
@@ -401,14 +445,16 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     lastTime = SDL_GetTicks();
     monsterLastMove = SDL_GetTicks();
     int actual = -1;
-    
+
     load_night();
     load_settings();
-    if(night == ERROR){
+    if (night == ERROR)
+    {
         save_night(0);
         load_night();
     }
-    if(night >MAX_NIGHT /*A CHANGER AVEC LES NOUVELLES NUITS*/ ){
+    if (night > MAX_NIGHT /*A CHANGER AVEC LES NOUVELLES NUITS*/)
+    {
         night = MAX_NIGHT;
         save_night(night);
         load_night();
@@ -416,7 +462,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     if(night >= MAX_NIGHT){
         placement_mimic(map, mimic);
     }
-    
+
     tempsDebut = SDL_GetTicks();
 
     tempsFin = tempsDebut + TEMPS_NUIT;
@@ -466,7 +512,37 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     Mix_PlayMusic(cameraStatic, -1);
     // ==========================================
 
-    while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
+
+    /*=========GESTION PANORAMA==========*/
+    int imgW, imgH;
+    camera_type camera_type = GAME;
+    direction_t camera_direction = GAUCHE;
+    SDL_GetWindowSize(window, &windowW, &windowH);          // obtient la taille de la fenetre
+    SDL_QueryTexture(background, NULL, NULL, &imgW, &imgH); // recup des infos background
+
+    // PARAMETRES Camera Jeu
+    int img_stretchedW_game_res = (int)(windowW * img_stretch_game_percentage); // nouvelle resolution de l'image
+    int img_stretchedH_game_res = (int)(windowH * img_stretch_game_percentage); // nouvelle resolution de l'image
+    int img_centerW_game_res = (int)(-img_stretchedW_game_res + windowW) / 2;   // milieu de l'image pour position largeur
+    int img_centerH_game_res = (int)(-img_stretchedH_game_res + windowH) / 2;   // milieu de l'image pour position hauteur
+
+    // PARAMETRES Camera
+    int img_stretchedW_cam_res = (int)(windowW * img_stretch_cam_percentage); // nouvelle resolution de l'image
+    int img_stretchedH_cam_res = (int)(windowH * img_stretch_cam_percentage); // nouvelle resolution de l'image
+    int img_centerW_cam_res = (int)(-img_stretchedW_cam_res + windowW) / 2;   // milieu de l'image pour position largeur
+    int img_centerH_cam_res = (int)(-img_stretchedH_cam_res + windowH) / 2;   // milieu de l'image pour position hauteur
+
+    // RECT en fonction cam.
+    SDL_Rect bgRect = {0, 0, windowW, windowH};
+    SDL_Rect bgRectGame = {img_centerW_game_res, img_centerH_game_res, img_stretchedW_game_res, img_stretchedH_game_res};
+    SDL_Rect bgRectCam = {img_centerW_cam_res, img_centerH_cam_res, img_stretchedW_cam_res, img_stretchedH_cam_res};
+
+    camera_offset_x = bgRectGame.x; // initialisation de l'offset de la camera pour les boutons
+
+
+
+
+     while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
         if(cameraStatic || cameraSwitch) Mix_VolumeMusic(0);
         Uint32 currentTime = SDL_GetTicks();
         //Temps du monster avant chaque déplacement
@@ -478,25 +554,32 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         {
             if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
                 exit(0);
-            game_handleEvent(&event, window);
+            game_handleEvent(&event, window,img_stretchedW_game_res);
         }
 
         game_update(deltaTime);
 
         SDL_RenderClear(renderer);
-        SDL_GetWindowSize(window, &windowW, &windowH);
-        SDL_Rect bgRect = {0, 0, windowW, windowH};
-        lightCount = buttons_getLightCount();
+
+        //Call deplacement de jeu
+        if(camera_type == GAME){
+            panoramic_game(windowW, img_stretchedW_game_res, &bgRectGame);
+        } else if(camera_type == SIDEWAYS){
+            panoramic_camera(windowW, img_stretchedW_cam_res, &bgRectCam, &camera_direction);
+        }
+    
+        int lightCount = buttons_getLightCount();
 
 
         //Update monster state (timer out of the loop to not crash it)
         if (currentTime - monsterLastMove >= monsterMoveDelay)
         {
             monsterLastMove = currentTime;
-        update();
+            update();
         }
 
-        if(battery > 0 && !boutonLumieres){
+        if (battery > 0 && !boutonLumieres)
+        {
             change = VRAI;
         }
 
@@ -518,14 +601,23 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         if (lightCount >= 2)
             background = R_D_OFF_LI_ON_L_D_OFF_LI_ON;
 
+        /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
+        affichage(&camera_type);
+        /*=========================================================*/
+        if (camera_type == GAME)
+        {
+            SDL_RenderCopy(renderer, background, NULL, &bgRectGame);
+        }
+        else if (camera_type == SIDEWAYS)
+        {
+            SDL_RenderCopy(renderer, background, NULL, &bgRectCam);
+        }
+        else
+        {
+            SDL_RenderCopy(renderer, background, NULL, &bgRect);
+        }
 
-        /*=DIFFERENTS DISPLAYS OF EACH BACKGROUND=*/
-        affichage();
-        /*========================================*/
-
-        SDL_RenderCopy(renderer, background, NULL, &bgRect);
-
-        render_game(renderer, fontBattery, fontButtons, window);
+        render_game(renderer, fontBattery, fontButtons, window, img_stretchedW_game_res);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
@@ -552,16 +644,19 @@ void game_final_cleanup(){
         detruire_carte(map); 
         map = NULL;
     }
-    if (joueur != NULL) {
+    if (joueur != NULL)
+    {
         joueur = NULL;
     }
-    if (camera != NULL) {
+    if (camera != NULL)
+    {
         camera = NULL;
     }
     if (monster != NULL) {
         monster = NULL;
     }
-    if (mimic != NULL) {
+    if (mimic != NULL)
+    {
         mimic = NULL;
     }
     Mix_FreeMusic(cameraStatic);

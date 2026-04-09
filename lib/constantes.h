@@ -71,6 +71,19 @@ typedef struct {
     booleen_t active;
 } camera_t;
 
+typedef enum {
+    HAUT, 
+    DROITE, 
+    BAS, 
+    GAUCHE
+} direction_t;
+
+typedef enum {
+    FIXED,
+    GAME,
+    SIDEWAYS
+} camera_type;
+
 extern int moniteurCameras;
 extern int camera1on;
 extern int camera2on;
@@ -227,4 +240,13 @@ extern Mix_Chunk* light_on;
 extern Mix_Chunk* button_on;
 extern Mix_Chunk* button_off;
 extern Mix_Chunk* sad_mimic;
+extern int pixel_offset_game;
+extern int pixel_offset_cam;
+extern float res_percentage;
+extern int img_limit_left;
+extern float img_stretch_game_percentage;
+extern float img_stretch_cam_percentage;
+extern int camera_offset_x;
+extern int spacing_amount;
+extern int is_first_draw;
 #endif

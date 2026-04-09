@@ -19,27 +19,28 @@
  * \param font Police utilisée pour les labels des boutons.
  * \param windowW Largeur de la fenêtre.
  * \param windowH Hauteur de la fenêtre.
+ * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu, utilisée pour calculer les positions des boutons.
  */
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
-                    int windowH)
+                    int windowH,
+                    int img_stretchedW_game_res)
 {
     int buttonW = 60;
     int buttonH = 60;
-    int spacing = 20;
+    int spacing = img_stretchedW_game_res / spacing_amount;
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
+    SDL_Rect btnCameras = {spacingcamera, windowH - 50, buttonWcamera, buttonHcamera};
 
-    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
-
-    SDL_Rect btnPorteDroite = {windowW - buttonW - spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereDroite = {windowW - buttonW - spacing, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnPorteGauche = {spacing + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGauche = {spacing + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGeneral = {spacing + camera_offset_x, windowH / 2 + 160, buttonW, buttonH};
+    SDL_Rect btnPorteDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
 
     drawButton(renderer, font, btnPorteGauche, porteGaucheActive, "DOOR");
     drawButton(renderer, font, btnPorteDroite, porteDroiteActive, "DOOR");
@@ -51,16 +52,16 @@ void buttons_render(SDL_Renderer *renderer,
 
 /**
  * \brief Permet l'affichage des boutons de la camera
- * 
+ *
  * \param renderer Renderer SDL utilisé pour le dessin.
  * \param font Police utilisée pour les labels des boutons (inutile ici)
  * \param windowW Largeur de la fenêtre.
  * \param windowH Hauteur de la fenêtre.
  */
 void camera_buttons_render(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                           TTF_Font *font,
+                           int windowW,
+                           int windowH)
 {
 
     int buttonW = 44;
@@ -104,7 +105,7 @@ void camera_buttons_render(SDL_Renderer *renderer,
     int buttonX9 = windowW-337;
     int buttonY9 = windowH/2+144;
 
-    //toggle camera   
+    // toggle camera
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
@@ -138,18 +139,17 @@ void camera_buttons_render(SDL_Renderer *renderer,
  *
  */
 void renderCameraMap(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                     TTF_Font *font,
+                     int windowW,
+                     int windowH)
 {
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
+    SDL_Rect mapCamera = {spacingcamera, windowH / 2, buttonWcamera, buttonHcamera};
 
-    SDL_Rect mapCamera = {spacingcamera, windowH/2, buttonWcamera, buttonHcamera};
-
-    drawCamera(renderer, font, mapCamera, cameraMap, "");
+    drawCamera(renderer, font, mapCamera, cameraMap, "",windowW, windowH);
 }
 
 /**
@@ -247,16 +247,18 @@ void battery_render(SDL_Renderer *renderer,
 void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
-                 SDL_Window *window)
+                 SDL_Window *window,
+                int img_stretchedW_game_res)
 {
     SDL_GetWindowSize(window, &windowW, &windowH);
 
     battery_render(renderer, fontBattery, windowW, windowH);
-    if(moniteurCameras == 0)
-        buttons_render(renderer, fontButtons, windowW, windowH);
-    else{
+    if (moniteurCameras == 0)
+        buttons_render(renderer, fontButtons, windowW, windowH,img_stretchedW_game_res);
+    else
+    {
         camera_buttons_render(renderer, fontButtons, windowW, windowH);
-        renderCameraMap(renderer, fontButtons,windowW,windowH);
+        renderCameraMap(renderer, fontButtons, windowW, windowH);
     }
 }
 
@@ -272,9 +274,13 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
-void affichage(){
-    if(moniteurCameras == 0){
-        if(battery <= 0){
+void affichage(camera_type *camera_type)
+{
+    if (moniteurCameras == 0)
+    {
+        *camera_type = GAME;
+        if (battery <= 0)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -284,7 +290,8 @@ void affichage(){
             ouverture_porte_gauche(map, joueur);
             ouverture_porte_droite(map, joueur);
         }
-        else if(battery > 0 && boutonLumieres){
+        else if (battery > 0 && boutonLumieres)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -446,6 +453,6 @@ void affichage(){
     }
     //If the monitor is on we display the camera backgrounds
     else{
-        change_camera(camera, monster);
+        change_camera(camera, monster, camera_type);
     }
 }

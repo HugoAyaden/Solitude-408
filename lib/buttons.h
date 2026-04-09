@@ -16,10 +16,11 @@ void buttons_init();
 int cameraButton();
 void drawButton(SDL_Renderer *renderer, TTF_Font *font,
                        SDL_Rect rect, int active, const char *label);
-void buttons_handleEvent(SDL_Event *event, SDL_Window *window);
+void buttons_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res);
 void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window);
 void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
-                       SDL_Rect rect, int active, const char *label);
+                       SDL_Rect rect, int active, const char *label,
+                    int windowW, int windowH);
 
 
 #endif

@@ -91,8 +91,9 @@ void drawButton(SDL_Renderer *renderer, TTF_Font *font,
  *
  * \param event Événement SDL reçu.
  * \param window Fenêtre SDL utilisée pour récupérer la taille.
+ * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu.
  */
-void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
+void buttons_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
     if (event->type != SDL_MOUSEBUTTONDOWN)
         return;
@@ -101,19 +102,19 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 
     int buttonW = 60;
     int buttonH = 60;
-    int spacing = 20;
+    int spacing = img_stretchedW_game_res / spacing_amount;
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
 
     SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
+    SDL_Rect btnPorteGauche = {spacing + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGauche = {spacing + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGeneral = {spacing + camera_offset_x, windowH / 2 + 160, buttonW, buttonH};
 
-    SDL_Rect btnPorteDroite = {windowW - buttonW - spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereDroite = {windowW - buttonW - spacing, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnPorteDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
 
     int mx = event->button.x;
     int my = event->button.y;
@@ -362,20 +363,18 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
  *
  */
 void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
-                       SDL_Rect rect, int active, const char *label)
+                       SDL_Rect rect, int active, const char *label,
+                    int windowW, int windowH)
 {
-
     SDL_Surface *surface = IMG_Load("./assets/img/INgame/cam_map.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-
     SDL_Rect textRect;
-
     /* La taille de la surface que la map prend (ici, tout) */
     textRect.w = surface->w;
     textRect.h = surface->h;
-
+    
     /* Placement de la map des camera sur l'ecran */
-    textRect.x = rect.x + 800;
+    textRect.x = windowW - textRect.w;
     textRect.y = rect.y - 200;
 
     SDL_RenderCopy(renderer, texture, NULL, &textRect);
