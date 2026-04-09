@@ -1,6 +1,6 @@
 /**
  * \file credits.c
- * \brief Affichage des credits
+ * \brief Credits rendering function
  * \author Bastien LEFEVRE TAUGOURDEAU
  * \version 1.0
  * \date 19/03/2026

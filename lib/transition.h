@@ -1,3 +1,11 @@
+/**
+ * \file transition.h
+ * \brief Animation between two screens (static effect)
+ * \author ?
+ * \version 1.0
+ * \date ?
+ */
+
 #ifndef TRANSITION_H
 #define TRANSITION_H
 

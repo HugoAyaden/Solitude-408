@@ -1,8 +1,8 @@
 /**
  * \file buttons.h
- * \brief Header pour la structure du menu principal -> transition -> settings.
- * \author Amara Louay
- * \version 1.0
+ * \brief Header for the buttons structure
+ * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \version 1.2
  * \date 11/02/2026
  * 
  */

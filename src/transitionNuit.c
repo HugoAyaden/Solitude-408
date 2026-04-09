@@ -1,8 +1,8 @@
 /**
  * \file transitionNuit.c
- * \brief Implémentation de l'animation de transition entre les nuits
- * \author Bastien LEFEVRE TAUGOURDEAU
- * \version 1.0
+ * \brief Between nights and winning screen transition animation
+ * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \version 1.1
  * \date 23/03/2026
  *
  * 

@@ -1,6 +1,6 @@
 /**
  * \file commun.h
- * \brief Header general
+ * \brief General header for the project, including all the libraries and defining the main structures.
  * \author Ayaden Hugo
  * \version 1.0
  * \date 11/02/2026

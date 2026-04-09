@@ -5,10 +5,10 @@
 
 /**
  * \file transitionNuit.h
- * \brief Animation de transition entre deux nuits (effet roue de compteur)
- * \author Bastien L
+ * \brief Animation between two nights and winning screen
+ * \author Bastien L, Hugo AYADEN
  * EFEVRE TAUGOURDEAU
- * \version 1.0
+ * \version 1.2
  * \date 23/03/2026
  */
 

@@ -1,6 +1,6 @@
 /**
  * \file ia_monstre_n3.c
- * \brief Creation and initialisation of the monster's AI for night 3
+ * \brief Creation and initialisation of the mimic's AI for night 3
  * \author Ayaden Hugo
  * \version 1.1
  * \date 09/03/2026

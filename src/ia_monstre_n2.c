@@ -1,6 +1,6 @@
 /**
  * \file ia_monstre_n2.c
- * \brief Creation and initialisation of the monster's AI for night 2
+ * \brief Creation and initialisation of the monster's better AI for night 2
  * \author Ayaden Hugo
  * \version 1.1
  * \date 16/02/2026
