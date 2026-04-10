@@ -16,9 +16,8 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-//#define TEMPS_NUIT 360000
-#define TEMPS_NUIT 10000
-#define monsterMoveDelay 3000
+#define TEMPS_NUIT 180000
+#define monsterMoveDelay 6000
 
 /**
  * \brief Image static anim
@@ -304,7 +303,7 @@ void update(){
     printf("nuit %d\n", night);
     printf("Le monster se déplace sur la caméra %d\n", monster->num_camera);
     duree = SDL_GetTicks();
-    finish = (tempsFin - duree) + deltaTime;
+    finish = (tempsFin - duree) - deltaTime;
     printf("Temps ecoule : %2.f\n", finish);
 }
 /*==============================================*/
