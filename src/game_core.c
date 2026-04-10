@@ -435,12 +435,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     //POUR UN REDEMARAGE A 0
     game_initialise();
 
-<<<<<<< HEAD
-
-    Mix_PlayMusic(cameraStatic, -1);
-    
-=======
->>>>>>> dev
     srand(time(NULL));
     init_carte(map);
     init_joueur(joueur, map);
@@ -624,10 +618,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_Delay(16);
     }
     if(finish <=0 && !fin(map, monster) && !fin(map, mimic)){
-<<<<<<< HEAD
-        night++;
-        save_night(night);
-=======
         if(night == MAX_NIGHT){
             transitionWin(renderer, window);
             Mix_PlayMusic(sOst, -1);
@@ -641,7 +631,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             Mix_PlayMusic(sOst, -1);
             Mix_VolumeMusic(musicVol);
         }
->>>>>>> dev
     }
 }
 
@@ -662,18 +651,6 @@ void game_final_cleanup(){
         free(monster);
         monster = NULL;
     }
-<<<<<<< HEAD
-    if (mimic != NULL) {
-        free(mimic);
-        mimic = NULL;
-    }
-    if(cameraStatic != NULL) Mix_FreeMusic(cameraStatic);
-    if(cameraSwitch != NULL) Mix_FreeChunk(cameraSwitch);
-    if(doorKnocking != NULL) Mix_FreeChunk(doorKnocking);
-    if(monsterSpawn != NULL) Mix_FreeChunk(monsterSpawn);
-    if(mimicMove != NULL) Mix_FreeChunk(mimicMove);
-}
-=======
     if (mimic != NULL)
     {
         mimic = NULL;
@@ -688,4 +665,3 @@ void game_final_cleanup(){
     Mix_FreeChunk(button_on);
     Mix_FreeChunk(button_off);
 }
->>>>>>> dev

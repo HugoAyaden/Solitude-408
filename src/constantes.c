@@ -160,22 +160,15 @@ float img_stretch_cam_percentage = 1.1; //pourcentage d'etendue de l'image cam
 int camera_offset_x = 0;                //PAS UNE CONSTANTE, recup la position de l'image pour calculer la position des boutons
 int spacing_amount = 6;                 //pourcentage de l'image de jeu ou les boutons de portes sont affichés, plus c'est petit plus ils sont proches du centre
 int lightCount = 0;
-<<<<<<< HEAD
-=======
 Mix_Music* sOst = NULL;
->>>>>>> dev
 Mix_Music* cameraStatic = NULL;
 Mix_Chunk* cameraSwitch = NULL;
 Mix_Chunk* doorKnocking = NULL;
 
 Mix_Chunk* monsterSpawn = NULL;
-<<<<<<< HEAD
-Mix_Chunk* mimicMove = NULL;
-=======
 Mix_Chunk* mimicMove = NULL;
 Mix_Chunk* door_close = NULL;
 Mix_Chunk* light_on = NULL;
 Mix_Chunk* button_on = NULL;
 Mix_Chunk* button_off = NULL;
 Mix_Chunk* sad_mimic = NULL;
->>>>>>> dev
