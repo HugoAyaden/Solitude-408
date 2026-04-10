@@ -1,6 +1,6 @@
 /** 
   * \file settings.c
-  * \brief Création and initialisation of settings.
+  * \brief Creation and initialisation of settings.
   * \author Amara Louay
   * \version 1.0
   * \date 11/02/2026

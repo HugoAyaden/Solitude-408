@@ -1,6 +1,6 @@
 /**
  * \file map.h
- * \brief Header pour la structure de la map de jeu
+ * \brief Header for the map structure
  * \author Ayaden Hugo
  * \version 1.0
  * \date 11/02/2026

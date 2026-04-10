@@ -19,6 +19,9 @@
 #define true 1
 #define false 0
 
+extern int PERCENT_MOVE_MIMIC;
+extern float PERCENT_MOVE_MONSTER;
+
 typedef struct case_s {
     int num_camera;
     booleen_t lumiere;
@@ -68,6 +71,19 @@ typedef struct {
     booleen_t active;
 } camera_t;
 
+typedef enum {
+    HAUT, 
+    DROITE, 
+    BAS, 
+    GAUCHE
+} direction_t;
+
+typedef enum {
+    FIXED,
+    GAME,
+    SIDEWAYS
+} camera_type;
+
 extern int moniteurCameras;
 extern int camera1on;
 extern int camera2on;
@@ -102,17 +118,60 @@ extern case_t *monster;
 extern case_t *mimic;
 extern SDL_Texture *background;
 extern SDL_Texture *BLACKOUT;
-extern SDL_Texture *DOORS_OFF_L_OFF;
-extern SDL_Texture *DOORS_OFF_L_ON;
-extern SDL_Texture *DOORS_ON_L_ON;
-extern SDL_Texture *L_DOOR_OFF_L_ON;
-extern SDL_Texture *L_DOOR_ON_L_OFF;
-extern SDL_Texture *L_DOOR_ON_L_ON;
-extern SDL_Texture *R_DOOR_OFF_L_ON;
-extern SDL_Texture *R_DOOR_ON_L_OFF;
-extern SDL_Texture *R_DOOR_ON_L_ON;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_OFF;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_OFF_LI_ON_M_W;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M ;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_ON_LI_OFF ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_OFF ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_ON_M ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_OFF_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF ;
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_OFF_LI_OFF ;
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_OFF_LI_ON ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_L_I_OFF_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_OFF_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_OFF ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W ;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W ;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_ON_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W ;
+
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_ON_M ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_ON ;
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W ;
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_OFF_LI_ON_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D;
+
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W;
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_ON;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W;
+extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M_W ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_ON ;
+extern SDL_Texture *R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
+
+extern SDL_Texture *R_D_ON_LI_OFF_L_D_ON_LI_OFF ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D ;
+extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF ;
 extern SDL_Texture *MONITOR_ROOM;
 extern SDL_Texture *MONITOR_ROOM_M;
+extern SDL_Texture *MONITOR_ROOM_MI;
+extern SDL_Texture *MONITOR_ROOM_MI_M;
 extern SDL_Texture *CORRIDOR;
 extern SDL_Texture *CORRIDOR_M;
 extern SDL_Texture *COMMAND_ROOM;
@@ -170,10 +229,24 @@ extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
 extern int lightCount;
+extern Mix_Music* sOst; 
 extern Mix_Music* cameraStatic;
 extern Mix_Chunk* cameraSwitch;
 extern Mix_Chunk* doorKnocking;
-
 extern Mix_Chunk* monsterSpawn;
 extern Mix_Chunk* mimicMove;
+extern Mix_Chunk* door_close;
+extern Mix_Chunk* light_on;
+extern Mix_Chunk* button_on;
+extern Mix_Chunk* button_off;
+extern Mix_Chunk* sad_mimic;
+extern int pixel_offset_game;
+extern int pixel_offset_cam;
+extern float res_percentage;
+extern int img_limit_left;
+extern float img_stretch_game_percentage;
+extern float img_stretch_cam_percentage;
+extern int camera_offset_x;
+extern int spacing_amount;
+extern int is_first_draw;
 #endif

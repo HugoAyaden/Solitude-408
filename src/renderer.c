@@ -19,27 +19,28 @@
  * \param font Police utilisée pour les labels des boutons.
  * \param windowW Largeur de la fenêtre.
  * \param windowH Hauteur de la fenêtre.
+ * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu, utilisée pour calculer les positions des boutons.
  */
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
-                    int windowH)
+                    int windowH,
+                    int img_stretchedW_game_res)
 {
     int buttonW = 60;
     int buttonH = 60;
-    int spacing = 20;
+    int spacing = img_stretchedW_game_res / spacing_amount;
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
+    SDL_Rect btnCameras = {spacingcamera, windowH - 50, buttonWcamera, buttonHcamera};
 
-    SDL_Rect btnCameras = {spacingcamera, windowH -50, buttonWcamera, buttonHcamera};
-    SDL_Rect btnPorteGauche = {spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGauche = {spacing, windowH / 2 + 10, buttonW, buttonH};
-    SDL_Rect btnLumiereGeneral = {spacing, windowH / 2 + 160, buttonW, buttonH};
-
-    SDL_Rect btnPorteDroite = {windowW - buttonW - spacing, windowH / 2 - buttonH - 10, buttonW, buttonH};
-    SDL_Rect btnLumiereDroite = {windowW - buttonW - spacing, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnPorteGauche = {spacing + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGauche = {spacing + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
+    SDL_Rect btnLumiereGeneral = {spacing + camera_offset_x, windowH / 2 + 160, buttonW, buttonH};
+    SDL_Rect btnPorteDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 - buttonH - 10, buttonW, buttonH};
+    SDL_Rect btnLumiereDroite = {img_stretchedW_game_res - spacing - buttonW + camera_offset_x, windowH / 2 + 10, buttonW, buttonH};
 
     drawButton(renderer, font, btnPorteGauche, porteGaucheActive, "DOOR");
     drawButton(renderer, font, btnPorteDroite, porteDroiteActive, "DOOR");
@@ -51,16 +52,16 @@ void buttons_render(SDL_Renderer *renderer,
 
 /**
  * \brief Permet l'affichage des boutons de la camera
- * 
+ *
  * \param renderer Renderer SDL utilisé pour le dessin.
  * \param font Police utilisée pour les labels des boutons (inutile ici)
  * \param windowW Largeur de la fenêtre.
  * \param windowH Hauteur de la fenêtre.
  */
 void camera_buttons_render(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                           TTF_Font *font,
+                           int windowW,
+                           int windowH)
 {
 
     int buttonW = 44;
@@ -69,42 +70,42 @@ void camera_buttons_render(SDL_Renderer *renderer,
     /* PLACEMENT DES BOUTTONS DES CAMERAS (fastidieux) */
 
     //camera 1
-    int buttonX1 = windowW-150;
+    int buttonX1 = windowW-154+buttonW;
     int buttonY1 = windowH/2-54;
 
     //camera 2
-    int buttonX2 = windowW-150;
+    int buttonX2 = windowW-154+buttonW;
     int buttonY2 = windowH/2+55;
 
     //camera 3
-    int buttonX3 = windowW-272;
+    int buttonX3 = windowW-276+buttonW;
     int buttonY3 = windowH/2 + 1;
 
     //camera 4
-    int buttonX4 = windowW-337;
+    int buttonX4 = windowW-341+buttonW;
     int buttonY4 = windowH/2+10;
 
     //camera 5
-    int buttonX5 = windowW-468;
+    int buttonX5 = windowW-472+buttonW;
     int buttonY5 = windowH/2+55;
 
     //camera 6
-    int buttonX6 = windowW-468;
+    int buttonX6 = windowW-472+buttonW;
     int buttonY6 = windowH/2-54;
 
     //camera 7
-    int buttonX7 = windowW-274;
+    int buttonX7 = windowW-278+buttonW;
     int buttonY7= windowH/2-177;
 
     //camera 8
-    int buttonX8 = windowW-448;
+    int buttonX8 = windowW-452+buttonW;
     int buttonY8 = windowH/2-177;
 
     //camera 9
-    int buttonX9 = windowW-337;
+    int buttonX9 = windowW-341+buttonW;
     int buttonY9 = windowH/2+144;
 
-    //toggle camera   
+    // toggle camera
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
@@ -138,18 +139,17 @@ void camera_buttons_render(SDL_Renderer *renderer,
  *
  */
 void renderCameraMap(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH)
+                     TTF_Font *font,
+                     int windowW,
+                     int windowH)
 {
     int buttonWcamera = 860;
     int buttonHcamera = 60;
     int spacingcamera = 500;
 
+    SDL_Rect mapCamera = {spacingcamera, windowH / 2, buttonWcamera, buttonHcamera};
 
-    SDL_Rect mapCamera = {spacingcamera, windowH/2, buttonWcamera, buttonHcamera};
-
-    drawCamera(renderer, font, mapCamera, cameraMap, "");
+    drawCamera(renderer, font, mapCamera, cameraMap, "",windowW, windowH);
 }
 
 /**
@@ -247,16 +247,18 @@ void battery_render(SDL_Renderer *renderer,
 void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
-                 SDL_Window *window)
+                 SDL_Window *window,
+                int img_stretchedW_game_res)
 {
     SDL_GetWindowSize(window, &windowW, &windowH);
 
     battery_render(renderer, fontBattery, windowW, windowH);
-    if(moniteurCameras == 0)
-        buttons_render(renderer, fontButtons, windowW, windowH);
-    else{
+    if (moniteurCameras == 0)
+        buttons_render(renderer, fontButtons, windowW, windowH,img_stretchedW_game_res);
+    else
+    {
         camera_buttons_render(renderer, fontButtons, windowW, windowH);
-        renderCameraMap(renderer, fontButtons,windowW,windowH);
+        renderCameraMap(renderer, fontButtons, windowW, windowH);
     }
 }
 
@@ -272,9 +274,13 @@ void render_game(SDL_Renderer *renderer,
  * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
  * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
  */
-void affichage(){
-    if(moniteurCameras == 0){
-        if(battery <= 0){
+void affichage(camera_type *camera_type)
+{
+    if (moniteurCameras == 0)
+    {
+        *camera_type = GAME;
+        if (battery <= 0)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -284,7 +290,8 @@ void affichage(){
             ouverture_porte_gauche(map, joueur);
             ouverture_porte_droite(map, joueur);
         }
-        else if(battery > 0 && boutonLumieres){
+        else if (battery > 0 && boutonLumieres)
+        {
             background = BLACKOUT;
             change = FAUX;
             porteDroiteActive = FAUX;
@@ -294,43 +301,158 @@ void affichage(){
             ouverture_porte_gauche(map, joueur);
             ouverture_porte_droite(map, joueur);
         }
-        else if(lumiereDroiteActive && !porteDroiteActive){
-            if(monster->num_camera == PORTE_HAUT-1){
-                background = MONSTER_R_DOOR_O;
+        //LUMIERE GAUCHE
+        else if(!porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_BAS){
+                background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M;
             }
-        else if(monster->num_camera == PORTE_HAUT){
-                background = MONSTER_R_DOOR_O_A;
+            else if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W;
             }
             else
-                background = R_DOOR_OFF_L_ON;
+            background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON;
         }
-        else if(lumiereGaucheActive && !porteGaucheActive){
-            if(monster->num_camera == PORTE_BAS-1){
-                background = MONSTER_L_DOOR_O;
+         //PORTE DROITE
+        else if(porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
+            background = R_D_ON_LI_OFF_L_D_OFF_LI_OFF;
+        }
+        //PORTE GAUCHE
+        else if(!porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
+            background = R_D_OFF_LI_OFF_L_D_ON_LI_OFF;
+        }
+        //TOUT
+        else if(porteDroiteActive && lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT-1){
+               background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D;
             }
-            else if(monster->num_camera == PORTE_BAS){
-                background = MONSTER_L_DOOR_O_A;
+             else if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W;
             }
             else 
-                background = L_DOOR_OFF_L_ON;
+                background = R_D_ON_LI_ON_L_D_ON_LI_ON;
         }
-        else if(porteGaucheActive && !lumiereGaucheActive){
-            background = L_DOOR_ON_L_OFF;
+        //LUMIERE DROITE
+        else if(!porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M;
+            }
+            else if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M_W;
+            }
+            else
+               background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF;
         }
-        else if(porteDroiteActive && !lumiereDroiteActive){
-            background = R_DOOR_ON_L_OFF;
+        //LUMIERE DROITE LUMIERE GAUCHE
+         else if(!porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W;
+            }
+            else if(monster->num_camera == PORTE_BAS){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_ON_M;
+            }
+            else if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D;
+            }
+            else if(monster->num_camera == PORTE_HAUT){
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D;
+            }
+            else 
+                background = R_D_OFF_LI_ON_L_D_OFF_LI_ON;
         }
-        else if(porteGaucheActive && lumiereGaucheActive){
-            background = L_DOOR_ON_L_ON;
+        //LUMIERE GAUCHE PORTE GAUCHE
+         else if(!porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W;
+            }
+            else
+                background = R_D_OFF_LI_OFF_L_D_ON_LI_ON;
         }
-        else if(porteDroiteActive && lumiereDroiteActive){
-            background = R_DOOR_ON_L_ON;
+        //LUMIERE GAUCHE PORTE DROITE
+         else if(porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
+             if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W;
+            }
+            else if(monster->num_camera == PORTE_BAS){
+                background = R_D_ON_LI_OFF_L_D_OFF_LI_ON_M;
+            }
+            else 
+                background = R_D_ON_LI_OFF_L_D_OFF_LI_ON;
         }
-        else
-            background = DOORS_OFF_L_OFF;
+        //LUMIERE DROITE PORTE GAUCHE
+        else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT){
+                background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
+            }
+            else if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D;
+            }
+            else 
+                background = R_D_OFF_LI_ON_L_D_ON_LI_OFF;
+        }
+        
+        //LUMIERE DROITE LUMIERE GAUCHE PORTE GAUCHE
+         else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT){
+                background = R_D_OFF_LI_ON_L_D_ON_LI_ON_M;
+            }
+            else if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D;
+            }
+             else if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W;
+            }
+            else 
+                background = R_D_OFF_LI_ON_L_D_ON_LI_ON;
+        }
+        
+        //LUMIERE DROITE LUMIERE GAUCHE PORTE DROITE
+         else if(porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D;
+            }
+            else if(monster->num_camera == PORTE_BAS){
+                background = R_D_ON_LI_ON_L_D_OFF_LI_ON_M;
+            }
+             else if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W;
+            }
+            else 
+                background = R_D_ON_LI_ON_L_D_OFF_LI_ON;
+        }
+        //LUMIERE GAUCHE PORTE GAUCHE PORTE DROITE
+         else if(porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
+             if(monster->num_camera == PORTE_BAS-1){
+                background = R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W;
+            }
+            else 
+                background = R_D_ON_LI_OFF_L_D_ON_LI_ON;
+        }
+        
+        //PORTE DROITE LUMIERE DROITE PORTE GAUCHE
+        else if(porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D;
+            }
+            else background = R_D_ON_LI_ON_L_D_ON_LI_OFF;
+        }
+        
+        //PORTE DROITE LUMIERE DROITE
+        else if(porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
+            if(monster->num_camera == PORTE_HAUT-1){
+                background = R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D;
+            }
+            else background = R_D_ON_LI_ON_L_D_OFF_LI_OFF;
+        }
+        //PORTE GAUCHE PORTE DROITE
+        else if(porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
+            background = R_D_ON_LI_OFF_L_D_ON_LI_OFF;
+        }
+        else{
+            background = R_D_OFF_LI_OFF_L_D_OFF_LI_OFF;
+        }
     }
     //If the monitor is on we display the camera backgrounds
     else{
-        change_camera(camera, monster);
+        change_camera(camera, monster, camera_type);
     }
 }

@@ -10,9 +10,8 @@
 #ifndef IA_MONSTRE_H
 #define IA_MONSTRE_H
 
- typedef enum {HAUT, DROITE, BAS, GAUCHE} direction_t;
-
 #include "map.h"
+
 
 /* EVERY MONSTER'S START 
  *(The Y always stays the same, opposite of the player)

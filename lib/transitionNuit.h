@@ -1,14 +1,14 @@
 #ifndef TRANSITION_NUIT_H
 #define TRANSITION_NUIT_H
 
-#include <SDL2/SDL.h>
+#include "constantes.h"
 
 /**
  * \file transitionNuit.h
- * \brief Animation de transition entre deux nuits (effet roue de compteur)
- * \author Bastien L
+ * \brief Animation between two nights and winning screen
+ * \author Bastien L, Hugo AYADEN
  * EFEVRE TAUGOURDEAU
- * \version 1.0
+ * \version 1.2
  * \date 23/03/2026
  */
 
@@ -24,6 +24,11 @@
  * \pre SDL et SDL_ttf doivent être initialisés
  * \post Une animation est affichée à l'écran
  */
-void transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle);
+int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle);
+int transitionWin(SDL_Renderer *renderer, SDL_Window *window);
+int fade_in_chiffre_nuit(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre);
+int fade_in_next(SDL_Renderer *renderer, SDL_Texture *chiffreNext);
+int fade_out_chiffre(SDL_Renderer *renderer, SDL_Texture *chiffre);
+int fade_out(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre);
 
 #endif

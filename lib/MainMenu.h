@@ -1,6 +1,6 @@
 /**
  * \file MainMenu.h
- * \brief Header for the Main Menu structure -> transition -> settings.
+ * \brief Header for the Main Menu structure
  * \author Amara Louay
  * \version 1.0
  * \date 11/02/2026
@@ -22,8 +22,5 @@ void init_menu(SDL_Renderer* renderer, TTF_Font* vcrSmall, TTF_Font* vcrLarge);
 void render_menu(SDL_Renderer* renderer);
 int check_menu_click(SDL_Point mousePos);
 void cleanup_menu();
-
-void run_transition(SDL_Renderer* ren, SDL_Texture* staticTex, float progress);
-SDL_Texture* CreateStaticTexture(SDL_Renderer* renderer);
 
 #endif

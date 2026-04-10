@@ -1,6 +1,6 @@
 /**
  * \file ia_monstre_n2.c
- * \brief Creation and initialisation of the monster's AI for night 2
+ * \brief Creation and initialisation of the monster's better AI for night 2
  * \author Ayaden Hugo
  * \version 1.1
  * \date 16/02/2026
@@ -79,7 +79,7 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
 }
 
 int chance_deplacement(){
-   int chance = rand() %10;
+   int chance = rand() %100;
    return chance;
 }
 
