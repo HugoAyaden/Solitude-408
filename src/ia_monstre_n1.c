@@ -9,7 +9,7 @@
 
 #include "ia_monstre.h"
 
-void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int windowH) {
+void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int windowH, Mix_Chunk *sound, int amount ) {
     if (!anim || anim->count <= 0) return;
 
     SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture *));
@@ -28,24 +28,23 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
     Uint32 lastFrameTime = SDL_GetTicks();
 
     SDL_Event e;
-    int playing = 1;
 
-        Mix_VolumeChunk(attack, (masterVol));
-        Mix_PlayChannel(-1, attack, 0);
-
-    while (playing) {
+        Mix_VolumeChunk(sound, (masterVol));
+        Mix_PlayChannel(-1, sound, 0);
+    int i = 0;
+    while(i< amount) {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) 
-                playing = 0;
+                i = amount;
         }
 
         Uint32 now = SDL_GetTicks();
 
         if (now - lastFrameTime >= (Uint32)anim->delays[currentFrame]) {
-            if(currentFrame == anim->count - 1) 
-                playing = 0;
-            else
-            currentFrame = (currentFrame + 1);
+            currentFrame = (currentFrame + 1)%anim->count;
+            if((currentFrame +1 )%anim->count == 0){
+                i++;
+            }
             lastFrameTime = now;
         }
 

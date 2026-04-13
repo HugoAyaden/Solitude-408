@@ -17,7 +17,7 @@
 #define ERROR -1
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 360000
-#define monsterMoveDelay 5000
+#define monsterMoveDelay 1000
 
 /**
  * \brief Image static anim
@@ -132,7 +132,7 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     else
     {
         *camera_type = FIXED;
-        background = STATIC;
+        background = STATIC_CAM;
     }
 }
 
@@ -392,7 +392,8 @@ void preload_assets(SDL_Renderer* renderer) {
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
     CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
-    STATIC = IMG_LoadTexture(renderer, "./assets/img/INgame/static.gif");
+    STATIC = IMG_LoadAnimation("./assets/img/INgame/static.gif");
+    STATIC_CAM = IMG_LoadTexture(renderer, "./assets/img/INgame/static_cam.gif");
     MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
     MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
     MONSTER_L_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O.png");
@@ -421,6 +422,7 @@ void preload_assets(SDL_Renderer* renderer) {
     monster_death = IMG_LoadAnimation("./assets/img/INgame/monster_death.gif");
     mimic_death = IMG_LoadAnimation("./assets/img/INgame/mimic_death.gif");
     attack = Mix_LoadWAV("./assets/audio/sound/attack_monster.wav");
+    static_sound = Mix_LoadWAV("./assets/audio/sound/static_sound.mp3");
 
 }
 
@@ -641,12 +643,14 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         }
     }
     else if(fin(map, monster)){
-        play_gif(monster_death, renderer, windowW, windowH);
+        play_gif(monster_death, renderer, windowW, windowH, attack, 1);
+        play_gif(STATIC, renderer, windowW, windowH, static_sound, 4);
         Mix_PlayMusic(sOst, -1);
         Mix_VolumeMusic(musicVol);
     }
     else if(fin(map, mimic)){
-        play_gif(mimic_death, renderer, windowW, windowH);
+        play_gif(mimic_death, renderer, windowW, windowH, attack, 1);
+        play_gif(STATIC, renderer, windowW, windowH, static_sound, 4);
         Mix_PlayMusic(sOst, -1);
         Mix_VolumeMusic(musicVol);
     }
