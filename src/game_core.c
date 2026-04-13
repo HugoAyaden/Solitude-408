@@ -16,8 +16,8 @@
 #define WINDOW_HEIGHT 600
 #define ERROR -1
 #define MAX_NIGHT 2
-#define TEMPS_NUIT 180000
-#define monsterMoveDelay 6000
+#define TEMPS_NUIT 360000
+#define monsterMoveDelay 5000
 
 /**
  * \brief Image static anim
@@ -270,15 +270,23 @@ void difficulte(int night){
             }
             break;
         case 2:
-            if(chance_deplacement() < PERCENT_MOVE_MONSTER) {
-                move_monster(map, monster, joueur);
-            }
-            else{
-                movement_opportunity(map, monster,
-                                    monster->num_camera % FIN_Y,
-                                    monster->num_camera / FIN_Y);
-            }
-            mouvement_mimic(map, mimic);
+        //If both monsters are attacking ath the same time
+        if((monster->num_camera == map->cases[X_JOUEUR-1][Y_JOUEUR].num_camera ||  monster->num_camera == map->cases[X_JOUEUR+1][Y_JOUEUR].num_camera) &&
+             (mimic->num_camera == map->cases[X_JOUEUR-1][Y_JOUEUR].num_camera || mimic->num_camera == map->cases[X_JOUEUR+1][Y_JOUEUR].num_camera)){
+                //only the mimic moves (then, the monster)
+             mouvement_mimic(map, mimic);
+             }
+             //else they both move (balancing issues)
+                if(chance_deplacement() < PERCENT_MOVE_MONSTER) {
+                    move_monster(map, monster, joueur);
+                    mouvement_mimic(map, mimic);
+                }
+                else{
+                    movement_opportunity(map, monster,
+                                        monster->num_camera % FIN_Y,
+                                        monster->num_camera / FIN_Y);
+                    mouvement_mimic(map, mimic);
+                }
             break;
         default:
             break;
@@ -323,7 +331,7 @@ void preload_assets(SDL_Renderer* renderer) {
     BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
 
     R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
-    R_D_OFF_LI_OFF_L_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
+    R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
     R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M.png");
     R_D_OFF_LI_OFF_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_OFF.png");
@@ -409,6 +417,10 @@ void preload_assets(SDL_Renderer* renderer) {
     button_on = Mix_LoadWAV("./assets/audio/sound/button_on.wav");
     button_off = Mix_LoadWAV("./assets/audio/sound/button_off.wav");
     sad_mimic = Mix_LoadWAV("./assets/audio/sound/sad.wav");
+
+    monster_death = IMG_LoadAnimation("./assets/img/INgame/monster_death.gif");
+    mimic_death = IMG_LoadAnimation("./assets/img/INgame/mimic_death.gif");
+    attack = Mix_LoadWAV("./assets/audio/sound/attack_monster.wav");
 
 }
 
@@ -562,8 +574,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         } else if(camera_type == SIDEWAYS){
             panoramic_camera(windowW, img_stretchedW_cam_res, &bgRectCam, &camera_direction);
         }
-    
-        int lightCount = buttons_getLightCount();
 
 
         //Update monster state (timer out of the loop to not crash it)
@@ -593,8 +603,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             }
         
         actual = buttons_getDoorCount();
-        if (lightCount >= 2)
-            background = R_D_OFF_LI_ON_L_D_OFF_LI_ON;
 
         /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
         affichage(&camera_type);
@@ -625,12 +633,22 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             render_credits(renderer, window);
         }
         else{
-            transitionNuit(renderer, window, night);
             night++;
             save_night(night);
+            transitionNuit(renderer, window, night);
             Mix_PlayMusic(sOst, -1);
             Mix_VolumeMusic(musicVol);
         }
+    }
+    else if(fin(map, monster)){
+        play_gif(monster_death, renderer, windowW, windowH);
+        Mix_PlayMusic(sOst, -1);
+        Mix_VolumeMusic(musicVol);
+    }
+    else if(fin(map, mimic)){
+        play_gif(mimic_death, renderer, windowW, windowH);
+        Mix_PlayMusic(sOst, -1);
+        Mix_VolumeMusic(musicVol);
     }
 }
 
@@ -641,10 +659,12 @@ void game_final_cleanup(){
     }
     if (joueur != NULL)
     {
+        free(joueur);
         joueur = NULL;
     }
     if (camera != NULL)
     {
+        free(camera);
         camera = NULL;
     }
     if (monster != NULL) {
@@ -653,6 +673,7 @@ void game_final_cleanup(){
     }
     if (mimic != NULL)
     {
+        free(mimic);
         mimic = NULL;
     }
     Mix_FreeMusic(cameraStatic);
@@ -664,4 +685,6 @@ void game_final_cleanup(){
     Mix_FreeChunk(light_on);
     Mix_FreeChunk(button_on);
     Mix_FreeChunk(button_off);
+    Mix_FreeChunk(sad_mimic);
+    Mix_FreeChunk(attack);
 }

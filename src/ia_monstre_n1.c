@@ -9,6 +9,61 @@
 
 #include "ia_monstre.h"
 
+void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int windowH) {
+    if (!anim || anim->count <= 0) return;
+
+    SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture *));
+    if (!textures) return;
+
+    for (int i = 0; i < anim->count; i++) {
+        textures[i] = SDL_CreateTextureFromSurface(renderer, anim->frames[i]);
+        if (!textures[i]) {
+            for (int j = 0; j < i; j++) SDL_DestroyTexture(textures[j]);
+            free(textures);
+            return;
+        }
+    }
+
+    int currentFrame = 0;
+    Uint32 lastFrameTime = SDL_GetTicks();
+
+    SDL_Event e;
+    int playing = 1;
+
+        Mix_VolumeChunk(attack, (masterVol));
+        Mix_PlayChannel(-1, attack, 0);
+
+    while (playing) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) 
+                playing = 0;
+        }
+
+        Uint32 now = SDL_GetTicks();
+
+        if (now - lastFrameTime >= (Uint32)anim->delays[currentFrame]) {
+            if(currentFrame == anim->count - 1) 
+                playing = 0;
+            else
+            currentFrame = (currentFrame + 1);
+            lastFrameTime = now;
+        }
+
+        SDL_RenderClear(renderer);
+
+        SDL_Rect dst = { 0, 0, windowW, windowH };
+        SDL_RenderCopy(renderer, textures[currentFrame], NULL, &dst);
+        SDL_RenderPresent(renderer);
+
+        SDL_Delay(1);
+    }
+
+    for (int i = 0; i < anim->count; i++) {
+        SDL_DestroyTexture(textures[i]);
+    }
+    free(textures);
+}
+
 /**
  * \brief Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic's spawn.
  * 
@@ -36,8 +91,16 @@ void placing_monster(carte_t *map, case_t *monster){
 booleen_t fin(carte_t *map, case_t *monster){
     if (monster->num_camera == map->cases[X_JOUEUR][Y_JOUEUR].num_camera){
         printf("Le monster a atteint le joueur !\n");
+        if(!monster_death){
+            printf("Failed to load monster_death animation.\n");
+            return -1;
+        }
+        if(!mimic_death){
+            printf("Failed to load mimic_death animation.\n");
+            return -2;
+        }
         return VRAI;
-    }
+     }
     return FAUX;
 }
 

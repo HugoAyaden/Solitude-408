@@ -38,6 +38,7 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x);
 void mouvement_mimic(carte_t *map, case_t *mimic);
 int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur);
 void placement_mimic(carte_t *map, case_t *mimic);
+void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int windowH);
 
 int chance_deplacement();
 void timer_monstre();
