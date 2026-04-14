@@ -371,11 +371,11 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
  * Loads and renders the camera map image positioned at the right side of the screen.
  *
  * \param renderer SDL renderer used for drawing.
- * \param font 
+ * \param rect Rectangle where you place the image.
+ * \param active 
  */
-void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
-                       SDL_Rect rect, int active,
-                    int windowW, int windowH)
+void drawCamera(SDL_Renderer *renderer, 
+                       SDL_Rect rect)
 {
     SDL_Surface *surface = IMG_Load("./assets/img/INgame/cam_map.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);

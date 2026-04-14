@@ -13,7 +13,8 @@
 
 #include "game_core.h"
 
-int render_credits(SDL_Renderer *renderer, SDL_Window *window);
+int render_credits(SDL_Renderer *renderer, 
+                   SDL_Window *window);
 
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
@@ -24,10 +25,7 @@ void camera_buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
                     int windowH);
-void renderCameraMap(SDL_Renderer *renderer,
-                    TTF_Font *font,
-                    int windowW,
-                    int windowH);
+void renderCameraMap(SDL_Renderer *renderer);
 void battery_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,

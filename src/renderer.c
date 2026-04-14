@@ -138,10 +138,7 @@ void camera_buttons_render(SDL_Renderer *renderer,
  * \brief Rend le rectangle affiché précedemment
  *
  */
-void renderCameraMap(SDL_Renderer *renderer,
-                     TTF_Font *font,
-                     int windowW,
-                     int windowH)
+void renderCameraMap(SDL_Renderer *renderer)
 {
     int buttonWcamera = 860;
     int buttonHcamera = 60;
@@ -149,7 +146,7 @@ void renderCameraMap(SDL_Renderer *renderer,
 
     SDL_Rect mapCamera = {spacingcamera, windowH / 2, buttonWcamera, buttonHcamera};
 
-    drawCamera(renderer, font, mapCamera, cameraMap,windowW, windowH);
+    drawCamera(renderer, mapCamera);
 }
 
 /**
@@ -258,7 +255,7 @@ void render_game(SDL_Renderer *renderer,
     else
     {
         camera_buttons_render(renderer, fontButtons, windowW, windowH);
-        renderCameraMap(renderer, fontButtons, windowW, windowH);
+        renderCameraMap(renderer);
     }
 }
 
