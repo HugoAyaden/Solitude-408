@@ -149,7 +149,7 @@ void renderCameraMap(SDL_Renderer *renderer,
 
     SDL_Rect mapCamera = {spacingcamera, windowH / 2, buttonWcamera, buttonHcamera};
 
-    drawCamera(renderer, font, mapCamera, cameraMap, "",windowW, windowH);
+    drawCamera(renderer, font, mapCamera, cameraMap,windowW, windowH);
 }
 
 /**

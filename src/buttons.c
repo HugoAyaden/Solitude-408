@@ -10,10 +10,9 @@
 #include "buttons.h"
 
 /**
- * \brief Initialise l'état des boutons.
+ * \brief Initializes the state of all buttons.
  *
- * Tous les boutons (portes, lumieres et cameras) sont désactivés
- * au lancement du jeu.
+ * All buttons (doors, lights, and cameras) are deactivated at game startup.
  */
 void buttons_init()
 {
@@ -34,23 +33,26 @@ void buttons_init()
     camera9on = 0;
 }
 
+/**
+ * \brief Returns the total number of active camera buttons.
+ * \return Sum of all camera button states (0-9).
+ */
 int cameraButton(){
     return (camera1on + camera2on + camera3on + camera4on + camera5on + 
             camera6on + camera7on + camera8on + camera9on);
 }
 
 /**
- * \brief Dessine un bouton interactif avec un texte.
+ * \brief Draws an interactive button with centered text.
  *
- * Cette fonction dessine un rectangle représentant un bouton,
- * applique une couleur différente selon son état actif ou non,
- * puis affiche un texte centré à l'intérieur.
+ * Draws a rectangular button with different colors for active/inactive states
+ * and displays centered text inside using the provided font.
  *
- * \param renderer Le renderer SDL utilisé pour dessiner.
- * \param font La police utilisée pour afficher le texte.
- * \param rect Rectangle définissant la position et la taille du bouton.
- * \param active Indique si le bouton est actif (1) ou non (0).
- * \param label Texte affiché sur le bouton.
+ * \param renderer SDL renderer used for drawing.
+ * \param font Font used to render the button text.
+ * \param rect Rectangle defining button position and size.
+ * \param active Button state (1 = active/red, 0 = inactive/gray).
+ * \param label Text displayed on the button.
  */
 
 void drawButton(SDL_Renderer *renderer, TTF_Font *font,
@@ -84,14 +86,14 @@ void drawButton(SDL_Renderer *renderer, TTF_Font *font,
 }
 
 /**
- * \brief Gère les événements liés aux boutons.
+ * \brief Handles mouse events for door and light buttons.
  *
- * Cette fonction détecte les clics de souris et active
- * ou désactive les boutons correspondants (portes et lumières).
+ * Detects mouse clicks and toggles corresponding buttons (doors, lights, general light,
+ * and camera monitor) based on predefined screen regions.
  *
- * \param event Événement SDL reçu.
- * \param window Fenêtre SDL utilisée pour récupérer la taille.
- * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu.
+ * \param event SDL event received.
+ * \param window SDL window used to retrieve display size.
+ * \param img_stretchedW_game_res Stretched image width for button positioning.
  */
 void buttons_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
@@ -144,8 +146,13 @@ void buttons_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW
 }
 
 /**
- * \brief Allow video camera change through buttons
+ * \brief Handles mouse events for individual camera buttons.
  *
+ * Toggles specific camera buttons (1-9) and updates the active camera view.
+ * Only one camera can be active at a time, also handles camera monitor toggle.
+ *
+ * \param event SDL event received.
+ * \param window SDL window used to retrieve display size.
  */
 void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 {
@@ -359,11 +366,15 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
 }
 
 /**
- * \brief Affiche la map de la camera
+ * \brief Draws the camera map overlay on screen.
  *
+ * Loads and renders the camera map image positioned at the right side of the screen.
+ *
+ * \param renderer SDL renderer used for drawing.
+ * \param font 
  */
 void drawCamera(SDL_Renderer *renderer, TTF_Font *font,
-                       SDL_Rect rect, int active, const char *label,
+                       SDL_Rect rect, int active,
                     int windowW, int windowH)
 {
     SDL_Surface *surface = IMG_Load("./assets/img/INgame/cam_map.png");

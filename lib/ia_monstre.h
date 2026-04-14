@@ -33,7 +33,7 @@ booleen_t fin(carte_t *map, case_t *monster);
 
 
 void deplacement(carte_t * map, case_t * monster, int direction); 
-int movement_opportunity(carte_t *map, case_t *monster, int y, int x);
+int movement_opportunity(carte_t *map, case_t *monster);
 
 void mouvement_mimic(carte_t *map, case_t *mimic);
 int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur);

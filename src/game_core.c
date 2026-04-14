@@ -254,9 +254,7 @@ void difficulte(int night){
     switch(night){
         case 0:
             if(chance_deplacement() <= PERCENT_MOVE_MONSTER/7) {
-                movement_opportunity(map, monster, 
-                                    monster->num_camera % FIN_Y, 
-                                    monster->num_camera / FIN_Y);
+                movement_opportunity(map, monster);
             }
             break;
         case 1:
@@ -264,9 +262,7 @@ void difficulte(int night){
                 move_monster(map, monster, joueur);
             }
             else{
-                movement_opportunity(map, monster,
-                                    monster->num_camera % FIN_Y,
-                                    monster->num_camera / FIN_Y);
+                movement_opportunity(map, monster);
             }
             break;
         case 2:
@@ -282,9 +278,7 @@ void difficulte(int night){
                     mouvement_mimic(map, mimic);
                 }
                 else{
-                    movement_opportunity(map, monster,
-                                        monster->num_camera % FIN_Y,
-                                        monster->num_camera / FIN_Y);
+                    movement_opportunity(map, monster);
                     mouvement_mimic(map, mimic);
                 }
             break;

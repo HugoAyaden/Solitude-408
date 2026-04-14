@@ -9,6 +9,20 @@
 
 #include "ia_monstre.h"
 
+
+/**
+ * \brief Plays an animated GIF sequence a specified number of times.
+ *
+ * Converts animation frames to textures, plays associated sound, and renders
+ * the animation loop with proper frame timing using SDL delays.
+ *
+ * \param anim Pointer to the IMG_Animation structure.
+ * \param renderer SDL renderer for texture rendering.
+ * \param windowW Window width for full-screen rendering.
+ * \param windowH Window height for full-screen rendering.
+ * \param sound Sound effect to play with animation.
+ * \param amount Number of complete animation cycles to play.
+ */
 void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int windowH, Mix_Chunk *sound, int amount ) {
     if (!anim || anim->count <= 0) return;
 
@@ -64,13 +78,14 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
 }
 
 /**
- * \brief Choose from each place where the monster can spawn (either 0 or 2) since 1 is is mimic's spawn.
- * 
- * 
+ * \brief Places the monster at a random spawn point (excluding mimic spawn).
+ *
+ * Randomly selects spawn position 0 or 2 (skips position 1 reserved for mimic)
+ * and plays spawn sound effect.
+ *
+ * \param map Pointer to the game map structure.
+ * \param monster Pointer to the monster's current position (case_t).
  */
-
-
-
 void placing_monster(carte_t *map, case_t *monster){
     int x = rand() % START_MONSTRE_X;
     int y = DEPART_Y;
@@ -106,14 +121,17 @@ booleen_t fin(carte_t *map, case_t *monster){
 /* DEPLACEMENT DU MIMIC AU LONG DE LA PARTIE */
     
 
-/* 
- * le monster choisi aleatoirement un des 4 chemins possibles
- * si il est accessible il se deplace 
- * sinon il en reprend une jusqu a ce qu il soit arrive au joueur
+/**
+ * \brief Moves the monster randomly through accessible neighboring directions.
+ *
+ * Recursively tries random directions (up/right/down/left) until finding an
+ * accessible neighbor or failing to move.
+ *
+ * \param map Pointer to the game map structure.
+ * \param monster Pointer to the monster's current position (case_t).
+ * \return VRAI if successful movement, FAUX if no valid path found.
  */
-
-
-int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
+int movement_opportunity(carte_t *map, case_t *monster){
     int direction = 0;
     direction = rand() % 4; // 0: haut, 1: droite, 2: bas, 3: gauche
 
@@ -125,7 +143,7 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
             return VRAI; 
         } 
         else
-            movement_opportunity(map, monster, y, x);
+            movement_opportunity(map, monster);
         break; 
 
         case DROITE: 
@@ -134,7 +152,7 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
             return VRAI; 
         } 
         else
-            movement_opportunity(map, monster, y, x);
+            movement_opportunity(map, monster);
         break; 
 
         case BAS: 
@@ -143,7 +161,7 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
             return VRAI; 
         } 
         else
-            movement_opportunity(map, monster, y, x);
+            movement_opportunity(map, monster);
         break; 
 
         case GAUCHE: 
@@ -152,7 +170,7 @@ int movement_opportunity(carte_t *map, case_t *monster, int y, int x){
             return VRAI; 
         } 
         else
-            movement_opportunity(map, monster, y, x);
+            movement_opportunity(map, monster);
         break; 
         default: 
             break; 

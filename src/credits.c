@@ -2,7 +2,7 @@
  * \file credits.c
  * \brief Credits rendering function
  * \author Bastien LEFEVRE TAUGOURDEAU
- * \version 1.0
+ * \version 1.1
  * \date 19/03/2026
  *
  */
@@ -10,19 +10,17 @@
 #include "constantes.h"
 
 /**
- * \brief Affiche les crédits du jeu avec un défilement vertical.
+ * \brief Displays the game credits with vertical scrolling.
  *
- * Cette fonction affiche un écran de crédits avec un effet de
- * défilement du texte du bas vers le haut, similaire à celui
- * des films (style Star Wars). Un fond d'écran est affiché en
- * arrière-plan et certaines lignes peuvent être mises en valeur
- * avec une taille de police différente.
+ * This function displays a credits screen with a text scrolling effect from
+ * bottom to top, similar to movie credits. The background image
+ * is displayed behind the text, and certain lines can be highlighted with
+ * different font sizes.
  *
- * L'affichage s'arrête lorsque tous les crédits sont sortis de
- * l'écran.
+ * The display stops when all credits have scrolled off the screen.
  *
- * \param renderer Le renderer SDL utilisé pour le rendu graphique.
- * \param window La fenêtre SDL utilisée pour récupérer la taille d'affichage.
+ * \param renderer The SDL renderer used for graphical rendering.
+ * \param window The SDL window used to retrieve display dimensions.
  */
 
 int render_credits(SDL_Renderer *renderer, SDL_Window *window)
@@ -56,10 +54,10 @@ int render_credits(SDL_Renderer *renderer, SDL_Window *window)
         "Louay AMARA", "Hugo AYADEN", "Mathis DOS SANTOS", "Bastien LEFEVRE TAUGOURDEAU",
         " ", " ",
         "Tools Used:", " ",
-        "SDL2 (game window)", "SDL2_image", "SDL2_ttf", "GCC Compiler",
+        "SDL2 (game window)", "SDL2_image (rendering)", "SDL2_ttf (text)", "SDL2_mixer (audio)", "GCC Compiler",
         "C Language", "GIMP (images)", "Audacity (sounds)", "Blender (3D)",
         " ", " ",
-        "Music:", "To be defined", " ",
+        "Music:", "A.C", " ",
         "Thanks for playing!",
         NULL};
 
@@ -132,5 +130,5 @@ int render_credits(SDL_Renderer *renderer, SDL_Window *window)
     TTF_CloseFont(fontSousTitre);
     TTF_CloseFont(fontTitre);
 
-    return 1; // Success: Tell main.c to return to menu
+    return 1; // Success
 }
