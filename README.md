@@ -115,9 +115,9 @@ pacman -S mingw-w64-x86_64-SDL2 \
 ```
 pacman -S mingw-w64-x86_64-gcc
 ```
-8. Aller dans le dossier d'installation MSYS2:
+8. Dans l'explorateur de fichiers :
 ```
-msys64/home/<utilisateur>
+C:/msys64/home/<utilisateur>
 ``` 
 9. Télécharger le depôt et le mettre dans le dossier suivant:.
 ```
@@ -125,7 +125,7 @@ msys64/home/<utilisateur>/<le_depot>
 ``` 
 10. Toujours dans le terminal MSYS2 MINGW64, aller à la racine du dépôt:
    ```
-/Solitude-408
+cd Solitude-408/
 ```
 12. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
 ```
