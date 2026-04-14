@@ -69,6 +69,20 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
             background = MIMIC_CORRIDOR;
     }
 
+     else if(camera6on && camera->num_camera == CAMERA_2){
+        *camera_type = SIDEWAYS;
+        if(mimic != NULL && mimic->num_camera == CAMERA_2){
+                if(monster->num_camera == CAMERA_2)
+                    background = HALLWAY_MI_M;
+                else
+                    background = HALLWAY_MI;
+            }
+        else if (monster->num_camera == CAMERA_2)
+            background = HALLWAY_M;
+        else
+            background = HALLWAY;
+    }
+
 
     else if(camera1on && camera->num_camera == CAMERA_5){
         *camera_type = SIDEWAYS;
@@ -97,6 +111,21 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
         else
             background = L_D;
     }
+
+    else if(camera3on && camera->num_camera == CAMERA_9){
+        *camera_type = SIDEWAYS;
+        if(mimic != NULL && mimic->num_camera == CAMERA_9){
+                if(monster->num_camera == CAMERA_9)
+                    background = FRONT_WALL_MI_M;
+                else
+                    background = FRONT_WALL_MI;
+            }
+        else if (monster->num_camera == CAMERA_9)
+            background = FRONT_WALL_M;
+        else
+            background = FRONT_WALL;
+    }
+
     else if(camera4on && camera->num_camera == CAMERA_8){
         *camera_type = SIDEWAYS;
         if(mimic != NULL && mimic->num_camera == CAMERA_8){
@@ -389,10 +418,18 @@ void preload_assets(SDL_Renderer* renderer) {
     MIMIC_CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_M.png");
     MIMIC_CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_MI.png");
     MIMIC_CORRIDOR_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_MI_M.png");
+    FRONT_WALL = IMG_LoadTexture(renderer, "./assets/img/INgame/FRONT_WALL.png");
+    FRONT_WALL_M = IMG_LoadTexture(renderer, "./assets/img/INgame/FRONT_WALL_M.png");
+    FRONT_WALL_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/FRONT_WALL_MI.png");
+    FRONT_WALL_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/FRONT_WALL_MI_M.png");
     CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR.png");
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
     CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
+    HALLWAY = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY.png");
+    HALLWAY_M = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_M.png");
+    HALLWAY_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_MI.png");
+    HALLWAY_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_MI_M.png");
     STATIC_CAM = IMG_LoadTexture(renderer, "./assets/img/INgame/static_cam.gif");
     MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
     MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
