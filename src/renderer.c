@@ -10,16 +10,16 @@
 #include "renderer.h"
 
 /**
- * \brief Affiche tous les boutons de contrôle.
+ * \brief Renders all control buttons on screen.
  *
- * Dessine les boutons des portes et des lumières
- * sur les côtés gauche et droit de l'écran.
+ * Draws door and light buttons on left/right sides of screen, plus camera monitor toggle.
+ * Button positions scale with stretched game image resolution.
  *
- * \param renderer Renderer SDL utilisé pour le dessin.
- * \param font Police utilisée pour les labels des boutons.
- * \param windowW Largeur de la fenêtre.
- * \param windowH Hauteur de la fenêtre.
- * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu, utilisée pour calculer les positions des boutons.
+ * \param renderer SDL renderer used for drawing.
+ * \param font Font used for button labels.
+ * \param windowW Window width.
+ * \param windowH Window height.
+ * \param img_stretchedW_game_res Stretched game image width for button positioning.
  */
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
@@ -51,12 +51,15 @@ void buttons_render(SDL_Renderer *renderer,
 }
 
 /**
- * \brief Permet l'affichage des boutons de la camera
+ * \brief Renders the individual camera selection buttons.
  *
- * \param renderer Renderer SDL utilisé pour le dessin.
- * \param font Police utilisée pour les labels des boutons (inutile ici)
- * \param windowW Largeur de la fenêtre.
- * \param windowH Hauteur de la fenêtre.
+ * Draws 9 camera toggle buttons plus camera monitor toggle in fixed positions
+ * on the right side of the screen. Font parameter is unused here.
+ *
+ * \param renderer SDL renderer used for drawing.
+ * \param font Font parameter (unused).
+ * \param windowW Window width.
+ * \param windowH Window height.
  */
 void camera_buttons_render(SDL_Renderer *renderer,
                            TTF_Font *font,
@@ -135,8 +138,11 @@ void camera_buttons_render(SDL_Renderer *renderer,
 }
 
 /**
- * \brief Rend le rectangle affiché précedemment
+ * \brief Renders the camera map overlay.
  *
+ * Displays the static camera map image when monitor is active.
+ *
+ * \param renderer SDL renderer used for drawing.
  */
 void renderCameraMap(SDL_Renderer *renderer)
 {
@@ -150,15 +156,15 @@ void renderCameraMap(SDL_Renderer *renderer)
 }
 
 /**
- * \brief Affiche la barre de batterie à l'écran.
+ * \brief Renders the battery bar UI element.
  *
- * Dessine une barre de batterie avec une couleur
- * variant du vert au rouge selon le niveau restant.
+ * Draws a battery outline with fill bar that changes from green to red
+ * based on remaining battery percentage, plus text label showing %.
  *
- * \param renderer Renderer SDL utilisé pour dessiner.
- * \param font Police utilisée pour afficher le pourcentage.
- * \param windowW Largeur de la fenêtre.
- * \param windowH Hauteur de la fenêtre.
+ * \param renderer SDL renderer used for drawing.
+ * \param font Font used for percentage text.
+ * \param windowW Window width.
+ * \param windowH Window height.
  */
 void battery_render(SDL_Renderer *renderer,
                     TTF_Font *font,
@@ -231,15 +237,16 @@ void battery_render(SDL_Renderer *renderer,
 }
 
 /**
- * \brief Affiche tous les éléments du jeu.
+ * \brief Renders all game UI elements.
  *
- * Cette fonction affiche la batterie et les boutons
- * de contrôle dans la fenêtre.
+ * Displays battery bar and either standard control buttons or camera buttons
+ * depending on whether the camera monitor is active.
  *
- * \param renderer Renderer SDL.
- * \param fontBattery Police utilisée pour la batterie.
- * \param fontButtons Police utilisée pour les boutons.
- * \param window Fenêtre SDL.
+ * \param renderer SDL renderer.
+ * \param fontBattery Font for battery display.
+ * \param fontButtons Font for button labels.
+ * \param window SDL window for size retrieval.
+ * \param img_stretchedW_game_res Stretched game image width.
  */
 void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
@@ -260,16 +267,16 @@ void render_game(SDL_Renderer *renderer,
 }
 
 /**
- * \brief Affiche les différents écrans en fonction des états du jeu
+ * \brief Selects appropriate background texture based on game state.
  *
- * Chaque action du joueur et du monster sont affichée
- * en temps réel lorsque la fonction le permet
+ * Chooses from dozens of preloaded textures based on combinations of:
+ * - Battery level (blackout when depleted or light off)
+ * - Door states (left/right closed)
+ * - Light states (left/right/general on)
+ * - Monster proximity to player room
+ * Sets camera_type to GAME or delegates to change_camera() when monitor active.
  *
- * \param change Vrai les boutons peuvent etre actionnés sinon Faux
- * \param porteDroiteActive Vrai si la porte droite est fermée sinon faux
- * \param porteGaucheActive Vrai si la porte gauche est fermée sinon faux
- * \param lumièreDroiteActive Vrai si la lumiere droite est allumee sinon faux
- * \param lumièreGaucheActive Vrai si la lumiere gauche est allumee sinon faux
+ * \param camera_type Pointer to current camera display mode.
  */
 void affichage(camera_type *camera_type)
 {

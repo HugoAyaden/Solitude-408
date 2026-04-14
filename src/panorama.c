@@ -18,7 +18,7 @@
   * \version 1.0
   * \date 19/03/2026
   *
-*/
+  */
 void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);

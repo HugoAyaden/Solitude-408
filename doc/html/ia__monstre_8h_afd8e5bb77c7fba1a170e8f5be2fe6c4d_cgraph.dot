@@ -1,0 +1,15 @@
+digraph "mouvement_mimic"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mouvement_mimic",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Handles the mimic's movement logic during gameplay."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="attaque_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a188de5940534dd87ffb6708a075c6d7d",tooltip="Executes the mimic’s attack behavior against the player."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="placement_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c",tooltip="Mimic's spawnpoint."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="chance_deplacement",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n2_8c.html#a5c366f731dc2c18a20808cbe4049d036",tooltip="Returns a random percentage value used to decide movement probability."];
+}

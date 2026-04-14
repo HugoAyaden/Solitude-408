@@ -1,0 +1,398 @@
+\doxysection{lib/settings.h File Reference}
+\hypertarget{settings_8h}{}\label{settings_8h}\index{lib/settings.h@{lib/settings.h}}
+
+
+Header for the settings.  
+
+
+{\ttfamily \#include "{}constantes.\+h"{}}\newline
+Include dependency graph for settings.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{settings_8h_a457486e8b8211e75970f756106ebff2c}{load\+\_\+settings}} ()
+\begin{DoxyCompactList}\small\item\em Loads settings from config file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a4ea9ddbddca3d537bf00dcbd508a6434}{save\+\_\+settings}} ()
+\begin{DoxyCompactList}\small\item\em Saves current settings to config file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_ae39cc73b9e130aa71c2c39c02d217828}{load\+\_\+night}} ()
+\begin{DoxyCompactList}\small\item\em Loads current night progress. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a15d7dd64c38af04f82b869c4ff2e4d48}{save\+\_\+night}} (int night)
+\begin{DoxyCompactList}\small\item\em Saves current night progress. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a70aed04c4a9bbb57d8bb62306fcfa75b}{draw\+\_\+brightness\+\_\+overlay}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, int sw, int sh)
+\begin{DoxyCompactList}\small\item\em Applies global brightness overlay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_aa619fdd4be4fb197306d4c28aeeef77a}{draw\+\_\+vhs\+\_\+save\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int sw, int sh)
+\begin{DoxyCompactList}\small\item\em Renders VHS-\/style green save notification. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a61ab4ee981a00bc16b5bd9a0321c1ad6}{draw\+\_\+centered\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, SDL\+\_\+\+Rect btn\+Rect)
+\begin{DoxyCompactList}\small\item\em Renders centered purple text inside a button rect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a6a90b320902d35013acda660e14d9017}{draw\+\_\+settings\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Renders purple settings label text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a3debb3b2f29f4cd3d862f08dd67da998}{draw\+\_\+white\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Renders white text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a34d1f5a279f70228f7cb4eb050519f46}{draw\+\_\+red\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Renders red warning text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a2ed58bed80adff39a6be3ef1ab4d5ad0}{draw\+\_\+small\+\_\+hud\+\_\+text}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int x, int y, SDL\+\_\+\+Color col)
+\begin{DoxyCompactList}\small\item\em Renders small scaled HUD text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a87552d7521df5d6fae9dba6b7fbb5b4b}{draw\+\_\+hud\+\_\+icons}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int sw, int sh, int jX, int jY, int visible, int targetY, int glitch\+Active)
+\begin{DoxyCompactList}\small\item\em Renders VHS-\/style HUD icons (battery/quality). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a41bf54cf714135bf28dd735985529954}{draw\+\_\+hud\+\_\+corners}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, int sw, int sh, int jX, int jY, int visible)
+\begin{DoxyCompactList}\small\item\em Renders HUD corner decorations. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{settings_8h_a0dbf20d7c39a891de9b3c5b63e18c220}{render\+\_\+settings}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}ren, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font)
+\begin{DoxyCompactList}\small\item\em Renders the complete settings screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{settings_8h_a54d742269a23fc351d4e9e13d9aacdc1}{cleanup\+\_\+settings}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up settings screen resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for the settings. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31/03/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{settings_8h_a54d742269a23fc351d4e9e13d9aacdc1}\label{settings_8h_a54d742269a23fc351d4e9e13d9aacdc1} 
+\index{settings.h@{settings.h}!cleanup\_settings@{cleanup\_settings}}
+\index{cleanup\_settings@{cleanup\_settings}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{cleanup\_settings()}{cleanup\_settings()}}
+{\footnotesize\ttfamily void cleanup\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cleans up settings screen resources. 
+
+Frees static texture and background. Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{settings_8h_a70aed04c4a9bbb57d8bb62306fcfa75b}\label{settings_8h_a70aed04c4a9bbb57d8bb62306fcfa75b} 
+\index{settings.h@{settings.h}!draw\_brightness\_overlay@{draw\_brightness\_overlay}}
+\index{draw\_brightness\_overlay@{draw\_brightness\_overlay}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_brightness\_overlay()}{draw\_brightness\_overlay()}}
+{\footnotesize\ttfamily void draw\+\_\+brightness\+\_\+overlay (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{int}]{sw,  }\item[{int}]{sh }\end{DoxyParamCaption})}
+
+
+
+Applies global brightness overlay. 
+
+Darkens screen based on brightness setting (0-\/100\%) using blend mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em sw} & Screen width. \\
+\hline
+{\em sh} & Screen height. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{settings_8h_a61ab4ee981a00bc16b5bd9a0321c1ad6}\label{settings_8h_a61ab4ee981a00bc16b5bd9a0321c1ad6} 
+\index{settings.h@{settings.h}!draw\_centered\_text@{draw\_centered\_text}}
+\index{draw\_centered\_text@{draw\_centered\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_centered\_text()}{draw\_centered\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+centered\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{SDL\+\_\+\+Rect}]{btn\+Rect }\end{DoxyParamCaption})}
+
+
+
+Renders centered purple text inside a button rect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & Button text. \\
+\hline
+{\em btn\+Rect} & Button rectangle bounds. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{settings_8h_a41bf54cf714135bf28dd735985529954}\label{settings_8h_a41bf54cf714135bf28dd735985529954} 
+\index{settings.h@{settings.h}!draw\_hud\_corners@{draw\_hud\_corners}}
+\index{draw\_hud\_corners@{draw\_hud\_corners}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_hud\_corners()}{draw\_hud\_corners()}}
+{\footnotesize\ttfamily void draw\+\_\+hud\+\_\+corners (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{int}]{sw,  }\item[{int}]{sh,  }\item[{int}]{jX,  }\item[{int}]{jY,  }\item[{int}]{visible }\end{DoxyParamCaption})}
+
+
+
+Renders HUD corner decorations. 
+
+Draws L-\/shaped borders in screen corners during VHS effect.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em sw} & Screen width. \\
+\hline
+{\em sh} & Screen height. \\
+\hline
+{\em jX} & Horizontal jitter. \\
+\hline
+{\em jY} & Vertical jitter. \\
+\hline
+{\em visible} & Visibility flag. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{settings_8h_a87552d7521df5d6fae9dba6b7fbb5b4b}\label{settings_8h_a87552d7521df5d6fae9dba6b7fbb5b4b} 
+\index{settings.h@{settings.h}!draw\_hud\_icons@{draw\_hud\_icons}}
+\index{draw\_hud\_icons@{draw\_hud\_icons}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_hud\_icons()}{draw\_hud\_icons()}}
+{\footnotesize\ttfamily void draw\+\_\+hud\+\_\+icons (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{int}]{sw,  }\item[{int}]{sh,  }\item[{int}]{jX,  }\item[{int}]{jY,  }\item[{int}]{visible,  }\item[{int}]{targetY,  }\item[{int}]{glitch\+Active }\end{DoxyParamCaption})}
+
+
+
+Renders VHS-\/style HUD icons (battery/quality). 
+
+Shows battery level and video quality with glitch effects when active.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for icons. \\
+\hline
+{\em sw} & Screen width. \\
+\hline
+{\em sh} & Screen height. \\
+\hline
+{\em jX} & Horizontal jitter offset. \\
+\hline
+{\em jY} & Vertical jitter offset. \\
+\hline
+{\em visible} & Visibility flag. \\
+\hline
+{\em targetY} & Base Y position. \\
+\hline
+{\em glitch\+Active} & Glitch effect flag. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{settings_8h_a34d1f5a279f70228f7cb4eb050519f46}\label{settings_8h_a34d1f5a279f70228f7cb4eb050519f46} 
+\index{settings.h@{settings.h}!draw\_red\_text@{draw\_red\_text}}
+\index{draw\_red\_text@{draw\_red\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_red\_text()}{draw\_red\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+red\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Renders red warning text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & Warning text. \\
+\hline
+{\em x} & X position. \\
+\hline
+{\em y} & Y position. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{settings_8h_a6a90b320902d35013acda660e14d9017}\label{settings_8h_a6a90b320902d35013acda660e14d9017} 
+\index{settings.h@{settings.h}!draw\_settings\_text@{draw\_settings\_text}}
+\index{draw\_settings\_text@{draw\_settings\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_settings\_text()}{draw\_settings\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+settings\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Renders purple settings label text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & Label text. \\
+\hline
+{\em x} & X position. \\
+\hline
+{\em y} & Y position. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{settings_8h_a2ed58bed80adff39a6be3ef1ab4d5ad0}\label{settings_8h_a2ed58bed80adff39a6be3ef1ab4d5ad0} 
+\index{settings.h@{settings.h}!draw\_small\_hud\_text@{draw\_small\_hud\_text}}
+\index{draw\_small\_hud\_text@{draw\_small\_hud\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_small\_hud\_text()}{draw\_small\_hud\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+small\+\_\+hud\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{SDL\+\_\+\+Color}]{col }\end{DoxyParamCaption})}
+
+
+
+Renders small scaled HUD text. 
+
+Scales text to 70\% size for HUD elements.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & HUD text. \\
+\hline
+{\em x} & X position. \\
+\hline
+{\em y} & Y position. \\
+\hline
+{\em col} & Text color. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{settings_8h_aa619fdd4be4fb197306d4c28aeeef77a}\label{settings_8h_aa619fdd4be4fb197306d4c28aeeef77a} 
+\index{settings.h@{settings.h}!draw\_vhs\_save\_text@{draw\_vhs\_save\_text}}
+\index{draw\_vhs\_save\_text@{draw\_vhs\_save\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_vhs\_save\_text()}{draw\_vhs\_save\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+vhs\+\_\+save\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{sw,  }\item[{int}]{sh }\end{DoxyParamCaption})}
+
+
+
+Renders VHS-\/style green save notification. 
+
+Displays "{}$>$$>$\+TAPE SAVED"{} message in bottom-\/left corner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & Notification text. \\
+\hline
+{\em sw} & Screen width. \\
+\hline
+{\em sh} & Screen height. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{settings_8h_a3debb3b2f29f4cd3d862f08dd67da998}\label{settings_8h_a3debb3b2f29f4cd3d862f08dd67da998} 
+\index{settings.h@{settings.h}!draw\_white\_text@{draw\_white\_text}}
+\index{draw\_white\_text@{draw\_white\_text}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{draw\_white\_text()}{draw\_white\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+white\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Renders white text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Font for rendering. \\
+\hline
+{\em text} & Text content. \\
+\hline
+{\em x} & X position. \\
+\hline
+{\em y} & Y position. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{settings_8h_ae39cc73b9e130aa71c2c39c02d217828}\label{settings_8h_ae39cc73b9e130aa71c2c39c02d217828} 
+\index{settings.h@{settings.h}!load\_night@{load\_night}}
+\index{load\_night@{load\_night}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{load\_night()}{load\_night()}}
+{\footnotesize\ttfamily void load\+\_\+night (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads current night progress. 
+
+Reads night number from {\ttfamily config/night.\+cfg}. Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{settings_8h_a457486e8b8211e75970f756106ebff2c}\label{settings_8h_a457486e8b8211e75970f756106ebff2c} 
+\index{settings.h@{settings.h}!load\_settings@{load\_settings}}
+\index{load\_settings@{load\_settings}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{load\_settings()}{load\_settings()}}
+{\footnotesize\ttfamily void load\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads settings from config file. 
+
+Parses {\ttfamily config/save.\+cfg} and applies volume/brightness settings to SDL\+\_\+\+Mixer. Uses default values if file is missing or corrupted. Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{settings_8h_a0dbf20d7c39a891de9b3c5b63e18c220}\label{settings_8h_a0dbf20d7c39a891de9b3c5b63e18c220} 
+\index{settings.h@{settings.h}!render\_settings@{render\_settings}}
+\index{render\_settings@{render\_settings}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{render\_settings()}{render\_settings()}}
+{\footnotesize\ttfamily int render\+\_\+settings (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font }\end{DoxyParamCaption})}
+
+
+
+Renders the complete settings screen. 
+
+Displays sliders for volume/brightness/sensitivity, toggle buttons for screen mode/resolution, VHS glitch effects, HUD elements, and save/back buttons. Handles mouse input for interactive controls and returns BACK (1) when back clicked.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ren} & SDL renderer. \\
+\hline
+{\em font} & Primary font. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if BACK button clicked, 0 otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\Hypertarget{settings_8h_a15d7dd64c38af04f82b869c4ff2e4d48}\label{settings_8h_a15d7dd64c38af04f82b869c4ff2e4d48} 
+\index{settings.h@{settings.h}!save\_night@{save\_night}}
+\index{save\_night@{save\_night}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{save\_night()}{save\_night()}}
+{\footnotesize\ttfamily void save\+\_\+night (\begin{DoxyParamCaption}\item[{int}]{night }\end{DoxyParamCaption})}
+
+
+
+Saves current night progress. 
+
+Writes night number to {\ttfamily config/night.\+cfg}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em night} & Current night number to save. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{settings_8h_a4ea9ddbddca3d537bf00dcbd508a6434}\label{settings_8h_a4ea9ddbddca3d537bf00dcbd508a6434} 
+\index{settings.h@{settings.h}!save\_settings@{save\_settings}}
+\index{save\_settings@{save\_settings}!settings.h@{settings.h}}
+\doxysubsubsection{\texorpdfstring{save\_settings()}{save\_settings()}}
+{\footnotesize\ttfamily void save\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Saves current settings to config file. 
+
+Writes master volume, music volume, brightness, mouse sensitivity, screen mode, and resolution to {\ttfamily config/save.\+cfg}. Here is the caller graph for this function\+:
+% FIG 18

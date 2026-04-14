@@ -18,45 +18,19 @@
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 360000
 #define monsterMoveDelay 1000
+#define NIGHT_1 0
+#define NIGHT_2 1
+#define NIGHT_3 2
 
 /**
- * \brief Image static anim
+ * \brief Updates the displayed camera view.
  *
- * Les numeros des cameras sont suivant le schéma de "carte.c"
- * et non celui du jeu (par souci de réalisme).
- */
-void static_vid(SDL_Renderer *renderer){
-        //test animation
-    IMG_Animation *anim = IMG_LoadAnimation("./assets/img/INgame/static.gif");
-    SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture*));
-    for (int i = 0; i < anim->count; i++) {
-    textures[i] = SDL_CreateTextureFromSurface(renderer, anim->frames[i]);
-    }
-    int currentFrame = 0;
-    Uint32 lastFrameTime = 0;
-    int time = 0;
-    while (time<1000) {
-
-        Uint32 now = SDL_GetTicks();
-
-        if (now - lastFrameTime >= anim->delays[currentFrame]) {
-            currentFrame = (currentFrame + 1) % anim->count;
-            lastFrameTime = now;
-        }
-
-        SDL_Rect dst = { 0, 0, windowW, windowH };
-        SDL_RenderCopy(renderer, textures[currentFrame], NULL, &dst);
-
-        SDL_RenderPresent(renderer);
-        time++;
-    }
-}
-
-/**
- * \brief Permet l'affichage des cameras
+ * The camera numbers follow the layout defined in "map.c",
+ * not the in-game numbering, for realism purposes.
  *
- * Les numeros des cameras sont suivant le schéma de "map.c"
- * et non celui du jeu (par souci de réalisme).
+ * \param camera Pointer to the currently selected camera.
+ * \param monster Pointer to the monster position.
+ * \param camera_type Pointer to the current camera display mode.
  */
 void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     static int last_camera = -1;
@@ -137,9 +111,9 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
 }
 
 /**
- * \brief Retourne le nombre de portes activées.
+ * \brief Returns the number of active doors.
  *
- * \return Nombre de portes actuellement fermées.
+ * \return Number of currently active doors.
  */
 int buttons_getDoorCount()
 {
@@ -147,9 +121,9 @@ int buttons_getDoorCount()
 }
 
 /**
- * \brief Retourne le nombre de lumières activées.
+ * \brief Returns the number of active lights.
  *
- * \return Nombre de lumières actuellement allumées.
+ * \return Number of currently active lights.
  */
 int buttons_getLightCount()
 {
@@ -157,14 +131,14 @@ int buttons_getLightCount()
 }
 
 /**
- * \brief Gestion globale des événements du jeu.
+ * \brief Handles global game events.
  *
- * Transmet les événements SDL aux systèmes
- * concernés (ici les boutons).
+ * Dispatches SDL events to the appropriate subsystem,
+ * such as the standard buttons or the camera buttons.
  *
- * \param event Événement SDL reçu.
- * \param window Fenêtre SDL utilisée.
- * \param img_stretchedW_game_res Largeur de l'image étirée dans la résolution du jeu.
+ * \param event SDL event received.
+ * \param window SDL window used by the UI.
+ * \param img_stretchedW_game_res Width of the stretched game image.
  */
 void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
@@ -175,18 +149,16 @@ void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_ga
 }
 
 /**
- * \brief Initialise la batterie du joueur.
- *
- * La batterie commence toujours à 100%.
+ * \brief Initializes the player's battery.
  */
 void battery_init()
 {
     battery = 100.0f;
 }
 /**
- * \brief Initialise les systèmes principaux du jeu.
+ * \brief Initializes the main game systems.
  *
- * Initialise la batterie et les boutons.
+ * This includes the battery and all button states.
  */
 void game_initialise()
 {
@@ -195,14 +167,14 @@ void game_initialise()
 }
 
 /**
- * \brief Met à jour le niveau de batterie.
+ * \brief Updates the battery level.
  *
- * La consommation dépend du nombre de portes fermées
- * et de lumières activées.
+ * Battery consumption depends on the number of closed doors
+ * and the number of active lights.
  *
- * \param deltaTime Temps écoulé depuis la dernière frame.
- * \param doorCount Nombre de portes fermées.
- * \param lightCount Nombre de lumières allumées.
+ * \param deltaTime Time elapsed since the last frame.
+ * \param doorCount Number of closed doors.
+ * \param lightCount Number of active lights.
  */
 void battery_update(float deltaTime, int doorCount, int lightCount)
 {
@@ -226,12 +198,11 @@ void battery_update(float deltaTime, int doorCount, int lightCount)
 }
 
 /**
- * \brief Met à jour la logique du jeu.
+ * \brief Updates the main game logic.
  *
- * Met à jour l'état de la batterie en fonction
- * de l'utilisation des portes et lumières.
+ * Currently updates battery consumption based on door and light usage.
  *
- * \param deltaTime Temps écoulé depuis la dernière frame.
+ * \param deltaTime Time elapsed since the last frame.
  */
 void game_update(float deltaTime)
 {
@@ -242,22 +213,21 @@ void game_update(float deltaTime)
 }
 
 /**
- * \brief Gère la difficulté du jeu en fonction de la nuit actuelle.
+ * \brief Adjusts the game difficulty according to the current night.
  *
- * En fonction de la nuit, le monster peut se déplacer plus ou moins fréquemment,
- * et le mimic peut être activé à partir de la nuit 2.
+ * Depending on the night, the monster may move more or less often,
+ * and the mimic becomes active starting from night 2.
  *
- * \param night Numéro de la nuit actuelle (0, 1 ou 2).
+ * \param night Current night number.
  */
-
 void difficulte(int night){
     switch(night){
-        case 0:
+        case NIGHT_1:
             if(chance_deplacement() <= PERCENT_MOVE_MONSTER/7) {
                 movement_opportunity(map, monster);
             }
             break;
-        case 1:
+        case NIGHT_2:
             if(chance_deplacement() <= PERCENT_MOVE_MONSTER/2) {
                 move_monster(map, monster, joueur);
             }
@@ -265,7 +235,7 @@ void difficulte(int night){
                 movement_opportunity(map, monster);
             }
             break;
-        case 2:
+        case NIGHT_3:
         //If both monsters are attacking ath the same time
         if((monster->num_camera == map->cases[X_JOUEUR-1][Y_JOUEUR].num_camera ||  monster->num_camera == map->cases[X_JOUEUR+1][Y_JOUEUR].num_camera) &&
              (mimic->num_camera == map->cases[X_JOUEUR-1][Y_JOUEUR].num_camera || mimic->num_camera == map->cases[X_JOUEUR+1][Y_JOUEUR].num_camera)){
@@ -287,7 +257,12 @@ void difficulte(int night){
     }
 }
 
-
+/**
+ * \brief Updates the monster and door logic for the current frame.
+ *
+ * Handles door-triggered attacks, applies AI difficulty behavior,
+ * and updates the remaining time for the current night.
+ */
 void update(){
 /*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
     // Déplacement du monster toutes les 5 secondes
@@ -311,17 +286,15 @@ void update(){
 /*==============================================*/
 
 /**
- * \brief Function to preload the assets at game launch.
+ * \brief Preloads all game assets.
  *
- * 
- * 
- * 
+ * Loads textures, animations, and sounds needed during gameplay.
  *
- * \return 
+ * \param renderer SDL renderer used for texture creation.
  */
 void preload_assets(SDL_Renderer* renderer) {
 
-       // Load Textures (internimable)
+       // Load Textures (unbearable to read, but it works)
     BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
 
     R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
@@ -421,13 +394,16 @@ void preload_assets(SDL_Renderer* renderer) {
 }
 
 /**
- * \brief Fonction principale du programme.
+ * \brief Initializes the game and starts the main gameplay loop.
  *
- * Initialise SDL, charge les ressources,
- * lance la boucle principale du jeu
- * et gère le rendu et les événements.
+ * Allocates game objects, loads saved progress and settings,
+ * initializes the map, player, cameras, and monster, then runs
+ * the main rendering and event loop.
  *
- * \return Code de retour du programme.
+ * \param renderer SDL renderer used for drawing.
+ * \param window SDL window used for sizing and rendering setup.
+ * \param fontBattery Font used for battery display.
+ * \param fontButtons Font used for button labels.
  */
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
 
@@ -650,6 +626,11 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
 }
 
+/**
+ * \brief Frees all game resources and clears allocated memory.
+ *
+ * Releases map data, dynamically allocated entities, and loaded audio assets.
+ */
 void game_final_cleanup(){
     if (map != NULL) {
         detruire_carte(map); 

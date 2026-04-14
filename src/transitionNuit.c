@@ -22,6 +22,17 @@ SDL_Rect rect2;
 SDL_Rect rect3;
 SDL_Rect winRect;
 
+
+/**
+ * \brief Creates fade-in animation for "NIGHT X" text.
+ *
+ * Gradually increases alpha from 0 to 255 for both text and night number.
+ *
+ * \param renderer SDL renderer.
+ * \param text "NIGHT" texture.
+ * \param chiffre Current night number texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_in_chiffre_nuit(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre){
     for (int alpha = 0; alpha <= 255; alpha += 5)
     {
@@ -42,6 +53,15 @@ static int fade_in_chiffre_nuit(SDL_Renderer *renderer, SDL_Texture *text, SDL_T
     return 1;
 }
 
+/**
+ * \brief Fades in the next night number.
+ *
+ * Keeps current "NIGHT X" visible while fading in next night number.
+ *
+ * \param renderer SDL renderer.
+ * \param chiffreNext Next night number texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_in_next(SDL_Renderer *renderer, SDL_Texture *chiffreNext){
     for (int alpha = 0; alpha <= 255; alpha += 5)
     {
@@ -65,6 +85,15 @@ static int fade_in_next(SDL_Renderer *renderer, SDL_Texture *chiffreNext){
     
 }
 
+/**
+ * \brief Fades out current night number.
+ *
+ * Keeps "NIGHT" and next night number visible while fading out current.
+ *
+ * \param renderer SDL renderer.
+ * \param chiffre Current night number texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_out_chiffre(SDL_Renderer *renderer,SDL_Texture *chiffre){
     for (int alpha = 255; alpha >= 0; alpha -= 5)
     {
@@ -87,6 +116,14 @@ static int fade_out_chiffre(SDL_Renderer *renderer,SDL_Texture *chiffre){
     return 1;
 }
 
+/**
+ * \brief Fades out "NIGHT" text and next night number together.
+ *
+ * \param renderer SDL renderer.
+ * \param text "NIGHT" texture.
+ * \param chiffre Next night number texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_out(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chiffre){
     for (int alpha = 255; alpha >= 0; alpha -= 5)
     {
@@ -107,6 +144,13 @@ static int fade_out(SDL_Renderer *renderer, SDL_Texture *text, SDL_Texture *chif
     return 1;
 }
 
+/**
+ * \brief Fades in victory text.
+ *
+ * \param renderer SDL renderer.
+ * \param winText "YOU WIN" texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_in_text(SDL_Renderer *renderer, SDL_Texture *winText)
 {
     for (int alpha = 0; alpha <= 255; alpha += 5)
@@ -126,6 +170,13 @@ static int fade_in_text(SDL_Renderer *renderer, SDL_Texture *winText)
     return 1;
 }
 
+/**
+ * \brief Fades out victory text.
+ *
+ * \param renderer SDL renderer.
+ * \param winText "YOU WIN" texture.
+ * \return 1 on success, -1 if quit event detected.
+ */
 static int fade_out_text(SDL_Renderer *renderer, SDL_Texture *winText)
 {
     for (int alpha = 255; alpha >= 0; alpha -= 5)
@@ -145,6 +196,15 @@ static int fade_out_text(SDL_Renderer *renderer, SDL_Texture *winText)
     return 1;
 }
 
+/**
+ * \brief Displays victory screen with "YOU WIN" fade animation.
+ *
+ * Complete sequence: fade in → hold 2s → fade out.
+ *
+ * \param renderer SDL renderer.
+ * \param window SDL window for sizing.
+ * \return 1 on success, negative error codes on failure.
+ */
 int transitionWin(SDL_Renderer *renderer, SDL_Window *window){
     font = TTF_OpenFont("./assets/font/VCR.ttf", 60);
     if (!font)
@@ -193,6 +253,21 @@ int transitionWin(SDL_Renderer *renderer, SDL_Window *window){
     return 1;
 }
 
+/**
+ * \brief Displays night transition animation "NIGHT X → X+1".
+ *
+ * Complete Star Wars-style sequence:
+ * 1. Fade in "NIGHT X"
+ * 2. Fade in next night number below
+ * 3. Scroll both numbers upward
+ * 4. Fade out current number
+ * 5. Fade out remaining text
+ *
+ * \param renderer SDL renderer.
+ * \param window SDL window for sizing.
+ * \param nuitActuelle Current night number.
+ * \return 1 on success, negative error codes on failure.
+ */
 int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle)
 {
     font = TTF_OpenFont("./assets/font/VCR.ttf", 60);
@@ -288,6 +363,8 @@ int transitionNuit(SDL_Renderer *renderer, SDL_Window *window, int nuitActuelle)
     TTF_CloseFont(font);
     return 1;
 }
+
+
 /*
 int main()
 {

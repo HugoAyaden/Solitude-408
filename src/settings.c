@@ -15,6 +15,13 @@
 
 // --- Save/Load Logic ---
 
+
+/**
+ * \brief Saves current settings to config file.
+ *
+ * Writes master volume, music volume, brightness, mouse sensitivity,
+ * screen mode, and resolution to `config/save.cfg`.
+ */
 void save_settings() {
     FILE* f = fopen("config/save.cfg", "w");
     if (f) {
@@ -25,6 +32,12 @@ void save_settings() {
 }
 
 
+/**
+ * \brief Loads settings from config file.
+ *
+ * Parses `config/save.cfg` and applies volume/brightness settings to SDL_Mixer.
+ * Uses default values if file is missing or corrupted.
+ */
 void load_settings() {
     FILE* f = fopen("config/save.cfg", "r");
     if (f) {
@@ -36,6 +49,13 @@ void load_settings() {
     }
 }
 
+/**
+ * \brief Saves current night progress.
+ *
+ * Writes night number to `config/night.cfg`.
+ *
+ * \param night Current night number to save.
+ */
 void save_night(int night){
     FILE* w = fopen("config/night.cfg", "w");
     if(w){
@@ -44,6 +64,11 @@ void save_night(int night){
     }
 }
 
+/**
+ * \brief Loads current night progress.
+ *
+ * Reads night number from `config/night.cfg`.
+ */
 void load_night(){
     FILE* f = fopen("config/night.cfg", "r");
     if (f) {
@@ -54,6 +79,15 @@ void load_night(){
 
 // --- Brightness Overlay ---
 
+/**
+ * \brief Applies global brightness overlay.
+ *
+ * Darkens screen based on brightness setting (0-100%) using blend mode.
+ *
+ * \param ren SDL renderer.
+ * \param sw Screen width.
+ * \param sh Screen height.
+ */
 void draw_brightness_overlay(SDL_Renderer* ren, int sw, int sh) {
     int alpha = (int)((1.0f - (brightness / 100.0f)) * 150); 
     SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
@@ -64,6 +98,17 @@ void draw_brightness_overlay(SDL_Renderer* ren, int sw, int sh) {
 
 // --- VHS Style Notification Helper ---
 
+/**
+ * \brief Renders VHS-style green save notification.
+ *
+ * Displays ">>TAPE SAVED" message in bottom-left corner.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text Notification text.
+ * \param sw Screen width.
+ * \param sh Screen height.
+ */
 void draw_vhs_save_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int sw, int sh) {
     if (!font) return;
     SDL_Color vhsGreen = {50, 255, 50, 255}; 
@@ -79,6 +124,14 @@ void draw_vhs_save_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int
 
 // --- Standard UI Helpers ---
 
+/**
+ * \brief Renders centered purple text inside a button rect.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text Button text.
+ * \param btnRect Button rectangle bounds.
+ */
 void draw_centered_text(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL_Rect btnRect) {
     if (!font) return;
     SDL_Color purple = {191, 0, 255, 255}; 
@@ -90,6 +143,15 @@ void draw_centered_text(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
+/**
+ * \brief Renders purple settings label text.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text Label text.
+ * \param x X position.
+ * \param y Y position.
+ */
 void draw_settings_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, int y) {
     if (!font) return;
     SDL_Color purple = {191, 0, 255, 255}; 
@@ -101,6 +163,15 @@ void draw_settings_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
+/**
+ * \brief Renders white text.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text Text content.
+ * \param x X position.
+ * \param y Y position.
+ */
 void draw_white_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, int y) {
     if (!font) return;
     SDL_Color white = {255, 255, 255, 255}; 
@@ -112,6 +183,15 @@ void draw_white_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x,
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
+/**
+ * \brief Renders red warning text.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text Warning text.
+ * \param x X position.
+ * \param y Y position.
+ */
 void draw_red_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, int y) {
     if (!font) return;
     SDL_Color red = {255, 0, 0, 255}; 
@@ -123,6 +203,18 @@ void draw_red_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, i
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
+/**
+ * \brief Renders small scaled HUD text.
+ *
+ * Scales text to 70% size for HUD elements.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for rendering.
+ * \param text HUD text.
+ * \param x X position.
+ * \param y Y position.
+ * \param col Text color.
+ */
 void draw_small_hud_text(SDL_Renderer* ren, TTF_Font* font, const char* text, int x, int y, SDL_Color col) {
     if (!font) return;
     SDL_Surface* surf = TTF_RenderText_Solid(font, text, col);
@@ -133,6 +225,21 @@ void draw_small_hud_text(SDL_Renderer* ren, TTF_Font* font, const char* text, in
     SDL_FreeSurface(surf); SDL_DestroyTexture(tex);
 }
 
+/**
+ * \brief Renders VHS-style HUD icons (battery/quality).
+ *
+ * Shows battery level and video quality with glitch effects when active.
+ *
+ * \param ren SDL renderer.
+ * \param font Font for icons.
+ * \param sw Screen width.
+ * \param sh Screen height.
+ * \param jX Horizontal jitter offset.
+ * \param jY Vertical jitter offset.
+ * \param visible Visibility flag.
+ * \param targetY Base Y position.
+ * \param glitchActive Glitch effect flag.
+ */
 void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, int jY, int visible, int targetY, int glitchActive) {
     if (!visible || !font) return;
     (void)sh; // Silence unused parameter warning
@@ -161,6 +268,18 @@ void draw_hud_icons(SDL_Renderer* ren, TTF_Font* font, int sw, int sh, int jX, i
     }
 }
 
+/**
+ * \brief Renders HUD corner decorations.
+ *
+ * Draws L-shaped borders in screen corners during VHS effect.
+ *
+ * \param ren SDL renderer.
+ * \param sw Screen width.
+ * \param sh Screen height.
+ * \param jX Horizontal jitter.
+ * \param jY Vertical jitter.
+ * \param visible Visibility flag.
+ */
 void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, int visible) {
     if (!visible) return;
     SDL_SetRenderDrawColor(ren, 200, 200, 200, 150); 
@@ -179,6 +298,17 @@ void draw_hud_corners(SDL_Renderer* ren, int sw, int sh, int jX, int jY, int vis
 
 // --- Main Render Function ---
 
+/**
+ * \brief Renders the complete settings screen.
+ *
+ * Displays sliders for volume/brightness/sensitivity, toggle buttons for
+ * screen mode/resolution, VHS glitch effects, HUD elements, and save/back buttons.
+ * Handles mouse input for interactive controls and returns BACK (1) when back clicked.
+ *
+ * \param ren SDL renderer.
+ * \param font Primary font.
+ * \return 1 if BACK button clicked, 0 otherwise.
+ */
 int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     if (!font) return 0;
     int sw, sh; SDL_GetRendererOutputSize(ren, &sw, &sh);
@@ -346,6 +476,11 @@ int render_settings(SDL_Renderer* ren, TTF_Font* font) {
     return 0;
 }
 
+/**
+ * \brief Cleans up settings screen resources.
+ *
+ * Frees static texture and background.
+ */
 void cleanup_settings() { 
     if (settingsStaticTex) SDL_DestroyTexture(settingsStaticTex); 
     if (settingsBG) SDL_DestroyTexture(settingsBG); 

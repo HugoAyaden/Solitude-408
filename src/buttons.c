@@ -372,7 +372,6 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
  *
  * \param renderer SDL renderer used for drawing.
  * \param rect Rectangle where you place the image.
- * \param active 
  */
 void drawCamera(SDL_Renderer *renderer, 
                        SDL_Rect rect)

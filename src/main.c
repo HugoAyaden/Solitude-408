@@ -10,6 +10,13 @@
 #include "MainMenu.h"
 #include "transition.h" 
 
+
+/**
+ * \brief Updates the screen transition progress.
+ *
+ * Advances the transition `progress` value and switches game states
+ * when the transition reaches 50% completion.
+ */
 void transition() {
     if (trans) {
         progress += 0.005f;
@@ -21,12 +28,23 @@ void transition() {
     }
 }
 
-int main(int argc, char* argv[]) {
-    (void)argc; (void)argv; 
+
+/**
+ * \brief Main program entry point for the "Solitude 408" game.
+ *
+ * Initializes SDL2 subsystems, loads configuration and assets,
+ * manages the main game loop with menu transitions and gameplay states,
+ * and handles cleanup on exit.
+ *
+ * \return 0 on successful exit, 1 on initialization failure.
+ */
+int main() {
 
     // --- 1. Initialization ---
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) return 1;
-    if (TTF_Init() == -1) return 1;
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) 
+    return 1;
+    if (TTF_Init() == -1) 
+    return 1;
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
@@ -34,20 +52,34 @@ int main(int argc, char* argv[]) {
     if(!f) save_settings(); else load_settings();
 
     // --- 2. Window & Resolution Setup ---
-    if (resIndex == 0)      { w = 3840; h = 2160; }
-    else if (resIndex == 1) { w = 2560; h = 1440; }
-    else if (resIndex == 3) { w = 1440; h = 900; }
+    if (resIndex == 0){ 
+        w = 3840; 
+        h = 2160; 
+    }
+    else if (resIndex == 1) { 
+        w = 2560; 
+        h = 1440; 
+    }
+    else if (resIndex == 3) { 
+        w = 1440; 
+        h = 900; 
+    }
 
     Uint32 flags = SDL_WINDOW_SHOWN;
-    if (screenModeIndex == 1)      flags |= SDL_WINDOW_FULLSCREEN;
-    else if (screenModeIndex == 2) flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+    if (screenModeIndex == 1)      
+    flags |= SDL_WINDOW_FULLSCREEN;
+    else if (screenModeIndex == 2) 
+    flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 
     SDL_Window* win = SDL_CreateWindow("Solitude 408", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
     // --- 3. Asset Loading ---
     SDL_Surface* icon = IMG_Load("assets/img/icon/icon.png"); 
-    if (icon) { SDL_SetWindowIcon(win, icon); SDL_FreeSurface(icon); }
+    if (icon) { 
+        SDL_SetWindowIcon(win, icon); 
+        SDL_FreeSurface(icon); 
+    }
 
     TTF_Font *vSmall = TTF_OpenFont("assets/font/VCR.ttf", 30);
     TTF_Font *vLarge = TTF_OpenFont("assets/font/VCR.ttf", 80);
@@ -56,7 +88,8 @@ int main(int argc, char* argv[]) {
     if(sTran) Mix_VolumeChunk(sTran, 10);
     
     sOst = Mix_LoadMUS("assets/audio/sound/ost.wav"); 
-    if(sOst) Mix_VolumeMusic(30);
+    if(sOst) 
+    Mix_VolumeMusic(30);
 
     SDL_Texture* sTex = CreateStaticTexture(ren);
 
@@ -90,6 +123,7 @@ int main(int argc, char* argv[]) {
         // --- 4. Music Logic (Wait & Resume) ---
         if (!musicStarted && sOst && now >= musicStartTime) {
             Mix_PlayMusic(sOst, -1);
+            Mix_VolumeMusic(musicVol * masterVol / 100);
             musicStarted = true;
         }
 

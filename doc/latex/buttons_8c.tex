@@ -1,0 +1,163 @@
+\doxysection{src/buttons.c File Reference}
+\hypertarget{buttons_8c}{}\label{buttons_8c}\index{src/buttons.c@{src/buttons.c}}
+
+
+File for every button interaction.  
+
+
+{\ttfamily \#include "{}buttons.\+h"{}}\newline
+Include dependency graph for buttons.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{buttons_8c_ae173cfd5e6f9b80bb7d680cbca8851fd}{buttons\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the state of all buttons. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8c_acf51c4cd76c144a71bbea55e857fa8a8}{camera\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total number of active camera buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{buttons_8c_a0ef71e5a094c3243eda55d8804b4c988}{draw\+Button}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, SDL\+\_\+\+Rect rect, int active, const char \texorpdfstring{$\ast$}{*}label)
+\begin{DoxyCompactList}\small\item\em Draws an interactive button with centered text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{buttons_8c_ad85eec1e545a8fc9d85a549eafbfd6d7}{buttons\+\_\+handle\+Event}} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}event, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int img\+\_\+stretched\+W\+\_\+game\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Handles mouse events for door and light buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{buttons_8c_a9515c4dd6739c32c637758377982f107}{camera\+\_\+buttons\+\_\+handle\+Event}} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}event, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Handles mouse events for individual camera buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{buttons_8c_abff617bf9c868c3345cf421780d45788}{draw\+Camera}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Draws the camera map overlay on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File for every button interaction. 
+
+\begin{DoxyAuthor}{Author}
+Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+29/03/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{buttons_8c_ad85eec1e545a8fc9d85a549eafbfd6d7}\label{buttons_8c_ad85eec1e545a8fc9d85a549eafbfd6d7} 
+\index{buttons.c@{buttons.c}!buttons\_handleEvent@{buttons\_handleEvent}}
+\index{buttons\_handleEvent@{buttons\_handleEvent}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_handleEvent()}{buttons\_handleEvent()}}
+{\footnotesize\ttfamily void buttons\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{img\+\_\+stretched\+W\+\_\+game\+\_\+res }\end{DoxyParamCaption})}
+
+
+
+Handles mouse events for door and light buttons. 
+
+Detects mouse clicks and toggles corresponding buttons (doors, lights, general light, and camera monitor) based on predefined screen regions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & SDL event received. \\
+\hline
+{\em window} & SDL window used to retrieve display size. \\
+\hline
+{\em img\+\_\+stretched\+W\+\_\+game\+\_\+res} & Stretched image width for button positioning. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{buttons_8c_ae173cfd5e6f9b80bb7d680cbca8851fd}\label{buttons_8c_ae173cfd5e6f9b80bb7d680cbca8851fd} 
+\index{buttons.c@{buttons.c}!buttons\_init@{buttons\_init}}
+\index{buttons\_init@{buttons\_init}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_init()}{buttons\_init()}}
+{\footnotesize\ttfamily void buttons\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the state of all buttons. 
+
+All buttons (doors, lights, and cameras) are deactivated at game startup. Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{buttons_8c_a9515c4dd6739c32c637758377982f107}\label{buttons_8c_a9515c4dd6739c32c637758377982f107} 
+\index{buttons.c@{buttons.c}!camera\_buttons\_handleEvent@{camera\_buttons\_handleEvent}}
+\index{camera\_buttons\_handleEvent@{camera\_buttons\_handleEvent}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{camera\_buttons\_handleEvent()}{camera\_buttons\_handleEvent()}}
+{\footnotesize\ttfamily void camera\+\_\+buttons\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+
+
+Handles mouse events for individual camera buttons. 
+
+Toggles specific camera buttons (1-\/9) and updates the active camera view. Only one camera can be active at a time, also handles camera monitor toggle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & SDL event received. \\
+\hline
+{\em window} & SDL window used to retrieve display size. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{buttons_8c_acf51c4cd76c144a71bbea55e857fa8a8}\label{buttons_8c_acf51c4cd76c144a71bbea55e857fa8a8} 
+\index{buttons.c@{buttons.c}!cameraButton@{cameraButton}}
+\index{cameraButton@{cameraButton}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{cameraButton()}{cameraButton()}}
+{\footnotesize\ttfamily int camera\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total number of active camera buttons. 
+
+\begin{DoxyReturn}{Returns}
+Sum of all camera button states (0-\/9). 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{buttons_8c_a0ef71e5a094c3243eda55d8804b4c988}\label{buttons_8c_a0ef71e5a094c3243eda55d8804b4c988} 
+\index{buttons.c@{buttons.c}!drawButton@{drawButton}}
+\index{drawButton@{drawButton}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{drawButton()}{drawButton()}}
+{\footnotesize\ttfamily void draw\+Button (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{SDL\+\_\+\+Rect}]{rect,  }\item[{int}]{active,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{label }\end{DoxyParamCaption})}
+
+
+
+Draws an interactive button with centered text. 
+
+Draws a rectangular button with different colors for active/inactive states and displays centered text inside using the provided font.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+{\em font} & Font used to render the button text. \\
+\hline
+{\em rect} & Rectangle defining button position and size. \\
+\hline
+{\em active} & Button state (1 = active/red, 0 = inactive/gray). \\
+\hline
+{\em label} & Text displayed on the button. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{buttons_8c_abff617bf9c868c3345cf421780d45788}\label{buttons_8c_abff617bf9c868c3345cf421780d45788} 
+\index{buttons.c@{buttons.c}!drawCamera@{drawCamera}}
+\index{drawCamera@{drawCamera}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{drawCamera()}{drawCamera()}}
+{\footnotesize\ttfamily void draw\+Camera (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Rect}]{rect }\end{DoxyParamCaption})}
+
+
+
+Draws the camera map overlay on screen. 
+
+Loads and renders the camera map image positioned at the right side of the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+{\em rect} & Rectangle where you place the image. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 7
