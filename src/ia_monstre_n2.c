@@ -38,10 +38,10 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
         case_t *current_parent = queue[front].parent;
         front++;
 
-        // Vérifier si on a atteint le goal en comparant les numéros de caméra
+        // Look if we reached the goal
         if (current->num_camera == goal->num_camera) {
-            // On a trouvé le goal
-            // Remonter le chemin pour trouver le voisin direct du start
+            // YES
+            // Go back through the parents to find the next step
             case_t *trace = current;
             case_t *trace_parent = current_parent;
             
@@ -58,7 +58,7 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
             return trace;
         }
 
-        // Ajouter tous les voisins non visités
+        // Add neighbors to the queue
         case_t *voisins[4] = {
             current->voisin_haut,
             current->voisin_droit,
@@ -66,6 +66,7 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
             current->voisin_gauche
         };
 
+        //Searches every neighbor
         for (int i = 0; i < 4; i++) {
             case_t *v = voisins[i];
 
@@ -109,7 +110,7 @@ void move_monster(carte_t *map, case_t *monster, case_t *joueur){
 
         printf("The monster moves (opti) towards camera %d\n", monster->num_camera);
     } else {
-        printf("The moster didn't find a way.\n");
+        printf("The monster didn't find a way.\n");
     }
 }
 

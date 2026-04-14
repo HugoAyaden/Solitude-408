@@ -110,14 +110,14 @@ void init_carte(carte_t *carte_init){
             carte_init->cases[x][y].voisin_gauche = NULL;
 
 
-            /* initialise la case (y,x) */
+            /* Init each case (y,x) */
             carte_init->cases[x][y].lumiere = FAUX;
             carte_init->cases[x][y].num_camera = num++;
             carte_init->cases[x][y].acess = VRAI;
 
-            /* voisin haut */
+            /* Upwards neighbor and Downwards neighbor */
             if(accessible(x-1, y)){
-                /* Si le pointeur pointe sur la case  alors qu'elle est coté mur alors la case n'affecte pas le pointeur */
+                /* If the case is adjacent to a wall */
                 if (x == MUR_M_X && y == MUR_M_Y){
                     carte_init->cases[x][y].voisin_haut = NULL;
                 /* Et de même en retour */
@@ -135,13 +135,14 @@ void init_carte(carte_t *carte_init){
                     carte_init->cases[x][y].voisin_haut = NULL;
                     carte_init->cases[x-1][y].voisin_bas = NULL;
                 }
+                // If there is no wall then it connects
                 else{
                     carte_init->cases[x][y].voisin_haut = &carte_init->cases[x-1][y];
                     carte_init->cases[x-1][y].voisin_bas = &carte_init->cases[x][y];
                 }
             }
 
-            /* voisin gauche */
+            /* Left neighbor and Right neighbor */
             if(accessible(x, y-1)){
                 if(y == MUR_7_Y && x == MUR_7_X){
                         carte_init->cases[x][y].voisin_gauche = NULL;

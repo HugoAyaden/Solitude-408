@@ -2,7 +2,7 @@
  * \file ia_monstre_n1.c
  * \brief Creation and initialisation of the monster's AI for night 1
  * \author Ayaden Hugo
- * \version 1.1
+ * \version 1.2
  * \date 16/02/2026
  * 
  */
@@ -29,6 +29,7 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
     SDL_Texture **textures = malloc(anim->count * sizeof(SDL_Texture *));
     if (!textures) return;
 
+    //creates textures for each frame of the animation
     for (int i = 0; i < anim->count; i++) {
         textures[i] = SDL_CreateTextureFromSurface(renderer, anim->frames[i]);
         if (!textures[i]) {
@@ -47,6 +48,7 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
         Mix_PlayChannel(-1, sound, 0);
     int i = 0;
     while(i< amount) {
+        //If the player presses escampe the animation ends immediately
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) 
                 i = amount;
@@ -54,6 +56,7 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
 
         Uint32 now = SDL_GetTicks();
 
+        // Main displaying loop
         if (now - lastFrameTime >= (Uint32)anim->delays[currentFrame]) {
             currentFrame = (currentFrame + 1)%anim->count;
             if((currentFrame +1 )%anim->count == 0){
@@ -63,7 +66,7 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
         }
 
         SDL_RenderClear(renderer);
-
+        // Render the current frame of the animation centered on the screen
         SDL_Rect dst = { 0, 0, windowW, windowH };
         SDL_RenderCopy(renderer, textures[currentFrame], NULL, &dst);
         SDL_RenderPresent(renderer);
@@ -71,6 +74,7 @@ void play_gif(IMG_Animation *anim, SDL_Renderer *renderer, int windowW, int wind
         SDL_Delay(1);
     }
 
+    //cleanup
     for (int i = 0; i < anim->count; i++) {
         SDL_DestroyTexture(textures[i]);
     }
@@ -101,7 +105,16 @@ void placing_monster(carte_t *map, case_t *monster){
 }
 
 
- /* END DE PARTIE */
+/**
+ * \brief Ending condition check for monster attack on player.
+ *
+ * If the monster's current camera matches the player's camera, the monster has
+ * reached the player, and the function returns VRAI. Otherwise, it returns FAUX.
+ *
+ * \param map Pointer to the game map structure.
+ * \param monster Pointer to the monster's current position (case_t).
+ * \return VRAI if the monster has reached the player, FAUX otherwise.
+ */
 booleen_t fin(carte_t *map, case_t *monster){
     if (monster->num_camera == map->cases[X_JOUEUR][Y_JOUEUR].num_camera){
         printf("Le monster a atteint le joueur !\n");

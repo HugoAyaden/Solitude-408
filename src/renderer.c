@@ -252,8 +252,8 @@ void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
                  SDL_Window *window,
-                int img_stretchedW_game_res)
-{
+                int img_stretchedW_game_res){
+
     SDL_GetWindowSize(window, &windowW, &windowH);
 
     battery_render(renderer, fontBattery, windowW, windowH);
@@ -278,8 +278,7 @@ void render_game(SDL_Renderer *renderer,
  *
  * \param camera_type Pointer to current camera display mode.
  */
-void affichage(camera_type *camera_type)
-{
+void affichage(camera_type *camera_type){
     if (moniteurCameras == 0)
     {
         *camera_type = GAME;
@@ -305,7 +304,7 @@ void affichage(camera_type *camera_type)
             ouverture_porte_gauche(map, joueur);
             ouverture_porte_droite(map, joueur);
         }
-        //LUMIERE GAUCHE
+        //LIGHT LEFT
         else if(!porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_BAS){
                 background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M;
@@ -316,15 +315,15 @@ void affichage(camera_type *camera_type)
             else
             background = R_D_OFF_LI_OFF_L_D_OFF_LI_ON;
         }
-         //PORTE DROITE
+         //DOOR RIGHT
         else if(porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
             background = R_D_ON_LI_OFF_L_D_OFF_LI_OFF;
         }
-        //PORTE GAUCHE
+        //DOOR LEFT
         else if(!porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             background = R_D_OFF_LI_OFF_L_D_ON_LI_OFF;
         }
-        //TOUT
+        //EVERYTHING
         else if(porteDroiteActive && lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT-1){
                background = R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D;
@@ -335,7 +334,7 @@ void affichage(camera_type *camera_type)
             else 
                 background = R_D_ON_LI_ON_L_D_ON_LI_ON;
         }
-        //LUMIERE DROITE
+        //LIGHT RIGHT
         else if(!porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT){
                 background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF_M;
@@ -346,7 +345,7 @@ void affichage(camera_type *camera_type)
             else
                background = R_D_OFF_LI_ON_L_D_OFF_LI_OFF;
         }
-        //LUMIERE DROITE LUMIERE GAUCHE
+        //LIGHT RIGHT LIGHT LEFT
          else if(!porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_BAS-1){
                 background = R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W;
@@ -363,7 +362,7 @@ void affichage(camera_type *camera_type)
             else 
                 background = R_D_OFF_LI_ON_L_D_OFF_LI_ON;
         }
-        //LUMIERE GAUCHE PORTE GAUCHE
+        //LIGHT LEFT DOOR LEFT
          else if(!porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_BAS-1){
                 background = R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W;
@@ -371,7 +370,7 @@ void affichage(camera_type *camera_type)
             else
                 background = R_D_OFF_LI_OFF_L_D_ON_LI_ON;
         }
-        //LUMIERE GAUCHE PORTE DROITE
+        //LIGHT LEFT DOOR RIGHT
          else if(porteDroiteActive && !lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
              if(monster->num_camera == PORTE_BAS-1){
                 background = R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W;
@@ -382,7 +381,7 @@ void affichage(camera_type *camera_type)
             else 
                 background = R_D_ON_LI_OFF_L_D_OFF_LI_ON;
         }
-        //LUMIERE DROITE PORTE GAUCHE
+        //LIGHT RIGHT DOOR LEFT
         else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT){
                 background = R_D_OFF_LI_ON_L_D_ON_LI_OFF_M;
@@ -394,7 +393,7 @@ void affichage(camera_type *camera_type)
                 background = R_D_OFF_LI_ON_L_D_ON_LI_OFF;
         }
         
-        //LUMIERE DROITE LUMIERE GAUCHE PORTE GAUCHE
+        //LIGHT RIGHT LIGHT LEFT DOOR LEFT
          else if(!porteDroiteActive && lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT){
                 background = R_D_OFF_LI_ON_L_D_ON_LI_ON_M;
@@ -409,7 +408,7 @@ void affichage(camera_type *camera_type)
                 background = R_D_OFF_LI_ON_L_D_ON_LI_ON;
         }
         
-        //LUMIERE DROITE LUMIERE GAUCHE PORTE DROITE
+        //LIGHT RIGHT LIGHT LEFT DOOR RIGHT
          else if(porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT-1){
                 background = R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D;
@@ -423,7 +422,7 @@ void affichage(camera_type *camera_type)
             else 
                 background = R_D_ON_LI_ON_L_D_OFF_LI_ON;
         }
-        //LUMIERE GAUCHE PORTE GAUCHE PORTE DROITE
+        //LIGHT LEFT DOOR LEFT DOOR RIGHT
          else if(porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && lumiereGaucheActive){
              if(monster->num_camera == PORTE_BAS-1){
                 background = R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W;
@@ -432,7 +431,7 @@ void affichage(camera_type *camera_type)
                 background = R_D_ON_LI_OFF_L_D_ON_LI_ON;
         }
         
-        //PORTE DROITE LUMIERE DROITE PORTE GAUCHE
+        //DOOR RIGHT LIGHT RIGHT DOOR LEFT
         else if(porteDroiteActive && lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT-1){
                 background = R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D;
@@ -440,14 +439,14 @@ void affichage(camera_type *camera_type)
             else background = R_D_ON_LI_ON_L_D_ON_LI_OFF;
         }
         
-        //PORTE DROITE LUMIERE DROITE
+        //DOOR RIGHT LIGHT RIGHT
         else if(porteDroiteActive && lumiereDroiteActive && !porteGaucheActive && !lumiereGaucheActive){
             if(monster->num_camera == PORTE_HAUT-1){
                 background = R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D;
             }
             else background = R_D_ON_LI_ON_L_D_OFF_LI_OFF;
         }
-        //PORTE GAUCHE PORTE DROITE
+        //DOOR LEFT DOOR RIGHT
         else if(porteDroiteActive && !lumiereDroiteActive && porteGaucheActive && !lumiereGaucheActive){
             background = R_D_ON_LI_OFF_L_D_ON_LI_OFF;
         }

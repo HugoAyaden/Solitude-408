@@ -51,6 +51,7 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
                 *mimic = map->cases[x][y];
             }
             printf("Mimic move to %d th camera\n", mimic->num_camera);
+            //Plays a sound to warn the player it moved
             Mix_VolumeChunk(mimicMove, (masterVol));
             Mix_PlayChannel(-1, mimicMove, 0);
         }

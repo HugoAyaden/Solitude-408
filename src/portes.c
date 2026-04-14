@@ -21,6 +21,7 @@
  */
 void fermeture_portes_droite(case_t *joueur, carte_t *map){ 
     Mix_PlayChannel(-1, door_close, 0);
+    /* removes the player's right neighbor */
     map->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = NULL;
 
 }
@@ -36,6 +37,7 @@ void fermeture_portes_droite(case_t *joueur, carte_t *map){
  */
 void fermeture_portes_gauche(case_t *joueur, carte_t *map){ 
     Mix_PlayChannel(-1, door_close, 0);
+    /* removes the player's left neighbor */
     map->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = NULL;
 
 }
@@ -50,7 +52,7 @@ void fermeture_portes_gauche(case_t *joueur, carte_t *map){
  */
 void ouverture_porte_droite(carte_t *map, case_t *joueur){ 
     // Mix_PlayChannel(-1, door_close, 0);
-    /* rétablir les voisins du joueur */
+    /* get back the player's neighbors */
     map->cases[X_JOUEUR-1][Y_JOUEUR].voisin_bas = joueur;
 
 }
@@ -65,7 +67,7 @@ void ouverture_porte_droite(carte_t *map, case_t *joueur){
  */
 void ouverture_porte_gauche(carte_t *map, case_t *joueur){ 
     // Mix_PlayChannel(-1, door_close, 0);
-    /* rétablir les voisins du joueur */
+    /* get back the player's neighbors */
     map->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
 }
 

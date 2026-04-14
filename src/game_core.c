@@ -17,7 +17,7 @@
 #define ERROR -1
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 360000
-#define monsterMoveDelay 1000
+#define monsterMoveDelay 5000
 #define NIGHT_1 0
 #define NIGHT_2 1
 #define NIGHT_3 2
@@ -34,7 +34,7 @@
  */
 void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     static int last_camera = -1;
-    Mix_VolumeMusic(30);
+    Mix_VolumeMusic(masterVol);
     if(camera->num_camera != last_camera){
         Mix_PlayChannel(-1, cameraSwitch, 0);
         last_camera = camera->num_camera;
@@ -182,12 +182,13 @@ void battery_update(float deltaTime, int doorCount, int lightCount)
     float drainRate = 100.0f / BATTERY_DURATION;
 
     if (doorCount == 2 && cameraButton())
-        drainRate *= 4.0f;
+        drainRate *= 4.0f; // 2 doors + camera monitor : max drain
     else if (doorCount == 2 && !cameraButton())
-        drainRate *= 3.0f;
+        drainRate *= 3.0f; // 2 doors : high drain
     else if (doorCount == 1)
-        drainRate *= 2.0f;
+        drainRate *= 2.0f; // 1 door : moderate drain
 
+    //each added light increases drain by 100% (1 light = 2x drain, 2 lights = 3x drain)
     if (lightCount > 0)
         drainRate *= (1.0f + lightCount);
 
@@ -264,8 +265,7 @@ void difficulte(int night){
  * and updates the remaining time for the current night.
  */
 void update(){
-/*=====NE JAMAIS ENLEVER J'AI TROP SOUFFERT=====*/
-    // Déplacement du monster toutes les 5 secondes
+    // Monster moves each monsterMoveDelay milliseconds, if the door is closed when attacking the attack fails
 
     if(porteGaucheActive && monster->num_camera == PORTE_BAS){
         attaquer_joueur_echec(map, monster, joueur);
@@ -274,16 +274,17 @@ void update(){
         attaquer_joueur_echec(map, monster, joueur);
     }
 
-    // Chaque nuit a sa difficulté d'IA
+    // Eaxh night got it's own difficulty, the monster move more often and the mimic become active at night 2
     difficulte(night);
 
-    printf("nuit %d\n", night);
-    printf("Le monster se déplace sur la caméra %d\n", monster->num_camera);
     duree = SDL_GetTicks();
     finish = (tempsFin - duree) - deltaTime;
+    /*Debugging outputs
+    printf("nuit %d\n", night);
+    printf("Le monster se déplace sur la caméra %d\n", monster->num_camera);
     printf("Temps ecoule : %2.f\n", finish);
+    */
 }
-/*==============================================*/
 
 /**
  * \brief Preloads all game assets.
@@ -297,6 +298,16 @@ void preload_assets(SDL_Renderer* renderer) {
        // Load Textures (unbearable to read, but it works)
     BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
 
+
+    /* GUIDE ON HOW TO READ THIS 
+    
+    Every single name goes by the order :
+
+    Right_Door_(ON/OFF)_LIght_(ON/OFF)_Left_Door_(ON/OFF)_LIghts_(ON/OFF)_Monster_(M if monster is on the camera, nothing otherwise)_(W if the monster is at the window)_(D if it_s the right door (nothing on left door))
+    SO R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = Right Door OFF, Right Light OFF, Left Door OFF, Left Light OFF, No Monster
+    
+    */
+    /* MAIN ROOMS ASSETS */
     R_D_OFF_LI_OFF_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_OFF.png");
     R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M_W.png");
     R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_OFF_LI_ON_M.png");
@@ -324,18 +335,14 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_ON_LI_ON_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M_W.png");
     R_D_ON_LI_ON_L_D_ON_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M.png");
     R_D_ON_LI_ON_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON.png");
-
-
     R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON_M_W.png");
     R_D_OFF_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_OFF_L_D_ON_LI_ON.png");
     R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W_D.png");
     R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M_W.png");
-
     R_D_OFF_LI_ON_L_D_ON_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON_M.png");
     R_D_OFF_LI_ON_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M.png");
-
     R_D_ON_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_OFF.png");
     R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
     R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W.png");
@@ -343,10 +350,10 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_OFF_M_W_D.png");
     R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D.png");
     R_D_ON_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_OFF.png");
-
     R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W.png");
     R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON.png");
 
+    /* CAMERAS ROOM ASSETS */
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
     MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
@@ -359,7 +366,6 @@ void preload_assets(SDL_Renderer* renderer) {
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
     CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
-    STATIC = IMG_LoadAnimation("./assets/img/INgame/static.gif");
     STATIC_CAM = IMG_LoadTexture(renderer, "./assets/img/INgame/static_cam.gif");
     MONSTER_L_DOOR_C = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_C.png");
     MONSTER_L_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_L_DOOR_O_A.png");
@@ -374,10 +380,11 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/R_D_M_MI.png");
     MONSTER_R_DOOR_O_A = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O_A.png");
     MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
-    cameraStatic = Mix_LoadMUS("assets/audio/sound/camera-static.wav");
-    cameraSwitch = Mix_LoadWAV("assets/audio/sound/camera-switch.wav");
-    doorKnocking = Mix_LoadWAV("assets/audio/sound/door_knocking.wav");
 
+    /* Camera static loaded as a music and played during all the game just put at 0 when its not used*/
+    cameraStatic = Mix_LoadMUS("assets/audio/sound/camera-static.wav");
+
+    /* SOUND EFFECTS */
     monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
     mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
     door_close = Mix_LoadWAV("./assets/audio/sound/door_close.wav");
@@ -385,11 +392,15 @@ void preload_assets(SDL_Renderer* renderer) {
     button_on = Mix_LoadWAV("./assets/audio/sound/button_on.wav");
     button_off = Mix_LoadWAV("./assets/audio/sound/button_off.wav");
     sad_mimic = Mix_LoadWAV("./assets/audio/sound/sad.wav");
-
-    monster_death = IMG_LoadAnimation("./assets/img/INgame/monster_death.gif");
-    mimic_death = IMG_LoadAnimation("./assets/img/INgame/mimic_death.gif");
     attack = Mix_LoadWAV("./assets/audio/sound/attack_monster.wav");
     static_sound = Mix_LoadWAV("./assets/audio/sound/static_sound.mp3");
+    cameraSwitch = Mix_LoadWAV("assets/audio/sound/camera-switch.wav");
+    doorKnocking = Mix_LoadWAV("assets/audio/sound/door_knocking.wav");
+
+    /* ANIMATIONS */
+    monster_death = IMG_LoadAnimation("./assets/img/INgame/monster_death.gif");
+    mimic_death = IMG_LoadAnimation("./assets/img/INgame/mimic_death.gif");
+    STATIC = IMG_LoadAnimation("./assets/img/INgame/static.gif");
 
 }
 
@@ -413,10 +424,8 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     if (monster == NULL) monster = malloc(sizeof(case_t));
     if (mimic == NULL)    mimic = malloc(sizeof(case_t));
     
-    //transition ici
-    
 
-    //POUR UN REDEMARAGE A 0
+    //RESET ALL GAME PROGRESS VARIABLES
     game_initialise();
 
     srand(time(NULL));
@@ -437,23 +446,26 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         save_night(0);
         load_night();
     }
-    if (night > MAX_NIGHT /*A CHANGER AVEC LES NOUVELLES NUITS*/)
+    //prevent the game to go beyond the max nights that are in game
+    if (night > MAX_NIGHT /*To change if you add more nights*/)
     {
         night = MAX_NIGHT;
         save_night(night);
         load_night();
     }
+    //Initialize the mimic if the player has reached night 2
     if(night >= MAX_NIGHT){
         placement_mimic(map, mimic);
     }
 
+    // --- START THE GAME TIMER ---
     tempsDebut = SDL_GetTicks();
 
     tempsFin = tempsDebut + TEMPS_NUIT;
     duree = tempsDebut;
     finish = TEMPS_NUIT;
    
-    /*=========GESTION PANORAMA==========*/
+    /*=========PANORAMA BEHAVIOR==========*/
     int imgW, imgH;
     camera_type camera_type = GAME;
     direction_t camera_direction = GAUCHE;
@@ -486,7 +498,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     // --- 2. CINEMATIC FADE-IN FROM BLACK ---
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     
-
     for (int alpha = 255; alpha >= 0; alpha -= 5) {
         SDL_RenderClear(renderer);
         
@@ -504,8 +515,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
 
     // --- 3. HOLD UNTIL MUSIC FADES OUT COMPLETELY ---
-    // We keep rendering the normal game so the screen doesn't freeze
-    // while waiting for the last few milliseconds of the music fade out!
+    // We keep rendering the normal game so the screen doesn't freeze while waiting for the last few milliseconds of the music fade out
 
     while(Mix_PlayingMusic()) {
         SDL_RenderClear(renderer);
@@ -519,13 +529,13 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
     // --- 4. START THE CREEPY IN-GAME AMBIENCE ---
     Mix_PlayMusic(cameraStatic, -1);
-    // ==========================================
 
      while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
-        if(cameraStatic || cameraSwitch) Mix_VolumeMusic(0);
+        if(cameraStatic || cameraSwitch) 
+            Mix_VolumeMusic(0);
         Uint32 currentTime = SDL_GetTicks();
-        //Temps du monster avant chaque déplacement
-        deltaTime = (currentTime - lastTime) / 1000.0f;
+        //Monster time update time
+        deltaTime = (currentTime - lastTime) / monsterMoveDelay;
         lastTime = currentTime;
         
         //ESCAPE TO LEAVE THE GAME (no pause button otherwise no pressure)
@@ -540,7 +550,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
 
         SDL_RenderClear(renderer);
 
-        //Call deplacement de jeu
+        //How the camera behave depending the game mode (normal or camera monitor)
         if(camera_type == GAME){
             panoramic_game(windowW, img_stretchedW_game_res, &bgRectGame);
         } else if(camera_type == SIDEWAYS){
@@ -560,7 +570,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             change = VRAI;
         }
 
-        //WHILE BATTERY > 0
+        //WHILE BATTERY > 0 THE BUTTONS CAN BE PRESSED
         if(change == VRAI){
             if(actual != buttons_getDoorCount()){
                 if(porteDroiteActive)
@@ -576,9 +586,10 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         
         actual = buttons_getDoorCount();
 
-        /*=========DIFFERENTS AFFICHAGES EN FONCTION DES LUMIERES ET DES PORTES==========*/
+        //Main rendering function, used for every rendering of the game depending the states (camera, monster, mimic, doors, lights, etc...)
         affichage(&camera_type);
-        /*=========================================================*/
+
+
         if (camera_type == GAME)
         {
             SDL_RenderCopy(renderer, background, NULL, &bgRectGame);
@@ -597,13 +608,16 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
+    // How the game end depending if the player win or lose (monster or mimic attack)
     if(finish <=0 && !fin(map, monster) && !fin(map, mimic)){
+        //If the player wins and has finished the last night
         if(night == MAX_NIGHT){
             transitionWin(renderer, window);
             Mix_PlayMusic(sOst, -1);
             Mix_VolumeMusic(musicVol);
             render_credits(renderer, window);
         }
+        //If the player wins but it wasn't the last night (transition to the next night)
         else{
             night++;
             save_night(night);
@@ -612,12 +626,14 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             Mix_VolumeMusic(musicVol);
         }
     }
+    //If the monster kills the player (screamer)
     else if(fin(map, monster)){
         play_gif(monster_death, renderer, windowW, windowH, attack, 1);
         play_gif(STATIC, renderer, windowW, windowH, static_sound, 4);
         Mix_PlayMusic(sOst, -1);
         Mix_VolumeMusic(musicVol);
     }
+    //If the mimic kills the player (screamer)
     else if(fin(map, mimic)){
         play_gif(mimic_death, renderer, windowW, windowH, attack, 1);
         play_gif(STATIC, renderer, windowW, windowH, static_sound, 4);
@@ -666,4 +682,7 @@ void game_final_cleanup(){
     Mix_FreeChunk(button_off);
     Mix_FreeChunk(sad_mimic);
     Mix_FreeChunk(attack);
+    IMG_FreeAnimation(monster_death);
+    IMG_FreeAnimation(mimic_death);
+    IMG_FreeAnimation(STATIC);
 }
