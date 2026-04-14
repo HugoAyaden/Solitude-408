@@ -113,7 +113,7 @@ pacman -S mingw-w64-x86_64-SDL2 \
 ```
 7. GCC:
 ```
-pacman -S pacman -S mingw-w64-x86_64-gcc
+pacman -S mingw-w64-x86_64-gcc
 ```
 8. Aller dans le dossier d'installation MSYS2:
 ```
