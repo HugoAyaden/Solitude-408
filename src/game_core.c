@@ -18,6 +18,7 @@
 #define MAX_NIGHT 2
 #define TEMPS_NUIT 360000
 #define monsterMoveDelay 5000
+#define UPDATE_TIME 1000.0f
 #define NIGHT_1 0
 #define NIGHT_2 1
 #define NIGHT_3 2
@@ -52,6 +53,20 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
             background = MONITOR_ROOM_M;
         else
             background = MONITOR_ROOM;
+    }
+    
+    else if(camera5on && camera->num_camera == CAMERA_11){
+        *camera_type = SIDEWAYS;
+        if(mimic != NULL && mimic->num_camera == CAMERA_11){
+                if(monster->num_camera == CAMERA_11)
+                    background = MIMIC_CORRIDOR_MI_M;
+                else
+                    background = MIMIC_CORRIDOR_MI;
+            }
+        else if (monster->num_camera == CAMERA_11)
+            background = MIMIC_CORRIDOR_M;
+        else
+            background = MIMIC_CORRIDOR;
     }
 
 
@@ -98,7 +113,13 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
     else if (camera9on && camera->num_camera == CAMERA_12)
     {
         *camera_type = SIDEWAYS;
-        if (monster->num_camera == CAMERA_12)
+        if(mimic != NULL && mimic->num_camera == CAMERA_12){
+                if(monster->num_camera == CAMERA_12)
+                    background = COMMAND_ROOM_MI_M;
+                else
+                    background = COMMAND_ROOM_MI;
+            }
+        else if (monster->num_camera == CAMERA_12)
             background = COMMAND_ROOM_M;
         else
             background = COMMAND_ROOM;
@@ -362,6 +383,12 @@ void preload_assets(SDL_Renderer* renderer) {
     MONITOR_ROOM_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_MI_M.png");
     COMMAND_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM.png");
     COMMAND_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM_M.png");
+    COMMAND_ROOM_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM_MI.png");
+    COMMAND_ROOM_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM_MI_M.png");
+    MIMIC_CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR.png");
+    MIMIC_CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_M.png");
+    MIMIC_CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_MI.png");
+    MIMIC_CORRIDOR_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MIMIC_CORRIDOR_MI_M.png");
     CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR.png");
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
@@ -535,7 +562,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
             Mix_VolumeMusic(0);
         Uint32 currentTime = SDL_GetTicks();
         //Monster time update time
-        deltaTime = (currentTime - lastTime) / monsterMoveDelay;
+        deltaTime = (currentTime - lastTime) / UPDATE_TIME;
         lastTime = currentTime;
         
         //ESCAPE TO LEAVE THE GAME (no pause button otherwise no pressure)

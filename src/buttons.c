@@ -296,7 +296,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
             camera9on = 0;
         }
         camera5on = !camera5on;
-        camera->num_camera = CAMERA_5;
+        camera->num_camera = CAMERA_11;
     }
     if (SDL_PointInRect(&p, &btnCamera6)){
         if(cameraButton() && camera6on == 0){
