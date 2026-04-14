@@ -12,16 +12,13 @@ else
 endif
 
 # --- OS DETECTION & COMMANDS ---
+MKDIR = mkdir -p $(1)
+RM = rm -rf $(1)
+
 ifeq ($(OS),Windows_NT)
-    # Windows/PowerShell/CMD
-    MKDIR = if not exist $(subst /,\,$(1)) mkdir $(subst /,\,$(1))
-    RM = if exist $(subst /,\,$(1)) rmdir /s /q $(subst /,\,$(1))
     TARGET_EXT := .exe
     EXTRA_LIBS := -lssp
 else
-    # Linux / macOS
-    MKDIR = mkdir -p $(1)
-    RM = rm -rf $(1)
     TARGET_EXT :=
     EXTRA_LIBS :=
 endif
