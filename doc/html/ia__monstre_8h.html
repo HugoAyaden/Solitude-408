@@ -139,8 +139,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a8707e9cc750ba0548d0643087d11cd41" id="r_a8707e9cc750ba0548d0643087d11cd41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ia__monstre_8h.html#a8707e9cc750ba0548d0643087d11cd41">placing_monster</a> (<a class="el" href="structcarte__s.html">carte_t</a> *map, <a class="el" href="structcase__s.html">case_t</a> *monster)</td></tr>
 <tr class="memdesc:a8707e9cc750ba0548d0643087d11cd41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the monster at a random spawn point (excluding mimic spawn).  <br /></td></tr>
 <tr class="separator:a8707e9cc750ba0548d0643087d11cd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fce2962f56489cd2fced7cb0b21e4d3" id="r_a3fce2962f56489cd2fced7cb0b21e4d3"><td class="memItemLeft" align="right" valign="top"><a id="a3fce2962f56489cd2fced7cb0b21e4d3" name="a3fce2962f56489cd2fced7cb0b21e4d3"></a>
-booleen_t&#160;</td><td class="memItemRight" valign="bottom"><b>fin</b> (<a class="el" href="structcarte__s.html">carte_t</a> *map, <a class="el" href="structcase__s.html">case_t</a> *monster)</td></tr>
+<tr class="memitem:a3fce2962f56489cd2fced7cb0b21e4d3" id="r_a3fce2962f56489cd2fced7cb0b21e4d3"><td class="memItemLeft" align="right" valign="top">booleen_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ia__monstre_8h.html#a3fce2962f56489cd2fced7cb0b21e4d3">fin</a> (<a class="el" href="structcarte__s.html">carte_t</a> *map, <a class="el" href="structcase__s.html">case_t</a> *monster)</td></tr>
+<tr class="memdesc:a3fce2962f56489cd2fced7cb0b21e4d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ending condition check for monster attack on player.  <br /></td></tr>
 <tr class="separator:a3fce2962f56489cd2fced7cb0b21e4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401ae60828b76e8759b7e6de15cc5c2a" id="r_a401ae60828b76e8759b7e6de15cc5c2a"><td class="memItemLeft" align="right" valign="top"><a id="a401ae60828b76e8759b7e6de15cc5c2a" name="a401ae60828b76e8759b7e6de15cc5c2a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>deplacement</b> (<a class="el" href="structcarte__s.html">carte_t</a> *map, <a class="el" href="structcase__s.html">case_t</a> *monster, int direction)</td></tr>
@@ -250,6 +250,50 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ia__monstre_8h_a5c366f731dc2c18a20808cbe4049d036_icgraph.png" border="0" usemap="#aia__monstre_8h_a5c366f731dc2c18a20808cbe4049d036_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a3fce2962f56489cd2fced7cb0b21e4d3" name="a3fce2962f56489cd2fced7cb0b21e4d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fce2962f56489cd2fced7cb0b21e4d3">&#9670;&#160;</a></span>fin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">booleen_t fin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcarte__s.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcase__s.html">case_t</a> *&#160;</td>
+          <td class="paramname"><em>monster</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ending condition check for monster attack on player. </p>
+<p>If the monster's current camera matches the player's camera, the monster has reached the player, and the function returns VRAI. Otherwise, it returns FAUX.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Pointer to the game map structure. </td></tr>
+    <tr><td class="paramname">monster</td><td>Pointer to the monster's current position (case_t). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VRAI if the monster has reached the player, FAUX otherwise. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3_icgraph.png" border="0" usemap="#aia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3_icgraph" alt=""/></div>
 </div>
 
 </div>

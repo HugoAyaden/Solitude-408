@@ -7,5 +7,7 @@ digraph "attaque_mimic"
   rankdir="LR";
   Node1 [id="Node000001",label="attaque_mimic",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Executes the mimic’s attack behavior against the player."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="placement_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c",tooltip="Mimic's spawnpoint."];
+  Node2 [id="Node000002",label="fin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n1_8c.html#a3fce2962f56489cd2fced7cb0b21e4d3",tooltip="Ending condition check for monster attack on player."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="placement_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c",tooltip="Mimic's spawnpoint."];
 }

@@ -19,13 +19,15 @@ digraph "update"
   Node6 -> Node7 [id="edge6_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
   Node7 [id="Node000007",label="attaque_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a188de5940534dd87ffb6708a075c6d7d",tooltip="Executes the mimic’s attack behavior against the player."];
   Node7 -> Node8 [id="edge7_Node000007_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node8 [id="Node000008",label="placement_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c",tooltip="Mimic's spawnpoint."];
-  Node6 -> Node5 [id="edge8_Node000006_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node4 -> Node9 [id="edge9_Node000004_Node000009",color="steelblue1",style="solid",tooltip=" "];
-  Node9 [id="Node000009",label="move_monster",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n2_8c.html#a9e645c47820a7a574780331cca7dae55",tooltip="Moves the monster one step toward the player using BFS."];
-  Node9 -> Node10 [id="edge10_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
-  Node10 [id="Node000010",label="bfs_next_step",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n2_8c.html#a58f80822ee6d18de92079f104705f3c7",tooltip="Finds the next step for the monster using BFS."];
-  Node4 -> Node11 [id="edge11_Node000004_Node000011",color="steelblue1",style="solid",tooltip=" "];
-  Node11 [id="Node000011",label="movement_opportunity",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n1_8c.html#a32cc4da6a78d820a240f6d9ff1b04aea",tooltip="Moves the monster randomly through accessible neighboring directions."];
-  Node11 -> Node11 [id="edge12_Node000011_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="fin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n1_8c.html#a3fce2962f56489cd2fced7cb0b21e4d3",tooltip="Ending condition check for monster attack on player."];
+  Node7 -> Node9 [id="edge8_Node000007_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="placement_mimic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c",tooltip="Mimic's spawnpoint."];
+  Node6 -> Node5 [id="edge9_Node000006_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node4 -> Node10 [id="edge10_Node000004_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="move_monster",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n2_8c.html#a9e645c47820a7a574780331cca7dae55",tooltip="Moves the monster one step toward the player using BFS."];
+  Node10 -> Node11 [id="edge11_Node000010_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="bfs_next_step",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n2_8c.html#a58f80822ee6d18de92079f104705f3c7",tooltip="Finds the next step for the monster using BFS."];
+  Node4 -> Node12 [id="edge12_Node000004_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="movement_opportunity",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ia__monstre__n1_8c.html#a32cc4da6a78d820a240f6d9ff1b04aea",tooltip="Moves the monster randomly through accessible neighboring directions."];
+  Node12 -> Node12 [id="edge13_Node000012_Node000012",color="steelblue1",style="solid",tooltip=" "];
 }
