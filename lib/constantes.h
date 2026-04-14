@@ -169,6 +169,7 @@ extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W ;
 extern SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M ;
 extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D ;
 extern SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF ;
+extern SDL_Texture *SKY;
 extern SDL_Texture *MONITOR_ROOM;
 extern SDL_Texture *MONITOR_ROOM_M;
 extern SDL_Texture *MONITOR_ROOM_MI;

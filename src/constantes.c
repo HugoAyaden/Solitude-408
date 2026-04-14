@@ -113,6 +113,7 @@ SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W = NULL;
 SDL_Texture *R_D_ON_LI_ON_L_D_OFF_LI_ON_M = NULL;
 SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF_M_W_D = NULL;
 SDL_Texture *R_D_ON_LI_ON_L_D_ON_LI_OFF = NULL;
+SDL_Texture *SKY = NULL;
 SDL_Texture *L_D = NULL;
 SDL_Texture *L_D_M = NULL;
 SDL_Texture *L_D_MI = NULL;

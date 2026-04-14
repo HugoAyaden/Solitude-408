@@ -326,7 +326,7 @@ void camera_buttons_handleEvent(SDL_Event *event, SDL_Window *window)
             camera9on = 0;
         }
         camera7on = !camera7on;
-        camera->num_camera = CAMERA_7;
+        camera->num_camera = CAMERA_4;
     }
 
     //CAMERA 1 DANS LA MATRICE

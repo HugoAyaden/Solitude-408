@@ -83,6 +83,11 @@ void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
             background = HALLWAY;
     }
 
+    else if(camera7on && camera->num_camera == CAMERA_4){
+        *camera_type = SIDEWAYS;
+        background = SKY;
+    }
+
 
     else if(camera1on && camera->num_camera == CAMERA_5){
         *camera_type = SIDEWAYS;
@@ -404,6 +409,7 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON.png");
 
     /* CAMERAS ROOM ASSETS */
+    SKY = IMG_LoadTexture(renderer, "./assets/img/INgame/SKY.png");
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
     MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
