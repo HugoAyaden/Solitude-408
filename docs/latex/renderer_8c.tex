@@ -1,0 +1,274 @@
+\doxysection{src/renderer.c File Reference}
+\hypertarget{renderer_8c}{}\label{renderer_8c}\index{src/renderer.c@{src/renderer.c}}
+
+
+File for every in game render.  
+
+
+{\ttfamily \#include "{}renderer.\+h"{}}\newline
+Include dependency graph for renderer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{renderer_8c_af8e9d4ca25b969ce9f536310be9e0371}{buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH, int img\+\_\+stretched\+W\+\_\+game\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Renders all control buttons on screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8c_a43f7a55205d929c0e493406a063ede63}{camera\+\_\+buttons\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Renders the individual camera selection buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8c_a1a543d7834217f18ad3b49e81c52358b}{render\+Camera\+Map}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Renders the camera map overlay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8c_a96064741375779b0a0f13379c81981f5}{battery\+\_\+render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int windowW, int windowH)
+\begin{DoxyCompactList}\small\item\em Renders the battery bar UI element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8c_ae92ac35e45310ea076670de12ccf174e}{render\+\_\+game}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Battery, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font\+Buttons, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int img\+\_\+stretched\+W\+\_\+game\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Renders all game UI elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8c_a5e896b435e6ef6fc57607c02332ee8a1}{affichage}} (camera\+\_\+type \texorpdfstring{$\ast$}{*}camera\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Selects appropriate background texture based on game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File for every in game render. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31/03/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{renderer_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{renderer_8c_a5e896b435e6ef6fc57607c02332ee8a1}\index{renderer.c@{renderer.c}!affichage@{affichage}}
+\index{affichage@{affichage}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{affichage()}{affichage()}}
+{\footnotesize\ttfamily \label{renderer_8c_a5e896b435e6ef6fc57607c02332ee8a1} 
+void affichage (\begin{DoxyParamCaption}\item[{camera\+\_\+type \texorpdfstring{$\ast$}{*}}]{camera\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+
+Selects appropriate background texture based on game state. 
+
+Chooses from dozens of preloaded textures based on combinations of\+:
+\begin{DoxyItemize}
+\item Battery level (blackout when depleted or light off)
+\item Door states (left/right closed)
+\item Light states (left/right/general on)
+\item Monster proximity to player room Sets camera\+\_\+type to GAME or delegates to \doxylink{game__core_8c_a1536b64e1ad407f2d8df519909e66a8e}{change\+\_\+camera()} when monitor active.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+\_\+type} & Pointer to current camera display mode. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{renderer_8c_a5e896b435e6ef6fc57607c02332ee8a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{renderer_8c_a5e896b435e6ef6fc57607c02332ee8a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8c_a96064741375779b0a0f13379c81981f5}\index{renderer.c@{renderer.c}!battery\_render@{battery\_render}}
+\index{battery\_render@{battery\_render}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{battery\_render()}{battery\_render()}}
+{\footnotesize\ttfamily \label{renderer_8c_a96064741375779b0a0f13379c81981f5} 
+void battery\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Renders the battery bar UI element. 
+
+Draws a battery outline with fill bar that changes from green to red based on remaining battery percentage, plus text label showing \%.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+{\em font} & Font used for percentage text. \\
+\hline
+{\em windowW} & Window width. \\
+\hline
+{\em windowH} & Window height. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a96064741375779b0a0f13379c81981f5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8c_af8e9d4ca25b969ce9f536310be9e0371}\index{renderer.c@{renderer.c}!buttons\_render@{buttons\_render}}
+\index{buttons\_render@{buttons\_render}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{buttons\_render()}{buttons\_render()}}
+{\footnotesize\ttfamily \label{renderer_8c_af8e9d4ca25b969ce9f536310be9e0371} 
+void buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{, }\item[{int}]{img\+\_\+stretched\+W\+\_\+game\+\_\+res}{}\end{DoxyParamCaption})}
+
+
+
+Renders all control buttons on screen. 
+
+Draws door and light buttons on left/right sides of screen, plus camera monitor toggle. Button positions scale with stretched game image resolution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+{\em font} & Font used for button labels. \\
+\hline
+{\em windowW} & Window width. \\
+\hline
+{\em windowH} & Window height. \\
+\hline
+{\em img\+\_\+stretched\+W\+\_\+game\+\_\+res} & Stretched game image width for button positioning. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{renderer_8c_af8e9d4ca25b969ce9f536310be9e0371_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_af8e9d4ca25b969ce9f536310be9e0371_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8c_a43f7a55205d929c0e493406a063ede63}\index{renderer.c@{renderer.c}!camera\_buttons\_render@{camera\_buttons\_render}}
+\index{camera\_buttons\_render@{camera\_buttons\_render}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{camera\_buttons\_render()}{camera\_buttons\_render()}}
+{\footnotesize\ttfamily \label{renderer_8c_a43f7a55205d929c0e493406a063ede63} 
+void camera\+\_\+buttons\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{windowW}{, }\item[{int}]{windowH}{}\end{DoxyParamCaption})}
+
+
+
+Renders the individual camera selection buttons. 
+
+Draws 9 camera toggle buttons plus camera monitor toggle in fixed positions on the right side of the screen. Font parameter is unused here.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+{\em font} & Font parameter (unused). \\
+\hline
+{\em windowW} & Window width. \\
+\hline
+{\em windowH} & Window height. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{renderer_8c_a43f7a55205d929c0e493406a063ede63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a43f7a55205d929c0e493406a063ede63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8c_ae92ac35e45310ea076670de12ccf174e}\index{renderer.c@{renderer.c}!render\_game@{render\_game}}
+\index{render\_game@{render\_game}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{render\_game()}{render\_game()}}
+{\footnotesize\ttfamily \label{renderer_8c_ae92ac35e45310ea076670de12ccf174e} 
+void render\+\_\+game (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{img\+\_\+stretched\+W\+\_\+game\+\_\+res}{}\end{DoxyParamCaption})}
+
+
+
+Renders all game UI elements. 
+
+Displays battery bar and either standard control buttons or camera buttons depending on whether the camera monitor is active.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em font\+Battery} & Font for battery display. \\
+\hline
+{\em font\+Buttons} & Font for button labels. \\
+\hline
+{\em window} & SDL window for size retrieval. \\
+\hline
+{\em img\+\_\+stretched\+W\+\_\+game\+\_\+res} & Stretched game image width. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_ae92ac35e45310ea076670de12ccf174e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{renderer_8c_ae92ac35e45310ea076670de12ccf174e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{renderer_8c_a1a543d7834217f18ad3b49e81c52358b}\index{renderer.c@{renderer.c}!renderCameraMap@{renderCameraMap}}
+\index{renderCameraMap@{renderCameraMap}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{renderCameraMap()}{renderCameraMap()}}
+{\footnotesize\ttfamily \label{renderer_8c_a1a543d7834217f18ad3b49e81c52358b} 
+void render\+Camera\+Map (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+
+
+
+Renders the camera map overlay. 
+
+Displays the static camera map image when monitor is active.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{renderer_8c_a1a543d7834217f18ad3b49e81c52358b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c_a1a543d7834217f18ad3b49e81c52358b_icgraph}
+\end{center}
+\end{figure}

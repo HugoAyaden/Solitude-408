@@ -1,7 +1,0 @@
-<map id="battery_render" name="battery_render">
-<area shape="rect" id="Node000001" title="Affiche la barre de batterie à l&#39;écran." alt="" coords="296,5,415,31"/>
-<area shape="rect" id="Node000002" href="$renderer_8c.html#a3d3788e8ed9e22d2c2404038b232e058" title="Affiche tous les éléments du jeu." alt="" coords="140,5,248,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,21,248,21,248,15,282,15"/>
-<area shape="rect" id="Node000003" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Fonction principale du programme." alt="" coords="5,5,92,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,21,92,21,92,15,126,15"/>
-</map>

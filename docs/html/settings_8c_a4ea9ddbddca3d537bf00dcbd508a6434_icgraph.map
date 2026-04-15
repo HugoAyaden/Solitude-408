@@ -1,0 +1,8 @@
+<map id="save_settings" name="save_settings">
+<area shape="rect" id="Node000001" title="Saves current settings to config file." alt="" coords="279,5,391,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,21,60,21,60,15,265,15"/>
+<area shape="rect" id="Node000003" href="$settings_8c.html#a0dbf20d7c39a891de9b3c5b63e18c220" title="Renders the complete settings screen." alt="" coords="108,31,231,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,31,231,37,230,31,265,26"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="94,32,60,26,61,20,95,27"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="init_carte" name="init_carte">
+<area shape="rect" id="Node000001" title="Initializes the complete game map." alt="" coords="5,5,88,31"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#ad609cbd6f634afece6501c6d5a4194f7" title="Checks if a position on the map is accessible." alt="" coords="136,5,227,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,15,122,15,122,21,88,21"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="detruire_carte" name="detruire_carte">
+<area shape="rect" id="Node000001" title="Frees the map structure." alt="" coords="308,5,421,31"/>
+<area shape="rect" id="Node000002" href="$game__core_8c.html#a004c5ba3c009c8ac1d4445c8e1acd526" title="Frees all game resources and clears allocated memory." alt="" coords="108,5,260,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,21,260,21,260,15,295,15"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

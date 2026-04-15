@@ -1,0 +1,45 @@
+\doxysection{ia\+\_\+monstre.\+h}
+\hypertarget{ia__monstre_8h_source}{}\label{ia__monstre_8h_source}\index{lib/ia\_monstre.h@{lib/ia\_monstre.h}}
+\mbox{\hyperlink{ia__monstre_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ IA\_MONSTRE\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IA\_MONSTRE\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{map_8h}{map.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*\ EVERY\ MONSTER'S\ START\ }}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *(The\ Y\ always\ stays\ the\ same,\ opposite\ of\ the\ player)}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ START\_MONSTRE\_X\ 3}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ START\_MIMIC\_X\ 1}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{/*\ MATRICE'S\ START\ */}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ DEPART\_Y\ 0}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ DEPART\_X\ 0}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{/*\ MATRICE'S\ END\ */}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ END\_Y\ 5}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ END\_X\ 3}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_a8707e9cc750ba0548d0643087d11cd41}{placing\_monster}}(carte\_t\ *map,\ case\_t\ *monster);}
+\DoxyCodeLine{00032\ booleen\_t\ \mbox{\hyperlink{ia__monstre_8h_a3fce2962f56489cd2fced7cb0b21e4d3}{fin}}(carte\_t\ *map,\ case\_t\ *monster);\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ deplacement(carte\_t\ *\ map,\ case\_t\ *\ monster,\ \textcolor{keywordtype}{int}\ direction);\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ia__monstre_8h_a32cc4da6a78d820a240f6d9ff1b04aea}{movement\_opportunity}}(carte\_t\ *map,\ case\_t\ *monster);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_afd8e5bb77c7fba1a170e8f5be2fe6c4d}{mouvement\_mimic}}(carte\_t\ *map,\ case\_t\ *mimic);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ia__monstre_8h_a188de5940534dd87ffb6708a075c6d7d}{attaque\_mimic}}(carte\_t\ map,\ case\_t\ *mimic,\ case\_t\ *joueur);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_a5295b779cd9f160d7b811942a1207e2c}{placement\_mimic}}(carte\_t\ *map,\ case\_t\ *mimic);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ia__monstre_8h_ab14180b3dfeead142d4b49ce562f49d6}{play\_gif}}(IMG\_Animation\ *anim,\ SDL\_Renderer\ *renderer,\ \textcolor{keywordtype}{int}\ windowW,\ \textcolor{keywordtype}{int}\ windowH,\ Mix\_Chunk\ *sound,\ \textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ia__monstre_8h_a5c366f731dc2c18a20808cbe4049d036}{chance\_deplacement}}();}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ timer\_monstre();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

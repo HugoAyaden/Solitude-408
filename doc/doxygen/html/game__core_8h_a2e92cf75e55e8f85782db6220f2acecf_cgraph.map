@@ -1,9 +1,0 @@
-<map id="game_update" name="game_update">
-<area shape="rect" id="Node000001" title="Met à jour la logique du jeu." alt="" coords="5,55,116,80"/>
-<area shape="rect" id="Node000002" href="$game__core_8c.html#ac8fa856ac0b9c565af7704385f4ea2bc" title="Met à jour le niveau de batterie." alt="" coords="188,5,309,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,52,185,32,187,37,110,57"/>
-<area shape="rect" id="Node000003" href="$game__core_8c.html#a5801bd126b77810d4a368ed379e52f45" title="Retourne le nombre de portes activées." alt="" coords="165,55,333,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,65,151,65,151,70,116,70"/>
-<area shape="rect" id="Node000004" href="$game__core_8c.html#ad95aa2a7f38e49f6a87c0b86fb68eb60" title="Retourne le nombre de lumières activées." alt="" coords="164,104,333,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,77,187,98,185,103,109,83"/>
-</map>

@@ -1,0 +1,110 @@
+<map id="game_init" name="game_init">
+<area shape="rect" id="Node000001" title="Initializes the game and starts the main gameplay loop." alt="" coords="5,652,92,678"/>
+<area shape="rect" id="Node000002" href="$renderer_8c.html#a5e896b435e6ef6fc57607c02332ee8a1" title="Selects appropriate background texture based on game state." alt="" coords="193,72,276,98"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="48,652,53,549,67,388,78,304,93,225,113,160,125,135,138,115,157,100,179,90,181,95,160,104,142,119,130,137,118,162,99,227,83,304,72,389,58,549,53,652"/>
+<area shape="rect" id="Node000004" href="$portes_8c.html#a961f5d8134a5710aa3c6da6e255a8690" title="Opens the right door restoring monster access." alt="" coords="399,23,570,48"/>
+<area shape="poly" id="edge28_Node000001_Node000004" title=" " alt="" coords="47,652,48,538,58,357,69,262,85,176,108,105,122,78,138,58,170,34,205,19,243,9,283,4,359,6,425,17,425,23,359,12,283,10,244,14,207,24,173,39,142,61,126,81,113,107,90,177,74,263,63,358,54,538,53,652"/>
+<area shape="rect" id="Node000005" href="$portes_8c.html#a0a2a8094d20e9c4ad26c0cb32c5d28b1" title="Opens the left door restoring monster access." alt="" coords="395,123,575,148"/>
+<area shape="poly" id="edge29_Node000001_Node000005" title=" " alt="" coords="48,652,52,556,65,408,77,332,92,261,112,204,125,182,138,166,169,143,203,127,240,116,277,111,352,110,417,118,417,123,352,115,278,116,241,122,205,132,171,148,142,169,129,185,117,206,98,263,82,333,71,409,57,556,53,652"/>
+<area shape="rect" id="Node000006" href="$game__core_8c.html#a5801bd126b77810d4a368ed379e52f45" title="Returns the number of active doors." alt="" coords="401,174,569,199"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="48,652,54,563,68,429,80,359,95,296,114,244,126,224,138,210,170,187,205,172,243,162,282,157,357,158,423,168,422,173,357,164,282,162,244,167,207,177,173,192,142,213,130,227,119,246,100,297,85,360,73,429,59,563,53,652"/>
+<area shape="rect" id="Node000007" href="$game__core_8c.html#ad95aa2a7f38e49f6a87c0b86fb68eb60" title="Returns the number of active lights." alt="" coords="400,274,569,299"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="49,652,58,580,75,477,102,376,119,337,138,311,170,289,205,274,242,265,280,260,354,260,419,268,418,274,354,265,280,265,243,270,206,279,172,294,142,315,123,339,107,378,80,478,63,581,54,652"/>
+<area shape="rect" id="Node000008" href="$portes_8c.html#a96386d025867a6a70813bb9daf4ecfdb" title="Closes the right door blocking monster access." alt="" coords="145,375,325,400"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="48,652,53,606,66,541,77,505,93,470,113,438,138,410,143,405,147,410,142,413,117,441,98,473,82,507,71,542,58,607,53,652"/>
+<area shape="rect" id="Node000009" href="$portes_8c.html#a42cb75a8c3b53876c0a1427bf915f5fe" title="Closes the left door blocking monster access." alt="" coords="140,424,329,450"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="50,651,58,615,75,566,101,513,118,489,138,467,159,453,162,457,142,471,122,492,105,516,80,568,63,617,55,652"/>
+<area shape="rect" id="Node000010" href="$ia__monstre__n1_8c.html#a3fce2962f56489cd2fced7cb0b21e4d3" title="Ending condition check for monster attack on player." alt="" coords="1121,502,1159,527"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="52,651,62,624,80,589,105,553,138,524,185,499,226,484,265,476,303,474,383,480,483,485,729,485,838,487,945,494,1107,508,1107,513,945,499,838,493,729,490,483,490,383,485,303,479,266,481,228,489,187,504,142,528,109,556,85,591,67,626,57,653"/>
+<area shape="rect" id="Node000011" href="$game__core_8c.html#a8c02a5b2a0d5c59b1227fc6866ee8fa8" title="Handles global game events." alt="" coords="161,326,308,351"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="47,652,49,598,60,520,71,477,87,435,109,395,138,360,148,353,151,357,142,364,114,398,92,437,76,479,65,521,54,599,52,652"/>
+<area shape="rect" id="Node000015" href="$game__core_8c.html#ae160d5ac2d5e8a4733277396412d76e8" title="Initializes the main game systems." alt="" coords="173,678,296,703"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="92,668,160,677,159,683,92,673"/>
+<area shape="rect" id="Node000018" href="$game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf" title="Updates the main game logic." alt="" coords="179,224,290,250"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="49,652,58,574,75,459,102,344,119,299,138,267,165,248,168,253,142,271,124,301,107,346,81,460,63,575,54,652"/>
+<area shape="rect" id="Node000020" href="$map_8c.html#aa4dbd42645a82bb6b49bd415f7b9d795" title="Initializes the camera entity." alt="" coords="185,727,284,752"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="71,675,141,712,173,723,171,728,139,717,69,680"/>
+<area shape="rect" id="Node000021" href="$map_8c.html#ac96127090756b955459d9d008b17dc9c" title="Initializes the complete game map." alt="" coords="193,776,276,802"/>
+<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="60,676,92,718,115,742,141,761,181,777,179,782,139,766,112,746,88,722,56,679"/>
+<area shape="rect" id="Node000023" href="$map_8c.html#a449145c815761f32bd1f08ba749f9508" title="Initializes the player entity." alt="" coords="189,826,280,851"/>
+<area shape="poly" id="edge25_Node000001_Node000023" title=" " alt="" coords="57,677,85,741,110,779,142,811,177,827,175,832,138,815,106,782,80,744,52,679"/>
+<area shape="rect" id="Node000024" href="$settings_8c.html#ae39cc73b9e130aa71c2c39c02d217828" title="Loads current night progress." alt="" coords="189,875,280,900"/>
+<area shape="poly" id="edge26_Node000001_Node000024" title=" " alt="" coords="55,677,63,714,78,763,104,816,121,839,142,860,158,871,177,878,175,883,156,875,138,864,117,843,100,818,73,765,57,715,49,678"/>
+<area shape="rect" id="Node000025" href="$settings_8c.html#a457486e8b8211e75970f756106ebff2c" title="Loads settings from config file." alt="" coords="180,924,289,950"/>
+<area shape="poly" id="edge27_Node000001_Node000025" title=" " alt="" coords="53,678,58,722,72,785,84,819,99,852,118,883,142,909,168,925,165,929,138,914,114,886,94,854,79,820,67,786,53,723,48,678"/>
+<area shape="rect" id="Node000026" href="$panorama_8c.html#ac1752300fe1eb43b62b3c3d54306ea75" title="Déplacement gauche&#45;droite de la camera avec la souris, principalement pour la salle principal." alt="" coords="167,974,302,999"/>
+<area shape="poly" id="edge30_Node000001_Node000026" title=" " alt="" coords="52,678,55,730,66,805,77,847,93,888,114,926,142,959,156,969,153,974,138,963,110,929,88,890,72,848,61,807,49,730,47,678"/>
+<area shape="rect" id="Node000027" href="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c" title="Mimic&#39;s spawnpoint." alt="" coords="1071,576,1209,602"/>
+<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="55,651,86,605,110,581,139,561,187,540,229,528,268,523,306,523,385,530,483,536,729,536,876,541,1023,561,1074,570,1073,576,1022,566,876,546,729,541,483,541,384,535,306,528,269,528,231,534,189,545,141,566,114,585,90,608,59,654"/>
+<area shape="rect" id="Node000028" href="$ia__monstre__n1_8c.html#a8707e9cc750ba0548d0643087d11cd41" title="Places the monster at a random spawn point (excluding mimic spawn)." alt="" coords="662,800,793,826"/>
+<area shape="poly" id="edge32_Node000001_Node000028" title=" " alt="" coords="92,660,200,657,329,662,406,665,468,666,497,670,527,678,558,691,594,712,611,730,619,749,626,768,642,785,653,792,650,797,638,790,622,771,614,751,607,733,590,716,556,696,525,683,496,675,468,672,406,671,329,668,200,662,92,665"/>
+<area shape="rect" id="Node000029" href="$ia__monstre__n1_8c.html#ab14180b3dfeead142d4b49ce562f49d6" title="Plays an animated GIF sequence a specified number of times." alt="" coords="197,1023,272,1048"/>
+<area shape="poly" id="edge33_Node000001_Node000029" title=" " alt="" coords="54,677,64,746,83,846,109,945,125,983,142,1008,161,1022,184,1029,183,1034,159,1026,138,1012,120,985,104,946,78,847,59,747,49,678"/>
+<area shape="rect" id="Node000030" href="$credits_8c.html#adf8cc5156f8e1a98f12a42a1bb7e4274" title="Displays the game credits with vertical scrolling." alt="" coords="177,1072,292,1098"/>
+<area shape="poly" id="edge34_Node000001_Node000030" title=" " alt="" coords="54,678,62,755,80,870,106,984,123,1028,142,1058,166,1073,163,1078,138,1061,118,1030,101,985,75,871,57,756,49,678"/>
+<area shape="rect" id="Node000031" href="$renderer_8c.html#ae92ac35e45310ea076670de12ccf174e" title="Renders all game UI elements." alt="" coords="181,1122,289,1147"/>
+<area shape="poly" id="edge35_Node000001_Node000031" title=" " alt="" coords="53,677,61,763,77,893,89,961,103,1022,121,1073,142,1107,154,1117,169,1124,166,1129,151,1121,138,1111,116,1075,98,1024,83,962,72,894,55,764,48,678"/>
+<area shape="rect" id="Node000038" href="$settings_8c.html#a15d7dd64c38af04f82b869c4ff2e4d48" title="Saves current night progress." alt="" coords="188,1171,281,1196"/>
+<area shape="poly" id="edge43_Node000001_Node000038" title=" " alt="" coords="53,678,59,772,74,916,86,992,101,1061,119,1118,142,1156,157,1168,176,1176,174,1181,155,1173,138,1160,114,1120,95,1063,80,993,69,917,54,772,48,678"/>
+<area shape="rect" id="Node000039" href="$transitionNuit_8c.html#a033a8e956da99dca9a8fd93deee3dac6" title="Displays night transition animation &quot;NIGHT X → X+1&quot;." alt="" coords="179,1220,290,1246"/>
+<area shape="poly" id="edge44_Node000001_Node000039" title=" " alt="" coords="53,677,57,780,71,940,82,1024,97,1101,117,1165,129,1189,142,1207,154,1217,168,1223,165,1228,151,1221,138,1211,124,1192,112,1167,92,1103,77,1025,65,941,52,781,48,678"/>
+<area shape="rect" id="Node000040" href="$transitionNuit_8c.html#aad448cd00a9cb06ad7ca5726cc111baf" title="Displays victory screen with &quot;YOU WIN&quot; fade animation." alt="" coords="180,1270,289,1295"/>
+<area shape="poly" id="edge45_Node000001_Node000040" title=" " alt="" coords="53,678,56,789,68,963,79,1055,95,1140,115,1210,128,1236,142,1256,154,1266,168,1273,166,1278,151,1271,138,1260,123,1239,110,1212,89,1141,74,1056,62,964,50,789,47,678"/>
+<area shape="rect" id="Node000041" href="$game__core_8c.html#ac5c54df7ed3b930268c8d7752c101725" title="Updates the monster and door logic for the current frame." alt="" coords="201,576,268,602"/>
+<area shape="poly" id="edge46_Node000001_Node000041" title=" " alt="" coords="73,650,139,618,187,601,189,606,141,623,75,654"/>
+<area shape="rect" id="Node000003" href="$game__core_8c.html#a1536b64e1ad407f2d8df519909e66a8e" title="Updates the displayed camera view." alt="" coords="422,72,547,98"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="276,82,408,82,408,88,276,88"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="276,74,405,48,406,54,277,79"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="277,90,409,118,408,123,276,96"/>
+<area shape="rect" id="Node000012" href="$buttons_8c.html#ad85eec1e545a8fc9d85a549eafbfd6d7" title="Handles mouse events for door and light buttons." alt="" coords="405,372,564,398"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="304,348,403,367,402,372,303,354"/>
+<area shape="rect" id="Node000013" href="$buttons_8c.html#a9515c4dd6739c32c637758377982f107" title="Handles mouse events for individual camera buttons." alt="" coords="377,323,592,348"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="308,335,363,334,363,339,308,340"/>
+<area shape="rect" id="Node000014" href="$buttons_8c.html#acf51c4cd76c144a71bbea55e857fa8a8" title="Returns the total number of active camera buttons." alt="" coords="670,274,785,299"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="547,320,656,298,657,303,548,325"/>
+<area shape="rect" id="Node000016" href="$game__core_8c.html#a2f3df884c90a301efb19f9575fe9231d" title="Initializes the player&#39;s battery." alt="" coords="436,727,533,752"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="297,700,423,725,422,730,296,705"/>
+<area shape="rect" id="Node000017" href="$buttons_8c.html#ae173cfd5e6f9b80bb7d680cbca8851fd" title="Initializes the state of all buttons." alt="" coords="435,776,534,802"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="297,698,331,712,346,724,355,737,364,750,379,761,423,778,421,783,376,766,360,753,351,740,342,728,328,716,295,703"/>
+<area shape="poly" id="edge20_Node000018_Node000006" title=" " alt="" coords="290,223,408,199,409,204,291,228"/>
+<area shape="poly" id="edge21_Node000018_Node000007" title=" " alt="" coords="291,245,407,268,406,273,290,250"/>
+<area shape="rect" id="Node000019" href="$game__core_8c.html#ac8fa856ac0b9c565af7704385f4ea2bc" title="Updates the battery level." alt="" coords="424,224,545,250"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="290,234,410,234,410,240,290,240"/>
+<area shape="poly" id="edge19_Node000019_Node000014" title=" " alt="" coords="546,247,657,269,656,274,545,252"/>
+<area shape="rect" id="Node000022" href="$map_8c.html#ad609cbd6f634afece6501c6d5a4194f7" title="Checks if a position on the map is accessible." alt="" coords="439,826,530,851"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="277,794,426,824,425,829,276,800"/>
+<area shape="rect" id="Node000032" href="$renderer_8c.html#a96064741375779b0a0f13379c81981f5" title="Renders the battery bar UI element." alt="" coords="425,1047,544,1072"/>
+<area shape="poly" id="edge36_Node000031_Node000032" title=" " alt="" coords="288,1119,328,1106,352,1094,376,1081,411,1070,413,1075,378,1086,355,1098,330,1111,290,1125"/>
+<area shape="rect" id="Node000033" href="$renderer_8c.html#af8e9d4ca25b969ce9f536310be9e0371" title="Renders all control buttons on screen." alt="" coords="425,1096,545,1122"/>
+<area shape="poly" id="edge37_Node000031_Node000033" title=" " alt="" coords="289,1126,411,1114,411,1119,289,1131"/>
+<area shape="rect" id="Node000035" href="$renderer_8c.html#a43f7a55205d929c0e493406a063ede63" title="Renders the individual camera selection buttons." alt="" coords="397,1146,573,1171"/>
+<area shape="poly" id="edge39_Node000031_Node000035" title=" " alt="" coords="289,1137,383,1146,382,1151,289,1142"/>
+<area shape="rect" id="Node000036" href="$renderer_8c.html#a1a543d7834217f18ad3b49e81c52358b" title="Renders the camera map overlay." alt="" coords="413,1195,556,1220"/>
+<area shape="poly" id="edge41_Node000031_Node000036" title=" " alt="" coords="290,1143,330,1156,355,1169,378,1181,402,1189,401,1194,376,1186,352,1173,328,1161,288,1148"/>
+<area shape="rect" id="Node000034" href="$buttons_8c.html#a0ef71e5a094c3243eda55d8804b4c988" title="Draws an interactive button with centered text." alt="" coords="679,1120,776,1146"/>
+<area shape="poly" id="edge38_Node000033_Node000034" title=" " alt="" coords="545,1112,665,1124,664,1129,544,1117"/>
+<area shape="poly" id="edge40_Node000035_Node000034" title=" " alt="" coords="573,1146,664,1137,665,1142,573,1152"/>
+<area shape="rect" id="Node000037" href="$buttons_8c.html#abff617bf9c868c3345cf421780d45788" title="Draws the camera map overlay on screen." alt="" coords="675,1195,780,1220"/>
+<area shape="poly" id="edge42_Node000036_Node000037" title=" " alt="" coords="556,1205,661,1205,661,1210,556,1210"/>
+<area shape="rect" id="Node000042" href="$portes_8c.html#ad5505b412ae3557b166b16d57af43983" title="Handles failed monster attack when door is closed." alt="" coords="399,626,570,651"/>
+<area shape="poly" id="edge47_Node000041_Node000042" title=" " alt="" coords="269,593,407,620,406,625,268,598"/>
+<area shape="rect" id="Node000043" href="$game__core_8c.html#a1180d11ae6bf626037812eacb7c43e3f" title="Adjusts the game difficulty according to the current night." alt="" coords="445,576,524,602"/>
+<area shape="poly" id="edge49_Node000041_Node000043" title=" " alt="" coords="268,586,431,586,431,592,268,592"/>
+<area shape="poly" id="edge48_Node000042_Node000028" title=" " alt="" coords="561,649,594,668,607,683,614,698,619,728,623,758,630,772,642,786,652,793,648,797,638,789,625,775,618,759,613,729,609,700,602,686,590,672,558,653"/>
+<area shape="rect" id="Node000044" href="$ia__monstre__n2_8c.html#a5c366f731dc2c18a20808cbe4049d036" title="Returns a random percentage value used to decide movement probability." alt="" coords="863,675,1023,700"/>
+<area shape="poly" id="edge50_Node000043_Node000044" title=" " alt="" coords="525,590,559,597,593,611,609,623,618,637,626,649,641,660,692,678,746,689,799,693,849,693,849,699,799,699,745,694,691,683,639,665,623,653,613,640,605,627,591,615,557,602,524,595"/>
+<area shape="rect" id="Node000045" href="$ia__monstre__n3_8c.html#afd8e5bb77c7fba1a170e8f5be2fe6c4d" title="Handles the mimic&#39;s movement logic during gameplay." alt="" coords="653,626,802,651"/>
+<area shape="poly" id="edge51_Node000043_Node000045" title=" " alt="" coords="525,594,652,620,650,625,523,599"/>
+<area shape="rect" id="Node000047" href="$ia__monstre__n2_8c.html#a9e645c47820a7a574780331cca7dae55" title="Moves the monster one step toward the player using BFS." alt="" coords="667,576,787,602"/>
+<area shape="poly" id="edge56_Node000043_Node000047" title=" " alt="" coords="524,586,654,586,654,592,524,592"/>
+<area shape="rect" id="Node000049" href="$ia__monstre__n1_8c.html#a32cc4da6a78d820a240f6d9ff1b04aea" title="Moves the monster randomly through accessible neighboring directions." alt="" coords="640,751,815,776"/>
+<area shape="poly" id="edge58_Node000043_Node000049" title=" " alt="" coords="525,587,560,594,594,611,613,634,621,657,627,681,642,706,664,726,689,742,686,746,661,730,638,709,622,683,616,659,608,636,590,615,558,599,524,592"/>
+<area shape="poly" id="edge55_Node000045_Node000044" title=" " alt="" coords="784,648,874,669,873,674,783,653"/>
+<area shape="rect" id="Node000046" href="$ia__monstre__n3_8c.html#a188de5940534dd87ffb6708a075c6d7d" title="Executes the mimic’s attack behavior against the player." alt="" coords="883,626,1003,651"/>
+<area shape="poly" id="edge52_Node000045_Node000046" title=" " alt="" coords="802,636,869,636,869,641,802,641"/>
+<area shape="poly" id="edge53_Node000046_Node000010" title=" " alt="" coords="995,623,1021,611,1036,599,1046,588,1069,562,1107,532,1111,536,1072,565,1050,591,1040,603,1024,615,997,628"/>
+<area shape="poly" id="edge54_Node000046_Node000027" title=" " alt="" coords="993,623,1075,602,1076,607,995,628"/>
+<area shape="rect" id="Node000048" href="$ia__monstre__n2_8c.html#a58f80822ee6d18de92079f104705f3c7" title="Finds the next step for the monster using BFS." alt="" coords="886,576,999,602"/>
+<area shape="poly" id="edge57_Node000047_Node000048" title=" " alt="" coords="787,586,872,586,872,592,787,592"/>
+<area shape="poly" id="edge59_Node000049_Node000049" title=" " alt="" coords="692,752,685,743,689,733,703,726,727,724,757,728,769,737,766,741,755,733,727,730,705,732,693,736,690,742,697,749"/>
+</map>

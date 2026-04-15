@@ -1,0 +1,29 @@
+<map id="lib/bfs.h" name="lib/bfs.h">
+<area shape="rect" id="Node000001" title="Header for the optimised research of the player by the monster." alt="" coords="436,5,511,31"/>
+<area shape="rect" id="Node000002" href="$constantes_8h_source.html" title=" " alt="" coords="375,225,481,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="471,32,456,79,442,151,433,212,428,211,436,150,451,78,466,30"/>
+<area shape="rect" id="Node000012" href="$ia__monstre_8h.html" title="Header for the monster&#39;s functionement." alt="" coords="465,79,572,104"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="483,30,506,66,502,69,479,32"/>
+<area shape="rect" id="Node000003" href="$commun_8h.html" title="General header for the project, including all the libraries and defining the main structures." alt="" coords="597,299,688,324"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="463,248,596,292,594,297,462,253"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,299,101,324"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="376,252,116,301,115,296,375,247"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="125,299,269,324"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="392,253,248,297,247,292,390,248"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="293,299,411,324"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="418,253,376,291,373,287,414,249"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="435,299,573,324"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="442,249,483,287,480,291,438,253"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="467,372,533,397"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="621,326,537,368,534,363,619,322"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="558,372,629,397"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="637,326,611,362,607,359,632,323"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="653,372,728,397"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="653,323,678,359,673,362,648,326"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="752,372,816,397"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="667,322,750,363,748,368,664,326"/>
+<area shape="rect" id="Node000013" href="$map_8h.html" title="Header for the map structure." alt="" coords="487,152,550,177"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="521,104,521,138,516,138,516,104"/>
+<area shape="poly" id="edge14_Node000013_Node000002" title=" " alt="" coords="506,179,455,219,452,214,502,175"/>
+<area shape="poly" id="edge13_Node000013_Node000003" title=" " alt="" coords="531,176,626,287,622,290,527,180"/>
+</map>

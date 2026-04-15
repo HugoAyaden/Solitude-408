@@ -1,0 +1,22 @@
+<map id="render_settings" name="render_settings">
+<area shape="rect" id="Node000001" title="Renders the complete settings screen." alt="" coords="5,155,128,180"/>
+<area shape="rect" id="Node000002" href="$settings_8c.html#a61ab4ee981a00bc16b5bd9a0321c1ad6" title="Renders centered purple text inside a button rect." alt="" coords="178,5,329,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,153,112,99,141,67,174,40,185,34,187,39,178,44,145,71,116,102,78,156"/>
+<area shape="rect" id="Node000003" href="$settings_8c.html#a41bf54cf714135bf28dd735985529954" title="Renders HUD corner decorations." alt="" coords="183,55,323,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="82,152,122,121,175,89,190,82,192,87,177,94,125,125,85,156"/>
+<area shape="rect" id="Node000004" href="$settings_8c.html#a87552d7521df5d6fae9dba6b7fbb5b4b" title="Renders VHS&#45;style HUD icons (battery/quality)." alt="" coords="190,104,317,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="114,152,192,130,193,136,115,157"/>
+<area shape="rect" id="Node000007" href="$settings_8c.html#a3debb3b2f29f4cd3d862f08dd67da998" title="Renders white text." alt="" coords="394,155,525,180"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="128,165,381,165,381,170,128,170"/>
+<area shape="rect" id="Node000008" href="$settings_8c.html#a6a90b320902d35013acda660e14d9017" title="Renders purple settings label text." alt="" coords="180,205,327,231"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="115,178,193,199,192,204,114,183"/>
+<area shape="rect" id="Node000009" href="$settings_8c.html#aa619fdd4be4fb197306d4c28aeeef77a" title="Renders VHS&#45;style green save notification." alt="" coords="176,255,331,280"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="85,178,125,209,177,241,192,247,190,252,175,246,122,214,82,182"/>
+<area shape="rect" id="Node000010" href="$settings_8c.html#a4ea9ddbddca3d537bf00dcbd508a6434" title="Saves current settings to config file." alt="" coords="197,304,309,329"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="78,178,116,233,145,264,178,290,187,296,185,301,174,295,141,268,112,236,73,182"/>
+<area shape="rect" id="Node000005" href="$settings_8c.html#a34d1f5a279f70228f7cb4eb050519f46" title="Renders red warning text." alt="" coords="402,56,517,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="308,101,390,82,392,87,309,107"/>
+<area shape="rect" id="Node000006" href="$settings_8c.html#a2ed58bed80adff39a6be3ef1ab4d5ad0" title="Renders small scaled HUD text." alt="" coords="379,105,540,131"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="317,114,365,115,365,120,317,120"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="307,127,395,149,393,154,305,132"/>
+</map>

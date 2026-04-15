@@ -1,0 +1,12 @@
+<map id="movement_opportunity" name="movement_opportunity">
+<area shape="rect" id="Node000001" title="Moves the monster randomly through accessible neighboring directions." alt="" coords="484,29,659,55"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="602,19,593,11,571,8,553,10,544,15,542,20,547,28,542,31,536,21,540,11,552,5,571,3,595,6,605,15"/>
+<area shape="rect" id="Node000002" href="$game__core_8c.html#a1180d11ae6bf626037812eacb7c43e3f" title="Adjusts the game difficulty according to the current night." alt="" coords="357,29,436,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="470,45,436,45,436,39,470,39"/>
+<area shape="rect" id="Node000003" href="$game__core_8c.html#ac5c54df7ed3b930268c8d7752c101725" title="Updates the monster and door logic for the current frame." alt="" coords="243,29,309,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="343,45,309,45,309,39,343,39"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,29,195,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,45,195,45,195,39,229,39"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,29,60,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,45,60,45,60,39,94,39"/>
+</map>

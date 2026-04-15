@@ -1,0 +1,9 @@
+<map id="draw_hud_icons" name="draw_hud_icons">
+<area shape="rect" id="Node000001" title="Renders VHS&#45;style HUD icons (battery/quality)." alt="" coords="5,55,132,80"/>
+<area shape="rect" id="Node000002" href="$settings_8c.html#a34d1f5a279f70228f7cb4eb050519f46" title="Renders red warning text." alt="" coords="203,5,318,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,52,196,32,198,37,119,57"/>
+<area shape="rect" id="Node000003" href="$settings_8c.html#a2ed58bed80adff39a6be3ef1ab4d5ad0" title="Renders small scaled HUD text." alt="" coords="180,55,341,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,65,167,65,167,70,133,70"/>
+<area shape="rect" id="Node000004" href="$settings_8c.html#a3debb3b2f29f4cd3d862f08dd67da998" title="Renders white text." alt="" coords="195,104,326,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,77,198,98,196,103,118,83"/>
+</map>

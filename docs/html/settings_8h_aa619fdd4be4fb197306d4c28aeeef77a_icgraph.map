@@ -1,0 +1,7 @@
+<map id="draw_vhs_save_text" name="draw_vhs_save_text">
+<area shape="rect" id="Node000001" title="Renders VHS&#45;style green save notification." alt="" coords="279,5,433,31"/>
+<area shape="rect" id="Node000002" href="$settings_8c.html#a0dbf20d7c39a891de9b3c5b63e18c220" title="Renders the complete settings screen." alt="" coords="108,5,231,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,21,231,21,231,15,265,15"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

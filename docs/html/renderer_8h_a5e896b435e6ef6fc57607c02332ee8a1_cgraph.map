@@ -1,0 +1,9 @@
+<map id="affichage" name="affichage">
+<area shape="rect" id="Node000001" title="Selects appropriate background texture based on game state." alt="" coords="5,55,88,80"/>
+<area shape="rect" id="Node000002" href="$game__core_8c.html#a1536b64e1ad407f2d8df519909e66a8e" title="Updates the displayed camera view." alt="" coords="163,5,289,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,53,135,39,163,32,165,37,137,45,89,58"/>
+<area shape="rect" id="Node000003" href="$portes_8c.html#a961f5d8134a5710aa3c6da6e255a8690" title="Opens the right door restoring monster access." alt="" coords="141,55,311,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="88,65,127,65,127,70,88,70"/>
+<area shape="rect" id="Node000004" href="$portes_8c.html#a0a2a8094d20e9c4ad26c0cb32c5d28b1" title="Opens the left door restoring monster access." alt="" coords="136,104,316,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="89,76,167,98,165,103,87,81"/>
+</map>

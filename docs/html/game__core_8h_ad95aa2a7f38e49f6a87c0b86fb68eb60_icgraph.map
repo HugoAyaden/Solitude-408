@@ -1,0 +1,10 @@
+<map id="buttons_getLightCount" name="buttons_getLightCount">
+<area shape="rect" id="Node000001" title="Returns the number of active lights." alt="" coords="401,5,571,31"/>
+<area shape="rect" id="Node000002" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,5,195,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="388,21,195,21,195,15,388,15"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf" title="Updates the main game logic." alt="" coords="243,31,353,56"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="388,34,354,39,353,33,388,29"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="229,34,194,28,195,23,230,29"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="placing_monster" name="placing_monster">
+<area shape="rect" id="Node000001" title="Places the monster at a random spawn point (excluding mimic spawn)." alt="" coords="576,31,707,56"/>
+<area shape="rect" id="Node000002" href="$portes_8c.html#ad5505b412ae3557b166b16d57af43983" title="Handles failed monster attack when door is closed." alt="" coords="357,5,528,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="562,36,528,32,529,26,563,31"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,31,195,56"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="562,46,195,46,195,41,562,41"/>
+<area shape="rect" id="Node000003" href="$game__core_8c.html#ac5c54df7ed3b930268c8d7752c101725" title="Updates the monster and door logic for the current frame." alt="" coords="243,5,309,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,21,309,21,309,15,344,15"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="230,30,196,37,195,32,229,25"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+</map>

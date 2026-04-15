@@ -1,0 +1,49 @@
+<map id="lib/renderer.h" name="lib/renderer.h">
+<area shape="rect" id="Node000001" title="Header for every in game render." alt="" coords="443,5,551,31"/>
+<area shape="rect" id="Node000002" href="$game__core_8h.html" title="Heador for the main game loop." alt="" coords="444,79,551,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,31,491,65,486,65,488,31"/>
+<area shape="poly" id="edge23_Node000002_Node000001" title=" " alt="" coords="502,78,503,44,509,45,507,79"/>
+<area shape="rect" id="Node000003" href="$constantes_8h_source.html" title=" " alt="" coords="405,445,510,471"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="532,102,570,121,589,134,605,150,620,171,628,190,632,237,632,313,629,337,619,358,605,378,588,395,547,423,506,443,504,438,545,418,585,391,601,374,615,356,624,335,627,312,627,237,623,192,615,174,601,154,585,138,567,125,530,106"/>
+<area shape="rect" id="Node000013" href="$buttons_8h.html" title="Header for the buttons structure." alt="" coords="667,225,749,251"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="547,102,599,120,650,150,678,180,698,212,694,214,674,183,646,154,596,125,545,107"/>
+<area shape="rect" id="Node000014" href="$settings_8h.html" title="Header for the settings." alt="" coords="329,299,415,324"/>
+<area shape="poly" id="edge14_Node000002_Node000014" title=" " alt="" coords="483,106,460,127,437,154,417,188,401,224,381,286,376,285,396,222,412,185,432,150,456,123,480,102"/>
+<area shape="rect" id="Node000015" href="$portes_8h.html" title="Header for in game doors." alt="" coords="263,152,337,177"/>
+<area shape="poly" id="edge16_Node000002_Node000015" title=" " alt="" coords="467,107,346,150,344,145,465,102"/>
+<area shape="rect" id="Node000019" href="$transitionNuit_8h.html" title="Animation between two nights and winning screen." alt="" coords="393,372,516,397"/>
+<area shape="poly" id="edge24_Node000002_Node000019" title=" " alt="" coords="496,105,483,153,466,267,459,358,453,358,461,267,477,151,491,104"/>
+<area shape="rect" id="Node000020" href="$panorama_8h.html" title="Header de panaorama." alt="" coords="491,152,591,177"/>
+<area shape="poly" id="edge26_Node000002_Node000020" title=" " alt="" coords="507,103,529,139,525,142,502,106"/>
+<area shape="rect" id="Node000004" href="$commun_8h.html" title="General header for the project, including all the libraries and defining the main structures." alt="" coords="135,519,225,544"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="413,473,239,518,238,513,412,468"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="553,519,649,544"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="482,468,567,510,564,515,479,473"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="673,519,817,544"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="504,468,686,513,685,518,503,473"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="249,519,367,544"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="434,473,346,515,344,510,432,468"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="391,519,529,544"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="460,471,462,505,456,505,455,471"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,592,72,617"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="158,546,75,588,73,583,156,542"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="97,592,167,617"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="174,546,150,582,145,579,170,543"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="192,592,267,617"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="190,543,216,579,211,582,186,546"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="291,592,355,617"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="204,542,288,583,286,588,202,546"/>
+<area shape="poly" id="edge13_Node000013_Node000003" title=" " alt="" coords="710,251,705,281,695,320,678,362,650,399,621,420,589,436,524,453,523,448,587,431,619,416,646,395,673,360,690,319,700,280,704,250"/>
+<area shape="poly" id="edge15_Node000014_Node000003" title=" " alt="" coords="373,324,373,358,377,378,384,396,402,418,424,436,421,440,398,422,379,399,371,379,368,359,368,324"/>
+<area shape="rect" id="Node000016" href="$bfs_8h.html" title="Header for the optimised research of the player by the monster." alt="" coords="263,225,318,251"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="301,178,297,212,291,211,296,177"/>
+<area shape="poly" id="edge18_Node000016_Node000003" title=" " alt="" coords="295,250,304,284,318,323,340,362,370,395,397,418,425,436,422,441,394,422,366,399,336,365,314,325,299,285,290,251"/>
+<area shape="rect" id="Node000017" href="$ia__monstre_8h.html" title="Header for the monster&#39;s functionement." alt="" coords="147,299,253,324"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="278,253,227,292,224,288,274,249"/>
+<area shape="rect" id="Node000018" href="$map_8h.html" title="Header for the map structure." alt="" coords="169,372,231,397"/>
+<area shape="poly" id="edge20_Node000017_Node000018" title=" " alt="" coords="203,324,203,358,197,358,197,324"/>
+<area shape="poly" id="edge22_Node000018_Node000003" title=" " alt="" coords="232,392,403,439,402,444,231,397"/>
+<area shape="poly" id="edge21_Node000018_Node000004" title=" " alt="" coords="201,398,186,505,181,505,196,397"/>
+<area shape="poly" id="edge25_Node000019_Node000003" title=" " alt="" coords="458,398,459,432,454,432,452,398"/>
+<area shape="poly" id="edge27_Node000020_Node000003" title=" " alt="" coords="546,177,552,216,555,272,550,336,542,368,530,399,513,422,492,440,489,436,509,418,526,396,537,367,545,335,550,272,547,216,541,178"/>
+</map>

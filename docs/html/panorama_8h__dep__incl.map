@@ -1,0 +1,20 @@
+<map id="lib/panorama.h" name="lib/panorama.h">
+<area shape="rect" id="Node000001" title="Header de panaorama." alt="" coords="314,5,434,31"/>
+<area shape="rect" id="Node000002" href="$game__core_8h.html" title="Heador for the main game loop." alt="" coords="236,79,363,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,42,313,80,310,77,350,38"/>
+<area shape="rect" id="Node000009" href="$panorama_8c.html" title="Fournie les fonctions pour le déplacement de camera de jeu." alt="" coords="387,79,510,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="398,38,438,77,435,80,394,42"/>
+<area shape="rect" id="Node000003" href="$MainMenu_8h.html" title="Header for the Main Menu structure." alt="" coords="98,152,221,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,113,183,154,181,149,263,108"/>
+<area shape="rect" id="Node000006" href="$renderer_8h.html" title="Header for every in game render." alt="" coords="245,152,353,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="293,118,295,152,290,152,288,118"/>
+<area shape="rect" id="Node000008" href="$game__core_8c.html" title="Main game loop." alt="" coords="378,152,506,177"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="336,108,420,149,417,154,333,112"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title="FIle for the game to decite game state." alt="" coords="5,225,95,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="132,187,69,227,66,223,129,183"/>
+<area shape="rect" id="Node000005" href="$menu_8c.html" title="Creation and rendering of the Main Menu." alt="" coords="119,225,213,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="164,191,168,225,162,225,159,191"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="305,139,304,104,309,104,311,138"/>
+<area shape="rect" id="Node000007" href="$renderer_8c.html" title="File for every in game render." alt="" coords="244,225,355,251"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="302,191,302,225,297,225,297,191"/>
+</map>

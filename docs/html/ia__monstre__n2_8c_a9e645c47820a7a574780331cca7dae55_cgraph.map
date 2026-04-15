@@ -1,0 +1,5 @@
+<map id="move_monster" name="move_monster">
+<area shape="rect" id="Node000001" title="Moves the monster one step toward the player using BFS." alt="" coords="5,5,125,31"/>
+<area shape="rect" id="Node000002" href="$ia__monstre__n2_8c.html#a58f80822ee6d18de92079f104705f3c7" title="Finds the next step for the monster using BFS." alt="" coords="173,5,287,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,15,160,15,160,21,126,21"/>
+</map>

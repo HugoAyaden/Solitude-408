@@ -1,0 +1,16 @@
+<map id="cameraButton" name="cameraButton">
+<area shape="rect" id="Node000001" title="Returns the total number of active camera buttons." alt="" coords="700,31,815,56"/>
+<area shape="rect" id="Node000002" href="$game__core_8c.html#ac8fa856ac0b9c565af7704385f4ea2bc" title="Updates the battery level." alt="" coords="484,5,605,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="686,38,605,28,606,23,687,32"/>
+<area shape="rect" id="Node000006" href="$buttons_8c.html#a9515c4dd6739c32c637758377982f107" title="Handles mouse events for individual camera buttons." alt="" coords="437,55,652,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="687,54,653,58,652,53,686,49"/>
+<area shape="rect" id="Node000003" href="$game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf" title="Updates the main game logic." alt="" coords="261,5,371,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="471,21,372,21,372,15,471,15"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,31,195,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="247,31,195,39,194,34,247,26"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="rect" id="Node000007" href="$game__core_8c.html#a8c02a5b2a0d5c59b1227fc6866ee8fa8" title="Handles global game events." alt="" coords="243,55,389,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="423,70,390,70,390,65,423,65"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="228,57,195,52,195,47,229,52"/>
+</map>

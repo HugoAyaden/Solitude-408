@@ -1,0 +1,21 @@
+<map id="difficulte" name="difficulte">
+<area shape="rect" id="Node000001" title="Adjusts the game difficulty according to the current night." alt="" coords="5,80,84,105"/>
+<area shape="rect" id="Node000002" href="$ia__monstre__n2_8c.html#a5c366f731dc2c18a20808cbe4049d036" title="Returns a random percentage value used to decide movement probability." alt="" coords="355,5,515,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,77,92,57,131,39,184,26,239,18,341,12,341,17,239,23,185,31,133,45,95,62,64,82"/>
+<area shape="rect" id="Node000003" href="$ia__monstre__n3_8c.html#afd8e5bb77c7fba1a170e8f5be2fe6c4d" title="Handles the mimic&#39;s movement logic during gameplay." alt="" coords="145,55,294,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="84,84,131,77,132,83,85,90"/>
+<area shape="rect" id="Node000007" href="$ia__monstre__n2_8c.html#a9e645c47820a7a574780331cca7dae55" title="Moves the monster one step toward the player using BFS." alt="" coords="159,104,279,129"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="85,95,146,104,145,109,84,101"/>
+<area shape="rect" id="Node000009" href="$ia__monstre__n1_8c.html#a32cc4da6a78d820a240f6d9ff1b04aea" title="Moves the monster randomly through accessible neighboring directions." alt="" coords="132,177,307,203"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="70,103,133,140,184,168,182,173,131,144,67,108"/>
+<area shape="poly" id="edge6_Node000003_Node000002" title=" " alt="" coords="275,52,365,31,366,36,276,57"/>
+<area shape="rect" id="Node000004" href="$ia__monstre__n3_8c.html#a188de5940534dd87ffb6708a075c6d7d" title="Executes the mimic’s attack behavior against the player." alt="" coords="375,55,495,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="294,65,361,65,361,70,294,70"/>
+<area shape="rect" id="Node000005" href="$ia__monstre__n1_8c.html#a3fce2962f56489cd2fced7cb0b21e4d3" title="Ending condition check for monster attack on player." alt="" coords="613,31,651,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="495,57,599,45,600,50,495,63"/>
+<area shape="rect" id="Node000006" href="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c" title="Mimic&#39;s spawnpoint." alt="" coords="563,80,701,105"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="495,72,549,79,548,85,495,78"/>
+<area shape="rect" id="Node000008" href="$ia__monstre__n2_8c.html#a58f80822ee6d18de92079f104705f3c7" title="Finds the next step for the monster using BFS." alt="" coords="378,104,491,129"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="279,114,364,114,364,119,279,119"/>
+<area shape="poly" id="edge10_Node000009_Node000009" title=" " alt="" coords="190,179,184,169,188,159,200,153,219,151,243,154,253,163,250,167,241,159,219,156,201,158,192,163,190,168,195,176"/>
+</map>

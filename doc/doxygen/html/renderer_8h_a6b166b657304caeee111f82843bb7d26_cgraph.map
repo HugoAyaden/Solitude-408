@@ -1,5 +1,0 @@
-<map id="affichage" name="affichage">
-<area shape="rect" id="Node000001" title="Affiche les différents écrans en fonction des états du jeu." alt="" coords="5,5,88,31"/>
-<area shape="rect" id="Node000002" href="$game__core_8c.html#a5448c0771e1cae40dc53c7031f8f82df" title="Permet l&#39;affichage des cameras." alt="" coords="136,5,261,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,15,122,15,122,21,88,21"/>
-</map>

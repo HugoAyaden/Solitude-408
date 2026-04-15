@@ -1,0 +1,10 @@
+<map id="draw_white_text" name="draw_white_text">
+<area shape="rect" id="Node000001" title="Renders white text." alt="" coords="453,31,584,56"/>
+<area shape="rect" id="Node000002" href="$settings_8c.html#a87552d7521df5d6fae9dba6b7fbb5b4b" title="Renders VHS&#45;style HUD icons (battery/quality)." alt="" coords="279,5,405,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="439,35,405,30,406,24,440,29"/>
+<area shape="rect" id="Node000003" href="$settings_8c.html#a0dbf20d7c39a891de9b3c5b63e18c220" title="Renders the complete settings screen." alt="" coords="108,31,231,56"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="439,46,231,46,231,41,439,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,32,231,37,230,32,265,27"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+</map>

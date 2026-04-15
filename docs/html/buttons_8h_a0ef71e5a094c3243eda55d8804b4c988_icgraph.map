@@ -1,0 +1,14 @@
+<map id="drawButton" name="drawButton">
+<area shape="rect" id="Node000001" title="Draws an interactive button with centered text." alt="" coords="623,31,720,56"/>
+<area shape="rect" id="Node000002" href="$renderer_8c.html#af8e9d4ca25b969ce9f536310be9e0371" title="Renders all control buttons on screen." alt="" coords="427,5,547,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="609,38,546,29,547,24,610,32"/>
+<area shape="rect" id="Node000006" href="$renderer_8c.html#a43f7a55205d929c0e493406a063ede63" title="Renders the individual camera selection buttons." alt="" coords="399,55,575,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="610,54,575,59,575,53,609,49"/>
+<area shape="rect" id="Node000003" href="$renderer_8c.html#ae92ac35e45310ea076670de12ccf174e" title="Renders all game UI elements." alt="" coords="243,31,351,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="414,30,351,39,350,34,413,25"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,31,195,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,46,195,46,195,41,229,41"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="385,57,350,53,351,47,385,52"/>
+</map>

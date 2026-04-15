@@ -1,0 +1,26 @@
+<map id="lib/bfs.h" name="lib/bfs.h">
+<area shape="rect" id="Node000001" title="Header for the optimised research of the player by the monster." alt="" coords="478,5,553,31"/>
+<area shape="rect" id="Node000002" href="$portes_8h.html" title="Header for in game doors." alt="" coords="320,79,415,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="481,39,393,81,390,76,478,34"/>
+<area shape="rect" id="Node000011" href="$ia__monstre__n2_8c.html" title="Creation and initialisation of the monster&#39;s better AI for night 2." alt="" coords="439,79,591,104"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="518,44,518,79,513,79,513,44"/>
+<area shape="rect" id="Node000012" href="$ia__monstre__n3_8c.html" title="Creation and initialisation of the mimic&#39;s AI for night 3." alt="" coords="615,79,767,104"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="557,33,664,76,662,81,555,38"/>
+<area shape="rect" id="Node000003" href="$game__core_8h.html" title="Heador for the main game loop." alt="" coords="236,152,363,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="349,116,312,154,308,150,345,112"/>
+<area shape="rect" id="Node000010" href="$portes_8c.html" title="File for in&#45;game doors." alt="" coords="387,152,484,177"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="390,112,426,150,422,154,386,116"/>
+<area shape="rect" id="Node000004" href="$MainMenu_8h.html" title="Header for the Main Menu structure." alt="" coords="98,225,221,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,186,183,227,181,223,263,181"/>
+<area shape="rect" id="Node000007" href="$renderer_8h.html" title="Header for every in game render." alt="" coords="245,225,353,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="293,191,295,225,290,225,288,191"/>
+<area shape="rect" id="Node000009" href="$game__core_8c.html" title="Main game loop." alt="" coords="378,225,506,251"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="336,181,420,223,417,227,333,186"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title="FIle for the game to decite game state." alt="" coords="5,299,95,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="132,260,69,301,66,296,129,256"/>
+<area shape="rect" id="Node000006" href="$menu_8c.html" title="Creation and rendering of the Main Menu." alt="" coords="119,299,213,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="164,264,168,298,162,299,159,265"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="305,212,304,178,309,178,311,212"/>
+<area shape="rect" id="Node000008" href="$renderer_8c.html" title="File for every in game render." alt="" coords="244,299,355,324"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="302,264,302,299,297,299,297,264"/>
+</map>

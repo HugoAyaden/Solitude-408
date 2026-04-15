@@ -1,0 +1,172 @@
+\doxysection{lib/\+Main\+Menu.h File Reference}
+\hypertarget{MainMenu_8h}{}\label{MainMenu_8h}\index{lib/MainMenu.h@{lib/MainMenu.h}}
+
+
+Header for the Main Menu structure.  
+
+
+{\ttfamily \#include "{}game\+\_\+core.\+h"{}}\newline
+Include dependency graph for Main\+Menu.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{MainMenu_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{MainMenu_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{MainMenu_8h_a58e1803e6011957aeca94db5c9304243}\label{MainMenu_8h_a58e1803e6011957aeca94db5c9304243} 
+\#define {\bfseries NEW\+\_\+\+GAME}~0
+\item 
+\Hypertarget{MainMenu_8h_aee9c50717007de95f65eeb3fb1c30708}\label{MainMenu_8h_aee9c50717007de95f65eeb3fb1c30708} 
+\#define {\bfseries LOAD\+\_\+\+GAME}~1
+\item 
+\Hypertarget{MainMenu_8h_aa2d5c758628dddfa26e73ca5a245222a}\label{MainMenu_8h_aa2d5c758628dddfa26e73ca5a245222a} 
+\#define {\bfseries SETTINGS}~2
+\item 
+\Hypertarget{MainMenu_8h_a28017dea6f5becdb38eba6eac6f51bbc}\label{MainMenu_8h_a28017dea6f5becdb38eba6eac6f51bbc} 
+\#define {\bfseries CREDITS}~3
+\item 
+\Hypertarget{MainMenu_8h_af26e8d7a88e676b61e8215e828a01653}\label{MainMenu_8h_af26e8d7a88e676b61e8215e828a01653} 
+\#define {\bfseries EXIT\+\_\+\+GAME}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6}{init\+\_\+menu}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}vcr\+Small, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}vcr\+Large)
+\begin{DoxyCompactList}\small\item\em Initializes the main menu assets and textures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26}{render\+\_\+menu}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Renders the main menu screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd}{check\+\_\+menu\+\_\+click}} (SDL\+\_\+\+Point mouse\+Pos)
+\begin{DoxyCompactList}\small\item\em Checks if a mouse click occurred on any menu button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c}{cleanup\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Frees all menu-\/related resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for the Main Menu structure. 
+
+\begin{DoxyAuthor}{Author}
+Amara Louay 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+11/02/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{MainMenu_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd}\index{MainMenu.h@{MainMenu.h}!check\_menu\_click@{check\_menu\_click}}
+\index{check\_menu\_click@{check\_menu\_click}!MainMenu.h@{MainMenu.h}}
+\doxysubsubsection{\texorpdfstring{check\_menu\_click()}{check\_menu\_click()}}
+{\footnotesize\ttfamily \label{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd} 
+int check\+\_\+menu\+\_\+click (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Point}]{mouse\+Pos}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a mouse click occurred on any menu button. 
+
+Iterates through all buttons to see if the click position intersects with any button\textquotesingle{}s rectangle. Returns the index of the clicked button or -\/1 if no button was clicked.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Pos} & The position of the mouse click. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the clicked button (0-\/4) or -\/1 if none. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{MainMenu_8h_adb10cbb4fe25240475df7a20057063fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c}\index{MainMenu.h@{MainMenu.h}!cleanup\_menu@{cleanup\_menu}}
+\index{cleanup\_menu@{cleanup\_menu}!MainMenu.h@{MainMenu.h}}
+\doxysubsubsection{\texorpdfstring{cleanup\_menu()}{cleanup\_menu()}}
+{\footnotesize\ttfamily \label{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c} 
+void cleanup\+\_\+menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Frees all menu-\/related resources. 
+
+Destroys textures for buttons, title, and background to prevent memory leaks. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{MainMenu_8h_a6e948dec4f0aa8c412a3cb380f9a706c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6}\index{MainMenu.h@{MainMenu.h}!init\_menu@{init\_menu}}
+\index{init\_menu@{init\_menu}!MainMenu.h@{MainMenu.h}}
+\doxysubsubsection{\texorpdfstring{init\_menu()}{init\_menu()}}
+{\footnotesize\ttfamily \label{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6} 
+void init\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{main\+Font}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{title\+Font}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the main menu assets and textures. 
+
+Loads the background image and creates textures for the title and all menu buttons using the provided fonts. Prevents double initialization.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for texture creation. \\
+\hline
+{\em main\+Font} & Font used for button labels. \\
+\hline
+{\em title\+Font} & Font used for the game title. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{MainMenu_8h_af396bcb6bf29c496121afd9025a31bd6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26}\index{MainMenu.h@{MainMenu.h}!render\_menu@{render\_menu}}
+\index{render\_menu@{render\_menu}!MainMenu.h@{MainMenu.h}}
+\doxysubsubsection{\texorpdfstring{render\_menu()}{render\_menu()}}
+{\footnotesize\ttfamily \label{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26} 
+void render\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+
+
+
+Renders the main menu screen. 
+
+Draws the background, centered title with dynamic underline, and interactive buttons with hover effects. Button positions and sizes scale with window resolution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer used for drawing. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{MainMenu_8h_a2e77a422bb2351c68927cb1fca0f9b26_icgraph}
+\end{center}
+\end{figure}

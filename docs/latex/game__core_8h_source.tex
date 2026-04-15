@@ -1,0 +1,36 @@
+\doxysection{game\+\_\+core.\+h}
+\hypertarget{game__core_8h_source}{}\label{game__core_8h_source}\index{lib/game\_core.h@{lib/game\_core.h}}
+\mbox{\hyperlink{game__core_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ GAME\_CORE\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ GAME\_CORE\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}constantes.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buttons_8h}{buttons.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{settings_8h}{settings.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{portes_8h}{portes.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{renderer_8h}{renderer.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transitionNuit_8h}{transitionNuit.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{panorama_8h}{panorama.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f}{change\_camera}}(case\_t\ *\ camera,\ case\_t\ *\ monstre,\ camera\_type*\ camera\_type);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_a5801bd126b77810d4a368ed379e52f45}{buttons\_getDoorCount}}();}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}{buttons\_getLightCount}}();}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8}{game\_handleEvent}}(SDL\_Event\ *event,\ SDL\_Window\ *window,\textcolor{keywordtype}{int}\ img\_stretchedW\_game\_res);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2f3df884c90a301efb19f9575fe9231d}{battery\_init}}();}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}{game\_initialise}}();}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc}{battery\_update}}(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keywordtype}{int}\ doorCount,\ \textcolor{keywordtype}{int}\ lightCount);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf}{game\_update}}(\textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f}{difficulte}}(\textcolor{keywordtype}{int}\ night);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac5c54df7ed3b930268c8d7752c101725}{update}}();}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}{game\_init}}(SDL\_Renderer*\ renderer,\ SDL\_Window*\ window,\ TTF\_Font*\ fontBattery,\ TTF\_Font*\ fontButtons);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}{game\_final\_cleanup}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f}{preload\_assets}}(SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

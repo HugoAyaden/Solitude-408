@@ -1,0 +1,5 @@
+<map id="renderCameraMap" name="renderCameraMap">
+<area shape="rect" id="Node000001" title="Renders the camera map overlay." alt="" coords="5,5,148,31"/>
+<area shape="rect" id="Node000002" href="$buttons_8c.html#abff617bf9c868c3345cf421780d45788" title="Draws the camera map overlay on screen." alt="" coords="196,5,301,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,15,182,15,182,21,148,21"/>
+</map>

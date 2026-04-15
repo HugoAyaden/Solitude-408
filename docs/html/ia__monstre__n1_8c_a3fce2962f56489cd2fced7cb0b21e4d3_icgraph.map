@@ -1,0 +1,16 @@
+<map id="fin" name="fin">
+<area shape="rect" id="Node000001" title="Ending condition check for monster attack on player." alt="" coords="849,31,888,56"/>
+<area shape="rect" id="Node000002" href="$ia__monstre__n3_8c.html#a188de5940534dd87ffb6708a075c6d7d" title="Executes the mimic’s attack behavior against the player." alt="" coords="681,5,801,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="835,40,801,33,802,27,836,34"/>
+<area shape="rect" id="Node000006" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Initializes the game and starts the main gameplay loop." alt="" coords="108,31,195,56"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="836,50,715,64,560,71,395,71,287,65,195,53,195,48,287,60,395,66,560,66,715,58,835,45"/>
+<area shape="rect" id="Node000003" href="$ia__monstre__n3_8c.html#afd8e5bb77c7fba1a170e8f5be2fe6c4d" title="Handles the mimic&#39;s movement logic during gameplay." alt="" coords="484,5,633,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="668,21,634,21,634,15,668,15"/>
+<area shape="rect" id="Node000004" href="$game__core_8c.html#a1180d11ae6bf626037812eacb7c43e3f" title="Adjusts the game difficulty according to the current night." alt="" coords="357,5,436,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="470,21,436,21,436,15,470,15"/>
+<area shape="rect" id="Node000005" href="$game__core_8c.html#ac5c54df7ed3b930268c8d7752c101725" title="Updates the monster and door logic for the current frame." alt="" coords="243,5,309,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="343,21,309,21,309,15,343,15"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="230,30,196,37,195,32,229,25"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main program entry point for the &quot;Solitude 408&quot; game." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+</map>

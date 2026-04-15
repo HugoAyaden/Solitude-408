@@ -1,0 +1,128 @@
+\doxysection{src/ia\+\_\+monstre\+\_\+n2.c File Reference}
+\hypertarget{ia__monstre__n2_8c}{}\label{ia__monstre__n2_8c}\index{src/ia\_monstre\_n2.c@{src/ia\_monstre\_n2.c}}
+
+
+Creation and initialisation of the monster\textquotesingle{}s better AI for night 2.  
+
+
+{\ttfamily \#include "{}bfs.\+h"{}}\newline
+Include dependency graph for ia\+\_\+monstre\+\_\+n2.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre__n2_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7}{bfs\+\_\+next\+\_\+step}} (\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}start, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}goal)
+\begin{DoxyCompactList}\small\item\em Finds the next step for the monster using BFS. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036}{chance\+\_\+deplacement}} ()
+\begin{DoxyCompactList}\small\item\em Returns a random percentage value used to decide movement probability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55}{move\+\_\+monster}} (\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}map, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}monster, \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Moves the monster one step toward the player using BFS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Creation and initialisation of the monster\textquotesingle{}s better AI for night 2. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/02/2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{ia__monstre__n2_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!bfs\_next\_step@{bfs\_next\_step}}
+\index{bfs\_next\_step@{bfs\_next\_step}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
+\doxysubsubsection{\texorpdfstring{bfs\_next\_step()}{bfs\_next\_step()}}
+{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7} 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} bfs\+\_\+next\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{start}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{goal}{}\end{DoxyParamCaption})}
+
+
+
+Finds the next step for the monster using BFS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Pointer to the starting cell. \\
+\hline
+{\em goal} & Pointer to the target cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the next cell to move to, or NULL if no path is found. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!chance\_deplacement@{chance\_deplacement}}
+\index{chance\_deplacement@{chance\_deplacement}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
+\doxysubsubsection{\texorpdfstring{chance\_deplacement()}{chance\_deplacement()}}
+{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036} 
+int chance\+\_\+deplacement (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns a random percentage value used to decide movement probability. 
+
+\begin{DoxyReturn}{Returns}
+A random integer between 0 and 99. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!move\_monster@{move\_monster}}
+\index{move\_monster@{move\_monster}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
+\doxysubsubsection{\texorpdfstring{move\_monster()}{move\_monster()}}
+{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55} 
+void move\+\_\+monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monster}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur}{}\end{DoxyParamCaption})}
+
+
+
+Moves the monster one step toward the player using BFS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Pointer to the game map structure. \\
+\hline
+{\em monster} & Pointer to the monster\textquotesingle{}s current position. \\
+\hline
+{\em joueur} & Pointer to the player\textquotesingle{}s current position. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55_icgraph}
+\end{center}
+\end{figure}

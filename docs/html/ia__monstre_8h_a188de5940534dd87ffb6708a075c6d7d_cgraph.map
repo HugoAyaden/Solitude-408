@@ -1,0 +1,7 @@
+<map id="attaque_mimic" name="attaque_mimic">
+<area shape="rect" id="Node000001" title="Executes the mimic’s attack behavior against the player." alt="" coords="5,31,125,56"/>
+<area shape="rect" id="Node000002" href="$ia__monstre__n1_8c.html#a3fce2962f56489cd2fced7cb0b21e4d3" title="Ending condition check for monster attack on player." alt="" coords="223,5,262,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,32,210,20,210,25,126,37"/>
+<area shape="rect" id="Node000003" href="$ia__monstre__n3_8c.html#a5295b779cd9f160d7b811942a1207e2c" title="Mimic&#39;s spawnpoint." alt="" coords="173,55,312,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,49,160,53,159,59,125,54"/>
+</map>

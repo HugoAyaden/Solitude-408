@@ -1,0 +1,143 @@
+\doxysection{src/transition\+Nuit.c File Reference}
+\hypertarget{transitionNuit_8c}{}\label{transitionNuit_8c}\index{src/transitionNuit.c@{src/transitionNuit.c}}
+
+
+Between nights and winning screen transition animation.  
+
+
+{\ttfamily \#include "{}constantes.\+h"{}}\newline
+Include dependency graph for transition\+Nuit.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{transitionNuit_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf}{transition\+Win}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Displays victory screen with "{}\+YOU WIN"{} fade animation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}{transition\+Nuit}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int nuit\+Actuelle)
+\begin{DoxyCompactList}\small\item\em Displays night transition animation "{}\+NIGHT X → X+1"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{transitionNuit_8c_a6b57f01d3c576db5368dd0efc2f435a4}\label{transitionNuit_8c_a6b57f01d3c576db5368dd0efc2f435a4} 
+SDL\+\_\+\+Event {\bfseries event}
+\item 
+\Hypertarget{transitionNuit_8c_a62e0adf47e8cf18756878f97fce3c39c}\label{transitionNuit_8c_a62e0adf47e8cf18756878f97fce3c39c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries text} = NULL
+\item 
+\Hypertarget{transitionNuit_8c_a255ccfeff704bdd4a47b2e68cd07a5d1}\label{transitionNuit_8c_a255ccfeff704bdd4a47b2e68cd07a5d1} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries chiffre} = NULL
+\item 
+\Hypertarget{transitionNuit_8c_a82a61ab82e7ed9860f041010b9cdd827}\label{transitionNuit_8c_a82a61ab82e7ed9860f041010b9cdd827} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries chiffre\+Next} = NULL
+\item 
+\Hypertarget{transitionNuit_8c_abf5bfa705e66ffc1ddaa6ce46c960873}\label{transitionNuit_8c_abf5bfa705e66ffc1ddaa6ce46c960873} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} {\bfseries font} = NULL
+\item 
+\Hypertarget{transitionNuit_8c_a55aefd071649ac9dd8133e2d8a52d11f}\label{transitionNuit_8c_a55aefd071649ac9dd8133e2d8a52d11f} 
+SDL\+\_\+\+Rect {\bfseries rect}
+\item 
+\Hypertarget{transitionNuit_8c_a0fc237e58caf350b43f62fe775a407aa}\label{transitionNuit_8c_a0fc237e58caf350b43f62fe775a407aa} 
+SDL\+\_\+\+Rect {\bfseries rect2}
+\item 
+\Hypertarget{transitionNuit_8c_a2c713ede393ca3c7da79fc2864424318}\label{transitionNuit_8c_a2c713ede393ca3c7da79fc2864424318} 
+SDL\+\_\+\+Rect {\bfseries rect3}
+\item 
+\Hypertarget{transitionNuit_8c_a065c0bf38dd3e0b4348dfa08d1fd470e}\label{transitionNuit_8c_a065c0bf38dd3e0b4348dfa08d1fd470e} 
+SDL\+\_\+\+Rect {\bfseries win\+Rect}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Between nights and winning screen transition animation. 
+
+\begin{DoxyAuthor}{Author}
+Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+23/03/2026
+\end{DoxyDate}
+Une animation qui permet d\textquotesingle{}afficher le changement de nuit pour comprendre qu\textquotesingle{}on passe à la nuit suivante (on a donc gagné la nuit -\/1) 
+
+\label{doc-func-members}
+\Hypertarget{transitionNuit_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}\index{transitionNuit.c@{transitionNuit.c}!transitionNuit@{transitionNuit}}
+\index{transitionNuit@{transitionNuit}!transitionNuit.c@{transitionNuit.c}}
+\doxysubsubsection{\texorpdfstring{transitionNuit()}{transitionNuit()}}
+{\footnotesize\ttfamily \label{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6} 
+int transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{nuit\+Actuelle}{}\end{DoxyParamCaption})}
+
+
+
+Displays night transition animation "{}\+NIGHT X → X+1"{}. 
+
+Affiche une animation de transition entre deux nuits.
+
+Complete Star Wars-\/style sequence\+:
+\begin{DoxyEnumerate}
+\item Fade in "{}\+NIGHT X"{}
+\item Fade in next night number below
+\item Scroll both numbers upward
+\item Fade out current number
+\item Fade out remaining text
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em window} & SDL window for sizing. \\
+\hline
+{\em nuit\+Actuelle} & Current night number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, negative error codes on failure. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf}\index{transitionNuit.c@{transitionNuit.c}!transitionWin@{transitionWin}}
+\index{transitionWin@{transitionWin}!transitionNuit.c@{transitionNuit.c}}
+\doxysubsubsection{\texorpdfstring{transitionWin()}{transitionWin()}}
+{\footnotesize\ttfamily \label{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf} 
+int transition\+Win (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Displays victory screen with "{}\+YOU WIN"{} fade animation. 
+
+Complete sequence\+: fade in → hold 2s → fade out.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em window} & SDL window for sizing. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, negative error codes on failure. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf_icgraph}
+\end{center}
+\end{figure}

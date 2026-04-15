@@ -1,8 +1,0 @@
-<map id="buttons_getDoorCount" name="buttons_getDoorCount">
-<area shape="rect" id="Node000001" title="Retourne le nombre de portes activées." alt="" coords="299,5,467,31"/>
-<area shape="rect" id="Node000002" href="$game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a" title="Fonction principale du programme." alt="" coords="5,5,92,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,21,92,21,92,15,285,15"/>
-<area shape="rect" id="Node000003" href="$game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf" title="Met à jour la logique du jeu." alt="" coords="140,31,251,56"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="285,34,251,39,250,33,285,29"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="126,34,92,28,93,23,127,29"/>
-</map>
