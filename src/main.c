@@ -111,7 +111,7 @@ int main() {
     if(texStars)   SDL_SetTextureBlendMode(texStars, SDL_BLENDMODE_BLEND);
     if(texPlanets) SDL_SetTextureBlendMode(texPlanets, SDL_BLENDMODE_BLEND);
     if(texLogo)    SDL_SetTextureBlendMode(texLogo, SDL_BLENDMODE_BLEND);
-
+    preload_assets_1(ren);
     // 3. START THE MUSIC 
     if(sOst) {
         // Loop infinitely, (3 seconds) fade-in
@@ -168,7 +168,7 @@ int main() {
     }
 
     // 7 & 8. THE FREEZE & ASSET LOADING
-    preload_assets(ren);
+    preload_assets_2(ren);
 
     // 9. FADE OUT EVERYTHING TO BLACK (Music keeps playing!)
     SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
@@ -187,6 +187,7 @@ int main() {
         SDL_RenderPresent(ren); 
         SDL_Delay(16);
     }
+    preload_assets_2(ren);
 
     // 10. Cleanup
     if(texStars)   SDL_DestroyTexture(texStars);

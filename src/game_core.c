@@ -348,7 +348,7 @@ void update(){
  *
  * \param renderer SDL renderer used for texture creation.
  */
-void preload_assets(SDL_Renderer* renderer) {
+void preload_assets_1(SDL_Renderer* renderer) {
 
        // Load Textures (unbearable to read, but it works)
     BLACKOUT = IMG_LoadTexture(renderer, "assets/img/INgame/BLACKOUT.png");
@@ -373,7 +373,6 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_OFF_LI_ON_L_D_OFF_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_OFF.png");
     R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_D.png");
     R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
-    printf("checkpoint");
     
     R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M_W.png");
     R_D_OFF_LI_ON_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON_M.png");
@@ -386,8 +385,8 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_OFF_LI_ON_L_D_OFF_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_OFF_LI_ON.png");
     R_D_OFF_LI_OFF_L_ON_LI_OFF_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_L_OFF_L_ON_LI_ON_M_W.png");
     R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W_D.png");
-    printf("checkpoint");
-    
+}
+void preload_assets_2(SDL_Renderer* renderer) {
     R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M_W.png");
     R_D_OFF_LI_ON_L_D_ON_LI_OFF_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_OFF_M.png");
     R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_ON_M_W_D.png");
@@ -402,7 +401,6 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_OFF_LI_ON_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_OFF_LI_ON_L_D_ON_LI_ON.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M_W.png");
     R_D_ON_LI_OFF_L_D_OFF_LI_ON_M = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_OFF_LI_ON_M.png");
-    printf("checkpoint");
     
     R_D_ON_LI_OFF_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_OFF.png");
     R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_OFF_LI_ON_M_W_D.png");
@@ -413,7 +411,8 @@ void preload_assets(SDL_Renderer* renderer) {
     R_D_ON_LI_ON_L_D_ON_LI_OFF = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_ON_L_D_ON_LI_OFF.png");
     R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON_M_W.png");
     R_D_ON_LI_OFF_L_D_ON_LI_ON = IMG_LoadTexture(renderer, "assets/img/INgame/R_D_ON_LI_OFF_L_D_ON_LI_ON.png");
-
+}
+void preload_assets_3(SDL_Renderer* renderer) {
     /* CAMERAS ROOM ASSETS */
     SKY = IMG_LoadTexture(renderer, "./assets/img/INgame/SKY.png");
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
@@ -421,7 +420,6 @@ void preload_assets(SDL_Renderer* renderer) {
     MONITOR_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM.png");
     MONITOR_ROOM_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_M.png");
     MONITOR_ROOM_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_MI.png");
-    printf("checkpoint");
     
     MONITOR_ROOM_MI_M = IMG_LoadTexture(renderer, "./assets/img/INgame/MONITOR_ROOM_MI_M.png");
     COMMAND_ROOM = IMG_LoadTexture(renderer, "./assets/img/INgame/COMMAND_ROOM.png");
@@ -440,7 +438,6 @@ void preload_assets(SDL_Renderer* renderer) {
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
     CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
-    printf("checkpoint");
     
     HALLWAY = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY.png");
     HALLWAY_M = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_M.png");
@@ -455,7 +452,6 @@ void preload_assets(SDL_Renderer* renderer) {
     L_D_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/L_D_MI.png");
     L_D_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/L_D_M_MI.png");
     R_D = IMG_LoadTexture(renderer, "./assets/img/INgame/R_D.png");
-    printf("checkpoint");
     R_D_M = IMG_LoadTexture(renderer, "./assets/img/INgame/R_D_M.png");
     R_D_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/R_D_MI.png");
     R_D_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/R_D_M_MI.png");
@@ -470,8 +466,6 @@ void preload_assets(SDL_Renderer* renderer) {
     mimicMove = Mix_LoadWAV("./assets/audio/sound/mimic.wav");
     door_close = Mix_LoadWAV("./assets/audio/sound/door_close.wav");
     
-    printf("checkpoint");
-    
     light_on = Mix_LoadWAV("./assets/audio/sound/light_on.wav");
     button_on = Mix_LoadWAV("./assets/audio/sound/button_on.wav");
     button_off = Mix_LoadWAV("./assets/audio/sound/button_off.wav");
@@ -485,7 +479,6 @@ void preload_assets(SDL_Renderer* renderer) {
     monster_death = IMG_LoadAnimation("./assets/img/INgame/monster_death.gif");
     mimic_death = IMG_LoadAnimation("./assets/img/INgame/mimic_death.gif");
     STATIC = IMG_LoadAnimation("./assets/img/INgame/static.gif");
-
 }
 
 /**

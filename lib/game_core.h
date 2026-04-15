@@ -32,6 +32,8 @@ void update();
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons);
 void game_final_cleanup();
 
-void preload_assets(SDL_Renderer* renderer);
+void preload_assets_1(SDL_Renderer* renderer);
+void preload_assets_2(SDL_Renderer* renderer);
+void preload_assets_3(SDL_Renderer* renderer);
 
 #endif
