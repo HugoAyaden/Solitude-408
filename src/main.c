@@ -128,7 +128,7 @@ int main() {
             SDL_RenderCopy(ren, texStars, NULL, NULL);
             
             SDL_RenderPresent(ren);
-            SDL_Delay(16); // ~60 FPS
+            SDL_Delay(50); // ~60 FPS
         }
     }
 
@@ -145,7 +145,7 @@ int main() {
             SDL_RenderCopy(ren, texPlanets, NULL, NULL);
             
             SDL_RenderPresent(ren);
-            SDL_Delay(16);
+            SDL_Delay(50);
         }
     }
 
@@ -163,7 +163,7 @@ int main() {
             SDL_RenderCopy(ren, texLogo, NULL, NULL);
             
             SDL_RenderPresent(ren);
-            SDL_Delay(16);
+            SDL_Delay(50);
         }
     }
 
