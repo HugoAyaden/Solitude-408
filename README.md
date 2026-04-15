@@ -42,7 +42,7 @@ Solitude 408 est un jeu de survie d'horreur où deux collègues à bord d'un vai
 
 ### Documentation doxygene:
 
-[Doxygen]([https://drive.google.com/drive/folders/1sYh54YUGxozC2EAchAByC7XBdANsIjq6?usp=sharing](https://hugoayaden.github.io/Solitude-408/html/))
+[Doxygen](https://hugoayaden.github.io/Solitude-408/html/)
 
 ### Comment jouer?:
 Votre objectif est de survivre 5 minutes aux attaques du monstre pendant chaque nuit.
