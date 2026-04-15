@@ -437,7 +437,7 @@ void preload_assets_3(SDL_Renderer* renderer) {
     CORRIDOR = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR.png");
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
-    CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
+    CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI_M.png");
 }
 void preload_assets_4(SDL_Renderer* renderer) {
     HALLWAY = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY.png");
