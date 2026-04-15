@@ -48,7 +48,7 @@ int render_credits(SDL_Renderer *renderer, SDL_Window *window)
     SDL_FreeSurface(bgSurface);
 
     const char *credits[] = {
-        "Solitude408", " ", " ",
+        "Solitude 408", " ", " ",
         "L2 Computer Science Project 2025-2026", " ", " ",
         "Developers:", " ",
         "Louay AMARA", "Hugo AYADEN", "Mathis DOS SANTOS", "Bastien LEFEVRE TAUGOURDEAU",
@@ -57,7 +57,7 @@ int render_credits(SDL_Renderer *renderer, SDL_Window *window)
         "SDL2 (game window)", "SDL2_image (rendering)", "SDL2_ttf (text)", "SDL2_mixer (audio)", "GCC Compiler",
         "C Language", "GIMP (images)", "Audacity (sounds)", "Blender (3D)",
         " ", " ",
-        "Music:", "A.C", " ",
+        "Music:", "A.C","BloodPixelHero"," ",
         "Thanks for playing!",
         NULL};
 
