@@ -35,5 +35,6 @@ void game_final_cleanup();
 void preload_assets_1(SDL_Renderer* renderer);
 void preload_assets_2(SDL_Renderer* renderer);
 void preload_assets_3(SDL_Renderer* renderer);
+void preload_assets_4(SDL_Renderer* renderer);
 
 #endif

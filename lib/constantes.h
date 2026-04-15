@@ -249,7 +249,7 @@ extern int assetsLoaded;
 extern Uint32 lastTime;
 extern int lightCount;
 extern Mix_Music* sOst; 
-extern Mix_Music* cameraStatic;
+extern Mix_Chunk* cameraStatic;
 extern Mix_Chunk* cameraSwitch;
 extern Mix_Chunk* doorKnocking;
 extern Mix_Chunk* monsterSpawn;

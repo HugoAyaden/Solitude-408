@@ -181,7 +181,7 @@ int camera_offset_x = 0;                //PAS UNE CONSTANTE, recup la position d
 int spacing_amount = 6;                 //pourcentage de l'image de jeu ou les boutons de portes sont affichés, plus c'est petit plus ils sont proches du centre
 int lightCount = 0;
 Mix_Music* sOst = NULL;
-Mix_Music* cameraStatic = NULL;
+Mix_Chunk* cameraStatic = NULL;
 Mix_Chunk* cameraSwitch = NULL;
 Mix_Chunk* doorKnocking = NULL;
 

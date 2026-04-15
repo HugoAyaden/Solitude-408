@@ -52,6 +52,11 @@ int main() {
     if(!f) save_settings(); else load_settings();
 
     // --- 2. Window & Resolution Setup ---
+
+    /* resIndex is the index of the resolution table as : resolutions[] = {"3840x2160", "2560x1440", "1920x1080", "1440x900"} 
+        It begins in "constantes.c" as 2 (1920x1080) wich is the most common screen size.
+        if the screen size is different it's loaded beforehand so it adapts.
+    */
     if (resIndex == 0){ 
         w = 3840; 
         h = 2160; 
@@ -169,6 +174,7 @@ int main() {
 
     // 7 & 8. THE FREEZE & ASSET LOADING
     preload_assets_2(ren);
+    preload_assets_3(ren);
 
     // 9. FADE OUT EVERYTHING TO BLACK (Music keeps playing!)
     SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
@@ -187,7 +193,7 @@ int main() {
         SDL_RenderPresent(ren); 
         SDL_Delay(16);
     }
-    preload_assets_2(ren);
+    preload_assets_4(ren);
 
     // 10. Cleanup
     if(texStars)   SDL_DestroyTexture(texStars);

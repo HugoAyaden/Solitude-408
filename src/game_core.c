@@ -4,7 +4,7 @@
 /**
  * \file game_core.c
  * \brief Main game loop
- * \author Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
+ * \author  Hugo AYADEN, Bastien LEFEVRE TAUGOURDEAU
  * \version 1.4
  * \date 10/03/2026
  *
@@ -438,7 +438,8 @@ void preload_assets_3(SDL_Renderer* renderer) {
     CORRIDOR_M = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M.png");
     CORRIDOR_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_MI.png");
     CORRIDOR_M_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/CORRIDOR_M_MI.png");
-    
+}
+void preload_assets_4(SDL_Renderer* renderer) {
     HALLWAY = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY.png");
     HALLWAY_M = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_M.png");
     HALLWAY_MI = IMG_LoadTexture(renderer, "./assets/img/INgame/HALLWAY_MI.png");
@@ -459,7 +460,7 @@ void preload_assets_3(SDL_Renderer* renderer) {
     MONSTER_R_DOOR_O = IMG_LoadTexture(renderer, "./assets/img/INgame/MONSTER_R_DOOR_O.png");
 
     /* Camera static loaded as a music and played during all the game just put at 0 when its not used*/
-    cameraStatic = Mix_LoadMUS("assets/audio/sound/camera-static.wav");
+    cameraStatic = Mix_LoadWAV("assets/audio/sound/camera-static.wav");
 
     /* SOUND EFFECTS */
     monsterSpawn = Mix_LoadWAV("./assets/audio/sound/googoogaga.mp3");
@@ -605,7 +606,7 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
 
     // --- 4. START THE CREEPY IN-GAME AMBIENCE ---
-    Mix_PlayMusic(cameraStatic, -1);
+    Mix_VolumeChunk(cameraStatic, -1);
 
      while (!fin(map, monster) && !fin(map, mimic) && finish >= 0){
         if(cameraStatic || cameraSwitch) 
@@ -748,7 +749,7 @@ void game_final_cleanup(){
         free(mimic);
         mimic = NULL;
     }
-    Mix_FreeMusic(cameraStatic);
+    Mix_FreeChunk(cameraStatic);
     Mix_FreeChunk(cameraSwitch);
     Mix_FreeChunk(doorKnocking);
     Mix_FreeChunk(monsterSpawn);
