@@ -93,39 +93,112 @@ int main() {
 
     SDL_Texture* sTex = CreateStaticTexture(ren);
 
-    // --- Music Timer Variables ---
-    Uint32 musicStartTime = SDL_GetTicks() + 1500; 
-    int musicStarted = false;
 
     // Initialize Menu Module
     init_menu(ren, vSmall, vLarge);
 
-    // =========================================
-    // --- PRELOAD ASSETS (The Loading Screen) ---
-    // Draw a black screen so the boot-up feels clean
-    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
-    SDL_RenderClear(ren);
+// ========================================================
+    // --- PRELOAD SEQUENCE ---
+    // ========================================================
     
-    // Optional Pro-Move: If you want to render "LOADING..." text here, you can!
-    
-    SDL_RenderPresent(ren);
+    // 1 & 2. Black Screen is default. Assets Loading.
+    SDL_Texture* texStars   = IMG_LoadTexture(ren, "assets/img/intro/bg.jpg");
+    SDL_Texture* texPlanets = IMG_LoadTexture(ren, "assets/img/intro/E&M.png");
+    SDL_Texture* texLogo    = IMG_LoadTexture(ren, "assets/img/intro/title.png");
 
-    // Now freeze the CPU for a second to load everything into RAM
-    preload_assets(ren); 
-    // =========================================
+
+    // Enable blending for fade in/off
+    if(texStars)   SDL_SetTextureBlendMode(texStars, SDL_BLENDMODE_BLEND);
+    if(texPlanets) SDL_SetTextureBlendMode(texPlanets, SDL_BLENDMODE_BLEND);
+    if(texLogo)    SDL_SetTextureBlendMode(texLogo, SDL_BLENDMODE_BLEND);
+
+    // 3. START THE MUSIC 
+    if(sOst) {
+        // Loop infinitely, (3 seconds) fade-in
+        Mix_FadeInMusic(sOst, -1, 3000); 
+    }
+
+    // 4. ANIMATION: FADE IN STARS
+    if (texStars) {
+        for (int alpha = 0; alpha <= 255; alpha += 5) {
+            SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+            SDL_RenderClear(ren);
+            
+            SDL_SetTextureAlphaMod(texStars, alpha);
+            SDL_RenderCopy(ren, texStars, NULL, NULL);
+            
+            SDL_RenderPresent(ren);
+            SDL_Delay(16); // ~60 FPS
+        }
+    }
+
+    // 5. ANIMATION: FADE IN PLANETS
+    if (texPlanets) {
+        for (int alpha = 0; alpha <= 255; alpha += 5) {
+            SDL_RenderClear(ren); // Clear to black
+            
+            // Draw Stars fully opaque in the background
+            SDL_RenderCopy(ren, texStars, NULL, NULL); 
+            
+            // Draw Planets fading in on top
+            SDL_SetTextureAlphaMod(texPlanets, alpha);
+            SDL_RenderCopy(ren, texPlanets, NULL, NULL);
+            
+            SDL_RenderPresent(ren);
+            SDL_Delay(16);
+        }
+    }
+
+    // 6. ANIMATION: FADE IN LOGO & TITLE
+    if (texLogo) {
+        for (int alpha = 0; alpha <= 255; alpha += 5) {
+            SDL_RenderClear(ren);
+            
+            // Draw Stars and Planets fully opaque
+            SDL_RenderCopy(ren, texStars, NULL, NULL);
+            SDL_RenderCopy(ren, texPlanets, NULL, NULL);
+            
+            // Draw Logo fading in on top of everything
+            SDL_SetTextureAlphaMod(texLogo, alpha);
+            SDL_RenderCopy(ren, texLogo, NULL, NULL);
+            
+            SDL_RenderPresent(ren);
+            SDL_Delay(16);
+        }
+    }
+
+    // 7 & 8. THE FREEZE & ASSET LOADING
+    preload_assets(ren);
+
+    // 9. FADE OUT EVERYTHING TO BLACK (Music keeps playing!)
+    SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
+    for (int alpha = 0; alpha <= 255; alpha += 5) {
+        SDL_RenderClear(ren);
+        
+        // Draw the full background composition normally
+        if(texStars)   SDL_RenderCopy(ren, texStars, NULL, NULL);
+        if(texPlanets) SDL_RenderCopy(ren, texPlanets, NULL, NULL);
+        if(texLogo)    SDL_RenderCopy(ren, texLogo, NULL, NULL);
+
+        // Draw a black rectangle fading in over the composition
+        SDL_SetRenderDrawColor(ren, 0, 0, 0, alpha);
+        SDL_RenderFillRect(ren, NULL);
+
+        SDL_RenderPresent(ren); 
+        SDL_Delay(16);
+    }
+
+    // 10. Cleanup
+    if(texStars)   SDL_DestroyTexture(texStars);
+    if(texPlanets) SDL_DestroyTexture(texPlanets);
+    if(texLogo)    SDL_DestroyTexture(texLogo);
+    
+    // ========================================================
 
     GameState state = STATE_MENU, next = STATE_MENU;
     SDL_Event e;
 
     while (run) {
-        Uint32 now = SDL_GetTicks();
-
-        // --- 4. Music Logic (Wait & Resume) ---
-        if (!musicStarted && sOst && now >= musicStartTime) {
-            Mix_PlayMusic(sOst, -1);
-            Mix_VolumeMusic(musicVol * masterVol / 100);
-            musicStarted = true;
-        }
 
         // --- 5. Event Handling ---
         while (SDL_PollEvent(&e)) {
@@ -159,11 +232,13 @@ int main() {
                 progress += 0.005f; // 1. Static builds up
             } else {
                 // 2. Max static reached! Draw PURE BLACK SCREEN.
+                Mix_FadeOutMusic(1000); 
+
                 SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
                 SDL_RenderClear(ren);
                 SDL_RenderPresent(ren);
 
-                // 3. Launch game! (Music is STILL PLAYING seamlessly during the heavy loading)
+                // 3. Launch game! 
                 if (next == STATE_NEW_GAME) save_night(0);
                 game_init(ren, win, vSmall, vSmall); 
                 
@@ -171,9 +246,13 @@ int main() {
                 state = STATE_MENU; 
                 next = STATE_MENU; 
                 trans = false;
-                progress = 0.0f;
-                musicStartTime = SDL_GetTicks() + 3000; 
-                Mix_HaltChannel(-1);
+                progress = 0.0f;                
+                Mix_HaltChannel(-1); 
+                
+                // We relaunch the OST manually
+                if (sOst) {
+                    Mix_FadeInMusic(sOst, -1, 2000);
+                }
             }
         }
 
