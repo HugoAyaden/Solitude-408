@@ -299,7 +299,7 @@ void difficulte(int night){
              mouvement_mimic(map, mimic);
              }
              //else they both move (balancing issues)
-                if(chance_deplacement() < PERCENT_MOVE_MONSTER) {
+            else if(chance_deplacement() < PERCENT_MOVE_MONSTER) {
                     move_monster(map, monster, joueur);
                     mouvement_mimic(map, mimic);
                 }
