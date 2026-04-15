@@ -9,6 +9,7 @@
 
 #include "buttons.h"
 
+
 /**
  * \brief Initializes the state of all buttons.
  *
@@ -31,6 +32,7 @@ void buttons_init()
     camera7on = 0;
     camera8on = 0;
     camera9on = 0;
+    int cameraTab[] = {camera1on, camera2on, camera3on, camera4on, camera5on, camera6on, camera7on, camera8on, camera9on};
 }
 
 /**
