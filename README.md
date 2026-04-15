@@ -46,12 +46,19 @@ link
 
 ### Comment jouer?:
 Votre objectif est de survivre 5 minutes aux attaques du monstre pendant chaque nuit.
-Pour vous défendre, il faut:
- - Regarder les caméras pour déduire la position du monstre.
+Pour vous défendre, il vous faut:
+ - Regardez les caméras pour déduire la position du monstre.
  - Fermer la porte si le monstre apparaît devant celle-ci.
 Il vous faut aussi gérer votre batterie jusqu'à la fin de la nuit:
 - Laisser les lumières des portes et la lumière générale drainent la batterie
 La lumière permet de voir si le monstre est à la porte.
+
+Il y a deux monstres dans le jeu. Pour les contrer :
+Monstre: Il faut fermer les portes.
+Mimique: La lumière générale doit être éteinte.
+
+Note: Si les deux monstres vous attaquent en même temps, le mimique passera AVANT le monstre,
+il vous faudra donc éteindre les lumières PUIS les rallumer et fermer les portes.
 
 Avec votre souris, vous pouvez déplacer la caméra de jeu pour afficher les portes et les boutons.
 Pour cela, il faut que la souris soit aux extrémités gauche ou droite de la fenêtre de jeu.
@@ -73,19 +80,37 @@ sudo  apt install pkg-config
 ```
 sudo  apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 ```
+------------------------------------
+Si vous voulez utiliser Git :
+
 4. Git:
 ```
 sudo  apt install git
 ```
-5. Télécharger le dépôt et entrer dans la racine du dépôt.
+5. Clone:
+```
+git clone https://github.com/HugoAyaden/Solitude-408.git
+```
+------------------------------------
+
+SINON
+
+------------------------------------
+4. Télécharger le dépôt.
+```
+Code -> Download zip
+```
+------------------------------------
+
+5 Entrez dans la racine du dépôt:
 ```
 cd Solitude-408
 ```
-6. Compiler le jeu avec:
+6. Ouvrez un nouveau terminal dans la racine du dépôt et compiler le jeu avec:
 ```
 make all
 ```
-7. Lancer le jeu avec:
+7. Toujours dans le terminal, lancer le jeu avec:
 ```
 ./bin/Solitude408
 ```
@@ -118,14 +143,35 @@ pacman -S mingw-w64-x86_64-gcc
 8. Dans l'explorateur de fichiers :
 ```
 C:/msys64/home/<utilisateur>
-``` 
-9. Télécharger le depôt et le mettre dans le dossier suivant:.
 ```
-msys64/home/<utilisateur>/<le_depot>
+
+------------------------------------
+Si vous voulez utiliser Git :
+
+9. Dans le terminal MSYS2 MINGW64, Git:
+```
+pacman -S git
+```
+10. Dans le terminal MSYS2 MINGW64, clone:
+```
+git clone https://github.com/HugoAyaden/Solitude-408.git
+```
+------------------------------------
+
+SINON
+
+------------------------------------
+9. Télécharger le dépôt.
+```
+Code -> Download zip
+```
+10. Déziper le dépôt dans le dossier suivant:.
+```
+C:/msys64/home/<utilisateur>/<le_depot>
 ``` 
-10. Toujours dans le terminal MSYS2 MINGW64, aller à la racine du dépôt:
+11. Toujours dans le terminal MSYS2 MINGW64, aller à la racine du dépôt:
    ```
-cd Solitude-408/
+cd C:/msys64/home/<utilisateur>/Solitude-408/
 ```
 12. Toujours dans le terminal MSYS2 MINGW64, compiler le jeu avec:
 ```
