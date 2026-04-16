@@ -181,3 +181,14 @@ make all
 ```
 ./bin/Solitude408.exe
 ```
+
+BONUS: 
+
+Pour faire les tests de CUnit, faites:
+```
+make test
+```
+Puis:
+```
+./bin/test_buttons / ./bin/test_buttons_light
+```
