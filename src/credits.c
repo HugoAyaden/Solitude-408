@@ -7,21 +7,7 @@
  *
  */
 
-#include "constantes.h"
-
-/**
- * \brief Displays the game credits with vertical scrolling.
- *
- * This function displays a credits screen with a text scrolling effect from
- * bottom to top, similar to movie credits. The background image
- * is displayed behind the text, and certain lines can be highlighted with
- * different font sizes.
- *
- * The display stops when all credits have scrolled off the screen.
- *
- * \param renderer The SDL renderer used for graphical rendering.
- * \param window The SDL window used to retrieve display dimensions.
- */
+#include "../lib/constantes.h"
 
 int render_credits(SDL_Renderer *renderer, SDL_Window *window)
 {

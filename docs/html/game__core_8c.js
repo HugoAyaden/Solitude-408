@@ -11,6 +11,6 @@ var game__core_8c =
     [ "game_init", "game__core_8c.html#a94bcac50e1f482606eaabe3bc54b8b2a", null ],
     [ "game_initialise", "game__core_8c.html#ae160d5ac2d5e8a4733277396412d76e8", null ],
     [ "game_update", "game__core_8c.html#a2e92cf75e55e8f85782db6220f2acecf", null ],
-    [ "preload_assets", "game__core_8c.html#a6709db7fe3f7730ae42fe0c11255f11f", null ],
+    [ "preload_assets_1", "game__core_8c.html#a4386a00f56721df737f1bd9b086ab060", null ],
     [ "update", "game__core_8c.html#ac5c54df7ed3b930268c8d7752c101725", null ]
 ];

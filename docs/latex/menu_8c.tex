@@ -7,13 +7,7 @@ Creation and rendering of the Main Menu.
 
 {\ttfamily \#include "{}Main\+Menu.\+h"{}}\newline
 Include dependency graph for menu.\+c\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{menu_8c__incl}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,14 +35,12 @@ Amara Louay
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{menu_8c_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{menu_8c_adb10cbb4fe25240475df7a20057063fd}\index{menu.c@{menu.c}!check\_menu\_click@{check\_menu\_click}}
+\Hypertarget{menu_8c_adb10cbb4fe25240475df7a20057063fd}\label{menu_8c_adb10cbb4fe25240475df7a20057063fd} 
+\index{menu.c@{menu.c}!check\_menu\_click@{check\_menu\_click}}
 \index{check\_menu\_click@{check\_menu\_click}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{check\_menu\_click()}{check\_menu\_click()}}
-{\footnotesize\ttfamily \label{menu_8c_adb10cbb4fe25240475df7a20057063fd} 
-int check\+\_\+menu\+\_\+click (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Point}]{mouse\+Pos}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int check\+\_\+menu\+\_\+click (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Point}]{mouse\+Pos }\end{DoxyParamCaption})}
 
 
 
@@ -64,37 +56,35 @@ Iterates through all buttons to see if the click position intersects with any bu
 \begin{DoxyReturn}{Returns}
 Index of the clicked button (0-\/4) or -\/1 if none. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=263pt]{menu_8c_adb10cbb4fe25240475df7a20057063fd_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{menu_8c_a6e948dec4f0aa8c412a3cb380f9a706c}\index{menu.c@{menu.c}!cleanup\_menu@{cleanup\_menu}}
+\Hypertarget{menu_8c_a6e948dec4f0aa8c412a3cb380f9a706c}\label{menu_8c_a6e948dec4f0aa8c412a3cb380f9a706c} 
+\index{menu.c@{menu.c}!cleanup\_menu@{cleanup\_menu}}
 \index{cleanup\_menu@{cleanup\_menu}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{cleanup\_menu()}{cleanup\_menu()}}
-{\footnotesize\ttfamily \label{menu_8c_a6e948dec4f0aa8c412a3cb380f9a706c} 
-void cleanup\+\_\+menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void cleanup\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Frees all menu-\/related resources. 
 
-Destroys textures for buttons, title, and background to prevent memory leaks. Here is the caller graph for this function\+:
-\nopagebreak
+Destroys textures for buttons, title, and background to prevent memory leaks. Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=245pt]{menu_8c_a6e948dec4f0aa8c412a3cb380f9a706c_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{menu_8c_addd9287be3569695afa87e5a0a09e2d1}\index{menu.c@{menu.c}!init\_menu@{init\_menu}}
+\Hypertarget{menu_8c_addd9287be3569695afa87e5a0a09e2d1}\label{menu_8c_addd9287be3569695afa87e5a0a09e2d1} 
+\index{menu.c@{menu.c}!init\_menu@{init\_menu}}
 \index{init\_menu@{init\_menu}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{init\_menu()}{init\_menu()}}
-{\footnotesize\ttfamily \label{menu_8c_addd9287be3569695afa87e5a0a09e2d1} 
-void init\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{main\+Font}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{title\+Font}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{vcr\+Small,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{vcr\+Large }\end{DoxyParamCaption})}
 
 
 
@@ -111,19 +101,18 @@ Loads the background image and creates textures for the title and all menu butto
 {\em title\+Font} & Font used for the game title. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=222pt]{menu_8c_addd9287be3569695afa87e5a0a09e2d1_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{menu_8c_a2e77a422bb2351c68927cb1fca0f9b26}\index{menu.c@{menu.c}!render\_menu@{render\_menu}}
+\Hypertarget{menu_8c_a2e77a422bb2351c68927cb1fca0f9b26}\label{menu_8c_a2e77a422bb2351c68927cb1fca0f9b26} 
+\index{menu.c@{menu.c}!render\_menu@{render\_menu}}
 \index{render\_menu@{render\_menu}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{render\_menu()}{render\_menu()}}
-{\footnotesize\ttfamily \label{menu_8c_a2e77a422bb2351c68927cb1fca0f9b26} 
-void render\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void render\+\_\+menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})}
 
 
 
@@ -136,8 +125,7 @@ Draws the background, centered title with dynamic underline, and interactive but
 {\em renderer} & SDL renderer used for drawing. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

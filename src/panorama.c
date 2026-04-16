@@ -1,24 +1,5 @@
-#include <panorama.h>
-/**
-  * \file panorama.c
-  * \brief Fournie les fonctions pour le déplacement de camera de jeu
-  * \author Dos Santos Mathis
-  * \version 1.0
-  * \date 19/03/2026
-  *
-*/
+#include "../lib/panorama.h"
 
-/**
-  * \fn void panoramic_game(int screen_width, int imgW, SDL_Rect* dst)
-  * \brief Déplacement gauche-droite de la camera avec la souris, principalement pour la salle principal.
-  * \param screen_width Entier, longeur de l'ecran
-  * \param imgW Entier, longeur de l'image
-  * \param imgRect SDL_Rect, rectangle de rendu
-  * \author Dos Santos Mathis
-  * \version 1.0
-  * \date 19/03/2026
-  *
-  */
 void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
@@ -52,18 +33,6 @@ void panoramic_game(int screen_width, int imgW, SDL_Rect* imgRect) {
     }
 }
 
-/**
-  * \fn void panoramic_camera(int screen_width, int imgW, SDL_Rect* dst)
-  * \brief Déplacement gauche-droite de la camera automatique, principalement pour les cameras.
-  * \param screen_width int, longeur de l'ecran
-  * \param imgW int, longeur de l'image
-  * \param imgRect SDL_Rect*, rectangle de rendu
-  * \param direction Direction*, direction de deplacement
-  * \author Dos Santos Mathis
-  * \version 1.0
-  * \date 19/03/2026
-  *
-*/
 void panoramic_camera(int screen_width, int imgW, SDL_Rect* imgRect, direction_t* direction) {
     int img_limit_right = -imgW + screen_width; //limite de position de l'image a droite
 

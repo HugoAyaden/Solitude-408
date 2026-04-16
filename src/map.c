@@ -8,7 +8,7 @@
  */
 
 
-#include "map.h"
+#include "../lib/map.h"
 
 
 /* MURS DANS LES CARTES */
@@ -52,15 +52,6 @@ CARTE DE JEU
 */
 
 
-/**
- * \brief Initializes the player entity.
- *
- * Sets the player position to the predefined spawn point (X_JOUEUR, Y_JOUEUR),
- * enables the light by default, and connects neighbors (except left/right walls).
- *
- * \param joueur Pointer to the player structure.
- * \param map Pointer to the initialized map.
- */
 void init_joueur(case_t *joueur, carte_t *map){
     joueur->num_camera = map->cases[X_JOUEUR][Y_JOUEUR].num_camera;
     joueur->lumiere = VRAI;
@@ -71,14 +62,6 @@ void init_joueur(case_t *joueur, carte_t *map){
     joueur->voisin_droit = NULL;
 }
 
-/**
- * \brief Initializes the camera entity.
- *
- * Sets camera to position 10 with default properties and no neighbors.
- *
- * \param camera Pointer to the camera structure.
- * \param map Pointer to the initialized map.
- */
 void init_camera(case_t *camera, carte_t *map){
     camera->num_camera = 10;
     camera->lumiere = VRAI;
@@ -89,15 +72,6 @@ void init_camera(case_t *camera, carte_t *map){
     camera->voisin_droit = NULL;
 }
 
-/**
- * \brief Initializes the complete game map.
- *
- * Creates a 5x3 grid of interconnected camera rooms with specific walls
- * blocking certain movements according to the predefined map layout.
- * Numbers cameras sequentially from 1 to 15, sets all accessible by default.
- *
- * \param carte_init Pointer to the carte_t structure to initialize.
- */
 void init_carte(carte_t *carte_init){
     int y = 0, x = 0;
     int num = 1;
@@ -175,15 +149,6 @@ void init_carte(carte_t *carte_init){
 }
 
 
-/**
- * \brief Checks if a position on the map is accessible.
- *
- * Verifies that the coordinates (x, y) are within the valid map boundaries.
- *
- * \param x X-coordinate to check.
- * \param y Y-coordinate to check.
- * \return VRAI if accessible, FAUX otherwise.
- */
 booleen_t accessible(int x, int y){
     if (y < 0 || y >= FIN_Y || x < 0 || x >= FIN_X )
         return FAUX;
@@ -191,11 +156,6 @@ booleen_t accessible(int x, int y){
     return VRAI;
 }
 
-/**
- * \brief Frees the map structure.
- *
- * \param map Pointer to the carte_t structure to destroy.
- */
 void detruire_carte(carte_t *map){ 
     free(map); 
 }

@@ -1,5 +1,5 @@
 /**
- * \file constants.c
+ * \file constantes.c
  * \brief Initialisation of every variable.
  * \author Ayaden Hugo
  * \version 1.0
@@ -7,7 +7,7 @@
  * 
  */
 
-#include "constantes.h"
+#include "../lib/constantes.h"
 
 
 int PERCENT_MOVE_MIMIC = 20;

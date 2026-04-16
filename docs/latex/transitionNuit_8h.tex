@@ -2,26 +2,14 @@
 \hypertarget{transitionNuit_8h}{}\label{transitionNuit_8h}\index{lib/transitionNuit.h@{lib/transitionNuit.h}}
 
 
-Animation between two nights and winning screen.  
+Animation between two nights and winning screen transition.  
 
 
 {\ttfamily \#include "{}constantes.\+h"{}}\newline
 Include dependency graph for transition\+Nuit.\+h\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{transitionNuit_8h__incl}
-\end{center}
-\end{figure}
+% FIG 0
 This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{transitionNuit_8h__dep__incl}
-\end{center}
-\end{figure}
+% FIG 1
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,25 +17,21 @@ int \mbox{\hyperlink{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6}{transi
 \begin{DoxyCompactList}\small\item\em Affiche une animation de transition entre deux nuits. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{transitionNuit_8h_aad448cd00a9cb06ad7ca5726cc111baf}{transition\+Win}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
 \begin{DoxyCompactList}\small\item\em Displays victory screen with "{}\+YOU WIN"{} fade animation. \end{DoxyCompactList}\item 
-\Hypertarget{transitionNuit_8h_aab7c0ebac479ecb4cc5241ac50fe3bfd}\label{transitionNuit_8h_aab7c0ebac479ecb4cc5241ac50fe3bfd} 
-int {\bfseries fade\+\_\+in\+\_\+chiffre\+\_\+nuit} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}text, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
-\item 
-\Hypertarget{transitionNuit_8h_a26c6b02d906d7cd35309016bd238bb1b}\label{transitionNuit_8h_a26c6b02d906d7cd35309016bd238bb1b} 
-int {\bfseries fade\+\_\+in\+\_\+next} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre\+Next)
-\item 
-\Hypertarget{transitionNuit_8h_aa1db281c8297507b530e6a3f1cafe709}\label{transitionNuit_8h_aa1db281c8297507b530e6a3f1cafe709} 
-int {\bfseries fade\+\_\+out\+\_\+chiffre} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
-\item 
-\Hypertarget{transitionNuit_8h_ab811649a45d3658a9fee5469596c55cc}\label{transitionNuit_8h_ab811649a45d3658a9fee5469596c55cc} 
-int {\bfseries fade\+\_\+out} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}text, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{transitionNuit_8h_aab7c0ebac479ecb4cc5241ac50fe3bfd}{fade\+\_\+in\+\_\+chiffre\+\_\+nuit}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}text, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
+\begin{DoxyCompactList}\small\item\em Creates fade-\/in animation for "{}\+NIGHT X"{} text. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{transitionNuit_8h_a26c6b02d906d7cd35309016bd238bb1b}{fade\+\_\+in\+\_\+next}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre\+Next)
+\begin{DoxyCompactList}\small\item\em Fades in the next night number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{transitionNuit_8h_aa1db281c8297507b530e6a3f1cafe709}{fade\+\_\+out\+\_\+chiffre}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
+\begin{DoxyCompactList}\small\item\em Fades out current night number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{transitionNuit_8h_ab811649a45d3658a9fee5469596c55cc}{fade\+\_\+out}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}text, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}chiffre)
+\begin{DoxyCompactList}\small\item\em Fades out "{}\+NIGHT"{} text and next night number together. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Animation between two nights and winning screen. 
+Animation between two nights and winning screen transition. 
 
 \begin{DoxyAuthor}{Author}
-Bastien L, Hugo AYADEN EFEVRE TAUGOURDEAU 
+Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 1.\+2 
@@ -57,14 +41,102 @@ Bastien L, Hugo AYADEN EFEVRE TAUGOURDEAU
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{transitionNuit_8h_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6}\index{transitionNuit.h@{transitionNuit.h}!transitionNuit@{transitionNuit}}
+\Hypertarget{transitionNuit_8h_aab7c0ebac479ecb4cc5241ac50fe3bfd}\label{transitionNuit_8h_aab7c0ebac479ecb4cc5241ac50fe3bfd} 
+\index{transitionNuit.h@{transitionNuit.h}!fade\_in\_chiffre\_nuit@{fade\_in\_chiffre\_nuit}}
+\index{fade\_in\_chiffre\_nuit@{fade\_in\_chiffre\_nuit}!transitionNuit.h@{transitionNuit.h}}
+\doxysubsubsection{\texorpdfstring{fade\_in\_chiffre\_nuit()}{fade\_in\_chiffre\_nuit()}}
+{\footnotesize\ttfamily int fade\+\_\+in\+\_\+chiffre\+\_\+nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{text,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{chiffre }\end{DoxyParamCaption})}
+
+
+
+Creates fade-\/in animation for "{}\+NIGHT X"{} text. 
+
+Gradually increases alpha from 0 to 255 for both text and night number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em text} & "{}\+NIGHT"{} texture. \\
+\hline
+{\em chiffre} & Current night number texture. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, -\/1 if quit event detected. 
+\end{DoxyReturn}
+\Hypertarget{transitionNuit_8h_a26c6b02d906d7cd35309016bd238bb1b}\label{transitionNuit_8h_a26c6b02d906d7cd35309016bd238bb1b} 
+\index{transitionNuit.h@{transitionNuit.h}!fade\_in\_next@{fade\_in\_next}}
+\index{fade\_in\_next@{fade\_in\_next}!transitionNuit.h@{transitionNuit.h}}
+\doxysubsubsection{\texorpdfstring{fade\_in\_next()}{fade\_in\_next()}}
+{\footnotesize\ttfamily int fade\+\_\+in\+\_\+next (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{chiffre\+Next }\end{DoxyParamCaption})}
+
+
+
+Fades in the next night number. 
+
+Keeps current "{}\+NIGHT X"{} visible while fading in next night number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em chiffre\+Next} & Next night number texture. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, -\/1 if quit event detected. 
+\end{DoxyReturn}
+\Hypertarget{transitionNuit_8h_ab811649a45d3658a9fee5469596c55cc}\label{transitionNuit_8h_ab811649a45d3658a9fee5469596c55cc} 
+\index{transitionNuit.h@{transitionNuit.h}!fade\_out@{fade\_out}}
+\index{fade\_out@{fade\_out}!transitionNuit.h@{transitionNuit.h}}
+\doxysubsubsection{\texorpdfstring{fade\_out()}{fade\_out()}}
+{\footnotesize\ttfamily int fade\+\_\+out (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{text,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{chiffre }\end{DoxyParamCaption})}
+
+
+
+Fades out "{}\+NIGHT"{} text and next night number together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em text} & "{}\+NIGHT"{} texture. \\
+\hline
+{\em chiffre} & Next night number texture. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, -\/1 if quit event detected. 
+\end{DoxyReturn}
+\Hypertarget{transitionNuit_8h_aa1db281c8297507b530e6a3f1cafe709}\label{transitionNuit_8h_aa1db281c8297507b530e6a3f1cafe709} 
+\index{transitionNuit.h@{transitionNuit.h}!fade\_out\_chiffre@{fade\_out\_chiffre}}
+\index{fade\_out\_chiffre@{fade\_out\_chiffre}!transitionNuit.h@{transitionNuit.h}}
+\doxysubsubsection{\texorpdfstring{fade\_out\_chiffre()}{fade\_out\_chiffre()}}
+{\footnotesize\ttfamily int fade\+\_\+out\+\_\+chiffre (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{chiffre }\end{DoxyParamCaption})}
+
+
+
+Fades out current night number. 
+
+Keeps "{}\+NIGHT"{} and next night number visible while fading out current.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL renderer. \\
+\hline
+{\em chiffre} & Current night number texture. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, -\/1 if quit event detected. 
+\end{DoxyReturn}
+\Hypertarget{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6}\label{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6} 
+\index{transitionNuit.h@{transitionNuit.h}!transitionNuit@{transitionNuit}}
 \index{transitionNuit@{transitionNuit}!transitionNuit.h@{transitionNuit.h}}
 \doxysubsubsection{\texorpdfstring{transitionNuit()}{transitionNuit()}}
-{\footnotesize\ttfamily \label{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6} 
-int transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{nuit\+Actuelle}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{nuit\+Actuelle }\end{DoxyParamCaption})}
 
 
 
@@ -74,61 +146,37 @@ Cette fonction affiche un texte "{}\+Nuit X"{} centré à l\textquotesingle{}éc
 
 
 \begin{DoxyParams}{Parameters}
-{\em renderer} & Le renderer SDL utilisé pour l\textquotesingle{}affichage \\
+{\em renderer} & Le renderer SDL utilisé pour l\textquotesingle{}affichage. \\
 \hline
-{\em window} & La fenêtre SDL (utilisée pour récupérer la taille écran) \\
+{\em window} & La fenêtre SDL (utilisée pour récupérer la taille écran). \\
 \hline
-{\em nuit\+Actuelle} & Numéro de la nuit à afficher\\
+{\em nuit\+Actuelle} & Numéro de la nuit à afficher.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyPrecond}{Precondition}
-SDL et SDL\+\_\+ttf doivent être initialisés 
+SDL et SDL\+\_\+ttf doivent être initialisés. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-Une animation est affichée à l\textquotesingle{}écran
+Une animation est affichée à l\textquotesingle{}écran. 
 \end{DoxyPostcond}
-Affiche une animation de transition entre deux nuits.
-
-Complete Star Wars-\/style sequence\+:
-\begin{DoxyEnumerate}
-\item Fade in "{}\+NIGHT X"{}
-\item Fade in next night number below
-\item Scroll both numbers upward
-\item Fade out current number
-\item Fade out remaining text
-\end{DoxyEnumerate}
-
-
-\begin{DoxyParams}{Parameters}
-{\em renderer} & SDL renderer. \\
-\hline
-{\em window} & SDL window for sizing. \\
-\hline
-{\em nuit\+Actuelle} & Current night number. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-1 on success, negative error codes on failure. 
-\end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=341pt]{transitionNuit_8h_a033a8e956da99dca9a8fd93deee3dac6_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{transitionNuit_8h_aad448cd00a9cb06ad7ca5726cc111baf}\index{transitionNuit.h@{transitionNuit.h}!transitionWin@{transitionWin}}
+\Hypertarget{transitionNuit_8h_aad448cd00a9cb06ad7ca5726cc111baf}\label{transitionNuit_8h_aad448cd00a9cb06ad7ca5726cc111baf} 
+\index{transitionNuit.h@{transitionNuit.h}!transitionWin@{transitionWin}}
 \index{transitionWin@{transitionWin}!transitionNuit.h@{transitionNuit.h}}
 \doxysubsubsection{\texorpdfstring{transitionWin()}{transitionWin()}}
-{\footnotesize\ttfamily \label{transitionNuit_8h_aad448cd00a9cb06ad7ca5726cc111baf} 
-int transition\+Win (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int transition\+Win (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 
 
 Displays victory screen with "{}\+YOU WIN"{} fade animation. 
 
-Complete sequence\+: fade in → hold 2s → fade out.
+Complete sequence\+: fade in -\/\texorpdfstring{$>$}{>} hold 2s -\/\texorpdfstring{$>$}{>} fade out.
 
 
 \begin{DoxyParams}{Parameters}
@@ -140,8 +188,7 @@ Complete sequence\+: fade in → hold 2s → fade out.
 \begin{DoxyReturn}{Returns}
 1 on success, negative error codes on failure. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

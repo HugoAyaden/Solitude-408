@@ -6,8 +6,7 @@ Création and initialisation of transitions menu-\/\texorpdfstring{$>$}{>}settin
 
 
 {\ttfamily \#include "{}transition.\+h"{}}\newline
-Include dependency graph for transition.\+c\+:
-\nopagebreak
+Include dependency graph for transition.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,14 +36,12 @@ Amara Louay
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{transition_8c_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{transition_8c_a0931e4d330253db23e29405638187ea1}\index{transition.c@{transition.c}!CreateStaticTexture@{CreateStaticTexture}}
+\Hypertarget{transition_8c_a0931e4d330253db23e29405638187ea1}\label{transition_8c_a0931e4d330253db23e29405638187ea1} 
+\index{transition.c@{transition.c}!CreateStaticTexture@{CreateStaticTexture}}
 \index{CreateStaticTexture@{CreateStaticTexture}!transition.c@{transition.c}}
 \doxysubsubsection{\texorpdfstring{CreateStaticTexture()}{CreateStaticTexture()}}
-{\footnotesize\ttfamily \label{transition_8c_a0931e4d330253db23e29405638187ea1} 
-SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} Create\+Static\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} Create\+Static\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})}
 
 
 
@@ -60,19 +57,18 @@ Allocates a 200x200 RGBA texture optimized for real-\/time static generation wit
 \begin{DoxyReturn}{Returns}
 Pointer to the static texture, or NULL on failure. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=270pt]{transition_8c_a0931e4d330253db23e29405638187ea1_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{transition_8c_aa3c46761a27e9706578731eb7e7cc9d8}\index{transition.c@{transition.c}!run\_transition@{run\_transition}}
+\Hypertarget{transition_8c_aa3c46761a27e9706578731eb7e7cc9d8}\label{transition_8c_aa3c46761a27e9706578731eb7e7cc9d8} 
+\index{transition.c@{transition.c}!run\_transition@{run\_transition}}
 \index{run\_transition@{run\_transition}!transition.c@{transition.c}}
 \doxysubsubsection{\texorpdfstring{run\_transition()}{run\_transition()}}
-{\footnotesize\ttfamily \label{transition_8c_aa3c46761a27e9706578731eb7e7cc9d8} 
-void run\+\_\+transition (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren}{, }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{static\+Tex}{, }\item[{float}]{progress}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void run\+\_\+transition (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{ren,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{static\+Tex,  }\item[{float}]{progress }\end{DoxyParamCaption})}
 
 
 
@@ -84,13 +80,12 @@ Generates fresh TV static noise, applies smooth alpha fade (build-\/up then fade
 \begin{DoxyParams}{Parameters}
 {\em ren} & SDL renderer. \\
 \hline
-{\em static\+Tex} & Pre-\/allocated static texture from \doxylink{transition_8c_a0931e4d330253db23e29405638187ea1}{Create\+Static\+Texture()}. \\
+{\em static\+Tex} & Pre-\/allocated static texture from \doxylink{transition_8h_a0931e4d330253db23e29405638187ea1}{Create\+Static\+Texture()}. \\
 \hline
 {\em progress} & Transition progress (0.\+0 = start, 1.\+0 = end). \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

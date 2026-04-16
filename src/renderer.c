@@ -7,20 +7,8 @@
  * 
  */
 
-#include "renderer.h"
+#include "../lib/renderer.h"
 
-/**
- * \brief Renders all control buttons on screen.
- *
- * Draws door and light buttons on left/right sides of screen, plus camera monitor toggle.
- * Button positions scale with stretched game image resolution.
- *
- * \param renderer SDL renderer used for drawing.
- * \param font Font used for button labels.
- * \param windowW Window width.
- * \param windowH Window height.
- * \param img_stretchedW_game_res Stretched game image width for button positioning.
- */
 void buttons_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
@@ -50,17 +38,6 @@ void buttons_render(SDL_Renderer *renderer,
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
 
-/**
- * \brief Renders the individual camera selection buttons.
- *
- * Draws 9 camera toggle buttons plus camera monitor toggle in fixed positions
- * on the right side of the screen. Font parameter is unused here.
- *
- * \param renderer SDL renderer used for drawing.
- * \param font Font parameter (unused).
- * \param windowW Window width.
- * \param windowH Window height.
- */
 void camera_buttons_render(SDL_Renderer *renderer,
                            TTF_Font *font,
                            int windowW,
@@ -137,13 +114,6 @@ void camera_buttons_render(SDL_Renderer *renderer,
     drawButton(renderer, font, btnCameras, moniteurCameras, "CAMERAS");
 }
 
-/**
- * \brief Renders the camera map overlay.
- *
- * Displays the static camera map image when monitor is active.
- *
- * \param renderer SDL renderer used for drawing.
- */
 void renderCameraMap(SDL_Renderer *renderer)
 {
     int buttonWcamera = 860;
@@ -155,17 +125,6 @@ void renderCameraMap(SDL_Renderer *renderer)
     drawCamera(renderer, mapCamera);
 }
 
-/**
- * \brief Renders the battery bar UI element.
- *
- * Draws a battery outline with fill bar that changes from green to red
- * based on remaining battery percentage, plus text label showing %.
- *
- * \param renderer SDL renderer used for drawing.
- * \param font Font used for percentage text.
- * \param windowW Window width.
- * \param windowH Window height.
- */
 void battery_render(SDL_Renderer *renderer,
                     TTF_Font *font,
                     int windowW,
@@ -236,18 +195,6 @@ void battery_render(SDL_Renderer *renderer,
     SDL_DestroyTexture(texture);
 }
 
-/**
- * \brief Renders all game UI elements.
- *
- * Displays battery bar and either standard control buttons or camera buttons
- * depending on whether the camera monitor is active.
- *
- * \param renderer SDL renderer.
- * \param fontBattery Font for battery display.
- * \param fontButtons Font for button labels.
- * \param window SDL window for size retrieval.
- * \param img_stretchedW_game_res Stretched game image width.
- */
 void render_game(SDL_Renderer *renderer,
                  TTF_Font *fontBattery,
                  TTF_Font *fontButtons,
@@ -266,18 +213,6 @@ void render_game(SDL_Renderer *renderer,
     }
 }
 
-/**
- * \brief Selects appropriate background texture based on game state.
- *
- * Chooses from dozens of preloaded textures based on combinations of:
- * - Battery level (blackout when depleted or light off)
- * - Door states (left/right closed)
- * - Light states (left/right/general on)
- * - Monster proximity to player room
- * Sets camera_type to GAME or delegates to change_camera() when monitor active.
- *
- * \param camera_type Pointer to current camera display mode.
- */
 void affichage(camera_type *camera_type){
     if (moniteurCameras == 0)
     {

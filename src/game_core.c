@@ -10,7 +10,7 @@
  *
  */
 
-#include "game_core.h"
+#include "../lib/game_core.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -23,178 +23,67 @@
 #define NIGHT_2 1
 #define NIGHT_3 2
 
-/**
- * \brief Updates the displayed camera view.
- *
- * The camera numbers follow the layout defined in "map.c",
- * not the in-game numbering, for realism purposes.
- *
- * \param camera Pointer to the currently selected camera.
- * \param monster Pointer to the monster position.
- * \param camera_type Pointer to the current camera display mode.
- */
-void change_camera(case_t * camera, case_t * monster, camera_type *camera_type){
+static SDL_Texture *pick_camera_texture(const CameraAssetSet *set, case_t *monster, case_t *mimic_case)
+{
+    int has_mimic = (mimic_case != NULL && mimic_case->num_camera == set->camera_id);
+    int has_monster = (monster != NULL && monster->num_camera == set->camera_id);
+
+    if (has_mimic && has_monster) return set->both;
+    if (has_mimic) return set->mimic;
+    if (has_monster) return set->monster;
+    return set->base;
+}
+
+void change_camera(case_t *camera, case_t *monster, camera_type *camera_type)
+{
     static int last_camera = -1;
+
+    if (camera == NULL || monster == NULL || camera_type == NULL) {
+        return;
+    }
+
     Mix_VolumeMusic(masterVol);
-    if(camera->num_camera != last_camera){
+
+    if (camera->num_camera != last_camera) {
         Mix_PlayChannel(-1, cameraSwitch, 0);
         last_camera = camera->num_camera;
     }
 
-    if(camera8on && camera->num_camera == CAMERA_1){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_1){
-                if(monster->num_camera == CAMERA_1)
-                    background = MONITOR_ROOM_MI_M;
-                else
-                    background = MONITOR_ROOM_MI;
-            }
-        else if (monster->num_camera == CAMERA_1)
-            background = MONITOR_ROOM_M;
-        else
-            background = MONITOR_ROOM;
-    }
-    
-    else if(camera5on && camera->num_camera == CAMERA_11){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_11){
-                if(monster->num_camera == CAMERA_11)
-                    background = MIMIC_CORRIDOR_MI_M;
-                else
-                    background = MIMIC_CORRIDOR_MI;
-            }
-        else if (monster->num_camera == CAMERA_11)
-            background = MIMIC_CORRIDOR_M;
-        else
-            background = MIMIC_CORRIDOR;
+    //Table of every camera asset in order with map.c drawing
+    const CameraAssetSet cameras[] = {
+        { CAMERA_1,  camera8on, MONITOR_ROOM,       MONITOR_ROOM_M,       MONITOR_ROOM_MI,       MONITOR_ROOM_MI_M },
+        { CAMERA_11, camera5on, MIMIC_CORRIDOR,     MIMIC_CORRIDOR_M,     MIMIC_CORRIDOR_MI,     MIMIC_CORRIDOR_MI_M },
+        { CAMERA_2,  camera6on, HALLWAY,            HALLWAY_M,            HALLWAY_MI,            HALLWAY_MI_M },
+        { CAMERA_4,  camera7on, SKY,                SKY,                  SKY,                  SKY },
+        { CAMERA_5,  camera1on, R_D,                R_D_M,                R_D_MI,                R_D_M_MI },
+        { CAMERA_15, camera2on, L_D,                L_D_M,                L_D_MI,                L_D_M_MI },
+        { CAMERA_9,  camera3on, FRONT_WALL,         FRONT_WALL_M,         FRONT_WALL_MI,         FRONT_WALL_MI_M },
+        { CAMERA_8,  camera4on, CORRIDOR,           CORRIDOR_M,           CORRIDOR_MI,           CORRIDOR_M_MI },
+        { CAMERA_12, camera9on, COMMAND_ROOM,       COMMAND_ROOM_M,       COMMAND_ROOM_MI,       COMMAND_ROOM_MI_M }
+    };
+
+    for (size_t i = 0; i < sizeof(cameras) / sizeof(cameras[0]); i++) {
+        if (cameras[i].enabled && camera->num_camera == cameras[i].camera_id) {
+            *camera_type = SIDEWAYS;
+            background = pick_camera_texture(&cameras[i], monster, mimic);
+            return;
+        }
     }
 
-     else if(camera6on && camera->num_camera == CAMERA_2){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_2){
-                if(monster->num_camera == CAMERA_2)
-                    background = HALLWAY_MI_M;
-                else
-                    background = HALLWAY_MI;
-            }
-        else if (monster->num_camera == CAMERA_2)
-            background = HALLWAY_M;
-        else
-            background = HALLWAY;
-    }
-
-    else if(camera7on && camera->num_camera == CAMERA_4){
-        *camera_type = SIDEWAYS;
-        background = SKY;
-    }
-
-
-    else if(camera1on && camera->num_camera == CAMERA_5){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_5){
-                if(monster->num_camera == CAMERA_5)
-                    background = R_D_M_MI;
-                else
-                    background = R_D_MI;
-            }
-        else if (monster->num_camera == CAMERA_5)
-            background = R_D_M;
-        else
-            background = R_D;
-    }
-
-    else if(camera2on && camera->num_camera == CAMERA_15){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_15){
-                if(monster->num_camera == CAMERA_15)
-                    background = L_D_M_MI;
-                else
-                    background = L_D_MI;
-            }
-        else if (monster->num_camera == CAMERA_15)
-            background = L_D_M;
-        else
-            background = L_D;
-    }
-
-    else if(camera3on && camera->num_camera == CAMERA_9){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_9){
-                if(monster->num_camera == CAMERA_9)
-                    background = FRONT_WALL_MI_M;
-                else
-                    background = FRONT_WALL_MI;
-            }
-        else if (monster->num_camera == CAMERA_9)
-            background = FRONT_WALL_M;
-        else
-            background = FRONT_WALL;
-    }
-
-    else if(camera4on && camera->num_camera == CAMERA_8){
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_8){
-                if(monster->num_camera == CAMERA_8)
-                    background = CORRIDOR_M_MI;
-                else
-                    background = CORRIDOR_MI;
-            }
-        else if (monster->num_camera == CAMERA_8)
-            background = CORRIDOR_M;
-        else
-            background = CORRIDOR;
-    }
-    else if (camera9on && camera->num_camera == CAMERA_12)
-    {
-        *camera_type = SIDEWAYS;
-        if(mimic != NULL && mimic->num_camera == CAMERA_12){
-                if(monster->num_camera == CAMERA_12)
-                    background = COMMAND_ROOM_MI_M;
-                else
-                    background = COMMAND_ROOM_MI;
-            }
-        else if (monster->num_camera == CAMERA_12)
-            background = COMMAND_ROOM_M;
-        else
-            background = COMMAND_ROOM;
-    }
-    else
-    {
-        *camera_type = FIXED;
-        background = STATIC_CAM;
-    }
+    *camera_type = FIXED;
+    background = STATIC_CAM;
 }
 
-/**
- * \brief Returns the number of active doors.
- *
- * \return Number of currently active doors.
- */
 int buttons_getDoorCount()
 {
     return porteGaucheActive + porteDroiteActive;
 }
 
-/**
- * \brief Returns the number of active lights.
- *
- * \return Number of currently active lights.
- */
 int buttons_getLightCount()
 {
     return lumiereGaucheActive + lumiereDroiteActive;
 }
 
-/**
- * \brief Handles global game events.
- *
- * Dispatches SDL events to the appropriate subsystem,
- * such as the standard buttons or the camera buttons.
- *
- * \param event SDL event received.
- * \param window SDL window used by the UI.
- * \param img_stretchedW_game_res Width of the stretched game image.
- */
 void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_game_res)
 {
     if (moniteurCameras == 0)
@@ -203,34 +92,16 @@ void game_handleEvent(SDL_Event *event, SDL_Window *window,int img_stretchedW_ga
         camera_buttons_handleEvent(event, window);
 }
 
-/**
- * \brief Initializes the player's battery.
- */
 void battery_init()
 {
     battery = 100.0f;
 }
-/**
- * \brief Initializes the main game systems.
- *
- * This includes the battery and all button states.
- */
 void game_initialise()
 {
     battery_init();
     buttons_init();
 }
 
-/**
- * \brief Updates the battery level.
- *
- * Battery consumption depends on the number of closed doors
- * and the number of active lights.
- *
- * \param deltaTime Time elapsed since the last frame.
- * \param doorCount Number of closed doors.
- * \param lightCount Number of active lights.
- */
 void battery_update(float deltaTime, int doorCount, int lightCount)
 {
     BATTERY_DURATION = 2000.0f - night * 500;
@@ -253,13 +124,6 @@ void battery_update(float deltaTime, int doorCount, int lightCount)
         battery = 0;
 }
 
-/**
- * \brief Updates the main game logic.
- *
- * Currently updates battery consumption based on door and light usage.
- *
- * \param deltaTime Time elapsed since the last frame.
- */
 void game_update(float deltaTime)
 {
     int doorCount = buttons_getDoorCount();
@@ -268,14 +132,6 @@ void game_update(float deltaTime)
     battery_update(deltaTime, doorCount, lightCount);
 }
 
-/**
- * \brief Adjusts the game difficulty according to the current night.
- *
- * Depending on the night, the monster may move more or less often,
- * and the mimic becomes active starting from night 2.
- *
- * \param night Current night number.
- */
 void difficulte(int night){
     switch(night){
         case NIGHT_1:
@@ -313,12 +169,6 @@ void difficulte(int night){
     }
 }
 
-/**
- * \brief Updates the monster and door logic for the current frame.
- *
- * Handles door-triggered attacks, applies AI difficulty behavior,
- * and updates the remaining time for the current night.
- */
 void update(){
     // Monster moves each monsterMoveDelay milliseconds, if the door is closed when attacking the attack fails
 
@@ -341,13 +191,6 @@ void update(){
     */
 }
 
-/**
- * \brief Preloads all game assets.
- *
- * Loads textures, animations, and sounds needed during gameplay.
- *
- * \param renderer SDL renderer used for texture creation.
- */
 void preload_assets_1(SDL_Renderer* renderer) {
 
        // Load Textures (unbearable to read, but it works)
@@ -482,18 +325,6 @@ void preload_assets_4(SDL_Renderer* renderer) {
     STATIC = IMG_LoadAnimation("./assets/img/INgame/static.gif");
 }
 
-/**
- * \brief Initializes the game and starts the main gameplay loop.
- *
- * Allocates game objects, loads saved progress and settings,
- * initializes the map, player, cameras, and monster, then runs
- * the main rendering and event loop.
- *
- * \param renderer SDL renderer used for drawing.
- * \param window SDL window used for sizing and rendering setup.
- * \param fontBattery Font used for battery display.
- * \param fontButtons Font used for button labels.
- */
 void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery, TTF_Font* fontButtons) {
 
     if (map == NULL)   map = malloc(sizeof(carte_t));
@@ -720,11 +551,6 @@ void game_init(SDL_Renderer* renderer, SDL_Window* window, TTF_Font* fontBattery
     }
 }
 
-/**
- * \brief Frees all game resources and clears allocated memory.
- *
- * Releases map data, dynamically allocated entities, and loaded audio assets.
- */
 void game_final_cleanup(){
     if (map != NULL) {
         detruire_carte(map); 

@@ -7,13 +7,7 @@ Creation and initialisation of the monster\textquotesingle{}s better AI for nigh
 
 {\ttfamily \#include "{}bfs.\+h"{}}\newline
 Include dependency graph for ia\+\_\+monstre\+\_\+n2.\+c\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{ia__monstre__n2_8c__incl}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,14 +33,12 @@ Ayaden Hugo
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{ia__monstre__n2_8c_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!bfs\_next\_step@{bfs\_next\_step}}
+\Hypertarget{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7}\label{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7} 
+\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!bfs\_next\_step@{bfs\_next\_step}}
 \index{bfs\_next\_step@{bfs\_next\_step}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
 \doxysubsubsection{\texorpdfstring{bfs\_next\_step()}{bfs\_next\_step()}}
-{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7} 
-\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} bfs\+\_\+next\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{start}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{goal}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} bfs\+\_\+next\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{start,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{goal }\end{DoxyParamCaption})}
 
 
 
@@ -62,19 +54,18 @@ Finds the next step for the monster using BFS.
 \begin{DoxyReturn}{Returns}
 Pointer to the next cell to move to, or NULL if no path is found. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ia__monstre__n2_8c_a58f80822ee6d18de92079f104705f3c7_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!chance\_deplacement@{chance\_deplacement}}
+\Hypertarget{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036}\label{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036} 
+\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!chance\_deplacement@{chance\_deplacement}}
 \index{chance\_deplacement@{chance\_deplacement}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
 \doxysubsubsection{\texorpdfstring{chance\_deplacement()}{chance\_deplacement()}}
-{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036} 
-int chance\+\_\+deplacement (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int chance\+\_\+deplacement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -83,19 +74,18 @@ Returns a random percentage value used to decide movement probability.
 \begin{DoxyReturn}{Returns}
 A random integer between 0 and 99. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ia__monstre__n2_8c_a5c366f731dc2c18a20808cbe4049d036_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55}\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!move\_monster@{move\_monster}}
+\Hypertarget{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55}\label{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55} 
+\index{ia\_monstre\_n2.c@{ia\_monstre\_n2.c}!move\_monster@{move\_monster}}
 \index{move\_monster@{move\_monster}!ia\_monstre\_n2.c@{ia\_monstre\_n2.c}}
 \doxysubsubsection{\texorpdfstring{move\_monster()}{move\_monster()}}
-{\footnotesize\ttfamily \label{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55} 
-void move\+\_\+monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monster}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void move\+\_\+monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monster,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
 
 
 
@@ -110,16 +100,14 @@ Moves the monster one step toward the player using BFS.
 {\em joueur} & Pointer to the player\textquotesingle{}s current position. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=291pt]{ia__monstre__n2_8c_a9e645c47820a7a574780331cca7dae55_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

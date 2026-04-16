@@ -13,21 +13,19 @@ Heador for the main game loop.
 {\ttfamily \#include "{}transition\+Nuit.\+h"{}}\newline
 {\ttfamily \#include "{}panorama.\+h"{}}\newline
 Include dependency graph for game\+\_\+core.\+h\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{game__core_8h__incl}
-\end{center}
-\end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCameraAssetSet}{Camera\+Asset\+Set}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,8 +54,17 @@ void \mbox{\hyperlink{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}{game\+\_\
 \begin{DoxyCompactList}\small\item\em Initializes the game and starts the main gameplay loop. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}{game\+\_\+final\+\_\+cleanup}} ()
 \begin{DoxyCompactList}\small\item\em Frees all game resources and clears allocated memory. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f}{preload\+\_\+assets}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
-\begin{DoxyCompactList}\small\item\em Preloads all game assets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{game__core_8h_a4386a00f56721df737f1bd9b086ab060}{preload\+\_\+assets\+\_\+1}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Preloads all game assets. \end{DoxyCompactList}\item 
+\Hypertarget{game__core_8h_ab931a6995437fba7811e1f6c286a4057}\label{game__core_8h_ab931a6995437fba7811e1f6c286a4057} 
+void {\bfseries preload\+\_\+assets\+\_\+2} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\item 
+\Hypertarget{game__core_8h_ad83746a12da35dae27b38ebe49d411b7}\label{game__core_8h_ad83746a12da35dae27b38ebe49d411b7} 
+void {\bfseries preload\+\_\+assets\+\_\+3} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\item 
+\Hypertarget{game__core_8h_ad81bd4139e7701b04a18a7c6d8aa1d94}\label{game__core_8h_ad81bd4139e7701b04a18a7c6d8aa1d94} 
+void {\bfseries preload\+\_\+assets\+\_\+4} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -74,14 +81,12 @@ Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{game__core_8h_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc}\index{game\_core.h@{game\_core.h}!battery\_update@{battery\_update}}
+\Hypertarget{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc}\label{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc} 
+\index{game\_core.h@{game\_core.h}!battery\_update@{battery\_update}}
 \index{battery\_update@{battery\_update}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{battery\_update()}{battery\_update()}}
-{\footnotesize\ttfamily \label{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc} 
-void battery\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{, }\item[{int}]{door\+Count}{, }\item[{int}]{light\+Count}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void battery\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time,  }\item[{int}]{door\+Count,  }\item[{int}]{light\+Count }\end{DoxyParamCaption})}
 
 
 
@@ -98,27 +103,25 @@ Battery consumption depends on the number of closed doors and the number of acti
 {\em light\+Count} & Number of active lights. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=293pt]{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a5801bd126b77810d4a368ed379e52f45}\index{game\_core.h@{game\_core.h}!buttons\_getDoorCount@{buttons\_getDoorCount}}
+\Hypertarget{game__core_8h_a5801bd126b77810d4a368ed379e52f45}\label{game__core_8h_a5801bd126b77810d4a368ed379e52f45} 
+\index{game\_core.h@{game\_core.h}!buttons\_getDoorCount@{buttons\_getDoorCount}}
 \index{buttons\_getDoorCount@{buttons\_getDoorCount}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{buttons\_getDoorCount()}{buttons\_getDoorCount()}}
-{\footnotesize\ttfamily \label{game__core_8h_a5801bd126b77810d4a368ed379e52f45} 
-int buttons\+\_\+get\+Door\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int buttons\+\_\+get\+Door\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -127,19 +130,18 @@ Returns the number of active doors.
 \begin{DoxyReturn}{Returns}
 Number of currently active doors. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a5801bd126b77810d4a368ed379e52f45_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}\index{game\_core.h@{game\_core.h}!buttons\_getLightCount@{buttons\_getLightCount}}
+\Hypertarget{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}\label{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60} 
+\index{game\_core.h@{game\_core.h}!buttons\_getLightCount@{buttons\_getLightCount}}
 \index{buttons\_getLightCount@{buttons\_getLightCount}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{buttons\_getLightCount()}{buttons\_getLightCount()}}
-{\footnotesize\ttfamily \label{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60} 
-int buttons\+\_\+get\+Light\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int buttons\+\_\+get\+Light\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -148,19 +150,18 @@ Returns the number of active lights.
 \begin{DoxyReturn}{Returns}
 Number of currently active lights. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f}\index{game\_core.h@{game\_core.h}!change\_camera@{change\_camera}}
+\Hypertarget{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f}\label{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f} 
+\index{game\_core.h@{game\_core.h}!change\_camera@{change\_camera}}
 \index{change\_camera@{change\_camera}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{change\_camera()}{change\_camera()}}
-{\footnotesize\ttfamily \label{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f} 
-void change\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{camera}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monster}{, }\item[{camera\+\_\+type \texorpdfstring{$\ast$}{*}}]{camera\+\_\+type}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void change\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{camera,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{monstre,  }\item[{camera\+\_\+type \texorpdfstring{$\ast$}{*}}]{camera\+\_\+type }\end{DoxyParamCaption})}
 
 
 
@@ -177,19 +178,18 @@ The camera numbers follow the layout defined in "{}map.\+c"{}, not the in-\/game
 {\em camera\+\_\+type} & Pointer to the current camera display mode. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f}\index{game\_core.h@{game\_core.h}!difficulte@{difficulte}}
+\Hypertarget{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f}\label{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f} 
+\index{game\_core.h@{game\_core.h}!difficulte@{difficulte}}
 \index{difficulte@{difficulte}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{difficulte()}{difficulte()}}
-{\footnotesize\ttfamily \label{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f} 
-void difficulte (\begin{DoxyParamCaption}\item[{int}]{night}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void difficulte (\begin{DoxyParamCaption}\item[{int}]{night }\end{DoxyParamCaption})}
 
 
 
@@ -202,53 +202,49 @@ Depending on the night, the monster may move more or less often, and the mimic b
 {\em night} & Current night number. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}\index{game\_core.h@{game\_core.h}!game\_final\_cleanup@{game\_final\_cleanup}}
+\Hypertarget{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}\label{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526} 
+\index{game\_core.h@{game\_core.h}!game\_final\_cleanup@{game\_final\_cleanup}}
 \index{game\_final\_cleanup@{game\_final\_cleanup}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{game\_final\_cleanup()}{game\_final\_cleanup()}}
-{\footnotesize\ttfamily \label{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526} 
-void game\+\_\+final\+\_\+cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+final\+\_\+cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Frees all game resources and clears allocated memory. 
 
-Releases map data, dynamically allocated entities, and loaded audio assets. Here is the call graph for this function\+:
-\nopagebreak
+Releases map data, dynamically allocated entities, and loaded audio assets. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=315pt]{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=271pt]{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8}\index{game\_core.h@{game\_core.h}!game\_handleEvent@{game\_handleEvent}}
+\Hypertarget{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8}\label{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8} 
+\index{game\_core.h@{game\_core.h}!game\_handleEvent@{game\_handleEvent}}
 \index{game\_handleEvent@{game\_handleEvent}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{game\_handleEvent()}{game\_handleEvent()}}
-{\footnotesize\ttfamily \label{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8} 
-void game\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{img\+\_\+stretched\+W\+\_\+game\+\_\+res}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+handle\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{event,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{img\+\_\+stretched\+W\+\_\+game\+\_\+res }\end{DoxyParamCaption})}
 
 
 
@@ -265,27 +261,25 @@ Dispatches SDL events to the appropriate subsystem, such as the standard buttons
 {\em img\+\_\+stretched\+W\+\_\+game\+\_\+res} & Width of the stretched game image. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}\index{game\_core.h@{game\_core.h}!game\_init@{game\_init}}
+\Hypertarget{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}\label{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a} 
+\index{game\_core.h@{game\_core.h}!game\_init@{game\_init}}
 \index{game\_init@{game\_init}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{game\_init()}{game\_init()}}
-{\footnotesize\ttfamily \label{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a} 
-void game\+\_\+init (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+init (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Battery,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font\+Buttons }\end{DoxyParamCaption})}
 
 
 
@@ -305,52 +299,43 @@ Allocates game objects, loads saved progress and settings, initializes the map, 
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+% FIG 1
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=222pt]{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}\index{game\_core.h@{game\_core.h}!game\_initialise@{game\_initialise}}
+\Hypertarget{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}\label{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8} 
+\index{game\_core.h@{game\_core.h}!game\_initialise@{game\_initialise}}
 \index{game\_initialise@{game\_initialise}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{game\_initialise()}{game\_initialise()}}
-{\footnotesize\ttfamily \label{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8} 
-void game\+\_\+initialise (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Initializes the main game systems. 
 
-This includes the battery and all button states. Here is the call graph for this function\+:
-\nopagebreak
+This includes the battery and all button states. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=282pt]{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf}\index{game\_core.h@{game\_core.h}!game\_update@{game\_update}}
+\Hypertarget{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf}\label{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf} 
+\index{game\_core.h@{game\_core.h}!game\_update@{game\_update}}
 \index{game\_update@{game\_update}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{game\_update()}{game\_update()}}
-{\footnotesize\ttfamily \label{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf} 
-void game\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
 
 
 
@@ -363,27 +348,25 @@ Currently updates battery consumption based on door and light usage.
 {\em delta\+Time} & Time elapsed since the last frame. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=341pt]{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f}\index{game\_core.h@{game\_core.h}!preload\_assets@{preload\_assets}}
-\index{preload\_assets@{preload\_assets}!game\_core.h@{game\_core.h}}
-\doxysubsubsection{\texorpdfstring{preload\_assets()}{preload\_assets()}}
-{\footnotesize\ttfamily \label{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f} 
-void preload\+\_\+assets (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+\Hypertarget{game__core_8h_a4386a00f56721df737f1bd9b086ab060}\label{game__core_8h_a4386a00f56721df737f1bd9b086ab060} 
+\index{game\_core.h@{game\_core.h}!preload\_assets\_1@{preload\_assets\_1}}
+\index{preload\_assets\_1@{preload\_assets\_1}!game\_core.h@{game\_core.h}}
+\doxysubsubsection{\texorpdfstring{preload\_assets\_1()}{preload\_assets\_1()}}
+{\footnotesize\ttfamily void preload\+\_\+assets\+\_\+1 (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})}
 
 
 
@@ -397,33 +380,25 @@ Loads textures, animations, and sounds needed during gameplay.
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=247pt]{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{game__core_8h_ac5c54df7ed3b930268c8d7752c101725}\index{game\_core.h@{game\_core.h}!update@{update}}
+% FIG 2
+\Hypertarget{game__core_8h_ac5c54df7ed3b930268c8d7752c101725}\label{game__core_8h_ac5c54df7ed3b930268c8d7752c101725} 
+\index{game\_core.h@{game\_core.h}!update@{update}}
 \index{update@{update}!game\_core.h@{game\_core.h}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily \label{game__core_8h_ac5c54df7ed3b930268c8d7752c101725} 
-void update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Updates the monster and door logic for the current frame. 
 
-Handles door-\/triggered attacks, applies AI difficulty behavior, and updates the remaining time for the current night. Here is the call graph for this function\+:
-\nopagebreak
+Handles door-\/triggered attacks, applies AI difficulty behavior, and updates the remaining time for the current night. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{game__core_8h_ac5c54df7ed3b930268c8d7752c101725_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

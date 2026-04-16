@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "camera_t", "structcamera__t.html", null ],
+    [ "CameraAssetSet", "structCameraAssetSet.html", null ],
     [ "carte_s", "structcarte__s.html", null ],
     [ "case_s", "structcase__s.html", null ],
     [ "MenuButton", "structMenuButton.html", null ],

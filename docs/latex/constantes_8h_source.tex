@@ -3,270 +3,269 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00009\ }
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ CONSTANTES\_H}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ CONSTANTES\_H}}
 \DoxyCodeLine{00012\ }
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{commun_8h}{commun.h}}"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ true\ 1}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ false\ 0}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ PERCENT\_MOVE\_MIMIC;}
-\DoxyCodeLine{00023\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ PERCENT\_MOVE\_MONSTER;}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_camera;}
-\DoxyCodeLine{00027\ \ \ \ \ booleen\_t\ lumiere;}
-\DoxyCodeLine{00028\ \ \ \ \ booleen\_t\ acess;}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_haut;}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_droit;}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_gauche;}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_bas;}
-\DoxyCodeLine{00033\ \}\ case\_t;}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcarte__s}{carte\_s}}\ \{}
-\DoxyCodeLine{00036\ \ \ \ \ case\_t\ cases[FIN\_X][FIN\_Y];}
-\DoxyCodeLine{00037\ \}\ carte\_t;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00040\ \ \ \ \ SDL\_Rect\ rect;}
-\DoxyCodeLine{00041\ \ \ \ \ SDL\_Texture\ *texture;}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label;}
-\DoxyCodeLine{00043\ \}\ \mbox{\hyperlink{structMenuButton}{MenuButton}};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00047\ \ \ \ \ case\_t\ *cell;}
-\DoxyCodeLine{00048\ \ \ \ \ case\_t\ *parent;}
-\DoxyCodeLine{00049\ \}\ \mbox{\hyperlink{structqueue__node__t}{queue\_node\_t}};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{WINDOWED,FULLSCREEN,BORDERLESS\}screen\_t;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ STATE\_MENU,}
-\DoxyCodeLine{00055\ \ \ \ \ STATE\_SETTINGS,}
-\DoxyCodeLine{00056\ \ \ \ \ STATE\_NEW\_GAME,}
-\DoxyCodeLine{00057\ \ \ \ \ STATE\_CONTINUE,}
-\DoxyCodeLine{00058\ \ \ \ \ STATE\_CREDITS}
-\DoxyCodeLine{00059\ \}\ GameState;}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{comment}{/*\ ============CAMERAS.H====================\ */}}
-\DoxyCodeLine{00063\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ CAMERA\_0,\ CAMERA\_1,\ CAMERA\_2,\ CAMERA\_3,}
-\DoxyCodeLine{00065\ \ \ \ \ CAMERA\_4,\ CAMERA\_5,\ CAMERA\_6,\ CAMERA\_7,}
-\DoxyCodeLine{00066\ \ \ \ \ CAMERA\_8,\ CAMERA\_9,\ CAMERA\_10,\ CAMERA\_11,}
-\DoxyCodeLine{00067\ \ \ \ \ CAMERA\_12,\ CAMERA\_13,\ CAMERA\_14,\ CAMERA\_15}
-\DoxyCodeLine{00068\ \}\ num\_cameras;}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00071\ \ \ \ \ booleen\_t\ active;}
-\DoxyCodeLine{00072\ \}\ \mbox{\hyperlink{structcamera__t}{camera\_t}};}
-\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ true\ 1}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ false\ 0}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ PERCENT\_MOVE\_MIMIC;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ PERCENT\_MOVE\_MONSTER;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_camera;}
+\DoxyCodeLine{00029\ \ \ \ \ booleen\_t\ lumiere;}
+\DoxyCodeLine{00030\ \ \ \ \ booleen\_t\ acess;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_haut;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_droit;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_gauche;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcase__s}{case\_s}}\ *voisin\_bas;}
+\DoxyCodeLine{00035\ \}\ \mbox{\hyperlink{structcase__s}{case\_t}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcarte__s}{carte\_s}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{structcase__s}{case\_t}}\ cases[FIN\_X][FIN\_Y];}
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{structcarte__s}{carte\_t}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ SDL\_Rect\ rect;}
+\DoxyCodeLine{00052\ \ \ \ \ SDL\_Texture\ *texture;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label;}
+\DoxyCodeLine{00054\ \}\ \mbox{\hyperlink{structMenuButton}{MenuButton}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{structcase__s}{case\_t}}\ *cell;}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{structcase__s}{case\_t}}\ *parent;}
+\DoxyCodeLine{00064\ \}\ \mbox{\hyperlink{structqueue__node__t}{queue\_node\_t}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{WINDOWED,\ FULLSCREEN,\ BORDERLESS\}\ screen\_t;}
+\DoxyCodeLine{00070\ }
 \DoxyCodeLine{00074\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00075\ \ \ \ \ HAUT,\ }
-\DoxyCodeLine{00076\ \ \ \ \ DROITE,\ }
-\DoxyCodeLine{00077\ \ \ \ \ BAS,\ }
-\DoxyCodeLine{00078\ \ \ \ \ GAUCHE}
-\DoxyCodeLine{00079\ \}\ direction\_t;}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ FIXED,}
-\DoxyCodeLine{00083\ \ \ \ \ GAME,}
-\DoxyCodeLine{00084\ \ \ \ \ SIDEWAYS}
-\DoxyCodeLine{00085\ \}\ camera\_type;}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ moniteurCameras;}
-\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera1on;}
-\DoxyCodeLine{00089\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera2on;}
-\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera3on;}
-\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera4on;}
-\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera5on;}
-\DoxyCodeLine{00093\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera6on;}
-\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera7on;}
-\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera8on;}
-\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera9on;}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \textcolor{comment}{/*=============================================*/}}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ battery;}
-\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ porteGaucheActive;}
-\DoxyCodeLine{00102\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ porteDroiteActive;}
-\DoxyCodeLine{00103\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lumiereGaucheActive;}
-\DoxyCodeLine{00104\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lumiereDroiteActive;}
-\DoxyCodeLine{00105\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ tempsDebut;}
-\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ tempsFin;}
-\DoxyCodeLine{00107\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ change;}
-\DoxyCodeLine{00108\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ finish;}
-\DoxyCodeLine{00109\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ duree;}
-\DoxyCodeLine{00110\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ BATTERY\_DURATION;}
-\DoxyCodeLine{00111\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ cameraMap;}
-\DoxyCodeLine{00112\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ windowW;}
-\DoxyCodeLine{00113\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ windowH;}
-\DoxyCodeLine{00114\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ gameOver\_monstre;}
-\DoxyCodeLine{00115\ \textcolor{keyword}{extern}\ booleen\_t\ boutonLumieres;}
-\DoxyCodeLine{00116\ \textcolor{keyword}{extern}\ carte\_t\ *map;}
-\DoxyCodeLine{00117\ \textcolor{keyword}{extern}\ case\_t\ *joueur;}
-\DoxyCodeLine{00118\ \textcolor{keyword}{extern}\ case\_t\ *monster;}
-\DoxyCodeLine{00119\ \textcolor{keyword}{extern}\ case\_t\ *mimic;}
-\DoxyCodeLine{00120\ \textcolor{keyword}{extern}\ SDL\_Texture\ *background;}
-\DoxyCodeLine{00121\ \textcolor{keyword}{extern}\ SDL\_Texture\ *BLACKOUT;}
-\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_OFF;}
-\DoxyCodeLine{00123\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_OFF\_LI\_ON\_M\_W;}
-\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\ ;}
-\DoxyCodeLine{00126\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_OFF\ ;}
-\DoxyCodeLine{00127\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\_W\ ;}
-\DoxyCodeLine{00128\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\ ;}
-\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\ ;}
-\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_D\ ;}
-\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\_D\ ;}
-\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\ ;}
-\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\ ;}
-\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_OFF\ ;}
-\DoxyCodeLine{00137\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\ ;}
-\DoxyCodeLine{00138\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_L\_I\_OFF\_M\ ;}
-\DoxyCodeLine{00139\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\ ;}
-\DoxyCodeLine{00140\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\ ;}
-\DoxyCodeLine{00141\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\ ;}
-\DoxyCodeLine{00142\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_ON\_LI\_OFF\_ON\_M\_W\ ;}
-\DoxyCodeLine{00143\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00144\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_ON\ ;}
-\DoxyCodeLine{00145\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\_D\ ;}
-\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\ ;}
-\DoxyCodeLine{00150\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00151\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\_W\_D;}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_ON\_M\_W;}
-\DoxyCodeLine{00155\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_ON;}
-\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W;}
-\DoxyCodeLine{00157\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\_D\ ;}
-\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\ ;}
-\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\_D\ ;}
-\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00162\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00163\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\ ;}
-\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M;}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_OFF\ ;}
-\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\_D\ ;}
-\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
-\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\ ;}
-\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\_D\ ;}
-\DoxyCodeLine{00171\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_OFF\ ;}
-\DoxyCodeLine{00172\ \textcolor{keyword}{extern}\ SDL\_Texture\ *SKY;}
-\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM;}
-\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_M;}
-\DoxyCodeLine{00175\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_MI;}
-\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_MI\_M;}
-\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM;}
-\DoxyCodeLine{00178\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_M;}
-\DoxyCodeLine{00179\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_MI;}
-\DoxyCodeLine{00180\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_MI\_M;}
-\DoxyCodeLine{00181\ \textcolor{keyword}{extern}\ IMG\_Animation\ *STATIC;}
-\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ SDL\_Texture\ *STATIC\_CAM;}
-\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_C;}
-\DoxyCodeLine{00184\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_O\_A;}
-\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_O;}
-\DoxyCodeLine{00186\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_C;}
-\DoxyCodeLine{00187\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_O\_A;}
-\DoxyCodeLine{00188\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_O;}
-\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D;}
-\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_M;}
-\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_MI;}
-\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_M\_MI;}
-\DoxyCodeLine{00193\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D;}
-\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_M;}
-\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_MI;}
-\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_M\_MI;}
-\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR;}
-\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_M;}
-\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_MI;}
-\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_M\_MI;}
-\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR;}
-\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_M;}
-\DoxyCodeLine{00203\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_MI;}
-\DoxyCodeLine{00204\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_MI\_M;}
-\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL;}
-\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_M;}
-\DoxyCodeLine{00207\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_MI;}
-\DoxyCodeLine{00208\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_MI\_M;}
-\DoxyCodeLine{00209\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY;}
-\DoxyCodeLine{00210\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_M;}
-\DoxyCodeLine{00211\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_MI;}
-\DoxyCodeLine{00212\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_MI\_M;}
-\DoxyCodeLine{00213\ \textcolor{keyword}{extern}\ IMG\_Animation\ *monster\_death;}
-\DoxyCodeLine{00214\ \textcolor{keyword}{extern}\ IMG\_Animation\ *mimic\_death;}
-\DoxyCodeLine{00215\ \textcolor{keyword}{extern}\ SDL\_Renderer\ *renderer;}
-\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ Uint32\ lastSound;}
-\DoxyCodeLine{00217\ \textcolor{keyword}{extern}\ Uint32\ now;}
-\DoxyCodeLine{00218\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *song;}
-\DoxyCodeLine{00219\ \textcolor{keyword}{extern}\ case\_t\ *camera;}
-\DoxyCodeLine{00220\ \textcolor{keyword}{extern}\ Uint32\ currentTime;}
-\DoxyCodeLine{00221\ \textcolor{keyword}{extern}\ Uint32\ monsterLastMove;}
-\DoxyCodeLine{00222\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ deltaTime;}
-\DoxyCodeLine{00223\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ w;}
-\DoxyCodeLine{00224\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ h;}
-\DoxyCodeLine{00225\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ run;}
-\DoxyCodeLine{00226\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ trans;}
-\DoxyCodeLine{00227\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ progress;}
-\DoxyCodeLine{00228\ \textcolor{keyword}{extern}\ GameState\ state;}
-\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ GameState\ next;}
-\DoxyCodeLine{00230\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ masterVol;}
-\DoxyCodeLine{00231\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ musicVol;}
-\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ brightness;}
-\DoxyCodeLine{00233\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ mouseSens;}
-\DoxyCodeLine{00234\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ screenModeIndex;}
-\DoxyCodeLine{00235\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ resIndex;}
-\DoxyCodeLine{00236\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ night;}
-\DoxyCodeLine{00237\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ overBack;}
-\DoxyCodeLine{00238\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *sGlitch;}
-\DoxyCodeLine{00239\ \textcolor{keyword}{extern}\ SDL\_Texture\ *settingsStaticTex;}
-\DoxyCodeLine{00240\ \textcolor{keyword}{extern}\ SDL\_Texture\ *settingsBG;}
-\DoxyCodeLine{00241\ \textcolor{keyword}{extern}\ Uint32\ saveNotificationTimer;}
-\DoxyCodeLine{00242\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *screenModes[];}
-\DoxyCodeLine{00243\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *resolutions[];}
-\DoxyCodeLine{00244\ \textcolor{keyword}{extern}\ SDL\_Texture\ *bgTexture;}
-\DoxyCodeLine{00245\ \textcolor{keyword}{extern}\ SDL\_Texture\ *titleText;}
-\DoxyCodeLine{00246\ \textcolor{keyword}{extern}\ SDL\_Rect\ titleRect;}
-\DoxyCodeLine{00247\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structMenuButton}{MenuButton}}\ buttons[5];}
-\DoxyCodeLine{00248\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ assetsLoaded;}
-\DoxyCodeLine{00249\ \textcolor{keyword}{extern}\ Uint32\ lastTime;}
-\DoxyCodeLine{00250\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lightCount;}
-\DoxyCodeLine{00251\ \textcolor{keyword}{extern}\ Mix\_Music*\ sOst;\ }
-\DoxyCodeLine{00252\ \textcolor{keyword}{extern}\ Mix\_Music*\ cameraStatic;}
-\DoxyCodeLine{00253\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ cameraSwitch;}
-\DoxyCodeLine{00254\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ doorKnocking;}
-\DoxyCodeLine{00255\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ monsterSpawn;}
-\DoxyCodeLine{00256\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ mimicMove;}
-\DoxyCodeLine{00257\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ door\_close;}
-\DoxyCodeLine{00258\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ light\_on;}
-\DoxyCodeLine{00259\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ button\_on;}
-\DoxyCodeLine{00260\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ button\_off;}
-\DoxyCodeLine{00261\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ sad\_mimic;}
-\DoxyCodeLine{00262\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ attack;}
-\DoxyCodeLine{00263\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *static\_sound;}
-\DoxyCodeLine{00264\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ pixel\_offset\_game;}
-\DoxyCodeLine{00265\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ pixel\_offset\_cam;}
-\DoxyCodeLine{00266\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ res\_percentage;}
-\DoxyCodeLine{00267\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ img\_limit\_left;}
-\DoxyCodeLine{00268\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ img\_stretch\_game\_percentage;}
-\DoxyCodeLine{00269\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ img\_stretch\_cam\_percentage;}
-\DoxyCodeLine{00270\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera\_offset\_x;}
-\DoxyCodeLine{00271\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ spacing\_amount;}
-\DoxyCodeLine{00272\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ is\_first\_draw;}
-\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00075\ \ \ \ \ STATE\_MENU,}
+\DoxyCodeLine{00076\ \ \ \ \ STATE\_SETTINGS,}
+\DoxyCodeLine{00077\ \ \ \ \ STATE\_NEW\_GAME,}
+\DoxyCodeLine{00078\ \ \ \ \ STATE\_CONTINUE,}
+\DoxyCodeLine{00079\ \ \ \ \ STATE\_CREDITS}
+\DoxyCodeLine{00080\ \}\ GameState;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{/*\ ============CAMERAS.H====================\ */}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ CAMERA\_0,\ CAMERA\_1,\ CAMERA\_2,\ CAMERA\_3,}
+\DoxyCodeLine{00086\ \ \ \ \ CAMERA\_4,\ CAMERA\_5,\ CAMERA\_6,\ CAMERA\_7,}
+\DoxyCodeLine{00087\ \ \ \ \ CAMERA\_8,\ CAMERA\_9,\ CAMERA\_10,\ CAMERA\_11,}
+\DoxyCodeLine{00088\ \ \ \ \ CAMERA\_12,\ CAMERA\_13,\ CAMERA\_14,\ CAMERA\_15}
+\DoxyCodeLine{00089\ \}\ num\_cameras;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ booleen\_t\ active;}
+\DoxyCodeLine{00093\ \}\ \mbox{\hyperlink{structcamera__t}{camera\_t}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ HAUT,\ }
+\DoxyCodeLine{00097\ \ \ \ \ DROITE,\ }
+\DoxyCodeLine{00098\ \ \ \ \ BAS,\ }
+\DoxyCodeLine{00099\ \ \ \ \ GAUCHE}
+\DoxyCodeLine{00100\ \}\ direction\_t;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ FIXED,}
+\DoxyCodeLine{00107\ \ \ \ \ GAME,}
+\DoxyCodeLine{00108\ \ \ \ \ SIDEWAYS}
+\DoxyCodeLine{00109\ \}\ camera\_type;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ moniteurCameras;}
+\DoxyCodeLine{00112\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera1on;}
+\DoxyCodeLine{00113\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera2on;}
+\DoxyCodeLine{00114\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera3on;}
+\DoxyCodeLine{00115\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera4on;}
+\DoxyCodeLine{00116\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera5on;}
+\DoxyCodeLine{00117\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera6on;}
+\DoxyCodeLine{00118\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera7on;}
+\DoxyCodeLine{00119\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera8on;}
+\DoxyCodeLine{00120\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera9on;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{/*=============================================*/}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ battery;}
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ porteGaucheActive;}
+\DoxyCodeLine{00126\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ porteDroiteActive;}
+\DoxyCodeLine{00127\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lumiereGaucheActive;}
+\DoxyCodeLine{00128\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lumiereDroiteActive;}
+\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ tempsDebut;}
+\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ tempsFin;}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ change;}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ finish;}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ duree;}
+\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ BATTERY\_DURATION;}
+\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ cameraMap;}
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ windowW;}
+\DoxyCodeLine{00137\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ windowH;}
+\DoxyCodeLine{00138\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ gameOver\_monstre;}
+\DoxyCodeLine{00139\ \textcolor{keyword}{extern}\ booleen\_t\ boutonLumieres;}
+\DoxyCodeLine{00140\ \textcolor{comment}{/*===============EVERY\ ENTITIES\ IN\ GAME==================*/}}
+\DoxyCodeLine{00141\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structcarte__s}{carte\_t}}\ *map;}
+\DoxyCodeLine{00142\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structcase__s}{case\_t}}\ *joueur;}
+\DoxyCodeLine{00143\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structcase__s}{case\_t}}\ *monster;}
+\DoxyCodeLine{00144\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structcase__s}{case\_t}}\ *mimic;}
+\DoxyCodeLine{00145\ \textcolor{comment}{/*========================================================*/}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{/*=============================EVERY\ ASSET\ THAT\ NEEDS\ TO\ BE\ LOADED====================================*/}}
+\DoxyCodeLine{00148\ \textcolor{keyword}{extern}\ SDL\_Texture\ *background;}
+\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ SDL\_Texture\ *BLACKOUT;}
+\DoxyCodeLine{00150\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_OFF;}
+\DoxyCodeLine{00151\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_OFF\_LI\_ON\_M\_W;}
+\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00153\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\ ;}
+\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_OFF\ ;}
+\DoxyCodeLine{00155\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\_W\ ;}
+\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\ ;}
+\DoxyCodeLine{00157\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_OFF\ ;}
+\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_D\ ;}
+\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\_D\ ;}
+\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00162\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_OFF\_LI\_ON\ ;}
+\DoxyCodeLine{00163\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\ ;}
+\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_OFF\ ;}
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\ ;}
+\DoxyCodeLine{00166\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_L\_I\_OFF\_M\ ;}
+\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\ ;}
+\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\ ;}
+\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\ ;}
+\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_ON\_LI\_OFF\_ON\_M\_W\ ;}
+\DoxyCodeLine{00171\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00172\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_ON\_LI\_ON\ ;}
+\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\_D\ ;}
+\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_ON\ ;}
+\DoxyCodeLine{00178\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00179\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00180\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_OFF\_M\_W\_D;}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_ON\_M\_W;}
+\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_ON;}
+\DoxyCodeLine{00184\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W;}
+\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_OFF\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00186\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\_D\ ;}
+\DoxyCodeLine{00187\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\ ;}
+\DoxyCodeLine{00188\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\_D\ ;}
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_ON\ ;}
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_OFF\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M;}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_OFF\_L\_D\_ON\_LI\_OFF\ ;}
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\_D\ ;}
+\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\_W\ ;}
+\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_OFF\_LI\_ON\_M\ ;}
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_OFF\_M\_W\_D\ ;}
+\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_ON\_LI\_ON\_L\_D\_ON\_LI\_OFF\ ;}
+\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ SDL\_Texture\ *SKY;}
+\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM;}
+\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_M;}
+\DoxyCodeLine{00203\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_MI;}
+\DoxyCodeLine{00204\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONITOR\_ROOM\_MI\_M;}
+\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM;}
+\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_M;}
+\DoxyCodeLine{00207\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_MI;}
+\DoxyCodeLine{00208\ \textcolor{keyword}{extern}\ SDL\_Texture\ *COMMAND\_ROOM\_MI\_M;}
+\DoxyCodeLine{00209\ \textcolor{keyword}{extern}\ IMG\_Animation\ *STATIC;}
+\DoxyCodeLine{00210\ \textcolor{keyword}{extern}\ SDL\_Texture\ *STATIC\_CAM;}
+\DoxyCodeLine{00211\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_C;}
+\DoxyCodeLine{00212\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_O\_A;}
+\DoxyCodeLine{00213\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_L\_DOOR\_O;}
+\DoxyCodeLine{00214\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_C;}
+\DoxyCodeLine{00215\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_O\_A;}
+\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MONSTER\_R\_DOOR\_O;}
+\DoxyCodeLine{00217\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D;}
+\DoxyCodeLine{00218\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_M;}
+\DoxyCodeLine{00219\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_MI;}
+\DoxyCodeLine{00220\ \textcolor{keyword}{extern}\ SDL\_Texture\ *L\_D\_M\_MI;}
+\DoxyCodeLine{00221\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D;}
+\DoxyCodeLine{00222\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_M;}
+\DoxyCodeLine{00223\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_MI;}
+\DoxyCodeLine{00224\ \textcolor{keyword}{extern}\ SDL\_Texture\ *R\_D\_M\_MI;}
+\DoxyCodeLine{00225\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR;}
+\DoxyCodeLine{00226\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_M;}
+\DoxyCodeLine{00227\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_MI;}
+\DoxyCodeLine{00228\ \textcolor{keyword}{extern}\ SDL\_Texture\ *CORRIDOR\_M\_MI;}
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR;}
+\DoxyCodeLine{00230\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_M;}
+\DoxyCodeLine{00231\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_MI;}
+\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ SDL\_Texture\ *MIMIC\_CORRIDOR\_MI\_M;}
+\DoxyCodeLine{00233\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL;}
+\DoxyCodeLine{00234\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_M;}
+\DoxyCodeLine{00235\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_MI;}
+\DoxyCodeLine{00236\ \textcolor{keyword}{extern}\ SDL\_Texture\ *FRONT\_WALL\_MI\_M;}
+\DoxyCodeLine{00237\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY;}
+\DoxyCodeLine{00238\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_M;}
+\DoxyCodeLine{00239\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_MI;}
+\DoxyCodeLine{00240\ \textcolor{keyword}{extern}\ SDL\_Texture\ *HALLWAY\_MI\_M;}
+\DoxyCodeLine{00241\ \textcolor{keyword}{extern}\ IMG\_Animation\ *monster\_death;}
+\DoxyCodeLine{00242\ \textcolor{keyword}{extern}\ IMG\_Animation\ *mimic\_death;}
+\DoxyCodeLine{00243\ \textcolor{keyword}{extern}\ Mix\_Music*\ sOst;\ }
+\DoxyCodeLine{00244\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ cameraStatic;}
+\DoxyCodeLine{00245\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ cameraSwitch;}
+\DoxyCodeLine{00246\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ doorKnocking;}
+\DoxyCodeLine{00247\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ monsterSpawn;}
+\DoxyCodeLine{00248\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ mimicMove;}
+\DoxyCodeLine{00249\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ door\_close;}
+\DoxyCodeLine{00250\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ light\_on;}
+\DoxyCodeLine{00251\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ button\_on;}
+\DoxyCodeLine{00252\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ button\_off;}
+\DoxyCodeLine{00253\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ sad\_mimic;}
+\DoxyCodeLine{00254\ \textcolor{keyword}{extern}\ Mix\_Chunk*\ attack;}
+\DoxyCodeLine{00255\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *static\_sound;}
+\DoxyCodeLine{00256\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *song;}
+\DoxyCodeLine{00257\ \textcolor{comment}{/*=======================================================*/}}
+\DoxyCodeLine{00258\ \textcolor{keyword}{extern}\ SDL\_Renderer\ *renderer;}
+\DoxyCodeLine{00259\ \textcolor{keyword}{extern}\ Uint32\ lastSound;}
+\DoxyCodeLine{00260\ \textcolor{keyword}{extern}\ Uint32\ now;}
+\DoxyCodeLine{00261\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structcase__s}{case\_t}}\ *camera;}
+\DoxyCodeLine{00262\ \textcolor{keyword}{extern}\ Uint32\ currentTime;}
+\DoxyCodeLine{00263\ \textcolor{keyword}{extern}\ Uint32\ monsterLastMove;}
+\DoxyCodeLine{00264\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ deltaTime;}
+\DoxyCodeLine{00265\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{00266\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{00267\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ run;}
+\DoxyCodeLine{00268\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ trans;}
+\DoxyCodeLine{00269\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ progress;}
+\DoxyCodeLine{00270\ \textcolor{keyword}{extern}\ GameState\ state;}
+\DoxyCodeLine{00271\ \textcolor{keyword}{extern}\ GameState\ next;}
+\DoxyCodeLine{00272\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ masterVol;}
+\DoxyCodeLine{00273\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ musicVol;}
+\DoxyCodeLine{00274\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ brightness;}
+\DoxyCodeLine{00275\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ mouseSens;}
+\DoxyCodeLine{00276\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ screenModeIndex;}
+\DoxyCodeLine{00277\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ resIndex;}
+\DoxyCodeLine{00278\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ night;}
+\DoxyCodeLine{00279\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ overBack;}
+\DoxyCodeLine{00280\ \textcolor{keyword}{extern}\ Mix\_Chunk\ *sGlitch;}
+\DoxyCodeLine{00281\ \textcolor{keyword}{extern}\ SDL\_Texture\ *settingsStaticTex;}
+\DoxyCodeLine{00282\ \textcolor{keyword}{extern}\ SDL\_Texture\ *settingsBG;}
+\DoxyCodeLine{00283\ \textcolor{keyword}{extern}\ Uint32\ saveNotificationTimer;}
+\DoxyCodeLine{00284\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *screenModes[];}
+\DoxyCodeLine{00285\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *resolutions[];}
+\DoxyCodeLine{00286\ \textcolor{keyword}{extern}\ SDL\_Texture\ *bgTexture;}
+\DoxyCodeLine{00287\ \textcolor{keyword}{extern}\ SDL\_Texture\ *titleText;}
+\DoxyCodeLine{00288\ \textcolor{keyword}{extern}\ SDL\_Rect\ titleRect;}
+\DoxyCodeLine{00289\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structMenuButton}{MenuButton}}\ buttons[5];}
+\DoxyCodeLine{00290\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ assetsLoaded;}
+\DoxyCodeLine{00291\ \textcolor{keyword}{extern}\ Uint32\ lastTime;}
+\DoxyCodeLine{00292\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ lightCount;}
+\DoxyCodeLine{00293\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ pixel\_offset\_game;}
+\DoxyCodeLine{00294\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ pixel\_offset\_cam;}
+\DoxyCodeLine{00295\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ res\_percentage;}
+\DoxyCodeLine{00296\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ img\_limit\_left;}
+\DoxyCodeLine{00297\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ img\_stretch\_game\_percentage;}
+\DoxyCodeLine{00298\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ img\_stretch\_cam\_percentage;}
+\DoxyCodeLine{00299\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ camera\_offset\_x;}
+\DoxyCodeLine{00300\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ spacing\_amount;}
+\DoxyCodeLine{00301\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ is\_first\_draw;}
+\DoxyCodeLine{00302\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

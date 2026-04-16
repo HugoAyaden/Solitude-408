@@ -7,18 +7,9 @@
  * 
  */
 
-#include "portes.h"
+#include "../lib/portes.h"
 
 
-/**
- * \brief Closes the right door blocking monster access.
- *
- * Plays the door close sound and severs the connection between the
- * room above the player and the player's room.
- *
- * \param joueur Pointer to the player structure.
- * \param map Pointer to the game map.
- */
 void fermeture_portes_droite(case_t *joueur, carte_t *map){ 
     Mix_PlayChannel(-1, door_close, 0);
     /* removes the player's right neighbor */
@@ -26,15 +17,6 @@ void fermeture_portes_droite(case_t *joueur, carte_t *map){
 
 }
 
-/**
- * \brief Closes the left door blocking monster access.
- *
- * Plays the door close sound and severs the connection between the
- * room below the player and the player's room.
- *
- * \param joueur Pointer to the player structure.
- * \param map Pointer to the game map.
- */
 void fermeture_portes_gauche(case_t *joueur, carte_t *map){ 
     Mix_PlayChannel(-1, door_close, 0);
     /* removes the player's left neighbor */
@@ -42,14 +24,6 @@ void fermeture_portes_gauche(case_t *joueur, carte_t *map){
 
 }
 
-/**
- * \brief Opens the right door restoring monster access.
- *
- * Reconnects the room above the player to the player's room.
- *
- * \param map Pointer to the game map.
- * \param joueur Pointer to the player structure.
- */
 void ouverture_porte_droite(carte_t *map, case_t *joueur){ 
     // Mix_PlayChannel(-1, door_close, 0);
     /* get back the player's neighbors */
@@ -57,29 +31,12 @@ void ouverture_porte_droite(carte_t *map, case_t *joueur){
 
 }
 
-/**
- * \brief Opens the left door restoring monster access.
- *
- * Reconnects the room below the player to the player's room.
- *
- * \param map Pointer to the game map.
- * \param joueur Pointer to the player structure.
- */
 void ouverture_porte_gauche(carte_t *map, case_t *joueur){ 
     // Mix_PlayChannel(-1, door_close, 0);
     /* get back the player's neighbors */
     map->cases[X_JOUEUR+1][Y_JOUEUR].voisin_haut = joueur;
 }
 
-/**
- * \brief Handles failed monster attack when door is closed.
- *
- * Plays door knocking sound and respawns the monster at a random spawn point.
- *
- * \param map Pointer to the game map.
- * \param monster Pointer to the monster structure.
- * \param joueur Pointer to the player structure.
- */
 void attaquer_joueur_echec(carte_t *map, case_t *monster, case_t *joueur){
     Mix_PlayChannel(-1, doorKnocking, 0);
     placing_monster(map, monster);

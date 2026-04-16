@@ -7,13 +7,7 @@ Creation and initialisation of the mimic\textquotesingle{}s AI for night 3.
 
 {\ttfamily \#include "{}bfs.\+h"{}}\newline
 Include dependency graph for ia\+\_\+monstre\+\_\+n3.\+c\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{ia__monstre__n3_8c__incl}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,14 +33,12 @@ Ayaden Hugo
 \end{DoxyDate}
 
 
-\label{doc-func-members}
-\Hypertarget{ia__monstre__n3_8c_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d}\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!attaque\_mimic@{attaque\_mimic}}
+\Hypertarget{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d}\label{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d} 
+\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!attaque\_mimic@{attaque\_mimic}}
 \index{attaque\_mimic@{attaque\_mimic}!ia\_monstre\_n3.c@{ia\_monstre\_n3.c}}
 \doxysubsubsection{\texorpdfstring{attaque\_mimic()}{attaque\_mimic()}}
-{\footnotesize\ttfamily \label{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d} 
-int attaque\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int attaque\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}}}]{map,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
 
 
 
@@ -66,27 +58,25 @@ If the player’s light is on, the mimic kills the player and ends the game. Oth
 \begin{DoxyReturn}{Returns}
 VRAI if the player is killed by the mimic, FAUX otherwise. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=310pt]{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ia__monstre__n3_8c_a188de5940534dd87ffb6708a075c6d7d_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d}\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!mouvement\_mimic@{mouvement\_mimic}}
+\Hypertarget{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d}\label{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d} 
+\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!mouvement\_mimic@{mouvement\_mimic}}
 \index{mouvement\_mimic@{mouvement\_mimic}!ia\_monstre\_n3.c@{ia\_monstre\_n3.c}}
 \doxysubsubsection{\texorpdfstring{mouvement\_mimic()}{mouvement\_mimic()}}
-{\footnotesize\ttfamily \label{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d} 
-void mouvement\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void mouvement\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic }\end{DoxyParamCaption})}
 
 
 
@@ -101,27 +91,25 @@ The mimic randomly moves across the map with a defined chance. If it is adjacent
 {\em mimic} & Pointer to the mimic\textquotesingle{}s current position (case\+\_\+t). \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{ia__monstre__n3_8c_afd8e5bb77c7fba1a170e8f5be2fe6c4d_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{ia__monstre__n3_8c_a5295b779cd9f160d7b811942a1207e2c}\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!placement\_mimic@{placement\_mimic}}
+\Hypertarget{ia__monstre__n3_8c_a5295b779cd9f160d7b811942a1207e2c}\label{ia__monstre__n3_8c_a5295b779cd9f160d7b811942a1207e2c} 
+\index{ia\_monstre\_n3.c@{ia\_monstre\_n3.c}!placement\_mimic@{placement\_mimic}}
 \index{placement\_mimic@{placement\_mimic}!ia\_monstre\_n3.c@{ia\_monstre\_n3.c}}
 \doxysubsubsection{\texorpdfstring{placement\_mimic()}{placement\_mimic()}}
-{\footnotesize\ttfamily \label{ia__monstre__n3_8c_a5295b779cd9f160d7b811942a1207e2c} 
-void placement\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void placement\+\_\+mimic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map,  }\item[{\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mimic }\end{DoxyParamCaption})}
 
 
 
@@ -134,8 +122,7 @@ Mimic\textquotesingle{}s spawnpoint.
 {\em mimic} & Pointer to the mimic\textquotesingle{}s current position (case\+\_\+t). \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

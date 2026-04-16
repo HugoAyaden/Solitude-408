@@ -1,5 +1,6 @@
 var game__core_8h =
 [
+    [ "CameraAssetSet", "structCameraAssetSet.html", null ],
     [ "battery_init", "game__core_8h.html#a2f3df884c90a301efb19f9575fe9231d", null ],
     [ "battery_update", "game__core_8h.html#ac8fa856ac0b9c565af7704385f4ea2bc", null ],
     [ "buttons_getDoorCount", "game__core_8h.html#a5801bd126b77810d4a368ed379e52f45", null ],
@@ -11,6 +12,6 @@ var game__core_8h =
     [ "game_init", "game__core_8h.html#a94bcac50e1f482606eaabe3bc54b8b2a", null ],
     [ "game_initialise", "game__core_8h.html#ae160d5ac2d5e8a4733277396412d76e8", null ],
     [ "game_update", "game__core_8h.html#a2e92cf75e55e8f85782db6220f2acecf", null ],
-    [ "preload_assets", "game__core_8h.html#a6709db7fe3f7730ae42fe0c11255f11f", null ],
+    [ "preload_assets_1", "game__core_8h.html#a4386a00f56721df737f1bd9b086ab060", null ],
     [ "update", "game__core_8h.html#ac5c54df7ed3b930268c8d7752c101725", null ]
 ];

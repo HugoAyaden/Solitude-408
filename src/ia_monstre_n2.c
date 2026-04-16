@@ -12,12 +12,6 @@
 /********** DEPLACEMENT DU MONSTRE OPTIMISE AU LONG DE LA PARTIE **********/
 
 
-/**
- * \brief Finds the next step for the monster using BFS.
- * \param start Pointer to the starting cell.
- * \param goal Pointer to the target cell.
- * \return Pointer to the next cell to move to, or NULL if no path is found.
- */
 case_t *bfs_next_step(case_t *start, case_t *goal){
 
     queue_node_t queue[256];
@@ -86,21 +80,11 @@ case_t *bfs_next_step(case_t *start, case_t *goal){
     return NULL;
 }
 
-/**
- * \brief Returns a random percentage value used to decide movement probability.
- * \return A random integer between 0 and 99.
- */
 int chance_deplacement(){
    int chance = rand() %100;
    return chance;
 }
 
-/**
- * \brief Moves the monster one step toward the player using BFS.
- * \param map Pointer to the game map structure.
- * \param monster Pointer to the monster's current position.
- * \param joueur Pointer to the player's current position.
- */
 void move_monster(carte_t *map, case_t *monster, case_t *joueur){
 
     case_t *next = bfs_next_step(monster, joueur);

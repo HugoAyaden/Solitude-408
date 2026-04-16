@@ -7,8 +7,8 @@
  * 
  */
 
-#include "MainMenu.h"
-#include "transition.h" 
+#include "../lib/MainMenu.h"
+#include "../lib/transition.h" 
 
 
 /**

@@ -11,10 +11,6 @@
 #define CONSTANTES_H
 
 #include "commun.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
 
 #define true 1
 #define false 0
@@ -22,6 +18,12 @@
 extern int PERCENT_MOVE_MIMIC;
 extern float PERCENT_MOVE_MONSTER;
 
+/**
+ * \brief Represents a camera room cell in the game map.
+ *
+ * Each cell stores its camera number, whether the light is turned on,
+ * whether the room is accessible, and pointers to neighboring cells.
+ */
 typedef struct case_s {
     int num_camera;
     booleen_t lumiere;
@@ -32,24 +34,43 @@ typedef struct case_s {
     struct case_s *voisin_bas;
 } case_t;
 
+/**
+ * \brief Game map container storing all cells.
+ *
+ * The map is stored as a fixed-size 2D array of cells indexed by
+ * camera coordinates.
+ */
 typedef struct carte_s {
     case_t cases[FIN_X][FIN_Y];
 } carte_t;
 
+/**
+ * \brief Represents a menu button with graphics and label.
+ */
 typedef struct {
     SDL_Rect rect;
     SDL_Texture *texture;
     const char *label;
 } MenuButton;
 
-
+/**
+ * \brief Node used for BFS pathfinding queue.
+ *
+ * Stores the current cell and the parent cell used to reconstruct paths.
+ */
 typedef struct {
     case_t *cell;
     case_t *parent;
 } queue_node_t;
 
-typedef enum {WINDOWED,FULLSCREEN,BORDERLESS}screen_t;
+/**
+ * \brief Screen mode options for the application window.
+ */
+typedef enum {WINDOWED, FULLSCREEN, BORDERLESS} screen_t;
 
+/**
+ * \brief Available high-level game states.
+ */
 typedef enum {
     STATE_MENU,
     STATE_SETTINGS,
@@ -78,11 +99,15 @@ typedef enum {
     GAUCHE
 } direction_t;
 
+/**
+ * \brief Every camera type in game. 
+ */
 typedef enum {
     FIXED,
     GAME,
     SIDEWAYS
 } camera_type;
+
 
 extern int moniteurCameras;
 extern int camera1on;
@@ -113,10 +138,14 @@ extern int windowW;
 extern int windowH;
 extern int gameOver_monstre;
 extern booleen_t boutonLumieres;
+/*===============EVERY ENTITIES IN GAME==================*/
 extern carte_t *map;
 extern case_t *joueur;
 extern case_t *monster;
 extern case_t *mimic;
+/*========================================================*/
+
+/*=============================EVERY ASSET THAT NEEDS TO BE LOADED====================================*/
 extern SDL_Texture *background;
 extern SDL_Texture *BLACKOUT;
 extern SDL_Texture *R_D_OFF_LI_OFF_L_D_OFF_LI_OFF;
@@ -212,10 +241,24 @@ extern SDL_Texture *HALLWAY_MI;
 extern SDL_Texture *HALLWAY_MI_M;
 extern IMG_Animation *monster_death;
 extern IMG_Animation *mimic_death;
+extern Mix_Music* sOst; 
+extern Mix_Chunk* cameraStatic;
+extern Mix_Chunk* cameraSwitch;
+extern Mix_Chunk* doorKnocking;
+extern Mix_Chunk* monsterSpawn;
+extern Mix_Chunk* mimicMove;
+extern Mix_Chunk* door_close;
+extern Mix_Chunk* light_on;
+extern Mix_Chunk* button_on;
+extern Mix_Chunk* button_off;
+extern Mix_Chunk* sad_mimic;
+extern Mix_Chunk* attack;
+extern Mix_Chunk *static_sound;
+extern Mix_Chunk *song;
+/*=======================================================*/
 extern SDL_Renderer *renderer;
 extern Uint32 lastSound;
 extern Uint32 now;
-extern Mix_Chunk *song;
 extern case_t *camera;
 extern Uint32 currentTime;
 extern Uint32 monsterLastMove;
@@ -248,19 +291,6 @@ extern MenuButton buttons[5];
 extern int assetsLoaded;
 extern Uint32 lastTime;
 extern int lightCount;
-extern Mix_Music* sOst; 
-extern Mix_Chunk* cameraStatic;
-extern Mix_Chunk* cameraSwitch;
-extern Mix_Chunk* doorKnocking;
-extern Mix_Chunk* monsterSpawn;
-extern Mix_Chunk* mimicMove;
-extern Mix_Chunk* door_close;
-extern Mix_Chunk* light_on;
-extern Mix_Chunk* button_on;
-extern Mix_Chunk* button_off;
-extern Mix_Chunk* sad_mimic;
-extern Mix_Chunk* attack;
-extern Mix_Chunk *static_sound;
 extern int pixel_offset_game;
 extern int pixel_offset_cam;
 extern float res_percentage;

@@ -3,7 +3,6 @@
 \mbox{\hyperlink{game__core_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00009\ }
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ GAME\_CORE\_H}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ GAME\_CORE\_H}}
 \DoxyCodeLine{00012\ }
@@ -16,21 +15,33 @@
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{panorama_8h}{panorama.h}}"{}}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f}{change\_camera}}(case\_t\ *\ camera,\ case\_t\ *\ monstre,\ camera\_type*\ camera\_type);}
-\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_a5801bd126b77810d4a368ed379e52f45}{buttons\_getDoorCount}}();}
-\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}{buttons\_getLightCount}}();}
-\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8}{game\_handleEvent}}(SDL\_Event\ *event,\ SDL\_Window\ *window,\textcolor{keywordtype}{int}\ img\_stretchedW\_game\_res);}
-\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2f3df884c90a301efb19f9575fe9231d}{battery\_init}}();}
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}{game\_initialise}}();}
-\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc}{battery\_update}}(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keywordtype}{int}\ doorCount,\ \textcolor{keywordtype}{int}\ lightCount);}
-\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf}{game\_update}}(\textcolor{keywordtype}{float}\ deltaTime);}
-\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f}{difficulte}}(\textcolor{keywordtype}{int}\ night);}
-\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac5c54df7ed3b930268c8d7752c101725}{update}}();}
-\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}{game\_init}}(SDL\_Renderer*\ renderer,\ SDL\_Window*\ window,\ TTF\_Font*\ fontBattery,\ TTF\_Font*\ fontButtons);}
-\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}{game\_final\_cleanup}}();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a6709db7fe3f7730ae42fe0c11255f11f}{preload\_assets}}(SDL\_Renderer*\ renderer);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ camera\_id;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ enabled;}
+\DoxyCodeLine{00025\ \ \ \ \ SDL\_Texture\ *base;}
+\DoxyCodeLine{00026\ \ \ \ \ SDL\_Texture\ *monster;}
+\DoxyCodeLine{00027\ \ \ \ \ SDL\_Texture\ *mimic;}
+\DoxyCodeLine{00028\ \ \ \ \ SDL\_Texture\ *both;}
+\DoxyCodeLine{00029\ \}\ \mbox{\hyperlink{structCameraAssetSet}{CameraAssetSet}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a9f689600b5ec55cc3b04bb415c315e0f}{change\_camera}}(\mbox{\hyperlink{structcase__s}{case\_t}}\ *\ camera,\ \mbox{\hyperlink{structcase__s}{case\_t}}\ *\ monstre,\ camera\_type*\ camera\_type);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_a5801bd126b77810d4a368ed379e52f45}{buttons\_getDoorCount}}();}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{game__core_8h_ad95aa2a7f38e49f6a87c0b86fb68eb60}{buttons\_getLightCount}}();}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a8c02a5b2a0d5c59b1227fc6866ee8fa8}{game\_handleEvent}}(SDL\_Event\ *event,\ SDL\_Window\ *window,\textcolor{keywordtype}{int}\ img\_stretchedW\_game\_res);}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2f3df884c90a301efb19f9575fe9231d}{battery\_init}}();}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ae160d5ac2d5e8a4733277396412d76e8}{game\_initialise}}();}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac8fa856ac0b9c565af7704385f4ea2bc}{battery\_update}}(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keywordtype}{int}\ doorCount,\ \textcolor{keywordtype}{int}\ lightCount);}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a2e92cf75e55e8f85782db6220f2acecf}{game\_update}}(\textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a1180d11ae6bf626037812eacb7c43e3f}{difficulte}}(\textcolor{keywordtype}{int}\ night);}
+\DoxyCodeLine{00119\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_ac5c54df7ed3b930268c8d7752c101725}{update}}();}
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a94bcac50e1f482606eaabe3bc54b8b2a}{game\_init}}(SDL\_Renderer*\ renderer,\ SDL\_Window*\ window,\ TTF\_Font*\ fontBattery,\ TTF\_Font*\ fontButtons);}
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a004c5ba3c009c8ac1d4445c8e1acd526}{game\_final\_cleanup}}();}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00150\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__core_8h_a4386a00f56721df737f1bd9b086ab060}{preload\_assets\_1}}(SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{void}\ preload\_assets\_2(SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00152\ \textcolor{keywordtype}{void}\ preload\_assets\_3(SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00153\ \textcolor{keywordtype}{void}\ preload\_assets\_4(SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

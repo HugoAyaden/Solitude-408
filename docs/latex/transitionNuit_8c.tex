@@ -7,20 +7,14 @@ Between nights and winning screen transition animation.
 
 {\ttfamily \#include "{}constantes.\+h"{}}\newline
 Include dependency graph for transition\+Nuit.\+c\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{transitionNuit_8c__incl}
-\end{center}
-\end{figure}
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf}{transition\+Win}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window)
 \begin{DoxyCompactList}\small\item\em Displays victory screen with "{}\+YOU WIN"{} fade animation. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}{transition\+Nuit}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}window, int nuit\+Actuelle)
-\begin{DoxyCompactList}\small\item\em Displays night transition animation "{}\+NIGHT X → X+1"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Affiche une animation de transition entre deux nuits. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -67,61 +61,47 @@ Bastien LEFEVRE TAUGOURDEAU, Hugo AYADEN
 \end{DoxyDate}
 Une animation qui permet d\textquotesingle{}afficher le changement de nuit pour comprendre qu\textquotesingle{}on passe à la nuit suivante (on a donc gagné la nuit -\/1) 
 
-\label{doc-func-members}
-\Hypertarget{transitionNuit_8c_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}\index{transitionNuit.c@{transitionNuit.c}!transitionNuit@{transitionNuit}}
+\Hypertarget{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6}\label{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6} 
+\index{transitionNuit.c@{transitionNuit.c}!transitionNuit@{transitionNuit}}
 \index{transitionNuit@{transitionNuit}!transitionNuit.c@{transitionNuit.c}}
 \doxysubsubsection{\texorpdfstring{transitionNuit()}{transitionNuit()}}
-{\footnotesize\ttfamily \label{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6} 
-int transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{nuit\+Actuelle}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int transition\+Nuit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{nuit\+Actuelle }\end{DoxyParamCaption})}
 
 
 
-Displays night transition animation "{}\+NIGHT X → X+1"{}. 
+Affiche une animation de transition entre deux nuits. 
 
-Affiche une animation de transition entre deux nuits.
-
-Complete Star Wars-\/style sequence\+:
-\begin{DoxyEnumerate}
-\item Fade in "{}\+NIGHT X"{}
-\item Fade in next night number below
-\item Scroll both numbers upward
-\item Fade out current number
-\item Fade out remaining text
-\end{DoxyEnumerate}
+Cette fonction affiche un texte "{}\+Nuit X"{} centré à l\textquotesingle{}écran.
 
 
 \begin{DoxyParams}{Parameters}
-{\em renderer} & SDL renderer. \\
+{\em renderer} & Le renderer SDL utilisé pour l\textquotesingle{}affichage. \\
 \hline
-{\em window} & SDL window for sizing. \\
+{\em window} & La fenêtre SDL (utilisée pour récupérer la taille écran). \\
 \hline
-{\em nuit\+Actuelle} & Current night number. \\
+{\em nuit\+Actuelle} & Numéro de la nuit à afficher.\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-1 on success, negative error codes on failure. 
-\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+SDL et SDL\+\_\+ttf doivent être initialisés. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Une animation est affichée à l\textquotesingle{}écran. 
+\end{DoxyPostcond}
 Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=341pt]{transitionNuit_8c_a033a8e956da99dca9a8fd93deee3dac6_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf}\index{transitionNuit.c@{transitionNuit.c}!transitionWin@{transitionWin}}
+% FIG 1
+\Hypertarget{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf}\label{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf} 
+\index{transitionNuit.c@{transitionNuit.c}!transitionWin@{transitionWin}}
 \index{transitionWin@{transitionWin}!transitionNuit.c@{transitionNuit.c}}
 \doxysubsubsection{\texorpdfstring{transitionWin()}{transitionWin()}}
-{\footnotesize\ttfamily \label{transitionNuit_8c_aad448cd00a9cb06ad7ca5726cc111baf} 
-int transition\+Win (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int transition\+Win (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 
 
 Displays victory screen with "{}\+YOU WIN"{} fade animation. 
 
-Complete sequence\+: fade in → hold 2s → fade out.
+Complete sequence\+: fade in -\/\texorpdfstring{$>$}{>} hold 2s -\/\texorpdfstring{$>$}{>} fade out.
 
 
 \begin{DoxyParams}{Parameters}
@@ -133,8 +113,7 @@ Complete sequence\+: fade in → hold 2s → fade out.
 \begin{DoxyReturn}{Returns}
 1 on success, negative error codes on failure. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

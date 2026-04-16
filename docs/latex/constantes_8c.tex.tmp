@@ -1,0 +1,564 @@
+\doxysection{src/constantes.c File Reference}
+\hypertarget{constantes_8c}{}\label{constantes_8c}\index{src/constantes.c@{src/constantes.c}}
+
+
+Initialisation of every variable.  
+
+
+{\ttfamily \#include "{}constantes.\+h"{}}\newline
+Include dependency graph for constantes.\+c\+:
+% FIG 0
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{constantes_8c_a77d43e03fa9a5b8004bd706d970f79a0}\label{constantes_8c_a77d43e03fa9a5b8004bd706d970f79a0} 
+int {\bfseries PERCENT\+\_\+\+MOVE\+\_\+\+MIMIC} = 20
+\item 
+\Hypertarget{constantes_8c_af9d48e6cb57fc8962b6a2eb711729ab1}\label{constantes_8c_af9d48e6cb57fc8962b6a2eb711729ab1} 
+float {\bfseries PERCENT\+\_\+\+MOVE\+\_\+\+MONSTER} = 70
+\item 
+\Hypertarget{constantes_8c_abe893e21455b5e3ba30d98b78a5f4479}\label{constantes_8c_abe893e21455b5e3ba30d98b78a5f4479} 
+float {\bfseries battery} = 100.\+0f
+\item 
+\Hypertarget{constantes_8c_a613c4c0faaf3df920ec5c621c41c6546}\label{constantes_8c_a613c4c0faaf3df920ec5c621c41c6546} 
+int {\bfseries porte\+Gauche\+Active} = 0
+\item 
+\Hypertarget{constantes_8c_aa81f9c02e9a26fcdaaa3b7405fd4ac47}\label{constantes_8c_aa81f9c02e9a26fcdaaa3b7405fd4ac47} 
+int {\bfseries porte\+Droite\+Active} = 0
+\item 
+\Hypertarget{constantes_8c_a899324de18f016a5440052885ac21986}\label{constantes_8c_a899324de18f016a5440052885ac21986} 
+int {\bfseries lumiere\+Gauche\+Active} = 0
+\item 
+\Hypertarget{constantes_8c_a6d4f0fcf4ec73901011ab5c481c3508e}\label{constantes_8c_a6d4f0fcf4ec73901011ab5c481c3508e} 
+int {\bfseries lumiere\+Droite\+Active} = 0
+\item 
+\Hypertarget{constantes_8c_ab79dfa7ef9d7e773e4c449498f8a6892}\label{constantes_8c_ab79dfa7ef9d7e773e4c449498f8a6892} 
+int {\bfseries temps\+Debut} = 0
+\item 
+\Hypertarget{constantes_8c_ac791e42a4250afc6713256e252bda511}\label{constantes_8c_ac791e42a4250afc6713256e252bda511} 
+int {\bfseries temps\+Fin} = 0
+\item 
+\Hypertarget{constantes_8c_ac710c7bfde8686dcdfa07f1800ab01b5}\label{constantes_8c_ac710c7bfde8686dcdfa07f1800ab01b5} 
+int {\bfseries change} = 1
+\item 
+\Hypertarget{constantes_8c_a0187bd0ebc0acc85bd3fdc8203db3922}\label{constantes_8c_a0187bd0ebc0acc85bd3fdc8203db3922} 
+float {\bfseries finish} = 0.\+0f
+\item 
+\Hypertarget{constantes_8c_a708a96287459f29919cfda4be4c4cb75}\label{constantes_8c_a708a96287459f29919cfda4be4c4cb75} 
+int {\bfseries duree} = 0
+\item 
+\Hypertarget{constantes_8c_a1347e80dca5a5a84146bfd4ed7bd4703}\label{constantes_8c_a1347e80dca5a5a84146bfd4ed7bd4703} 
+int {\bfseries moniteur\+Cameras} = 0
+\item 
+\Hypertarget{constantes_8c_a8a0ad7cffc4ca11153689abea16731c2}\label{constantes_8c_a8a0ad7cffc4ca11153689abea16731c2} 
+int {\bfseries camera1on} = 0
+\item 
+\Hypertarget{constantes_8c_a0177f0f16764bc5017182323d07c7b4e}\label{constantes_8c_a0177f0f16764bc5017182323d07c7b4e} 
+int {\bfseries camera2on} = 0
+\item 
+\Hypertarget{constantes_8c_a1211b8865c9fd980b3073520eadf0f60}\label{constantes_8c_a1211b8865c9fd980b3073520eadf0f60} 
+int {\bfseries camera3on} = 0
+\item 
+\Hypertarget{constantes_8c_a21d6ac39ce0356b4f7c48ccf4952d41b}\label{constantes_8c_a21d6ac39ce0356b4f7c48ccf4952d41b} 
+int {\bfseries camera4on} = 0
+\item 
+\Hypertarget{constantes_8c_a8cb9c8bfeffb8666079c083399698733}\label{constantes_8c_a8cb9c8bfeffb8666079c083399698733} 
+int {\bfseries camera5on} = 0
+\item 
+\Hypertarget{constantes_8c_ac6604f1baf873903794c88f22040a31f}\label{constantes_8c_ac6604f1baf873903794c88f22040a31f} 
+int {\bfseries camera6on} = 0
+\item 
+\Hypertarget{constantes_8c_a31f224123a390efa004ec0cc69a5195a}\label{constantes_8c_a31f224123a390efa004ec0cc69a5195a} 
+int {\bfseries camera7on} = 0
+\item 
+\Hypertarget{constantes_8c_a3d21aa9e32bbedfcf6368b7fb0d69fea}\label{constantes_8c_a3d21aa9e32bbedfcf6368b7fb0d69fea} 
+int {\bfseries camera8on} = 0
+\item 
+\Hypertarget{constantes_8c_a591994fd8ebd04590d6281154eacccce}\label{constantes_8c_a591994fd8ebd04590d6281154eacccce} 
+int {\bfseries camera9on} = 0
+\item 
+\Hypertarget{constantes_8c_ae8b8fac9f5902754d53b9b587b7b15ef}\label{constantes_8c_ae8b8fac9f5902754d53b9b587b7b15ef} 
+float {\bfseries BATTERY\+\_\+\+DURATION} = 720.\+0f
+\item 
+\Hypertarget{constantes_8c_a80806701e7027696c10fe97a2d5e99c9}\label{constantes_8c_a80806701e7027696c10fe97a2d5e99c9} 
+int {\bfseries camera\+Map} = 0
+\item 
+\Hypertarget{constantes_8c_a39dc59daa5aecfcffa0386f6fc796719}\label{constantes_8c_a39dc59daa5aecfcffa0386f6fc796719} 
+int {\bfseries windowW} = 0
+\item 
+\Hypertarget{constantes_8c_a39edee3bbe6094e4d11dcc6646ebcb51}\label{constantes_8c_a39edee3bbe6094e4d11dcc6646ebcb51} 
+int {\bfseries windowH} = 0
+\item 
+\Hypertarget{constantes_8c_a32b6336ed51c93d9b517d100cb667ced}\label{constantes_8c_a32b6336ed51c93d9b517d100cb667ced} 
+int {\bfseries game\+Over\+\_\+monstre} = 0
+\item 
+\Hypertarget{constantes_8c_a0b6108e06f99a0cc01962f869aa95b19}\label{constantes_8c_a0b6108e06f99a0cc01962f869aa95b19} 
+booleen\+\_\+t {\bfseries bouton\+Lumieres} = FAUX
+\item 
+\Hypertarget{constantes_8c_ad2aca868a88432b8618184387ecb5c2b}\label{constantes_8c_ad2aca868a88432b8618184387ecb5c2b} 
+\mbox{\hyperlink{structcarte__s}{carte\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries map} = NULL
+\item 
+\Hypertarget{constantes_8c_abf2646ce420a1369fee7469969bf0524}\label{constantes_8c_abf2646ce420a1369fee7469969bf0524} 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries joueur} = NULL
+\item 
+\Hypertarget{constantes_8c_ab364185095a6f47fc9ef856992ee40ed}\label{constantes_8c_ab364185095a6f47fc9ef856992ee40ed} 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries monster} = NULL
+\item 
+\Hypertarget{constantes_8c_acb4cf23ef99b9e0f834841d31565193e}\label{constantes_8c_acb4cf23ef99b9e0f834841d31565193e} 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries mimic} = NULL
+\item 
+\Hypertarget{constantes_8c_aa6506cd10a348128d0d73bb4dfa58dd5}\label{constantes_8c_aa6506cd10a348128d0d73bb4dfa58dd5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries background} = NULL
+\item 
+\Hypertarget{constantes_8c_aa76e96707b374e78e5ac308801ca389c}\label{constantes_8c_aa76e96707b374e78e5ac308801ca389c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries BLACKOUT} = NULL
+\item 
+\Hypertarget{constantes_8c_a351e99143885418d1c4d9ed50b0764dd}\label{constantes_8c_a351e99143885418d1c4d9ed50b0764dd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONITOR\+\_\+\+ROOM} = NULL
+\item 
+\Hypertarget{constantes_8c_a75ecd03b13012ccc52cac4b3ab527c74}\label{constantes_8c_a75ecd03b13012ccc52cac4b3ab527c74} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONITOR\+\_\+\+ROOM\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_ac9be853cd3940f93c7096ea8b4ea2564}\label{constantes_8c_ac9be853cd3940f93c7096ea8b4ea2564} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONITOR\+\_\+\+ROOM\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a14ed79827161af83629d09e01bfcba93}\label{constantes_8c_a14ed79827161af83629d09e01bfcba93} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONITOR\+\_\+\+ROOM\+\_\+\+MI\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_aa1c2535c870691099ad509dcba24e48e}\label{constantes_8c_aa1c2535c870691099ad509dcba24e48e} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries COMMAND\+\_\+\+ROOM} = NULL
+\item 
+\Hypertarget{constantes_8c_a72718c15079080557ae8e5f401ac66dd}\label{constantes_8c_a72718c15079080557ae8e5f401ac66dd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries COMMAND\+\_\+\+ROOM\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a12e3648f722fd7581cb2689aeeeb6e50}\label{constantes_8c_a12e3648f722fd7581cb2689aeeeb6e50} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries COMMAND\+\_\+\+ROOM\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a8d110d01916779de1c31b9cb13c8f9e9}\label{constantes_8c_a8d110d01916779de1c31b9cb13c8f9e9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries COMMAND\+\_\+\+ROOM\+\_\+\+MI\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a7a1576cf2129795a6e5b2eca88526e3c}\label{constantes_8c_a7a1576cf2129795a6e5b2eca88526e3c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MIMIC\+\_\+\+CORRIDOR} = NULL
+\item 
+\Hypertarget{constantes_8c_ab14f6a5de2829b2f96bdac5193882b96}\label{constantes_8c_ab14f6a5de2829b2f96bdac5193882b96} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MIMIC\+\_\+\+CORRIDOR\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_afd52415b187bc453a36ab1ee4191d1b9}\label{constantes_8c_afd52415b187bc453a36ab1ee4191d1b9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MIMIC\+\_\+\+CORRIDOR\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a00585a3d1286330f2daac960049da84f}\label{constantes_8c_a00585a3d1286330f2daac960049da84f} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MIMIC\+\_\+\+CORRIDOR\+\_\+\+MI\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_afab33507e881e3ff9dbf9affa0c6f22a}\label{constantes_8c_afab33507e881e3ff9dbf9affa0c6f22a} 
+IMG\+\_\+\+Animation \texorpdfstring{$\ast$}{*} {\bfseries STATIC} = NULL
+\item 
+\Hypertarget{constantes_8c_a2a0e98f4a24d934cec8a7f8f11554622}\label{constantes_8c_a2a0e98f4a24d934cec8a7f8f11554622} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries STATIC\+\_\+\+CAM} = NULL
+\item 
+\Hypertarget{constantes_8c_aaf9496dd09bd4c1843080e1f2770a9d9}\label{constantes_8c_aaf9496dd09bd4c1843080e1f2770a9d9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+L\+\_\+\+DOOR\+\_\+C} = NULL
+\item 
+\Hypertarget{constantes_8c_aa67e9740a4fda7fb3232829b0377064c}\label{constantes_8c_aa67e9740a4fda7fb3232829b0377064c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+L\+\_\+\+DOOR\+\_\+\+O\+\_\+A} = NULL
+\item 
+\Hypertarget{constantes_8c_a2ad64fbae4ac51410f2bfbded618dd67}\label{constantes_8c_a2ad64fbae4ac51410f2bfbded618dd67} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+L\+\_\+\+DOOR\+\_\+O} = NULL
+\item 
+\Hypertarget{constantes_8c_a998e4ffd3eea5d4c709dc17ec88322fb}\label{constantes_8c_a998e4ffd3eea5d4c709dc17ec88322fb} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+R\+\_\+\+DOOR\+\_\+C} = NULL
+\item 
+\Hypertarget{constantes_8c_adc8bcb6a91ddb03cbd05ae9899efcdd5}\label{constantes_8c_adc8bcb6a91ddb03cbd05ae9899efcdd5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+R\+\_\+\+DOOR\+\_\+\+O\+\_\+A} = NULL
+\item 
+\Hypertarget{constantes_8c_a6e728361292396dc1e625f51d49390f9}\label{constantes_8c_a6e728361292396dc1e625f51d49390f9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries MONSTER\+\_\+\+R\+\_\+\+DOOR\+\_\+O} = NULL
+\item 
+\Hypertarget{constantes_8c_a84890e44b9968c0509d12dea47ed984b}\label{constantes_8c_a84890e44b9968c0509d12dea47ed984b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a3c3b871262e8924fa3d9404ddaebc925}\label{constantes_8c_a3c3b871262e8924fa3d9404ddaebc925} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a919945f1fe19ad7d7d53970bc3d5f675}\label{constantes_8c_a919945f1fe19ad7d7d53970bc3d5f675} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a360322bdc6e7a1cf93c04623cd94c6dd}\label{constantes_8c_a360322bdc6e7a1cf93c04623cd94c6dd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_afa4de495790115a9cfd331a998b916d2}\label{constantes_8c_afa4de495790115a9cfd331a998b916d2} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a5e2dbceaabfb6bfd3ccea6452cecb230}\label{constantes_8c_a5e2dbceaabfb6bfd3ccea6452cecb230} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_ad089e3f3029bdd452cbb08fc12622fbd}\label{constantes_8c_ad089e3f3029bdd452cbb08fc12622fbd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a5d94994a6f9688fb7618b1a6e89c2d26}\label{constantes_8c_a5d94994a6f9688fb7618b1a6e89c2d26} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_ace277af82712ceb51d58173567788e2f}\label{constantes_8c_ace277af82712ceb51d58173567788e2f} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_ad7f417e8563f9d6a96af54b13befe08f}\label{constantes_8c_ad7f417e8563f9d6a96af54b13befe08f} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a9c519c1a91198b7d9e9c38f15347e2d5}\label{constantes_8c_a9c519c1a91198b7d9e9c38f15347e2d5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_aa10043619036b3f9a5f38704d1cdc27e}\label{constantes_8c_aa10043619036b3f9a5f38704d1cdc27e} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_ac5b9a37edddca49d210fb6256b26a2d8}\label{constantes_8c_ac5b9a37edddca49d210fb6256b26a2d8} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_ae6156fe1ce0f6e8346a9aac1470c5355}\label{constantes_8c_ae6156fe1ce0f6e8346a9aac1470c5355} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a84dc2c7feee72e0dc924a3b6e2f7ba91}\label{constantes_8c_a84dc2c7feee72e0dc924a3b6e2f7ba91} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a1d9ab970636e410bb3f25e81f922a74a}\label{constantes_8c_a1d9ab970636e410bb3f25e81f922a74a} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a9cf0a349ea2dcb5ae24c346112369205}\label{constantes_8c_a9cf0a349ea2dcb5ae24c346112369205} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a0611b42d1216e909d7bd8ca0d2bbbb7b}\label{constantes_8c_a0611b42d1216e909d7bd8ca0d2bbbb7b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a4eae8ae0d9f9269e3ed60af866e7609d}\label{constantes_8c_a4eae8ae0d9f9269e3ed60af866e7609d} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_ac26eb73e0d51a510b222b27f6fc5be78}\label{constantes_8c_ac26eb73e0d51a510b222b27f6fc5be78} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a2027359161e0ab30f409ecdd83c5f9b9}\label{constantes_8c_a2027359161e0ab30f409ecdd83c5f9b9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_a488ab733bebab2cb67c6c2b59b23455a}\label{constantes_8c_a488ab733bebab2cb67c6c2b59b23455a} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a30695fcc4f5aa960160c4016b8f30cd6}\label{constantes_8c_a30695fcc4f5aa960160c4016b8f30cd6} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a76ba2f380dea3ae4b999b98d9ef75a45}\label{constantes_8c_a76ba2f380dea3ae4b999b98d9ef75a45} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_a556b59ad01789dee73f8eb43ce905e55}\label{constantes_8c_a556b59ad01789dee73f8eb43ce905e55} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a12eea5b6f055b1b167f7552951e55edd}\label{constantes_8c_a12eea5b6f055b1b167f7552951e55edd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a4a55949643438829e0ea013d81ef60ef}\label{constantes_8c_a4a55949643438829e0ea013d81ef60ef} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_a05c735e75712fc401eacc7414e0ec48f}\label{constantes_8c_a05c735e75712fc401eacc7414e0ec48f} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a9224aaa723a62c0fc4ba7b1227692821}\label{constantes_8c_a9224aaa723a62c0fc4ba7b1227692821} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_ad6bbc2d926ee2f7ee62e36091e3a4719}\label{constantes_8c_ad6bbc2d926ee2f7ee62e36091e3a4719} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_a8f32fba4a5c8682a3ad052c2d16d3505}\label{constantes_8c_a8f32fba4a5c8682a3ad052c2d16d3505} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a66e3803cc62b3a3d82d9ed61f7d56695}\label{constantes_8c_a66e3803cc62b3a3d82d9ed61f7d56695} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a132b99583fabbb071a9ad9af2c451f42}\label{constantes_8c_a132b99583fabbb071a9ad9af2c451f42} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a6bcabc453bebd01bc71a4df8fa1a1e32}\label{constantes_8c_a6bcabc453bebd01bc71a4df8fa1a1e32} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_ad418fa18dc7a50b7450cc4564817b8a9}\label{constantes_8c_ad418fa18dc7a50b7450cc4564817b8a9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a646953c3d8474e383fa8f6f9f95e0cb5}\label{constantes_8c_a646953c3d8474e383fa8f6f9f95e0cb5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a2046595b28711b819882002700a45642}\label{constantes_8c_a2046595b28711b819882002700a45642} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+OFF\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_aa306342585b0273bc5651dd4d3b0a94c}\label{constantes_8c_aa306342585b0273bc5651dd4d3b0a94c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_aa5400c327039bad42bbb4d11237b3aa9}\label{constantes_8c_aa5400c327039bad42bbb4d11237b3aa9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON} = NULL
+\item 
+\Hypertarget{constantes_8c_a219fdaffe8c3497154f3d28cd9b7408b}\label{constantes_8c_a219fdaffe8c3497154f3d28cd9b7408b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_a67cfcef9001d6482d55e603469b690d7}\label{constantes_8c_a67cfcef9001d6482d55e603469b690d7} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a68c3b46d5de64b3f107da53da1263b7f}\label{constantes_8c_a68c3b46d5de64b3f107da53da1263b7f} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+\+M\+\_\+W} = NULL
+\item 
+\Hypertarget{constantes_8c_a198ddb0dd4b4d3649c4981001f1c2ca5}\label{constantes_8c_a198ddb0dd4b4d3649c4981001f1c2ca5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+OFF\+\_\+\+LI\+\_\+\+ON\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_aa47222ff42f9a7dc71715a65dbf8103c}\label{constantes_8c_aa47222ff42f9a7dc71715a65dbf8103c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF\+\_\+\+M\+\_\+\+W\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a563e1ce5542208240403598f100b3717}\label{constantes_8c_a563e1ce5542208240403598f100b3717} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+ON\+\_\+\+L\+\_\+\+D\+\_\+\+ON\+\_\+\+LI\+\_\+\+OFF} = NULL
+\item 
+\Hypertarget{constantes_8c_aff1632a5d32f89a5b72052d744806dae}\label{constantes_8c_aff1632a5d32f89a5b72052d744806dae} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries SKY} = NULL
+\item 
+\Hypertarget{constantes_8c_a6f0d29c390a8c012b80b956ee71351b8}\label{constantes_8c_a6f0d29c390a8c012b80b956ee71351b8} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries L\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_a99f036cd12800ce91063c7b04f73fcd6}\label{constantes_8c_a99f036cd12800ce91063c7b04f73fcd6} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries L\+\_\+\+D\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a2af3f23623590f85c66bf3b4b66c7cb9}\label{constantes_8c_a2af3f23623590f85c66bf3b4b66c7cb9} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries L\+\_\+\+D\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a3658851626a9dcafe5c59b71a1ca0d8c}\label{constantes_8c_a3658851626a9dcafe5c59b71a1ca0d8c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries L\+\_\+\+D\+\_\+\+M\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a3cc9a19a58f5c6a8e193ed459eb3ce8c}\label{constantes_8c_a3cc9a19a58f5c6a8e193ed459eb3ce8c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+D} = NULL
+\item 
+\Hypertarget{constantes_8c_ab06d8a2a3f970c35e86d542cc94a2438}\label{constantes_8c_ab06d8a2a3f970c35e86d542cc94a2438} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_ac10993a266c4188e2bc7937fdac66c46}\label{constantes_8c_ac10993a266c4188e2bc7937fdac66c46} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a20561145c1f9125e026a7d3505599b72}\label{constantes_8c_a20561145c1f9125e026a7d3505599b72} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries R\+\_\+\+D\+\_\+\+M\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a2b2f338c2e546358dc16d2a39b83b3e4}\label{constantes_8c_a2b2f338c2e546358dc16d2a39b83b3e4} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries CORRIDOR} = NULL
+\item 
+\Hypertarget{constantes_8c_a2a2438e6e0c6f97ad546b9566657885d}\label{constantes_8c_a2a2438e6e0c6f97ad546b9566657885d} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries CORRIDOR\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a70d42058c65c7e37c792002f40785074}\label{constantes_8c_a70d42058c65c7e37c792002f40785074} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries CORRIDOR\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a422811b12858632e1bcc5bcb9d1ea5f7}\label{constantes_8c_a422811b12858632e1bcc5bcb9d1ea5f7} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries CORRIDOR\+\_\+\+M\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_ae50144e535cdf65567de02ee04e53608}\label{constantes_8c_ae50144e535cdf65567de02ee04e53608} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries FRONT\+\_\+\+WALL} = NULL
+\item 
+\Hypertarget{constantes_8c_a46cb0efb96fdad6fefc24e664653e7a4}\label{constantes_8c_a46cb0efb96fdad6fefc24e664653e7a4} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries FRONT\+\_\+\+WALL\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a97f575597c64e74af234a6ff20bafac2}\label{constantes_8c_a97f575597c64e74af234a6ff20bafac2} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries FRONT\+\_\+\+WALL\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_a35254c6c032a2cd35e85ea32a6e1f21b}\label{constantes_8c_a35254c6c032a2cd35e85ea32a6e1f21b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries FRONT\+\_\+\+WALL\+\_\+\+MI\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a66ee9c2a59c7a688abb893edcc26d3b7}\label{constantes_8c_a66ee9c2a59c7a688abb893edcc26d3b7} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries HALLWAY} = NULL
+\item 
+\Hypertarget{constantes_8c_a8f12fdca88875a2bfd532e81f330e488}\label{constantes_8c_a8f12fdca88875a2bfd532e81f330e488} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries HALLWAY\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a1f01ddf3b5e2b336f43ba79f0e591a4b}\label{constantes_8c_a1f01ddf3b5e2b336f43ba79f0e591a4b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries HALLWAY\+\_\+\+MI} = NULL
+\item 
+\Hypertarget{constantes_8c_aa5c04d201877534395cd8d6550571d51}\label{constantes_8c_aa5c04d201877534395cd8d6550571d51} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries HALLWAY\+\_\+\+MI\+\_\+M} = NULL
+\item 
+\Hypertarget{constantes_8c_a7894eab114b3f6952bedd15dab7e7ae5}\label{constantes_8c_a7894eab114b3f6952bedd15dab7e7ae5} 
+IMG\+\_\+\+Animation \texorpdfstring{$\ast$}{*} {\bfseries monster\+\_\+death} = NULL
+\item 
+\Hypertarget{constantes_8c_a2b42196dfcfcc9caf9bfd8b7d3f139d7}\label{constantes_8c_a2b42196dfcfcc9caf9bfd8b7d3f139d7} 
+IMG\+\_\+\+Animation \texorpdfstring{$\ast$}{*} {\bfseries mimic\+\_\+death} = NULL
+\item 
+\Hypertarget{constantes_8c_a966da7a60c4ea3ba301e26ccc5efe452}\label{constantes_8c_a966da7a60c4ea3ba301e26ccc5efe452} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries renderer} = NULL
+\item 
+\Hypertarget{constantes_8c_ad15125654f24ba1006b8c2365e073d70}\label{constantes_8c_ad15125654f24ba1006b8c2365e073d70} 
+Uint32 {\bfseries last\+Sound} = 0
+\item 
+\Hypertarget{constantes_8c_acd416cb12b6be767816f4b132e0139f2}\label{constantes_8c_acd416cb12b6be767816f4b132e0139f2} 
+Uint32 {\bfseries now} = 0
+\item 
+\Hypertarget{constantes_8c_a9c59559d0173986e40b03bbda58ab14c}\label{constantes_8c_a9c59559d0173986e40b03bbda58ab14c} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries song} = NULL
+\item 
+\Hypertarget{constantes_8c_ab84812448ac3cf3105439ae80b941db2}\label{constantes_8c_ab84812448ac3cf3105439ae80b941db2} 
+\mbox{\hyperlink{structcase__s}{case\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries camera} = NULL
+\item 
+\Hypertarget{constantes_8c_acded2061646047aea3167b8277dcaaae}\label{constantes_8c_acded2061646047aea3167b8277dcaaae} 
+Uint32 {\bfseries current\+Time} = 0
+\item 
+\Hypertarget{constantes_8c_af69e7bc432a015e9ba3deebda7f36a6b}\label{constantes_8c_af69e7bc432a015e9ba3deebda7f36a6b} 
+Uint32 {\bfseries monster\+Last\+Move} = 0
+\item 
+\Hypertarget{constantes_8c_a1a61318ed6aa02b4ff346e7eb8f68891}\label{constantes_8c_a1a61318ed6aa02b4ff346e7eb8f68891} 
+float {\bfseries delta\+Time} = 0.\+0f
+\item 
+\Hypertarget{constantes_8c_aac374e320caaadeca4874add33b62af2}\label{constantes_8c_aac374e320caaadeca4874add33b62af2} 
+int {\bfseries w} = 1920
+\item 
+\Hypertarget{constantes_8c_a16611451551e3d15916bae723c3f59f7}\label{constantes_8c_a16611451551e3d15916bae723c3f59f7} 
+int {\bfseries h} = 1080
+\item 
+\Hypertarget{constantes_8c_aecd587c4be6cba0dd6af4ea0b4d9c183}\label{constantes_8c_aecd587c4be6cba0dd6af4ea0b4d9c183} 
+int {\bfseries run} = true
+\item 
+\Hypertarget{constantes_8c_a7039f0d5c4b6a662294b23dccf0bea0e}\label{constantes_8c_a7039f0d5c4b6a662294b23dccf0bea0e} 
+int {\bfseries trans} = false
+\item 
+\Hypertarget{constantes_8c_ac7abb4766cd3f65c31f56279d7decff8}\label{constantes_8c_ac7abb4766cd3f65c31f56279d7decff8} 
+float {\bfseries progress} = 0.\+0f
+\item 
+\Hypertarget{constantes_8c_a25362b33bad9ff6222dc40646c411649}\label{constantes_8c_a25362b33bad9ff6222dc40646c411649} 
+Game\+State {\bfseries state} = STATE\+\_\+\+MENU
+\item 
+\Hypertarget{constantes_8c_aa3e36382247456b3d9df22f71267fcb3}\label{constantes_8c_aa3e36382247456b3d9df22f71267fcb3} 
+Game\+State {\bfseries next} = STATE\+\_\+\+MENU
+\item 
+\Hypertarget{constantes_8c_a0c5d4918a79244ed24750a74371b0993}\label{constantes_8c_a0c5d4918a79244ed24750a74371b0993} 
+int {\bfseries master\+Vol} = 80
+\item 
+\Hypertarget{constantes_8c_af8a1538c3fc3fad609fbb73526acfdd7}\label{constantes_8c_af8a1538c3fc3fad609fbb73526acfdd7} 
+int {\bfseries music\+Vol} = 60
+\item 
+\Hypertarget{constantes_8c_aa7ab72a18faba1d13601a9209ff2dcf8}\label{constantes_8c_aa7ab72a18faba1d13601a9209ff2dcf8} 
+int {\bfseries brightness} = 50
+\item 
+\Hypertarget{constantes_8c_aa165a6e2bf0da54291ab5156918fa946}\label{constantes_8c_aa165a6e2bf0da54291ab5156918fa946} 
+int {\bfseries mouse\+Sens} = 40
+\item 
+\Hypertarget{constantes_8c_a347113efc5e4abd1fcdc725d66daaee3}\label{constantes_8c_a347113efc5e4abd1fcdc725d66daaee3} 
+int {\bfseries screen\+Mode\+Index} = 1
+\item 
+\Hypertarget{constantes_8c_a1784b63a8b516ac73c6ac2027ca81b06}\label{constantes_8c_a1784b63a8b516ac73c6ac2027ca81b06} 
+int {\bfseries res\+Index} = 2
+\item 
+\Hypertarget{constantes_8c_a278285fc5778ca9235440b51b8e74b47}\label{constantes_8c_a278285fc5778ca9235440b51b8e74b47} 
+int {\bfseries night} = -\/1
+\item 
+\Hypertarget{constantes_8c_ad39e85f212683bba8fb01cf79cac3c53}\label{constantes_8c_ad39e85f212683bba8fb01cf79cac3c53} 
+int {\bfseries over\+Back} = 0
+\item 
+\Hypertarget{constantes_8c_aee4d9a6e2d7262d559ad4a0f2cde236d}\label{constantes_8c_aee4d9a6e2d7262d559ad4a0f2cde236d} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries s\+Glitch} = NULL
+\item 
+\Hypertarget{constantes_8c_aaf143c5fe6ddbd6c1a36327b1f5aea95}\label{constantes_8c_aaf143c5fe6ddbd6c1a36327b1f5aea95} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries settings\+Static\+Tex} = NULL
+\item 
+\Hypertarget{constantes_8c_a500d26cc09ebafe951b941b3a2e5038c}\label{constantes_8c_a500d26cc09ebafe951b941b3a2e5038c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries settings\+BG} = NULL
+\item 
+\Hypertarget{constantes_8c_a420b1fb38654e55042cfad5fb2947b85}\label{constantes_8c_a420b1fb38654e55042cfad5fb2947b85} 
+Uint32 {\bfseries save\+Notification\+Timer} = 0
+\item 
+\Hypertarget{constantes_8c_a268ab5794428489ba45a25b82b559173}\label{constantes_8c_a268ab5794428489ba45a25b82b559173} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries screen\+Modes} \mbox{[}$\,$\mbox{]} = \{"{}WINDOWED"{}, "{}FULLSCREEN"{}, "{}BORDERLESS"{}\}
+\item 
+\Hypertarget{constantes_8c_a13817b2b4ced37303b91a5622042c48c}\label{constantes_8c_a13817b2b4ced37303b91a5622042c48c} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries resolutions} \mbox{[}$\,$\mbox{]} = \{"{}3840x2160"{}, "{}2560x1440"{}, "{}1920x1080"{}, "{}1440x900"{}\}
+\item 
+\Hypertarget{constantes_8c_aa25a8e91a8d027c7a0c4251682cdb585}\label{constantes_8c_aa25a8e91a8d027c7a0c4251682cdb585} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries bg\+Texture} = NULL
+\item 
+\Hypertarget{constantes_8c_ab7ccaefde5649f75a8b05072a7c089dd}\label{constantes_8c_ab7ccaefde5649f75a8b05072a7c089dd} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries title\+Text} = NULL
+\item 
+\Hypertarget{constantes_8c_a866c350e25666079c00743be36589bf5}\label{constantes_8c_a866c350e25666079c00743be36589bf5} 
+SDL\+\_\+\+Rect {\bfseries title\+Rect}
+\item 
+\Hypertarget{constantes_8c_a969565c3764c8b65143bee2be9cd3ddf}\label{constantes_8c_a969565c3764c8b65143bee2be9cd3ddf} 
+\mbox{\hyperlink{structMenuButton}{Menu\+Button}} {\bfseries buttons} \mbox{[}5\mbox{]}
+\item 
+\Hypertarget{constantes_8c_a65ae51ba9652773bc6569f3216b1e1a5}\label{constantes_8c_a65ae51ba9652773bc6569f3216b1e1a5} 
+int {\bfseries assets\+Loaded} = false
+\item 
+\Hypertarget{constantes_8c_a35eb10900745ddd4795b6198b7b28beb}\label{constantes_8c_a35eb10900745ddd4795b6198b7b28beb} 
+Uint32 {\bfseries last\+Time} = 0
+\item 
+\Hypertarget{constantes_8c_a6321757c7130ce667c1ffb80f640c7d9}\label{constantes_8c_a6321757c7130ce667c1ffb80f640c7d9} 
+int {\bfseries pixel\+\_\+offset\+\_\+game} = 20
+\item 
+\Hypertarget{constantes_8c_afc74e3b05474f4328c15de75933ae5c5}\label{constantes_8c_afc74e3b05474f4328c15de75933ae5c5} 
+int {\bfseries pixel\+\_\+offset\+\_\+cam} = 1
+\item 
+\Hypertarget{constantes_8c_a72fe91df9c5f03190fad37ab45a470d9}\label{constantes_8c_a72fe91df9c5f03190fad37ab45a470d9} 
+float {\bfseries res\+\_\+percentage} = 0.\+95
+\item 
+\Hypertarget{constantes_8c_ae122ff56c488a1bcf788e925aabf1cb4}\label{constantes_8c_ae122ff56c488a1bcf788e925aabf1cb4} 
+int {\bfseries img\+\_\+limit\+\_\+left} = 0
+\item 
+\Hypertarget{constantes_8c_a9aaa4f15eb9c4fa5f4abb8acfe761148}\label{constantes_8c_a9aaa4f15eb9c4fa5f4abb8acfe761148} 
+float {\bfseries img\+\_\+stretch\+\_\+game\+\_\+percentage} = 1.\+6
+\item 
+\Hypertarget{constantes_8c_aee72d74fbed5cbbddc3d830e56528f7c}\label{constantes_8c_aee72d74fbed5cbbddc3d830e56528f7c} 
+float {\bfseries img\+\_\+stretch\+\_\+cam\+\_\+percentage} = 1.\+1
+\item 
+\Hypertarget{constantes_8c_ad470372a1b08f8f98fc68b7d6dc35e8f}\label{constantes_8c_ad470372a1b08f8f98fc68b7d6dc35e8f} 
+int {\bfseries camera\+\_\+offset\+\_\+x} = 0
+\item 
+\Hypertarget{constantes_8c_aed3503a41edb3e6faf26415adf77c5f7}\label{constantes_8c_aed3503a41edb3e6faf26415adf77c5f7} 
+int {\bfseries spacing\+\_\+amount} = 6
+\item 
+\Hypertarget{constantes_8c_ad9436ddb807e7aad9013a14382d4adbb}\label{constantes_8c_ad9436ddb807e7aad9013a14382d4adbb} 
+int {\bfseries light\+Count} = 0
+\item 
+\Hypertarget{constantes_8c_a522a798ede117994e9479c3d294cb04a}\label{constantes_8c_a522a798ede117994e9479c3d294cb04a} 
+Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} {\bfseries s\+Ost} = NULL
+\item 
+\Hypertarget{constantes_8c_a30e1c1fe2cde4244f294cf4b1e59b823}\label{constantes_8c_a30e1c1fe2cde4244f294cf4b1e59b823} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries camera\+Static} = NULL
+\item 
+\Hypertarget{constantes_8c_a6367fa22378292fc52f5ab298cd8363b}\label{constantes_8c_a6367fa22378292fc52f5ab298cd8363b} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries camera\+Switch} = NULL
+\item 
+\Hypertarget{constantes_8c_abbcb537fb9d4b5ce7698c0349cfa5daa}\label{constantes_8c_abbcb537fb9d4b5ce7698c0349cfa5daa} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries door\+Knocking} = NULL
+\item 
+\Hypertarget{constantes_8c_a31ac6bfc43a5190328f101b3b88707cf}\label{constantes_8c_a31ac6bfc43a5190328f101b3b88707cf} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries monster\+Spawn} = NULL
+\item 
+\Hypertarget{constantes_8c_acf106831abb31c669b24712c8a3a829d}\label{constantes_8c_acf106831abb31c669b24712c8a3a829d} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries mimic\+Move} = NULL
+\item 
+\Hypertarget{constantes_8c_a1041bda8ff12276417314cdd46708998}\label{constantes_8c_a1041bda8ff12276417314cdd46708998} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries door\+\_\+close} = NULL
+\item 
+\Hypertarget{constantes_8c_a0a5cce99125471757a585d06451febe6}\label{constantes_8c_a0a5cce99125471757a585d06451febe6} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries light\+\_\+on} = NULL
+\item 
+\Hypertarget{constantes_8c_a31f4b1fd4d2d5657d880f1bb46e56635}\label{constantes_8c_a31f4b1fd4d2d5657d880f1bb46e56635} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries button\+\_\+on} = NULL
+\item 
+\Hypertarget{constantes_8c_a586c5b5f7c5c1582d2fa3b30e2a009c1}\label{constantes_8c_a586c5b5f7c5c1582d2fa3b30e2a009c1} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries button\+\_\+off} = NULL
+\item 
+\Hypertarget{constantes_8c_ab83efa013e35690d8af4f7cd10700ee6}\label{constantes_8c_ab83efa013e35690d8af4f7cd10700ee6} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries sad\+\_\+mimic} = NULL
+\item 
+\Hypertarget{constantes_8c_ad00c16bc66906400d288a29590833d1b}\label{constantes_8c_ad00c16bc66906400d288a29590833d1b} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries attack} = NULL
+\item 
+\Hypertarget{constantes_8c_a962ec5bd0981385eb2714fe92b490608}\label{constantes_8c_a962ec5bd0981385eb2714fe92b490608} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries static\+\_\+sound} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Initialisation of every variable. 
+
+\begin{DoxyAuthor}{Author}
+Ayaden Hugo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+31/03/2026 
+\end{DoxyDate}

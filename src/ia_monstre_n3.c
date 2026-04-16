@@ -7,15 +7,9 @@
  * 
  */
 
-#include "bfs.h"
+#include "../lib/bfs.h"
 
 
-/**
- * \brief Mimic's spawnpoint
- * \param map Pointer to the game map structure.
- * \param mimic Pointer to the mimic's current position (case_t).
- *
- */
  void placement_mimic(carte_t *map, case_t *mimic){
     *mimic = map->cases[START_MIMIC_X][DEPART_Y];
  }
@@ -24,16 +18,6 @@
 
 /* DEPLACEMENT DU MIMIC AU LONG DE LA PARTIE */
 
-/**
- * \brief Handles the mimic's movement logic during gameplay.
- *
- * The mimic randomly moves across the map with a defined chance.
- * If it is adjacent to the player, it attacks. If the player’s light is on, the mimic kills the player;
- * otherwise, the mimic fails and returns to its spawn.
- *
- * \param map Pointer to the game map structure.
- * \param mimic Pointer to the mimic's current position (case_t).
- */
 void mouvement_mimic(carte_t *map, case_t *mimic){
     
     if(mimic->num_camera == map->cases[X_JOUEUR-1][Y_JOUEUR].num_camera ||  mimic->num_camera == map->cases[X_JOUEUR+1][Y_JOUEUR].num_camera){
@@ -62,17 +46,6 @@ void mouvement_mimic(carte_t *map, case_t *mimic){
 }
 
 
-/**
- * \brief Executes the mimic’s attack behavior against the player.
- *
- * If the player’s light is on, the mimic kills the player and ends the game.
- * Otherwise, the mimic fails to attack and returns to its spawn.
- *
- * \param map Game map structure (passed by value).
- * \param mimic Pointer to the mimic's current position (case_t).
- * \param joueur Pointer to the player's current position (case_t).
- * \return VRAI if the player is killed by the mimic, FAUX otherwise.
- */
 int attaque_mimic(carte_t map, case_t *mimic, case_t *joueur){
         if(joueur->lumiere == VRAI){
             printf("Mimic attacks and kills !\n");
